@@ -8,6 +8,7 @@ Here are the steps to configure this project on to your local machines.
 Local Config Setup
 ------------------
 [Setup git](http://help.github.com/set-up-git-redirect)
+
 	git config user.name "Harish Varada"
 	git config user.email harish.varada@gmail.com
 
