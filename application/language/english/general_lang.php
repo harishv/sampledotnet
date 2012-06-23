@@ -6,12 +6,29 @@
  |--------------------------------------------------------------------------
  */
 
-$lang["brand_name"]					=	"Sanple.net";
-$lang["title"]						=	$lang["brand_name"] . " - Powered by Harish.Varada";
+$lang["brand_name"]					=	"Sample.net";
+$lang["title"]						=	$lang["brand_name"];
+
+$lang["header_colocation_america"]	=	"colocation america";
+
+$lang["nav"]						=	"nav";
+$lang["nav_categories"]				=	"Categories";
+$lang["nav_samples"]				=	"Samples";
+$lang["nav_suggest_a_samples"]		=	"Suggest a Sample";
+$lang["nav_contact_us"]				=	"Contact Us";
+$lang["nav_login"]					=	"Login here";
+$lang["nav_become_a_member"]		=	"Become a member";
+$lang["nav_rss"]					=	"rss";
+
+$lang["footer_copy_year"]			=	"2003 - 2011";
+$lang["footer_brand_name"]			=	$lang["brand_name"] . " Ltd.";
+
+$lang["if_image_dropdown"]			=	"Image Dropdown";
+$lang["if_choose_your_country"]		=	"Choose Your Country";
+$lang["if_shopping_cart"]			=	"Shopping Cart";
 
 $lang["nav_home"]					=	"Home";
 $lang["nav_services"]				=	"Services";
-$lang["nav_contact_us"]				=	"Contact Us";
 $lang["nav_signin"]					=	"Sign in";
 $lang["nav_signout"]				=	"Sign out";
 
@@ -23,7 +40,6 @@ $lang["nav_sub_mobile_websites"]	=	"Mobile WebSites";
 $lang["nav_txt_view_my_profile"]	=	"View my profile page";
 $lang["nav_txt_change_pass"]		=	"Change Password";
 
-$lang["footer_product_desc"]		=	"<strong>" . $lang["brand_name"] . "</strong>, by Harish.Varada.";
 $lang["footer_follow_us"]			=	"Follow us on ";
 $lang["footer_maintained_by"]		=	"Maintained by ";
 

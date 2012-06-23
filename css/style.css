@@ -1,0 +1,199 @@
+@charset "utf-8";
+/* CSS Document */
+body { margin:0; padding:0; font:normal 12px Arial, Helvetica, sans-serif; }
+* { margin:0; padding:0; text-align:left; list-style:none; outline:none;border:none }
+p { padding:0 0 15px; line-height:16px; color:#746e6e }
+a { text-decoration:none }
+a img { border:none }
+ul { list-style:none }
+h1 { font-size:26px; color:#014284; background:url(../img/star-icon.png) no-repeat left 16px; padding:0 0 0 30px; margin:0 0 0 16px }
+h2 { color:#014284; padding:0 0 10px; font-size:16px }
+/* custom divs */
+#wrapper { background:url(../img/bg-wrapper.jpg) repeat-x left top }
+.container { width:1080px; margin:0 auto }
+div#header { padding:19px 54px 0; width:1000px }
+.slogan { font:normal 26px "Myriad Pro", Arial, Helvetica, Tahoma, sans-serif;; border-left:1px solid #4aa5d3; color:#fa8a16; padding:12px 0 13px 15px;  }
+/* main-content */
+div#inner-wrapper { background:url(../img/inner-wrapper.png) no-repeat left top; width:1000px; padding:0 54px }
+div#footer-wrapper { background:#3fa1dc; clear:left; float:left; width:100%; padding:15px 0;position:relative;z-index:101 }
+div#main-content { background:url(../img/bg-main-content.jpg) repeat-y left top;position:relative;z-index:99 }
+div#content { width:74%; }
+div#sidebar { width:25% }
+.col-1 { width:24%; min-height:1201px }
+.min-h { min-height:1370px }
+.col-2 { width:73% }
+.head { background:#dbdad5; width:100%; color:#0c3b93; font:bold 18px Arial, Helvetica, sans-serif; padding:5px 0 5px 0; line-height:20px }
+.head em { font-style:normal; font-size:14px }
+/* =============================================================== */
+/* Navigation header */
+ul#main-nav { list-style:none; float:left; padding:16px 25px 0 0; width:375px }
+ul#main-nav li { float:left; padding:0 10px; position:relative; z-index:1; background:url(../img/nav-border.jpg) no-repeat right 3px }
+ul#main-nav li.last { padding-right:0; background:none }
+ul#main-nav li a { color:#fffffe; font:bold 12px Arial, Helvetica, sans-serif; text-transform:capitalize; padding:0 0 13px; float:left }
+ul#main-nav li a:hover, ul#main-nav li a.current { color:#000001 }
+ul#main-nav ul { list-style:none; background:url(../img/bg-submenu.jpg) repeat-x left top #e8f5fe; border:1px solid #50b4f3; width:600px; display:none; padding:15px 0 15px 0 }
+ul#main-nav li:hover ul { left:0; top:28px; display:block; position:absolute; z-index:2 }
+ul#main-nav ul li { border-right:1px solid #000001; width:120px; float:left; padding:0 0 0 30px }
+ul#main-nav ul li.last { border:none }
+ul#main-nav ul li a { color:#666666; text-decoration:none; width:120px; float:left; line-height:18px!important; padding:0; font:normal 11px Arial, Helvetica, sans-serif }
+ul#main-nav ul li a:hover { color:#000001 }
+/* ====================================================================== */
+
+.bg-icon { background:url(../img/bg-icon.png) no-repeat left top; padding:5px 0 0 5px; float:left; width:29px; height:29px; clear:left; margin:7px 0 0 }
+.login-here { background:url(../img/login-here.png) no-repeat left top; width:200px; height:31px; float:left; color:#000001; padding:5px 8px 3px; margin:7px 20px 0 }
+.login-here span { float:right; color:#fffffe }
+.select1 { opacity:0 }
+.select { background:rgba(255, 255, 255, 0.1) url(../img/bg-select.png) no-repeat left top; float:left; width:207px; height:31px; border:none; opacity:1 }
+option#india { background:url(../img/india-flag.jpg) no-repeat left top; padding-left:30px; }
+/* =============================================================================== */
+/* selector */
+div.selector { line-height: 26px; height: 35px; width:235px; float:right; padding:8px 0 0 15px; border-left:1px solid #bdbcbd;position:relative;z-index:200 }
+select { width:88%; margin:8px 0 0 10px }
+select option { width:100%; float:left }
+/* margins */
+.mgn-15px { margin-right:15px }
+.mgn-r { margin:0 2% 0 0 }
+.mgn-15b { margin-bottom:15px }
+.mgn-5b { margin-bottom:5px }
+.mgn-0 { margin:0 }
+.mgn-10l { margin-left:10px }
+.mgn-20l { margin-left:20px }
+/* paddings */
+.pdg_15px { padding-top:15px }
+.pdg_10px { padding-top:10px }
+/* borders */
+.bdr-btm { border-bottom:1px solid #cccccc; padding:0 0 14px; margin:0 0 14px; width:100%; float:left }
+.bdr-btm1 { background:url(../img/bdr-3.png) no-repeat left bottom; padding:0 0 14px; margin:0 0 14px; width:100%; float:left }
+.bdr-1 { border:1px solid #bdbcbd; border-width:1px 1px 0px 0 }
+/* ================================================================================ */
+
+/* slideshow */
+.slide { width:95%; padding:0 0 0 4% }
+.slide ul { float:left;height:200px }
+.slide ul li { float:left; margin:0 20px 0 0 }
+.slide ul li a { background:url(../img/bg-slide.jpg) repeat-x left top #ededed; padding:6px; float:left; border:1px solid #c7c7c7; text-align:center; color:#0c3b93; font:bold 12px Arial, Helvetica, sans-serif; }
+.slide ul li a:hover, .slide ul li a.current { background:none; border:1px solid #fff }
+.slide ul li a img { margin-bottom:5px }
+/* ================================================================== */
+
+/* categories */
+.categories { width:100%; float:left }
+.categories ul { float:left; width:100%; }
+.categories ul li { border-bottom:1px solid #ebebeb; float:left; width:100%; }
+.categories ul li a { text-decoration:none; padding:5px 0 5px 20px; color:#666666; float:left }
+.categories ul li a:hover { color:#000001 }
+/* ================================================================== */
+
+/* samples */
+.sample { width:99.7%; border:1px solid #bdbcbd; float:left; }
+.samples { width:47.25%; float:left; border:1px solid #cfcfcf; margin:1px; padding:0 0 2% 2%; position:relative }
+.samples p { font:normal 11px Arial, Helvetica, sans-serif; color:#666666; line-height:15px; padding:20px 0 0; }
+.samples p strong, .tabs p strong { color:#0c3b93; font:bold 12px Arial, Helvetica, sans-serif }
+.only-today { position:absolute; right:0; top:0 }
+img.small { float:left; padding:30px 15px 15px; }
+.star { float:left; padding:0 0 10px 3px; clear:left; width:85% }
+.star img { float:left; margin:0 3px 0 0 }
+.social { background:url(../img/bg-social.jpg) no-repeat left top; width:101px; padding:6px 3px 0 10px; height:20px; }
+.social img { float:left; margin:0 5px 0 0 }
+.share { border-left:1px solid #f0f0f0; padding:5px 0 3px; }
+.share img { margin:3px 0 0 }
+.grab { background:url(../img/grab.png) no-repeat left top; height:20px; float:left; width:80px; margin:0 10px 0 0; text-align:center; padding:6px 0 0; color:#fffffe; text-transform:capitalize; font:bold 11px Arial, Helvetica, sans-serif }
+.grab:hover { background:url(../img/grab.png) no-repeat left -26px; cursor:pointer }
+.pages { float:right; }
+.pages a { background:url(../img/pages-normal.png) no-repeat left top; text-align:center; float:left; width:26px; height:20px; padding:5px 0 0; color:#7a7a7a; margin:10px 6px 10px 0; }
+.pages .more { padding:15px 10px 0 0; float:left }
+.pages a:last-child { margin-right:0 }
+.pages a:hover, .pages a.current { background:url(../img/pages-hover.png) no-repeat left top; color:#fffffe }
+/* ================================================================= */
+/* tabs */
+.tabs , .tabs1 { width:100%; float:left; padding:0; border:1px solid #d7d7d7; margin:0 0 25px }
+.tabs1{border:none}
+.tabs ul { float:left; padding:0 0 5px 1px }
+.tabs ul li { float:left; background:url(../img/tabs-border.jpg) no-repeat right top; width:108px }
+.tabs ul li.last { background:none; width:107px }
+.tabs ul li.last a { width:106px }
+.tabs ul li a { background:url(../img/tabs-normal.jpg) repeat-x left top; text-decoration:none; float:left; color:#0c3b93; width:107px; text-align:center; padding:10px 0 10px; height:15px;font-weight:bold }
+.tabs ul li a:hover, .tabs ul li a.current { background:url(../img/tabs-hover.jpg) repeat-x left top }
+.tabs p, .tabs1 p { text-align:center; border-right:1px dashed #4166ab; padding:0 6px; float:left; width:122px; line-height:16px }
+.tabs p img, .tabs1 p img { margin:0 0 3px }
+.tabs p.last , .tabs1 p.last { border:0; padding:0 0 0 6px }
+.playground { float:left; width:530px; height:65px; position:relative;border:none;overflow:hidden }
+.playground img { position:absolute; left:30px; top:0 }
+/* ============================================================================ */
+
+/* search */
+.search { background:url(../img/bg-search.jpg) repeat-x left top #ebebeb; float:left; padding:10px 5px 15px; width:96%; border-bottom:1px solid #cfcfcf }
+input.sch { background:url(../img/bg-input.png) no-repeat left top; width:226px; height:30px; float:left; padding:0 0 0 14px; border:none; margin:0 0 10px }
+ul.btn { float:left; width:99.8%; padding:0 0 0 1px }
+ul.btn li { float:left; width:99.9%; background:url(../img/btn-border.jpg) repeat-x left bottom; padding:0 0 2px }
+ul.btn li a { background:url(../img/bg-right-nav.jpg) repeat-x left top #e2e2e2; float:left; border-bottom:1px solid #cfcfcf; opacity:0.8; width:94%; padding:10px 0 8px 13px }
+ul.btn li a:hover { opacity:1.0 }
+/* ================================================================================ */
+/* subscribe */
+.subscribe { background:url(../img/subscribe-bg.jpg) repeat-x left top; float:left; width:90%; padding:0 8px 22px 15px; margin:10px 0 15px 1px }
+input.free { background:url(../img/bg-input1.jpg) repeat-x left top; border:1px solid #a6d0e7; width:95%; padding:3px; margin:0 0 5px }
+.subscribe-btn { background:url(../img/subscribe-now.png) no-repeat left top; width:102px; height:23px; float:right; margin:0 3px 0 0 }
+.subscribe-btn:hover { background:url(../img/subscribe-now.png) no-repeat left -24px }
+/* ================================================================================ */
+
+/* free sample */
+.free-sample { width:92%; background:#3b5998; float:left; padding:2% 4% 3% 4%; color:#fffffe; font-size:17px; line-height:22px }
+/* ================================================================================ */
+div.footer { width:1000px; padding:0 54px }
+ul#utility { float:right; list-style:none; width:37% }
+ul#utility li { float:left; padding:0 10px; border-right:1px solid #fff }
+ul#utility li.last { border:none }
+ul#utility li a { text-decoration:none; float:left; color:#fffffe; font:normal 12px Arial, Helvetica, sans-serif; text-transform:capitalize }
+ul#utility li a:hover { text-decoration:underline }
+p.copy { width:40%; float:left; color:#fffffe }
+
+/* fonts */
+@font-face {
+ font-family:'MyriadProCondensed';
+ src: url('myriadpro-cond-webfont.eot');
+ src: url('myriadpro-cond-webfont.eot?#iefix') format('embedded-opentype'), url('myriadpro-cond-webfont.woff') format('woff'), url('myriadpro-cond-webfont.ttf') format('truetype'), url('myriadpro-cond-webfont.svg#') format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+/* custom classes */
+.flt-l { float:left!important }
+.flt-r { float:right!important }
+.clear { clear:left }
+.clr-none { clear:none!important }
+.pst-abs { position:absolute }
+.pst-rel { position:relative }
+.wid_100 { width:100% }
+.small { color:#5a9c00; }
+.hgt-15px { height:15px; float:left }
+.hgt-8px { height:8px; float:left }
+.next { margin-top:42px }
+/* ============================================== */
+/* computers */
+.computers { width:100%; float:left }
+.computers p { font-size:11px; line-height:15px }
+.computers img { margin:0 12px 0 10px; float:left }
+.computers p strong { color:#0c3b93; font:bold 12px Arial, Helvetica, sans-serif }
+a.email { color:#000001; text-decoration:underline }
+a:hover.email { text-decoration:none }
+p.grey { background:#fafafb; border:1px solid #f0f0f0; padding:0 10px; width:50%; float:left; margin:0 0 10px }
+p.grey span { border-right:1px solid #dfdfdf; width:48%; float:left; padding:3px 0 }
+p.grey em { font-style:normal; float:right; width:49%; padding:3px 0 }
+p.grey strong { color:#000001; font-size:11px }
+p.grey img { margin:0; float:left }
+/* comments */
+.comment { background:#dcedfa; float:left; width:96%; padding:2%; margin:0 0 15px; border:1px solid #bec5cb; }
+.h3 { color:#0c3b93; font:bold 16px Arial, Helvetica, sans-serif; }
+.comment img { float:left; margin:0 5px }
+textarea { background:#fff; border:1px solid #e8e8e8; width:95%; padding:2% }
+.comments { width:99%; float:left; padding:0 0 15px }
+.comments img { background:#f5f5f5; padding:2px; border:1px solid #d2d2d2; float:left; margin:0 10px 0 0 }
+.comments p { font-size:11px; line-height:16px }
+.comments p strong, .comments p span { color:#032a6b }
+.links{float:left;width:100%;padding:5px 0 10px}
+/* slider */
+.item {
+    float: left;
+    font-family: Tahoma;
+    text-align: center;
+    width: 140px;
+}
