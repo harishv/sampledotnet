@@ -1,4 +1,4 @@
-Sample.net
+iSample.net
 ==========
 
 This is our repo for our new project named Sample.net.
