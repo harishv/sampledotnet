@@ -29,7 +29,6 @@
 	</div>
 <!-- End footer wrapper div -->
 </div>
-<script src="<?php echo base_url("js"); ?>/jquery.jcarousel.min.js"></script>
 
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/bootstrap.js"></script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/prettify.js"></script>

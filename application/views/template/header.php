@@ -15,8 +15,11 @@
 <link href="<?php echo base_url("css"); ?>/style.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo base_url("css"); ?>/skin.css" type="text/css" rel="stylesheet" />
 
-<script src="<?php echo base_url("js"); ?>/jquery-1.7.1.min.js"></script>
+<!-- <script src="<?php echo base_url("js"); ?>/jquery-1.7.1.min.js"></script> -->
+<script src="<?php echo base_url("js"); ?>/jquery-1.4.2.min.js"></script>
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
+
+<script src="<?php echo base_url("js"); ?>/jquery.jcarousel.js"></script>
 
 <script type="text/javascript">
 jQuery(document).ready(function() {

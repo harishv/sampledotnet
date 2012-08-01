@@ -197,3 +197,17 @@ textarea { background:#fff; border:1px solid #e8e8e8; width:95%; padding:2% }
     text-align: center;
     width: 140px;
 }
+
+/*Overriding Bootstrap classes*/
+li {
+    line-height: 1.5;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+}
