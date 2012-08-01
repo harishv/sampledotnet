@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] = "index";
+$route['backoffice'] = ADMINFOLDER;
 $route['404_override'] = '';
 
 
