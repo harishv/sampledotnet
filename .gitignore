@@ -1,6 +1,8 @@
 # Can ignore the following files.
 .buildpath
 .project
+application/config/database.php
+application/config/config.php
 
 # Can also ignore all directories and files in a directory.
 .settings/*
