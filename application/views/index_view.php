@@ -2,6 +2,7 @@
 <div id="main-content" class="flt-l wid_100">
 	<!-- Begin content div -->
 	<div id="content" class="flt-l">
+		<?php echo "sudhakar"; ?>
 		<div class="hgt-15px wid_100"></div>
 		<span class="small flt-r pdg_15px">Updated 4 hours ago</span>
 		<h1>Featured Samples</h1>
