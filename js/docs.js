@@ -8,11 +8,28 @@ $(function(){
 	
 	// Disable certain links in docs
     $('section [href^=#]').click(function (e) {
-      e.preventDefault()
+      e.preventDefault();
     })
 
     // make code pretty
-    window.prettyPrint && prettyPrint()
+    window.prettyPrint && prettyPrint();
+
+    //Check to see if the window is top if not then display button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('.back-to-top').fadeIn();
+            } else {
+                $('.back-to-top').fadeOut();
+            }
+        });
+
+
+        // Back to top Scroll
+        $('.back-to-top').click(function() {
+            $('html, body').animate({
+                scrollTop: '0px'
+            }, 1500);
+        });
     
     // fix sub nav on scroll
     var $win = $(window)

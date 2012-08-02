@@ -37,5 +37,12 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
+/**
+ * User specific constants
+ */
+// define ("ADMINURL",SITEURL.'/backoffice');
+define ("ADMINFOLDER",'backoffice');
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

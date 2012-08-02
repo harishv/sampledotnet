@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 3.4.5deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 24, 2012 at 09:39 PM
--- Server version: 5.5.23
--- PHP Version: 5.3.13
+-- Generation Time: Aug 01, 2012 at 06:45 PM
+-- Server version: 5.1.63
+-- PHP Version: 5.3.6-13ubuntu3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,15 +23,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Table structure for table `ci_sessions`
 --
 
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `status` enum('I','A','D') NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) NOT NULL DEFAULT '0',
+  `user_agent` varchar(120) NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `last_activity_idx` (`last_activity`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -44,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `product_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `text` text NOT NULL,
-  `status` enum('I','A','D') NOT NULL,
+  `status_id` smallint(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -315,6 +318,20 @@ INSERT INTO `countries` (`id`, `name`, `code`, `is_active`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `doc_categories`
+--
+
+CREATE TABLE IF NOT EXISTS `doc_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `doc_cat_name` varchar(255) NOT NULL,
+  `parent_cat_id` int(11) NOT NULL,
+  `status_id` smallint(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -322,12 +339,26 @@ CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `image` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `valid_countries` text,
-  `status` enum('I','D','A') NOT NULL,
+  `status_id` smallint(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prod_categories`
+--
+
+CREATE TABLE IF NOT EXISTS `prod_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `prod_cat_name` varchar(255) NOT NULL,
+  `parent_cat_id` int(11) NOT NULL,
+  `status_id` smallint(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -341,6 +372,59 @@ CREATE TABLE IF NOT EXISTS `ratings` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id` (`user_id`,`rating`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status`
+--
+
+CREATE TABLE IF NOT EXISTS `status` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `desc` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`id`, `desc`) VALUES
+(1, 'Inactive'),
+(2, 'Active'),
+(3, 'Deleted');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `status_id` int(11) NOT NULL,
+  `email_opt` enum('Y','N') NOT NULL DEFAULT 'Y',
+  `title` varchar(10) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `gender` enum('M','F') NOT NULL,
+  `pw_encryption` varchar(50) NOT NULL,
+  `country_id` int(11) NOT NULL,
+  `address_1` text NOT NULL,
+  `address_2` text NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `zip` varchar(10) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_from` varchar(20) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_at` datetime NOT NULL,
+  `modified_from` varchar(20) NOT NULL,
+  `modified_by` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
