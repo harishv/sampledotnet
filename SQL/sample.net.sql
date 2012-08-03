@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 02, 2012 at 04:26 PM
+-- Generation Time: Aug 03, 2012 at 09:45 PM
 -- Server version: 5.1.63
 -- PHP Version: 5.3.6-13ubuntu3.8
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `admin_email` varchar(255) NOT NULL,
   `password` varchar(50) NOT NULL,
   `admin_type_ref_id` int(11) NOT NULL,
-  `status` enum('1','0') NOT NULL DEFAULT '0',
+  `status_id` int(11) NOT NULL,
   `last_login_at` datetime DEFAULT '0000-00-00 00:00:00',
   `last_login_from` varchar(20) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -48,10 +48,10 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `admin_name`, `admin_email`, `password`, `admin_type_ref_id`, `status`, `last_login_at`, `last_login_from`, `created_at`, `created_from`, `created_by`, `modified_at`, `modified_from`, `modified_by`) VALUES
-(1, 'Super Administrator', 'harish.varada@gmail.com', '0192023a7bbd73250516f069df18b500', 1, '1', '2012-08-02 11:44:50', '192.168.30.44', '2012-08-02 11:44:50', '202.53.15.132', 0, '2012-08-02 11:44:50', '192.168.30.44', 0),
-(2, 'Regular Administrator', 'sudhakar1214@gmail.com', '8ed657407fb8ffba4db61ee39b497afc', 2, '1', '2012-08-02 11:44:50', '192.168.30.44', '2012-08-02 11:44:50', '202.53.15.132', 0, '2012-08-02 11:44:50', '192.168.30.44', 0),
-(3, 'Regular Administrator', 'vullimadhu@gmail.com', '8ed657407fb8ffba4db61ee39b497afc', 2, '1', '2012-08-02 11:44:50', '192.168.30.44', '2012-08-02 11:44:50', '202.53.15.132', 0, '2012-08-02 11:44:50', '192.168.30.44', 0);
+INSERT INTO `admin` (`id`, `admin_name`, `admin_email`, `password`, `admin_type_ref_id`, `status_id`, `last_login_at`, `last_login_from`, `created_at`, `created_from`, `created_by`, `modified_at`, `modified_from`, `modified_by`) VALUES
+(1, 'Super Administrator', 'superadmin@sample.net', 'ac497cfaba23c4184cb03b97e8c51e0a', 1, 2, '2012-08-02 11:44:50', '192.168.30.44', '2012-08-02 11:44:50', '202.53.15.132', 0, '2012-08-02 11:44:50', '192.168.30.44', 0),
+(2, 'Regular Admin-1', 'regularadmin1@sample.net', '0a13fa487a9fc4708200a96442529fc7', 2, 2, '2012-08-02 11:44:50', '192.168.30.44', '2012-08-02 11:44:50', '202.53.15.132', 0, '2012-08-02 11:44:50', '192.168.30.44', 0),
+(3, 'Regular Admin-2', 'regularadmin2@sample.net', '8ed657407fb8ffba4db61ee39b497afc', 2, 2, '2012-08-02 11:44:50', '192.168.30.44', '2012-08-02 11:44:50', '202.53.15.132', 0, '2012-08-02 11:44:50', '192.168.30.44', 0);
 
 -- --------------------------------------------------------
 

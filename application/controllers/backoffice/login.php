@@ -24,13 +24,13 @@ class Login extends CI_Controller {
 
 		// Load the necessary stuff...
 		// $this->lang->load('general');
-		$this->load->library('user_status');
+		// $this->load->library('user_status');
 		$this->load->model('Admin_Login_Model');
 
 		// Check if user is Logged In and redirect to index page
-		if( $this->user_status->is_signed_in() ){
-			// redirect('index');
-		}
+		// if( $this->user_status->is_signed_in() ){
+		// 	redirect('index');
+		// }
 	}
 
 	public function index($error = 0) {
@@ -53,8 +53,8 @@ class Login extends CI_Controller {
 		$this->load->view("template/admin_footer");
 	}
 
-	public function check_user_login() {
-		$user_access = $this->Login_Model->check_user_login();
+	public function login_process() {
+		$user_access = $this->Admin_Login_Model->check_login();
 
 		if (!$user_access) {
 
@@ -62,14 +62,14 @@ class Login extends CI_Controller {
 
 			$this->session->set_userdata($newdata);
 
-			redirect("login", "refresh");
+			redirect(ADMINFOLDER . "/login", "refresh");
 
 		} else {
-			$newdata = array( 'user'  => $user_access );
+			$newdata = array( 'admin_user'  => $user_access );
 
 			$this->session->set_userdata($newdata);
 
-			redirect("index", "refresh");
+			redirect(ADMINFOLDER, "refresh");
 
 		}
 

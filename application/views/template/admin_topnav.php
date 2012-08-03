@@ -12,19 +12,19 @@
 	<?php //We add the Top Navigation links here?>
 		<ul class="nav">
 			<li <?php echo (strstr($_SERVER['REQUEST_URI'], "/index") || "http://".$_SERVER["HTTP_HOST"].$_SERVER['REQUEST_URI'] == base_url(ADMINFOLDER)) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER, "Home"); ?></li>
-			<li id="services_nav"><?php echo anchor("services", "Services"); ?></li>
-			<li <?php echo (strstr($_SERVER['REQUEST_URI'], "/methodology")) ? 'class="active"' : ''; ?>><?php echo anchor("methodology", "Methodology"); ?></li>
+			<li id="products_nav"><?php echo anchor(ADMINFOLDER . "/products", "Products"); ?></li>
+			<li <?php echo (strstr($_SERVER['REQUEST_URI'], "/documents")) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER . "/documents", "Documents"); ?></li>
 		</ul>
 
 		<?php
-			// Making services active or inactive
- 			if (strstr($_SERVER['REQUEST_URI'], "/services")) { ?>
+			// Making products active or inactive
+ 			if (strstr($_SERVER['REQUEST_URI'], "/products")) { ?>
 				<script type="text/javascript">
-					$("#services_nav").addClass("active");
+					$("#products_nav").addClass("active");
 				</script>
 		<?php } else { ?>
 				<script type="text/javascript">
-					$("#services_nav").removeClass("active");
+					$("#products_nav").removeClass("active");
 				</script>
 		<?php } ?>
 
@@ -33,9 +33,9 @@
 		<?php
 		if ( $this->user_status->admin_is_signed_in() ) {
 			$user_info = $this->session->userdata('admin_user');
-			$user_name = $user_info['first_name'].".".$user_info['last_name'];
+			$user_name = $user_info['admin_name'];
 
-			$profile_string = '<div class="user_profile_nav"><b><i class="icon-user"></i> '.$user_info['email'].'</b><br />'.'My Profile'.'</div>';
+			$profile_string = '<div class="user_profile_nav"><b><i class="icon-user"></i> '.$user_info['admin_email'].'</b><br />'.'My Profile'.'</div>';
 			$change_pass_string = '<i class="icon-lock"></i> '.'Change Password';
 			$logout_string = '<i class="icon-off"></i> '.'Sign Out';
 			?>
@@ -46,7 +46,7 @@
 					<li><?php echo anchor("", $change_pass_string); ?>
 					</li>
 					<li class="divider"></li>
-					<li><?php echo anchor("logout", $logout_string); ?>
+					<li><?php echo anchor(ADMINFOLDER . "/logout", $logout_string); ?>
 					</li>
 				</ul></li>
 				<?php
