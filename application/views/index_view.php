@@ -2,7 +2,6 @@
 <div id="main-content" class="flt-l wid_100">
 	<!-- Begin content div -->
 	<div id="content" class="flt-l">
-		<?php echo "sudhakar"; ?>
 		<div class="hgt-15px wid_100"></div>
 		<span class="small flt-r pdg_15px">Updated 4 hours ago</span>
 		<h1>Featured Samples</h1>
@@ -174,7 +173,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
+					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -212,7 +211,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
+					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -251,7 +250,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
+					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -290,7 +289,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
+					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -329,7 +328,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
+					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>" >grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -368,7 +367,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
+					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>" >grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -407,7 +406,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
+					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>" >grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -446,7 +445,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
+					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>" >grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -498,7 +497,8 @@
 						<a href="#">Games</a>
 					</li>
 				</ul>
-				<iframe src="slider.html" class="tabs1" style="height:250px;overflow:hidden;" scrolling="no"></iframe>
+				
+				<?php echo $slider;?>
 				<!-- End tabs here -->
 			</div>
 			<h2>What is Sample.net</h2>
