@@ -153,8 +153,8 @@
 				<!-- Begin Samples here -->
 				<div class="samples">
 					<img src="<?php base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
-					<img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" />
-					<p class="pdg_10px"> <strong>Ketchup &amp; Jams</strong>
+					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
+					<p class="pdg_10px"> <a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -173,7 +173,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>">grab it now!</a>
+					<a class="grab flt-r">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -191,8 +191,8 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" />
-					<p class="pdg_10px"> <strong>Ketchup &amp; Jams</strong>
+					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
+					<p class="pdg_10px"> <a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong><a/>
 						<br />
 						When you buy one bag
 						<br />
@@ -211,7 +211,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>">grab it now!</a>
+					<a class="grab flt-r">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -229,9 +229,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" />
+					<a href="<?php echo base_url().'index/getProduct';?>"> <img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
 					<p class="pdg_10px">
-						<strong>Ketchup &amp; Jams</strong>
+						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -250,7 +250,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>">grab it now!</a>
+					<a class="grab flt-r">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -268,9 +268,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" />
+					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
 					<p class="pdg_10px">
-						<strong>Ketchup &amp; Jams</strong>
+						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -289,7 +289,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>">grab it now!</a>
+					<a class="grab flt-r">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -307,9 +307,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" />
+					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
 					<p class="pdg_10px">
-						<strong>Ketchup &amp; Jams</strong>
+						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -328,7 +328,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>" >grab it now!</a>
+					<a class="grab flt-r">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -346,9 +346,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" />
+					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
 					<p class="pdg_10px">
-						<strong>Ketchup &amp; Jams</strong>
+						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -367,7 +367,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>" >grab it now!</a>
+					<a class="grab flt-r">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -385,9 +385,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" />
+					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
 					<p class="pdg_10px">
-						<strong>Ketchup &amp; Jams</strong>
+						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -406,7 +406,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>" >grab it now!</a>
+					<a class="grab flt-r">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
@@ -424,9 +424,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" />
+					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
 					<p class="pdg_10px">
-						<strong>Ketchup &amp; Jams</strong>
+						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -445,7 +445,7 @@
 						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
 					</div>
 					<div class="clear"></div>
-					<a class="grab flt-r" href="<?php echo base_url().'index/getProduct';?>" >grab it now!</a>
+					<a class="grab flt-r">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
 							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
