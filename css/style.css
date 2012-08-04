@@ -86,7 +86,7 @@ select option { width:100%; float:left }
 
 /* samples */
 .sample { width:99.7%; border:1px solid #bdbcbd; float:left; }
-.samples { width:47.25%; float:left; border:1px solid #cfcfcf; margin:1px; padding:0 0 2% 2%; position:relative }
+.samples { width:47.25%; float:left; border:1px solid #cfcfcf; margin:1px; padding:0 0 2% 2%; position:relative;min-height:160px;}
 .samples p { font:normal 11px Arial, Helvetica, sans-serif; color:#666666; line-height:15px; padding:20px 0 0; }
 .samples p strong, .tabs p strong { color:#0c3b93; font:bold 12px Arial, Helvetica, sans-serif }
 .only-today { position:absolute; right:0; top:0 }

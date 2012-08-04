@@ -1,6 +1,6 @@
 h2 { text-align:center; font:normal 150% Georgia; }
 #sliderContent { width:650px; margin:auto; padding:0 0 50px 0px; }
-.viewer { width:525px; margin:0; padding:1px; overflow:hidden; position:relative;}
+.viewer { width:525px; margin:0; padding:1px; overflow:hidden; position:relative;float:left;}
 .content-conveyor { width:525px;position:relative; }
 .item { width:135px; float:left; font-family:Tahoma; text-align:center;}
 .item h2 { font-size:100%; margin:10px 0; }
@@ -21,12 +21,12 @@ h2 { text-align:center; font:normal 150% Georgia; }
 .tabs p img, .tabs1 p img { margin:0 0 3px }
 .tabs p.last , .tabs1 p.last { border:0; padding:0 0 0 6px }
 .tabs1 p.first{padding:0 6px 0 0} 
-#slider{position:relative;margin:0 0 0 10px}
-.ui-slider-horizontal { background:url(images/range.png) no-repeat left 5px;height:30px;width:520px }
+#slider{position:relative;margin:0 0 0 10px;float:left;}
+.ui-slider-horizontal { background:url(../img/range.png) no-repeat left 5px;height:30px;width:520px }
 .ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em;}
 .ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
 .ui-slider-horizontal .ui-slider-range-min { left: 0; }
 .ui-slider-horizontal .ui-slider-range-max { right: 0; }
-.ui-state-default, .ui-widget-content .ui-state-default{background:url(images/move-btn.jpg) no-repeat right top ;padding:10px 0 0 0;cursor:pointer;width:41px}
+.ui-state-default, .ui-widget-content .ui-state-default{background:url(../img/move-btn.jpg) no-repeat right top ;padding:10px 0 0 0;cursor:pointer;width:41px}
 iframe{overflow:hidden!important}
 

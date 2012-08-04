@@ -11,8 +11,21 @@ class Index extends CI_Controller {
 	}
 
 	public function index () {
+		
 		$this->load->view("template/header");
-		$this->load->view("index_view");
+		$data = array();
+		$data['slider'] = $this->load->view('slider',$data,TRUE);
+		$this->load->view("index_view",$data);
+		$this->load->view("template/footer");
+	}
+	public function slider() {
+		$this->load->view("slider1");
+	}
+
+	public function getProduct(){
+
+		$this->load->view("template/header");
+		$this->load->view("product");
 		$this->load->view("template/footer");
 	}
 }
