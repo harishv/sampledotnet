@@ -97,45 +97,13 @@
 					<span class="mgn-20l">Categories</span>
 				</p>
 				<ul>
+					<?php if(isset($category) && $category !=''){
+								foreach($category as $cat_id=>$cat_values){ ?>
 					<li>
-						<a href="#">Mobiles</a>
+						<a href="#"><?php echo $cat_values['prod_cat_name'];?></a>
 					</li>
-					<li>
-						<a href="#">Cameras</a>
-					</li>
-					<li>
-						<a href="#">Computers</a>
-					</li>
-					<li>
-						<a href="#">Gadgets</a>
-					</li>
-					<li>
-						<a href="#">Automobiles</a>
-					</li>
-					<li>
-						<a href="#">Kitchen</a>
-					</li>
-					<li>
-						<a href="#">Jewellery</a>
-					</li>
-					<li>
-						<a href="#">Gifts</a>
-					</li>
-					<li>
-						<a href="#">Fashion</a>
-					</li>
-					<li>
-						<a href="#">Health</a>
-					</li>
-					<li>
-						<a href="#">Home Decor</a>
-					</li>
-					<li>
-						<a href="#">Apparel</a>
-					</li>
-					<li>
-						<a href="#">Sports</a>
-					</li>
+					<?php } }?>
+					
 				</ul>
 				<!-- End categories -->
 			</div>
@@ -153,8 +121,8 @@
 				<!-- Begin Samples here -->
 				<div class="samples">
 					<img src="<?php base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
-					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
-					<p class="pdg_10px"> <a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
+					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
+					<p class="pdg_10px"> <a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -191,8 +159,8 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
-					<p class="pdg_10px"> <a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong><a/>
+					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
+					<p class="pdg_10px"> <a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong><a/>
 						<br />
 						When you buy one bag
 						<br />
@@ -229,9 +197,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<a href="<?php echo base_url().'index/getProduct';?>"> <img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
+					<a href="<?php echo base_url().'product';?>"> <img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
 					<p class="pdg_10px">
-						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
+						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -268,9 +236,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
+					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
 					<p class="pdg_10px">
-						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
+						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -307,9 +275,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
+					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
 					<p class="pdg_10px">
-						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
+						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -346,9 +314,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
+					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
 					<p class="pdg_10px">
-						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
+						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -385,9 +353,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
+					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
 					<p class="pdg_10px">
-						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
+						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
@@ -424,9 +392,9 @@
 				</div>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<a href="<?php echo base_url().'index/getProduct';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
+					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
 					<p class="pdg_10px">
-						<a href="<?php echo base_url().'index/getProduct';?>"><strong>Ketchup &amp; Jams</strong></a>
+						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
 						<br />
 						When you buy one bag
 						<br />
