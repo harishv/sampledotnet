@@ -9,8 +9,12 @@ class Admin_Login_Model extends CI_Model {
 
 	}
 
-	// This function is for checking the posted login values with the database table
-	function check_user_login()
+	/**
+	 * This function is for checking the posted login values with the database table
+	 * @return false => for invalid data
+	 *         array => for valid login with logged in user data
+	 */
+	function check_login()
 	{
 		$user_id = $this->input->post('user_id');
 		$user_password = $this->input->post('user_password');
@@ -36,10 +40,10 @@ class Admin_Login_Model extends CI_Model {
 			*/
 
 		$this->db->select('*');
-		$this->db->from('users');
-		$this->db->where('email', $user_id);
+		$this->db->from('admin');
+		$this->db->where('admin_email', $user_id);
 		$this->db->where('password', md5($user_password));
-		$this->db->where('status_id', 1);
+		$this->db->where('status_id', 2); // Status id 2 represents active
 
 		$result = $this->db->get();
 

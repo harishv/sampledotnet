@@ -55,7 +55,7 @@ $(document).ready(function() {
 	<div class="span8" style="float: none; margin: 0 auto;">
 	<?php
 	$attributes = array ("class" => "form-horizontal", "id" => "user_login", "name" => "user_login");
-	$action = ADMINFOLDER . "/login/check_user_login";
+	$action = ADMINFOLDER . "/login/login_process";
 
 	echo form_open($action, $attributes);
 	?>

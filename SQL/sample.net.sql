@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 01, 2012 at 06:45 PM
+-- Generation Time: Aug 08, 2012 at 12:37 AM
 -- Server version: 5.1.63
 -- PHP Version: 5.3.6-13ubuntu3.8
 
@@ -19,6 +19,59 @@ SET time_zone = "+00:00";
 --
 -- Database: `sample.net`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `admin_name` varchar(50) NOT NULL,
+  `admin_email` varchar(255) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `admin_type_ref_id` int(11) NOT NULL,
+  `status_id` int(11) NOT NULL,
+  `last_login_at` datetime DEFAULT '0000-00-00 00:00:00',
+  `last_login_from` varchar(20) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_from` varchar(20) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_from` varchar(20) NOT NULL,
+  `modified_by` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `admin_name`, `admin_email`, `password`, `admin_type_ref_id`, `status_id`, `last_login_at`, `last_login_from`, `created_at`, `created_from`, `created_by`, `modified_at`, `modified_from`, `modified_by`) VALUES
+(1, 'Super Administrator', 'superadmin@sample.net', 'ac497cfaba23c4184cb03b97e8c51e0a', 1, 2, '2012-08-02 11:44:50', '192.168.30.44', '2012-08-02 11:44:50', '202.53.15.132', 0, '2012-08-02 11:44:50', '192.168.30.44', 0),
+(2, 'Regular Admin-1', 'regularadmin1@sample.net', '0a13fa487a9fc4708200a96442529fc7', 2, 2, '2012-08-02 11:44:50', '192.168.30.44', '2012-08-02 11:44:50', '202.53.15.132', 0, '2012-08-02 11:44:50', '192.168.30.44', 0),
+(3, 'Regular Admin-2', 'regularadmin2@sample.net', '8ed657407fb8ffba4db61ee39b497afc', 2, 2, '2012-08-02 11:44:50', '192.168.30.44', '2012-08-02 11:44:50', '202.53.15.132', 0, '2012-08-02 11:44:50', '192.168.30.44', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_type_ref`
+--
+
+CREATE TABLE IF NOT EXISTS `admin_type_ref` (
+  `admin_type_id` int(11) NOT NULL AUTO_INCREMENT,
+  `admin_type_desc` varchar(200) NOT NULL,
+  PRIMARY KEY (`admin_type_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `admin_type_ref`
+--
+
+INSERT INTO `admin_type_ref` (`admin_type_id`, `admin_type_desc`) VALUES
+(1, 'Super Admin'),
+(2, 'Regular Admin');
 
 -- --------------------------------------------------------
 
