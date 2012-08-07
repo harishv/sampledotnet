@@ -6,7 +6,7 @@
 		<span class="icon-bar"></span>
 	</a>
 
-	<a class="brand" href="<?php echo base_url(); ?>">Sample.net Admin</a>
+	<a class="brand" href="<?php echo base_url().ADMINFOLDER; ?>">Sample.net Admin</a>
 
 	<div class="nav-collapse">
 	<?php //We add the Top Navigation links here?>

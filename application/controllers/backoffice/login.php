@@ -27,17 +27,17 @@ class Login extends CI_Controller {
 		// $this->load->library('user_status');
 		$this->load->model('Admin_Login_Model');
 
-		// Check if user is Logged In and redirect to index page
-		// if( $this->user_status->is_signed_in() ){
-		// 	redirect('index');
-		// }
+		// Check if admin user is Logged In and redirect to admin-index page
+		if( $this->user_status->admin_is_signed_in() ){
+			redirect(ADMINFOLDER . '/index');
+		}
 	}
 
 	public function index($error = 0) {
 		$data = array();
 
-		if ($error != 0) {
-			$data["errors"] = $this->lang->line("login_form_access_err");
+		if ($error == 1) {
+			$data["errors"] = "Please Login as admininstrator to access this feature.";
 		}
 
 		if ($this->session->userdata("errors")) {
