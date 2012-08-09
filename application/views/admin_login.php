@@ -66,7 +66,7 @@ $(document).ready(function() {
 			<div class="alert alert-error">
 				<a class="close" data-dismiss="alert">&times;</a>
 				<h4 class="alert-heading">
-				error
+				Error!
 				</h4>
 				<?php echo $errors; ?>
 			</div>

@@ -5,6 +5,11 @@ class Documents extends CI_Controller {
    public function __construct()
    {
 		parent::__construct();
+
+		// Check if admin is Logged In - Else redirect to admin-login page
+		if(!$this->user_status->admin_is_signed_in()){
+			redirect(ADMINFOLDER . '/login/index/1', 'refresh');
+		}
    }
 
 	public function index()
