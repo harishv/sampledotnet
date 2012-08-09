@@ -12,14 +12,14 @@ class Index extends CI_Controller {
 
 	public function index () {
 		$data = array();
-		$this->load->view("template/header");
 		$data['category'] = $this->category_model->get_category();
-		$data['slider'] = $this->load->view('slider',$data,TRUE);
+		$data['slider'] = $this->load->view('slider', $data, TRUE);
+		$this->load->view("template/header");
 		$this->load->view("index_view",$data);
 		$this->load->view("template/footer");
 	}
-	
-	
+
+
 }
 
 /* End of file index.php */

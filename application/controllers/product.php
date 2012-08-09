@@ -7,7 +7,7 @@ class Product extends CI_Controller {
 
 		// Load the necessary stuff...
 		$this->load->model('category_model');
-		
+
 	}
 
 	public function index () {
@@ -16,7 +16,7 @@ class Product extends CI_Controller {
 		$this->load->view("product",$data);
 		$this->load->view("template/footer");
 	}
-	
+
 }
 
 /* End of file index.php */
