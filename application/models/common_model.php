@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Category_Model extends CI_Model {
+class Common_Model extends CI_Model {
 
 	function __construct()
 	{
@@ -9,17 +9,13 @@ class Category_Model extends CI_Model {
 
 	}
 
-	// This function is for checking the posted login values with the database table
-	function get_category(){
+	function get_countries(){
 
 		$this->db->select('*');
-		$this->db->from('prod_categories');
-		$this->db->where('parent_cat_id',0);
+		$this->db->from('countries');
 		$this->db->where('status_id', 1); // status_id = 2 resembles Active
 
 		$result = $this->db->get();
-		//echo $this->db->last_query();exit;
-
 
 		if ($result->num_rows() == 0) {
 			return false;
@@ -29,12 +25,10 @@ class Category_Model extends CI_Model {
 
 		return false;
 
-
 	}
 
 
 };
 
-
-/* End of file admin_login_model.php */
-/* Location: ./system/application/models/category.php */
+/* End of file common_model.php */
+/* Location: ./system/application/models/common_model.php */

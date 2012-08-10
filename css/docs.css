@@ -1,11 +1,17 @@
 @CHARSET "UTF-8";
 body {
     background-color: #FFFFFF;
-    background-image: url("../img/grid-18px-masked.png");
-    background-position: 0 40px;
-    background-repeat: repeat-x;
+    background-image: url("../img/bg.png"); /* ../img/grid-18px-masked.png */
+    background-position: 0 0;
+    background-repeat: repeat-x repeat-y;
     padding-top: 90px;
     position: relative;
+}
+
+.btn-span3 {
+    float: none;
+    font-size: 22px;
+    margin: 5px;
 }
 
 /* Tweak navbar brand link to be super sleek
@@ -28,7 +34,7 @@ body {
 }
 
 .navbar .nav .active > a{
-	font-weight: bold;	
+	font-weight: bold;
 }
 
 /* Space out sub-sections more

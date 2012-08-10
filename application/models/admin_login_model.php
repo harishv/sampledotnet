@@ -43,7 +43,7 @@ class Admin_Login_Model extends CI_Model {
 		$this->db->from('admin');
 		$this->db->where('admin_email', $user_id);
 		$this->db->where('password', md5($user_password));
-		$this->db->where('status_id', 2); // Status id 2 represents active
+		$this->db->where('status_id', 1); // Status id 1 represents active
 
 		$result = $this->db->get();
 
