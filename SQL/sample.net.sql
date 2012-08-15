@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 14, 2012 at 08:06 PM
+-- Generation Time: Aug 15, 2012 at 07:15 PM
 -- Server version: 5.1.63
 -- PHP Version: 5.3.6-13ubuntu3.8
 
@@ -371,6 +371,36 @@ INSERT INTO `countries` (`id`, `name`, `code`, `status_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `documents`
+--
+
+CREATE TABLE IF NOT EXISTS `documents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `valid_countries` text,
+  `status_id` smallint(6) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_from` varchar(20) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_at` datetime NOT NULL,
+  `modified_from` varchar(20) NOT NULL,
+  `modified_by` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `documents`
+--
+
+INSERT INTO `documents` (`id`, `name`, `category_id`, `image`, `description`, `valid_countries`, `status_id`, `created_at`, `created_from`, `created_by`, `modified_at`, `modified_from`, `modified_by`) VALUES
+(1, 'Mobile_Doc_1', 1, '', 'nsdjkhnndjkfdjhm', '1,2,3,4,5,6', 1, '2012-08-02 11:44:50', '202.53.15.132', 0, '2012-08-02 11:44:50', '192.168.30.44', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doc_categories`
 --
 
@@ -386,7 +416,38 @@ CREATE TABLE IF NOT EXISTS `doc_categories` (
   `modified_from` varchar(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `doc_categories`
+--
+
+INSERT INTO `doc_categories` (`id`, `doc_cat_name`, `parent_cat_id`, `status_id`, `created_at`, `created_from`, `created_by`, `modified_at`, `modified_from`, `modified_by`) VALUES
+(1, 'Mobiles ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(2, 'Cameras ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(3, 'Computers ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(4, 'Gadgets ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(5, 'Automobiles ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(6, 'Kitchen ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(7, 'Jewellery ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(8, 'Gifts ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(9, 'Fashion ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(10, 'Health ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(11, 'Home Decor ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(12, 'Apparel', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(13, 'Sports ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doc_ratings`
+--
+
+CREATE TABLE IF NOT EXISTS `doc_ratings` (
+  `user_id` int(11) NOT NULL,
+  `doc_id` int(11) NOT NULL,
+  `rating` enum('1','2','3','4','5') CHARACTER SET latin1 NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -463,15 +524,23 @@ INSERT INTO `prod_categories` (`id`, `prod_cat_name`, `parent_cat_id`, `status_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ratings`
+-- Table structure for table `prod_ratings`
 --
 
-CREATE TABLE IF NOT EXISTS `ratings` (
+CREATE TABLE IF NOT EXISTS `prod_ratings` (
   `user_id` int(11) NOT NULL,
-  `rating` enum('1','2','3','4','5') NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_id` (`user_id`,`rating`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `prod_id` int(11) NOT NULL,
+  `rating` enum('1','2','3','4','5') CHARACTER SET latin1 NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `prod_ratings`
+--
+
+INSERT INTO `prod_ratings` (`user_id`, `prod_id`, `rating`) VALUES
+(1, 1, '4'),
+(2, 1, '2'),
+(3, 1, '3');
 
 -- --------------------------------------------------------
 
