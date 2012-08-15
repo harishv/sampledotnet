@@ -8,8 +8,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>favicon.ico" />
 
 <link href="<?php echo base_url("css"); ?>/bootstrap.css" type="text/css" rel="stylesheet">
-<link href="<?php echo base_url("css"); ?>/bootstrap-responsive.css" type="text/css"
-	rel="stylesheet">
+<link href="<?php echo base_url("css"); ?>/bootstrap-responsive.css" type="text/css" rel="stylesheet">
 <!-- <link href="<?php echo base_url("css"); ?>/prettify.css" type="text/css" rel="stylesheet" /> -->
 <!-- <link href="<?php echo base_url("css"); ?>/docs.css" type="text/css" rel="stylesheet" /> -->
 <link href="<?php echo base_url("css"); ?>/style.css" type="text/css" rel="stylesheet" />
@@ -20,6 +19,7 @@
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
 
 <script src="<?php echo base_url("js"); ?>/jquery.jcarousel.js"></script>
+
 
 <script type="text/javascript">
 jQuery(document).ready(function() {

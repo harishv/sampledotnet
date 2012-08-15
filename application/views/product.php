@@ -12,8 +12,11 @@
                 
                 <?php if(isset($category) && $category !=''){
                         foreach($category as $cat_id=>$cat_values){ ?>
-                <li><a href="#"><?php echo $cat_values['prod_cat_name'];?></a></li>
-                <?php } }?>
+                <li><a href="<?php echo base_url().'index/get_category_product/'.$cat_values['id'];?>"><?php echo $cat_values['prod_cat_name'];?></a></li>
+                <?php } }else{
+
+                  echo "No Products are avaiable";
+                }?>
 
                 
               </ul>

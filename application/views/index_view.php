@@ -1,3 +1,9 @@
+<script>
+var base_url = "<?php echo base_url();?>";/* global variable for the root path */
+
+</script>
+<script type="text/javascript" src="<?php echo base_url("js"); ?>/category.js"></script>
+
 <!-- Begin main-content div -->
 <div id="main-content" class="flt-l wid_100">
 	<!-- Begin content div -->
@@ -100,9 +106,9 @@
 					<?php if(isset($category) && $category !=''){
 								foreach($category as $cat_id=>$cat_values){ ?>
 					<li>
-						<a href="#"><?php echo $cat_values['prod_cat_name'];?></a>
+						<a href="<?php echo base_url().'index/get_category_product/'.$cat_values['id'];?>"><?php echo $cat_values['prod_cat_name'];?></a>
 					</li>
-					<?php } }?>
+					<?php } } ?>
 					
 				</ul>
 				<!-- End categories -->
@@ -118,19 +124,15 @@
 					<img src="<?php base_url(); ?>img/time-icon.png" alt="time" class="flt-l mgn-10l mgn-r" />
 					Today's Free Samples <em>We have 127 Free Coupons for you today</em>
 				</p>
+
+				<?php if(isset($product) && $product!=''){
+						foreach ($product as $product_key=>$product_values){ ?>
 				<!-- Begin Samples here -->
 				<div class="samples">
 					<img src="<?php base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
 					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
-					<p class="pdg_10px"> <a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
-						<br />
-						When you buy one bag
-						<br />
-						M&amp;M’S Brand Pretzel
-						<br />
-						Chocolate Candies
-						<br />
-						(9.9 oz. or larger).
+					<p class="pdg_10px"> <a href="<?php echo base_url().'product';?>"><strong><?php echo $product_values['name'];?></strong></a>
+						<br/><?php echo $product_values['description'];?>
 					</p>
 					<br />
 					<div class="star">
@@ -157,278 +159,16 @@
 					</div>
 					<!-- End Samples here -->
 				</div>
-				<!-- Begin Samples here -->
-				<div class="samples">
-					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
-					<p class="pdg_10px"> <a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong><a/>
-						<br />
-						When you buy one bag
-						<br />
-						M&amp;M’S Brand Pretzel
-						<br />
-						Chocolate Candies
-						<br />
-						(9.9 oz. or larger).
-					</p>
-					<br />
-					<div class="star">
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full"/>
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
-					</div>
-					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
-					<div class="social clear">
-						<a href="#">
-							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
-						</a>
-						<a href="#">
-							<img src="<?php base_url(); ?>img/skype.jpg" alt="skype" />
-						</a>
-						<span class="share">
-							<a href="#">
-								<img src="<?php base_url(); ?>img/share.jpg" alt="share" class="flt-r" />
-							</a>
-						</span>
-					</div>
-					<!-- End Samples here -->
-				</div>
-				<!-- Begin Samples here -->
-				<div class="samples">
-					<a href="<?php echo base_url().'product';?>"> <img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
-					<p class="pdg_10px">
-						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
-						<br />
-						When you buy one bag
-						<br />
-						M&amp;M’S Brand Pretzel
-						<br />
-						Chocolate Candies
-						<br />
-						(9.9 oz. or larger).
-					</p>
-					<br />
-					<div class="star">
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full"/>
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
-					</div>
-					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
-					<div class="social clear">
-						<a href="#">
-							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
-						</a>
-						<a href="#">
-							<img src="<?php base_url(); ?>img/skype.jpg" alt="skype" />
-						</a>
-						<span class="share">
-							<a href="#">
-								<img src="<?php base_url(); ?>img/share.jpg" alt="share" class="flt-r" />
-							</a>
-						</span>
-					</div>
-					<!-- End Samples here -->
-				</div>
-				<!-- Begin Samples here -->
-				<div class="samples">
-					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
-					<p class="pdg_10px">
-						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
-						<br />
-						When you buy one bag
-						<br />
-						M&amp;M’S Brand Pretzel
-						<br />
-						Chocolate Candies
-						<br />
-						(9.9 oz. or larger).
-					</p>
-					<br />
-					<div class="star">
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full"/>
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
-					</div>
-					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
-					<div class="social clear">
-						<a href="#">
-							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
-						</a>
-						<a href="#">
-							<img src="<?php base_url(); ?>img/skype.jpg" alt="skype" />
-						</a>
-						<span class="share">
-							<a href="#">
-								<img src="<?php base_url(); ?>img/share.jpg" alt="share" class="flt-r" />
-							</a>
-						</span>
-					</div>
-					<!-- End Samples here -->
-				</div>
-				<!-- Begin Samples here -->
-				<div class="samples">
-					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
-					<p class="pdg_10px">
-						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
-						<br />
-						When you buy one bag
-						<br />
-						M&amp;M’S Brand Pretzel
-						<br />
-						Chocolate Candies
-						<br />
-						(9.9 oz. or larger).
-					</p>
-					<br />
-					<div class="star">
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full"/>
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
-					</div>
-					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
-					<div class="social clear">
-						<a href="#">
-							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
-						</a>
-						<a href="#">
-							<img src="<?php base_url(); ?>img/skype.jpg" alt="skype" />
-						</a>
-						<span class="share">
-							<a href="#">
-								<img src="<?php base_url(); ?>img/share.jpg" alt="share" class="flt-r" />
-							</a>
-						</span>
-					</div>
-					<!-- End Samples here -->
-				</div>
-				<!-- Begin Samples here -->
-				<div class="samples">
-					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
-					<p class="pdg_10px">
-						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
-						<br />
-						When you buy one bag
-						<br />
-						M&amp;M’S Brand Pretzel
-						<br />
-						Chocolate Candies
-						<br />
-						(9.9 oz. or larger).
-					</p>
-					<br />
-					<div class="star">
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full"/>
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
-					</div>
-					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
-					<div class="social clear">
-						<a href="#">
-							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
-						</a>
-						<a href="#">
-							<img src="<?php base_url(); ?>img/skype.jpg" alt="skype" />
-						</a>
-						<span class="share">
-							<a href="#">
-								<img src="<?php base_url(); ?>img/share.jpg" alt="share" class="flt-r" />
-							</a>
-						</span>
-					</div>
-					<!-- End Samples here -->
-				</div>
-				<!-- Begin Samples here -->
-				<div class="samples">
-					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
-					<p class="pdg_10px">
-						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
-						<br />
-						When you buy one bag
-						<br />
-						M&amp;M’S Brand Pretzel
-						<br />
-						Chocolate Candies
-						<br />
-						(9.9 oz. or larger).
-					</p>
-					<br />
-					<div class="star">
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full"/>
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
-					</div>
-					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
-					<div class="social clear">
-						<a href="#">
-							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
-						</a>
-						<a href="#">
-							<img src="<?php base_url(); ?>img/skype.jpg" alt="skype" />
-						</a>
-						<span class="share">
-							<a href="#">
-								<img src="<?php base_url(); ?>img/share.jpg" alt="share" class="flt-r" />
-							</a>
-						</span>
-					</div>
-					<!-- End Samples here -->
-				</div>
-				<!-- Begin Samples here -->
-				<div class="samples">
-					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /></a>
-					<p class="pdg_10px">
-						<a href="<?php echo base_url().'product';?>"><strong>Ketchup &amp; Jams</strong></a>
-						<br />
-						When you buy one bag
-						<br />
-						M&amp;M’S Brand Pretzel
-						<br />
-						Chocolate Candies
-						<br />
-						(9.9 oz. or larger).
-					</p>
-					<br />
-					<div class="star">
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full"/>
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
-					</div>
-					<div class="clear"></div>
-					<a class="grab flt-r">grab it now!</a>
-					<div class="social clear">
-						<a href="#">
-							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
-						</a>
-						<a href="#">
-							<img src="<?php base_url(); ?>img/skype.jpg" alt="skype" />
-						</a>
-						<span class="share">
-							<a href="#">
-								<img src="<?php base_url(); ?>img/share.jpg" alt="share" class="flt-r" />
-							</a>
-						</span>
-					</div>
-					<!-- End Samples here -->
-				</div>
+				<?php } } else{
+
+                  echo "No Products are avaiable";
+                }?>
+				
+				
+				
+				
+				
+				
 				<div class="pages">
 					<a href="#">&lt;</a>
 					<a href="#">1</a>

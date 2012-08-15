@@ -15,7 +15,7 @@ class Category_Model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('prod_categories');
 		$this->db->where('parent_cat_id',0);
-		$this->db->where('status_id', 1); // status_id = 2 resembles Active
+		$this->db->where('status_id', 2); // status_id = 2 resembles Active
 
 		$result = $this->db->get();
 		//echo $this->db->last_query();exit;
@@ -32,9 +32,39 @@ class Category_Model extends CI_Model {
 
 	}
 
+	// get inital product based on the modified date
+	function get_products($cat_id){
+
+		$this->db->select('*');
+		$this->db->from('products');
+		$this->db->where('status_id', 1);
+		if($cat_id !=0)
+		$this->db->where('category_id',$cat_id);
+
+		$this->db->order_by("modified_at", "desc"); 
+		
+		 
+
+		$result = $this->db->get();
+		//echo $this->db->last_query();
+
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			return $result->result_array();
+		}
+
+		return false;
+
+
+
+
+	}
+
 
 };
 
 
-/* End of file admin_login_model.php */
+/* End of file category_model.php */
 /* Location: ./system/application/models/category.php */
