@@ -42,7 +42,10 @@ class Products extends CI_Controller {
 
 	public function products_manage_action($type = "add")
 	{
+		echo "<pre>";
 		print_r($this->input->post());
+		print_r($_FILES);
+		echo "</pre>";
 	}
 
 
