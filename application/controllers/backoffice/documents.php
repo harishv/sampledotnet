@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( !defined('BASEPATH')) exit('No direct script access allowed');
 
 class Documents extends CI_Controller {
 
@@ -14,7 +14,7 @@ class Documents extends CI_Controller {
 		if(!$this->user_status->admin_is_signed_in()){
 			redirect(ADMINFOLDER . '/login/index/1', 'refresh');
 		}
-   }
+	}
 
 	public function index()
 	{
@@ -47,7 +47,6 @@ class Documents extends CI_Controller {
 		print_r($_FILES);
 		echo "</pre>";
 	}
-
 
 }
 
