@@ -1,6 +1,6 @@
 <?php echo doctype('html5'); ?>
 <head>
-<title>Sample.net | Administration</title>
+<title><?php echo $this->lang->line('title_admin'); ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -14,6 +14,11 @@
 
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery-1.7.1.min.js"></script>
+
+<script type="text/javascript" src="<?php echo base_url("js"); ?>/bootstrap.js"></script>
+<script type="text/javascript" src="<?php echo base_url("js"); ?>/prettify.js"></script>
+
+<script type="text/javascript" src="<?php echo base_url("js"); ?>/docs.js"></script>
 
 </head>
 <body data-offset="50" data-target=".subnav" data-spy="scroll" data-twttr-rendered="true">

@@ -31,10 +31,21 @@ class Products extends CI_Controller {
 		$this->load->view("template/admin_footer");
 	}
 
+	public function product_change_status()
+	{
+		echo $this->Admin_Products_Model->change_status();
+	}
+
 	public function products_manage($id = false)
 	{
+		if ($id) {
+			// echo $id; exit;
+			$data["product"] = $this->Admin_Products_Model->get_product_details($id);
+		}
+
 		$data["categories"] = $this->Admin_Products_Model->get_category();
 		$data["countries"] = $this->Common_Model->get_countries();
+
 		$this->load->view("template/admin_header");
 		$this->load->view("admin_products_manage_view", $data);
 		$this->load->view("template/admin_footer");

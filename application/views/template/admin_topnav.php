@@ -6,14 +6,14 @@
 		<span class="icon-bar"></span>
 	</a>
 
-	<a class="brand" href="<?php echo base_url().ADMINFOLDER; ?>">Sample.net Admin</a>
+	<a class="brand" href="<?php echo base_url().ADMINFOLDER; ?>"><?php echo $this->lang->line('brand_name_admin'); ?></a>
 
 	<div class="nav-collapse">
 	<?php //We add the Top Navigation links here?>
 		<ul class="nav">
-			<li <?php echo (strstr($_SERVER['REQUEST_URI'], "/index") || "http://".$_SERVER["HTTP_HOST"].$_SERVER['REQUEST_URI'] == base_url(ADMINFOLDER)) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER, "Home"); ?></li>
-			<li id="products_nav"><?php echo anchor(ADMINFOLDER . "/products", "Products"); ?></li>
-			<li <?php echo (strstr($_SERVER['REQUEST_URI'], "/documents")) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER . "/documents", "Documents"); ?></li>
+			<li <?php echo (strstr($_SERVER['REQUEST_URI'], "/index") || "http://".$_SERVER["HTTP_HOST"].$_SERVER['REQUEST_URI'] == base_url(ADMINFOLDER)) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER, $this->lang->line('nav_home_admin')); ?></li>
+			<li id="products_nav"><?php echo anchor(ADMINFOLDER . "/products", $this->lang->line('nav_products_admin')); ?></li>
+			<li <?php echo (strstr($_SERVER['REQUEST_URI'], "/documents")) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER . "/documents", $this->lang->line('nav_documents_admin')); ?></li>
 		</ul>
 
 		<?php
@@ -35,9 +35,9 @@
 			$user_info = $this->session->userdata('admin_user');
 			$user_name = $user_info['admin_name'];
 
-			$profile_string = '<div class="user_profile_nav"><b><i class="icon-user"></i> '.$user_info['admin_email'].'</b><br />'.'My Profile'.'</div>';
-			$change_pass_string = '<i class="icon-lock"></i> '.'Change Password';
-			$logout_string = '<i class="icon-off"></i> '.'Sign Out';
+			$profile_string = '<div class="user_profile_nav"><b><i class="icon-user"></i> '.$user_info['admin_email'].'</b><br />'.$this->lang->line('nav_my_profile').'</div>';
+			$change_pass_string = '<i class="icon-lock"></i> '.$this->lang->line('nav_change_password');
+			$logout_string = '<i class="icon-off"></i> '.$this->lang->line('nav_logout');
 			?>
 			<li class="dropdown"><?php echo anchor("", $user_name." <b class='caret'></b>", array ("class" => "dropdown-toggle", "data-toggle" => "dropdown"));?>
 				<ul class="dropdown-menu">
@@ -53,7 +53,7 @@
 		} else { ?>
 			<li
 			<?php echo (strstr($_SERVER['REQUEST_URI'], "/login")) ? 'class="active"' : ''; ?>>
-			<?php echo anchor(ADMINFOLDER."/login", 'Log In', array("style" => "background: url(&quot;" . base_url("img") . "/lock_icon.png&quot;) no-repeat scroll 0px center transparent; padding-left: 17px;")); ?>
+			<?php echo anchor(ADMINFOLDER."/login", $this->lang->line('nav_login'), array("style" => "background: url(&quot;" . base_url("img") . "/lock_icon.png&quot;) no-repeat scroll 0px center transparent; padding-left: 17px;")); ?>
 			</li>
 			<?php } ?>
 		</ul>
