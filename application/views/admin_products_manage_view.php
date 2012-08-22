@@ -13,13 +13,12 @@
 		?>
 
 		<fieldset>
-			<legend><?php echo ($set)? $this->lang->line('admin_prod_update_title') : $this->lang->line('admin_prod_add_title'); ?></legend>
+			<legend><?php echo ($set)? $this->lang->line('admin_prod_update_title') : $this->lang->line('admin_prod_add_title'); ?>
 
-			<p class="pull-right" style="margin-top: 10px;">
+			<p class="pull-right">
 				<?php echo anchor(ADMINFOLDER . "/products/products_list", "<i class='icon-arrow-left icon-white'></i> " . $this->lang->line('back_to_list'), array("class" => "btn btn-info")); ?>
 			</p>
-			<br />
-			<br />
+			</legend>
 
 			<?php if (isset($errors)) { ?>
 				<div class="alert alert-error">
@@ -40,7 +39,10 @@
 				}
 
 				echo form_open_multipart($action, $attributes);
-			?>
+
+				if ($set) { ?>
+					<input type="hidden" id="prod_id" name="prod_id" value="<?php echo $product["id"]; ?>" />
+				<?php } ?>
 
 			<div class="control-group">
 				<label class="control-label" for="prod_name"><?php echo $this->lang->line('admin_prod_mng_prod_name'); ?>
@@ -59,12 +61,24 @@
 					<select class="input-xlarge" id="prod_category_id" name="prod_category_id">
 						<option value="">-- <?php echo $this->lang->line('admin_prod_mng_sel_a_cat'); ?> --</option>
 						<?php foreach ($categories as $category) {
-							$selected = "";
-							if ($set && $product["category_id"] == $category['id']) {
-								$selected = 'selected="selected"';
-							}?>
-							<option value="<?php echo $category['id']; ?>" <?php echo $selected; ?>><?php echo $category['prod_cat_name']; ?></option>
-						<?php } ?>
+							if (count($category['child_categories']) > 0) { ?>
+								<optgroup label="<?php echo $category['prod_cat_name']; ?>">
+									<?php foreach ($category['child_categories'] as $child_category) {
+											$selected = "";
+											if ($set && $product["category_id"] == $child_category['id']) {
+												$selected = 'selected="selected"';
+											} ?>
+											<option value="<?php echo $child_category['id']; ?>" <?php echo $selected; ?>><?php echo $child_category['prod_cat_name']; ?></option>
+									<?php } ?>
+								</optgroup>
+							<?php } else {
+								$selected = "";
+								if ($set && $product["category_id"] == $category['id']) {
+									$selected = 'selected="selected"';
+								} ?>
+								<option value="<?php echo $category['id']; ?>" <?php echo $selected; ?>><?php echo $category['prod_cat_name']; ?></option>
+							<?php }
+							} ?>
 					</select>
 				</div>
 			</div>
@@ -86,6 +100,13 @@
 				<div class="controls">
 					<input class="input-file span3" type="file" id="prod_image"
 					name="prod_image" />
+					<?php if ($set) {
+							$image_properties = array(	'src' => PROD_THUMB_IMG_PATH . THUMB_EXT . $product["image"],
+														'style' => "float: left; padding-right: 10px;"
+												);
+							echo img($image_properties); ?>
+							<input type='hidden' id='edit_product_image' name='edit_product_image' value='<?php echo $product["image"]; ?>' />
+					<?php } ?>
 				</div>
 			</div>
 

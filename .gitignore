@@ -3,6 +3,10 @@
 .project
 /application/config/database.php
 /application/config/config.php
+/uploads/documents/*
+/uploads/documents/thumbs/*
+/uploads/products/*
+/uploads/products/thumbs/*
 
 # Can also ignore all directories and files in a directory.
 .settings/*

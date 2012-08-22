@@ -40,8 +40,26 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 /**
  * User specific constants
  */
-// define ("ADMINURL",SITEURL.'/backoffice');
-define ("ADMINFOLDER",'backoffice');
+// define ('ADMINURL',SITEURL.'/backoffice');
+define ('ADMINFOLDER', 'backoffice');
+define ('UPLOAD_DIR', 'uploads');
+define ('PRODUCTS_DIR', 'products');
+define ('DOCUMENTS_DIR', 'documents');
+define ('THUMBS_DIR', 'thumbs');
+
+//URL'S
+define('PROD_IMG_PATH', UPLOAD_DIR . "/" . PRODUCTS_DIR . "/");
+define('PROD_THUMB_IMG_PATH', UPLOAD_DIR . "/" . PRODUCTS_DIR . "/" . THUMBS_DIR . "/");
+
+
+// Common Image Settings
+define ('THUMB_EXT', 'thumb_');
+define ('ALLOWED_IMG_TYPES', 'jpg|png|gif|jpeg');
+define ('IMAGE_QUALITY', '100%');
+define ('PRODUCT_IMAGE_WIDTH', '90');
+define ('PRODUCT_IMAGE_HEIGHT', '100');
+
+
 
 
 /* End of file constants.php */
