@@ -18,7 +18,7 @@ class Category_Model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('prod_categories');
 		$this->db->where('parent_cat_id',0);
-		$this->db->where('status_id', 2); // status_id = 2 resembles Active
+		$this->db->where('status_id', 1); // status_id = 1 resembles Active
 
 		$result = $this->db->get();
 

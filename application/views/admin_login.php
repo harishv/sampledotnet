@@ -60,44 +60,44 @@ $(document).ready(function() {
 	echo form_open($action, $attributes);
 	?>
 		<fieldset>
-			<legend>Admin Login Form</legend>
+			<legend><?php echo $this->lang->line('admin_login_form_title'); ?></legend>
 
 			<?php if (isset($errors)) {?>
 			<div class="alert alert-error">
 				<a class="close" data-dismiss="alert">&times;</a>
 				<h4 class="alert-heading">
-				Error!
+					<?php echo $this->lang->line('error'); ?>
 				</h4>
 				<?php echo $errors; ?>
 			</div>
 			<?php } ?>
 			<div class="control-group">
-				<label class="control-label" for="user_id">Login ID
+				<label class="control-label" for="user_id"><?php echo $this->lang->line('admin_login_form_login_id'); ?>
 					:</label>
 				<div class="controls">
 					<input type="text" class="input-xlarge" id="user_id" name="user_id"
-						placeholder="Login ID" />
-					<p class="help-block">example: admin@admin.com
+						placeholder="<?php echo $this->lang->line('admin_login_form_login_id_ph'); ?>" />
+					<p class="help-block"><?php echo $this->lang->line('example') . ": " . $this->lang->line('admin_login_form_login_id_eg'); ?>
 					</p>
 				</div>
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="user_password">Password
+				<label class="control-label" for="user_password"><?php echo $this->lang->line('admin_login_form_password'); ?>
 					:</label>
 				<div class="controls">
 					<input type="password" class="input-xlarge" id="user_password"
 						name="user_password"
-						placeholder="Password" />
+						placeholder="<?php echo $this->lang->line('admin_login_form_password_ph'); ?>" />
 				</div>
 			</div>
 
 			<div class="form-actions">
 				<button class="btn btn-primary" type="submit">
-				Submit
+					<?php echo $this->lang->line('admin_login_form_action_btn'); ?>
 				</button>
 				<button class="btn" type="reset">
-				Cancel
+					<?php echo $this->lang->line('form_cancel'); ?>
 				</button>
 			</div>
 

@@ -14,6 +14,19 @@ body {
     margin: 5px;
 }
 
+.switch {
+    background: url(../img/switch.png) no-repeat 0 -2px;
+    width: 56px;
+    height: 26px;
+    /*margin: 2px;*/
+    cursor: pointer;
+    float: left;
+}
+
+.active_on {
+    background: url(../img/switch.png) no-repeat 0 -40px;
+}
+
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
 .navbar-fixed-top .brand {

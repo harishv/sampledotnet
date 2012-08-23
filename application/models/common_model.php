@@ -27,6 +27,25 @@ class Common_Model extends CI_Model {
 
 	}
 
+	function get_prod_cat_name($cat_id)
+	{
+		$this->db->select('prod_cat_name');
+		$this->db->from('prod_categories');
+		$this->db->where('id', $cat_id);
+		// $this->db->where('status_id', 1); // status_id = 2 resembles Active
+
+		$result = $this->db->get();
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			$name_arr = $result->result_array();
+			return $name_arr[0]['prod_cat_name'];
+		}
+
+		return false;
+	}
+
 
 };
 
