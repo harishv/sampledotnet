@@ -211,3 +211,5 @@ ul, ol {
 p {
     margin: 0;
 }
+
+.currentpage{display: none;}

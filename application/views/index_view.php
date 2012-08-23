@@ -16,82 +16,82 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 		<!-- Begin slideshow -->
 		<div class="slide flt-l mgn-15b">
 			<a href="#" class="flt-l mgn-15px next">
-				<img src="<?php base_url(); ?>img/prev.jpg" alt="Previous" />
+				<img src="<?php echo base_url(); ?>img/prev.jpg" alt="Previous" />
 			</a>
 			<ul id="mycarousel"  class="jcarousel-skin-tango mgn-15b">
 				<li>
 					<a href="#" class="current">
-						<img src="<?php base_url(); ?>img/huggies.png" alt="Huggies" />
+						<img src="<?php echo base_url(); ?>img/huggies.png" alt="Huggies" />
 						<br />
 						Ketchup &amp; Jams
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<img src="<?php base_url(); ?>img/huggies.png" alt="Huggies" />
+						<img src="<?php echo base_url(); ?>img/huggies.png" alt="Huggies" />
 						<br />
 						Ketchup &amp; Jams
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<img src="<?php base_url(); ?>img/huggies.png" alt="Huggies" />
+						<img src="<?php echo base_url(); ?>img/huggies.png" alt="Huggies" />
 						<br />
 						Ketchup &amp; Jams
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<img src="<?php base_url(); ?>img/huggies.png" alt="Huggies" />
+						<img src="<?php echo base_url(); ?>img/huggies.png" alt="Huggies" />
 						<br />
 						Ketchup &amp; Jams
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<img src="<?php base_url(); ?>img/huggies.png" alt="Huggies" />
+						<img src="<?php echo base_url(); ?>img/huggies.png" alt="Huggies" />
 						<br />
 						Ketchup &amp; Jams
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<img src="<?php base_url(); ?>img/huggies.png" alt="Huggies" />
+						<img src="<?php echo base_url(); ?>img/huggies.png" alt="Huggies" />
 						<br />
 						Ketchup &amp; Jams
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<img src="<?php base_url(); ?>img/huggies.png" alt="Huggies" />
+						<img src="<?php echo base_url(); ?>img/huggies.png" alt="Huggies" />
 						<br />
 						Ketchup &amp; Jams
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<img src="<?php base_url(); ?>img/huggies.png" alt="Huggies" />
+						<img src="<?php echo base_url(); ?>img/huggies.png" alt="Huggies" />
 						<br />
 						Ketchup &amp; Jams
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<img src="<?php base_url(); ?>img/huggies.png" alt="Huggies" />
+						<img src="<?php echo base_url(); ?>img/huggies.png" alt="Huggies" />
 						<br />
 						Ketchup &amp; Jams
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<img src="<?php base_url(); ?>img/huggies.png" alt="Huggies" />
+						<img src="<?php echo base_url(); ?>img/huggies.png" alt="Huggies" />
 						<br />
 						Ketchup &amp; Jams
 					</a>
 				</li>
 			</ul>
 			<a href="#" class="flt-l mgn-15px next">
-				<img src="<?php base_url(); ?>img/next.jpg" alt="Previous" />
+				<img src="<?php echo base_url(); ?>img/next.jpg" alt="Previous" />
 			</a>
 			<!-- End slideshow -->
 		</div>
@@ -102,6 +102,8 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 				<p class="head mgn-0">
 					<span class="mgn-20l">Categories</span>
 				</p>
+
+				
 				<ul>
 					<?php if(isset($category) && $category !=''){
 								foreach($category as $cat_id=>$cat_values){ ?>
@@ -113,7 +115,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 				</ul>
 				<!-- End categories -->
 			</div>
-			<img src="<?php base_url(); ?>img/left-ad.jpg" alt="ad" class="mgn-10l mgn-15b" />
+			
 			<!-- End column 1 -->
 		</div>
 		<!-- Begin column 2 -->
@@ -121,7 +123,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 			<!-- Begin sample here -->
 			<div class="sample mgn-15b">
 				<p class="head mgn-0">
-					<img src="<?php base_url(); ?>img/time-icon.png" alt="time" class="flt-l mgn-10l mgn-r" />
+					<img src="<?php echo base_url(); ?>img/time-icon.png" alt="time" class="flt-l mgn-10l mgn-r" />
 					Today's Free Samples <em>We have 127 Free Coupons for you today</em>
 				</p>
 
@@ -129,31 +131,48 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 						foreach ($product as $product_key=>$product_values){ ?>
 				<!-- Begin Samples here -->
 				<div class="samples">
-					<img src="<?php base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
+					<img src="<?php echo base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
 					<a href="<?php echo base_url().'product';?>"><img src="<?php base_url(); ?>img/huggie-small.png" alt="huggies" class="small" /><a/>
 					<p class="pdg_10px"> <a href="<?php echo base_url().'product';?>"><strong><?php echo $product_values['name'];?></strong></a>
 						<br/><?php echo $product_values['description'];?>
 					</p>
 					<br />
+
 					<div class="star">
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full"/>
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-full.png" alt="full" />
-						<img src="<?php base_url(); ?>img/star-off.png" alt="full" />
+						<?php 
+						if($product_values['product_rating'] != 0 ){
+							for($i=1 ;$i<=$product_values['product_rating'];$i++){ ?>
+							<img src="<?php echo base_url(); ?>img/star-full.png" alt="full" />
+							<?php } 
+						}else{
+							for($i=1 ;$i<=5;$i++){ ?>
+							<img src="<?php echo base_url(); ?>img/star-off.png" alt="full"  onclick="prod_rating(<?php echo $product_values['id'];?>,<?php echo $i;?>);"/>
+							<input type="hidden" name="rating_vote" value="<?php echo $i;?>" /> 
+							<?php } 
+						}
+
+						if($product_values['product_rating'] != 0 && $product_values['product_rating'] < 5){
+							for($i=1;$i<=(5-$product_values['product_rating']);$i++){ ?>
+							<img src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>,<?php echo $product_values['product_rating'] +$i; ?>);"/>
+							<input type="hidden" name="rating_vote" value="<?php echo $product_values['product_rating'] +$i; ?>" />
+							<?php }
+						}
+						?>
+						
 					</div>
+
 					<div class="clear"></div>
 					<a class="grab flt-r">grab it now!</a>
 					<div class="social clear">
 						<a href="#">
-							<img src="<?php base_url(); ?>img/facebook.jpg" alt="facebook" />
+							<img src="<?php echo base_url(); ?>img/facebook.jpg" alt="facebook" />
 						</a>
 						<a href="#">
-							<img src="<?php base_url(); ?>img/skype.jpg" alt="skype" />
+							<img src="<?php echo base_url(); ?>img/skype.jpg" alt="skype" />
 						</a>
 						<span class="share">
 							<a href="#">
-								<img src="<?php base_url(); ?>img/share.jpg" alt="share" class="flt-r" />
+								<img src="<?php echo base_url(); ?>img/share.jpg" alt="share" class="flt-r" />
 							</a>
 						</span>
 					</div>
@@ -169,8 +188,8 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 				
 				
 				
-				<div class="pages">
-					<a href="#">&lt;</a>
+			<div class="pages">
+				<!--<a href="#">&lt;</a>
 					<a href="#">1</a>
 					<a href="#">2</a>
 					<a href="#">3</a>
@@ -182,8 +201,9 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 					<a href="#">10</a>
 					<a href="#">20</a>
 					<a href="#">30</a>
-					<a href="#">&gt;</a>
-				</div>
+					<a href="#">&gt;</a>  -->
+					<?php echo $this->pagination->create_links();?>
+				</div> 
 				<!-- End sample here -->
 			</div>
 			<!-- Begin tabs here -->
@@ -230,48 +250,48 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 		<ul class="btn">
 			<li>
 				<a href="#">
-					<img src="<?php base_url(); ?>img/share-a-sample.png" alt="share a sample" />
+					<img src="<?php echo base_url(); ?>img/share-a-sample.png" alt="share a sample" />
 				</a>
 			</li>
 		</ul>
 		<p class="free-sample">
-			<img src="<?php base_url(); ?>img/gift.png" alt="gift" class="flt-r" />
+			<img src="<?php echo base_url(); ?>img/gift.png" alt="gift" class="flt-r" />
 			Get free samples
 			<br />
 			0n
 			<strong>Facebook</strong>
 			<br />
 			<a href="#">
-				<img src="<?php base_url(); ?>img/like.jpg" alt="like" />
+				<img src="<?php echo base_url(); ?>img/like.jpg" alt="like" />
 			</a>
 		</p>
 		<ul class="btn">
 			<li>
 				<a href="#">
-					<img src="<?php base_url(); ?>img/follow-twitter.png" alt="follow us on twitter" />
+					<img src="<?php echo base_url(); ?>img/follow-twitter.png" alt="follow us on twitter" />
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<img src="<?php base_url(); ?>img/add-to-circles.png" alt="add to circles" />
+					<img src="<?php echo base_url(); ?>img/add-to-circles.png" alt="add to circles" />
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<img src="<?php base_url(); ?>img/pintrest.png" alt="pintrest" />
+					<img src="<?php echo base_url(); ?>img/pintrest.png" alt="pintrest" />
 				</a>
 			</li>
 		</ul>
 		<!-- Begin Subscribe div -->
 		<div class="subscribe">
-			<img src="<?php base_url(); ?>img/free-samples.png" alt="free samples" class="mgn-15b" />
+			<img src="<?php echo base_url(); ?>img/free-samples.png" alt="free samples" class="mgn-15b" />
 			<input type="text" class="free" value="Enter Your Name" onFocus="this.value=''" />
 			<input type="text" class="free" value="Enter Your Email" onFocus="this.value=''" />
 			<a href="#" class="subscribe-btn">&nbsp;</a>
 			<!-- End Subscribe div -->
 		</div>
-		<img src="<?php base_url(); ?>img/fap-turbo.jpg" alt="fab turbo" class="mgn-15b" />
-		<img src="<?php base_url(); ?>img/kaboom.jpg" alt="kaboom" />
+		<img src="<?php echo base_url(); ?>img/fap-turbo.jpg" alt="fab turbo" class="mgn-15b" />
+		<img src="<?php echo base_url(); ?>img/kaboom.jpg" alt="kaboom" />
 		<!-- End sidebar div -->
 	</div>
 	<!-- End main-content div -->

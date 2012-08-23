@@ -1,38 +1,18 @@
-function get_products(id){
-	var data = { 'cat_id' : id};
+function prod_rating(id,count){
 
-		
-		
-		var base_url = base_url;
-		
-
-
-		//var redirect_path = base_path+"sendkash_gift";
-		
-			
+		var data = { 'prod_id' : id ,'vote_value':count};
+		var baseurl = base_url;
 		$.ajax({
-		url: base_url,
+		url: baseurl+'index/product_rating',
 		type: 'POST',
 		data:data,
 		dataType :'json',
 		success: function(res)
 		{
-				
-			alert(res);return false;
-
-			if((res.status == "failure") || (res.status == "FAILURE")) { 
-				$("#show_paypal_errors_setting").html(res.errors);	
-					return false;		
-			}				
-		
-			if(res.status == 'SUCCESS')
-			{			
-				$("#paypal_popup_setting").fadeOut();
-
-							
+			//alert(res.status == 'succuss');return false;
+			if(res.status == 'succuss'){
+				window.location =baseurl;
 			}
 		 }
-		})
-
-
+		});
 }
