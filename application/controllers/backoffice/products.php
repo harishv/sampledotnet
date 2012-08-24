@@ -53,6 +53,11 @@ class Products extends CI_Controller {
 		echo $this->Admin_Products_Model->change_status();
 	}
 
+	public function category_change_status()
+	{
+		echo $this->Admin_Products_Model->change_category_status();
+	}
+
 	public function products_manage($id = false)
 	{
 
@@ -77,15 +82,31 @@ class Products extends CI_Controller {
 		$this->load->view("template/admin_footer");
 	}
 
+	public function categories_manage($id = false)
+	{
+
+		// Load the error values(if any) while managing a product
+		if($this->session->userdata('products_upload_errors')){
+			$data['errors'] = $this->session->userdata('products_upload_errors');
+
+			$newdata = array( 'products_upload_errors'  => "" );
+
+			$this->session->set_userdata($newdata);
+		}
+
+		if ($id) {
+			$data["category"] = $this->Admin_Products_Model->get_category_details($id);
+		}
+
+		$data["categories"] = $this->Admin_Products_Model->get_categories();
+
+		$this->load->view("template/admin_header");
+		$this->load->view("admin_product_categories_manage_view", $data);
+		$this->load->view("template/admin_footer");
+	}
+
 	public function products_manage_action($type = "add")
 	{
-		// echo "<pre>";
-		// echo $type."<br />";
-		// print_r($this->input->post());
-		// print_r($_FILES);
-		// echo "</pre>";
-		// exit();
-
 		if ($type == "edit") {
 			$prod_id = $this->input->post('prod_id');
 		}
@@ -122,6 +143,32 @@ class Products extends CI_Controller {
 
 			redirect(ADMINFOLDER.'/products/products_list', 'refresh');
 		}
+	}
+
+	function categories_list()
+	{
+		// Load the success or error values(if any)
+		if($this->session->userdata('category_upload_errors')){
+			$data['errors'] = $this->session->userdata('category_upload_errors');
+
+			$newdata = array( 'category_upload_errors'  => "" );
+
+			$this->session->set_userdata($newdata);
+		}
+
+		if($this->session->userdata('category_upload_success')){
+			$data['success'] = $this->session->userdata('category_upload_success');
+
+			$newdata = array( 'category_upload_success'  => "" );
+
+			$this->session->set_userdata($newdata);
+		}
+
+		$data["categories"] = $this->Admin_Products_Model->get_categories(0, "modified_at", "desc", false, false, 'admin');
+		// Parameters of get_categories are: parent_cat_id, order_column, order_type, active, child_flag, display{'drop_down', 'admin'}
+		$this->load->view("template/admin_header");
+		$this->load->view("admin_product_categories_list_view", $data);
+		$this->load->view("template/admin_footer");
 	}
 
 

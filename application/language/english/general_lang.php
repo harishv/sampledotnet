@@ -145,6 +145,20 @@ $lang["admin_prod_list_tbl_valid_countries"]=	"Valid Countries";
 $lang["admin_prod_list_status_change_success"] = "Status Changed Successfully.";
 
 /**
+ * Categories List Page
+ */
+$lang["admin_prod_cat_list_title"]			=	"Categories List";
+$lang["admin_prod_cat_add_new"]				=	"Add New Category";
+$lang["admin_prod_cat_edit"]				=	"Edit";
+$lang["admin_prod_cat_delete"]				=	"Delete";
+$lang["admin_prod_cat_deleted"]				=	"Deleted";
+$lang["admin_prod_cat_list_tbl_cat_name"]	=	"Category Name";
+$lang["admin_prod_cat_list_tbl_parent_cat_name"] =	"Parent Category Name";
+$lang["admin_prod_cat_list_tbl_status"]		=	"Status";
+$lang["admin_prod_cat_list_tbl_actions"]	=	"Actions";
+
+
+/**
  * Products Manage Page
  */
 $lang["admin_prod_add_title"]				=	"Add Product Form";

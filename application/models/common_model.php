@@ -39,6 +39,7 @@ class Common_Model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('countries');
 		$this->db->where('status_id', 1); // status_id = 1 resembles Active
+		$this->db->order_by('name', 'asc');
 
 		$result = $this->db->get();
 
@@ -70,7 +71,6 @@ class Common_Model extends CI_Model {
 
 		return false;
 	}
-
 
 };
 

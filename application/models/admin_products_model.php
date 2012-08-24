@@ -13,6 +13,7 @@ class Admin_Products_Model extends CI_Model {
 
 		$this->db->select('*');
 		$this->db->from('products');
+		$this->db->order_by("modified_at", "desc");
 		// $this->db->where('status_id', 1); // status_id = 1 resembles Active
 
 		$result = $this->db->get();
@@ -45,11 +46,30 @@ class Admin_Products_Model extends CI_Model {
 
 	}
 
-	function get_categories($parent_cat_id = 0, $active = true, $flag = true){
+	function get_category_details($id){
 
 		$this->db->select('*');
 		$this->db->from('prod_categories');
-		$this->db->where('parent_cat_id', $parent_cat_id);
+		$this->db->where('id', $id);
+
+		$result = $this->db->get();
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			return $result->row_array();
+		}
+
+		return false;
+
+	}
+
+	function get_categories($parent_cat_id = 0, $order_column = 'prod_cat_name', $order_type ='asc', $active = true, $flag = true, $display = 'drop_down'){
+
+		$this->db->select('*');
+		$this->db->from('prod_categories');
+		($display != 'admin') ? $this->db->where('parent_cat_id', $parent_cat_id) : "";
+		$this->db->order_by($order_column, $order_type);
 
 		($active) ? $this->db->where('status_id', 1) : ""; // status_id = 1 resembles Active
 
@@ -63,13 +83,14 @@ class Admin_Products_Model extends CI_Model {
 			$categories_list = array();
 			$parent_categories = $result->result_array();
 
-			// return $parent_categories;
+			if ($display == 'admin') {
+				return $parent_categories;
+			}
 
 			if ($flag) {
 
 				foreach ($parent_categories as $parent_category) {
-					// echo $parent_category['id']."<br />";
-					$parent_category['child_categories'] = $this->get_categories($parent_category['id'], $active, false);
+					$parent_category['child_categories'] = $this->get_categories($parent_category['id'], $order_column, $order_type, $active, false);
 					array_push($categories_list, $parent_category);
 				}
 
@@ -106,7 +127,27 @@ class Admin_Products_Model extends CI_Model {
 		}
 
 		return false;
+	}
 
+	function change_category_status()
+	{
+		$prod_cat_id = trim($this->input->post("prod_cat_id"));
+		$status_id = trim($this->input->post("status"));
+
+		$user = $this->session->userdata("admin_user");
+		$current_date = date('Y-m-d H:i:s');
+		$ip = $_SERVER['REMOTE_ADDR'];
+
+		$update_data = array ('status_id' => $status_id,
+							  'modified_at' => $current_date,
+							  'modified_from' => $ip,
+							  'modified_by' => $user['id']);
+
+		if ($this->db->update('prod_categories', $update_data, array('id' => $prod_cat_id))) {
+			return true;
+		}
+
+		return false;
 	}
 
 	function get_max_product_id()
