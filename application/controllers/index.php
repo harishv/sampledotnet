@@ -18,8 +18,8 @@ class Index extends CI_Controller {
 		$id = $var;
 
 		if($id == "")
-		$id=0;
-		
+			$id = 0;
+
 		$config['base_url'] = base_url().'index/index';
 		$config['total_rows'] = $this->category_model->getAllCount();
 		$config['per_page'] = 2;
@@ -30,7 +30,7 @@ class Index extends CI_Controller {
 
 
 
-		
+
 
 
 		$this->pagination->initialize($config);
@@ -48,6 +48,7 @@ class Index extends CI_Controller {
 	public function get_category_product($cat_id,$id='0'){
 
 
+
 		
 		$config1['base_url'] = base_url().'index/get_category_product/'.$cat_id;
 		$config1['total_rows'] = $this->category_model->getCount($cat_id);
@@ -61,6 +62,10 @@ class Index extends CI_Controller {
 		
 
 		$data['product'] = $this->category_model->get_products($cat_id,$id,$config1['per_page']);
+
+		$cat_id = $this->uri->segment(3);
+		$data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
+
 		$data['category'] = $this->category_model->get_category();
 		$this->load->view("template/header");
 		$this->load->view("category_products",$data);

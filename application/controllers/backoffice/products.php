@@ -14,7 +14,7 @@ class Products extends CI_Controller {
 		if(!$this->user_status->admin_is_signed_in()){
 			redirect(ADMINFOLDER . '/login/index/1', 'refresh');
 		}
-   }
+	}
 
 	public function index()
 	{

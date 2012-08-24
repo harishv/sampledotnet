@@ -105,6 +105,7 @@
 				if (isset($products) && $products && count($products) > 0) {
 					$tableCount = 1;
 			?>
+
 					<table id="fb_likes_list" class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -127,7 +128,7 @@
 													data-original-title="<?php echo htmlentities(strip_slashes($product["name"])); ?>"><?php echo strip_slashes($product["name"]); ?>
 												</span>
 												<script type="text/javascript">
-													$("#product_<?php echo $product['id']; ?>").popover({ offset: 10, content: "<dl style='margin: 0px; padding: 0px;'><dt><?php echo $this->lang->line("admin_prod_list_tbl_category"); ?></dt><dd><?php echo $this->Common_Model->get_prod_cat_name($product["category_id"]);?></dd><dt><?php echo $this->lang->line("admin_prod_list_tbl_desc"); ?></dt><dd><?php echo $product["description"]; ?></dd><dt><?php echo $this->lang->line("admin_prod_list_tbl_valid_countries"); ?></dt><dd><?php echo $product["valid_countries"]; ?></dd></dl>" });
+													$("#product_<?php echo $product['id']; ?>").popover({ offset: 10, content: "<dl style='margin: 0px; padding: 0px;'><dt><?php echo $this->lang->line("admin_prod_list_tbl_category"); ?></dt><dd><?php echo $this->Common_Model->get_prod_cat_name($product["category_id"]);?></dd><dt><?php echo $this->lang->line("admin_prod_list_tbl_desc"); ?></dt><dd><?php echo $product["description"]; ?></dd><dt><?php echo $this->lang->line("admin_prod_list_tbl_valid_countries"); ?></dt><dd><?php echo implode(", ", $this->Common_Model->get_country_names($product["valid_countries"])); ?></dd></dl>" });
 												</script>
 											</h4>
 										</div>
@@ -151,7 +152,7 @@
 										<?php echo anchor(ADMINFOLDER . "/products/products_manage/" . $product["id"], '<i class="icon-edit icon-white"></i> <b>'.$this->lang->line('admin_prod_edit').'</b>', array ("class" => "btn btn-mini btn-success")); ?>
 										<span class="del_btn_<?php echo $product["id"]; ?>">
 											<?php if ($product["status_id"] != 2) {
-												echo anchor("", '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_product(".$product['id'].")"));
+												echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_product(".$product['id'].")"));
 											} ?>
 										</span>
 									</td>

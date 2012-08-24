@@ -131,6 +131,7 @@ class Admin_Products_Model extends CI_Model {
 		$errors .= (isset($prod_name) && trim($prod_name) == "") ? "Product Name Sholdnot be empty<br />" : "";
 		$errors .= (isset($prod_category_id) && (trim($prod_category_id) == "" || trim($prod_category_id) == 0)) ? "Please select a Product Category<br />" : "";
 		$errors .= (isset($prod_desc) && trim($prod_desc) == "") ? "Product Description Sholdnot be empty<br />" : "";
+		$errors .= (isset($prod_grab_url) && trim($prod_grab_url) == "") ? "Product Grab URL Sholdnot be empty<br />" : "";
 		$errors .= (isset($valid_country_ids) && count($valid_country_ids) < 1) ? "Please select atleast one Valid Countries<br />" : "";
 
 		// Get the Product Id and Image Id to define images names
@@ -194,7 +195,7 @@ class Admin_Products_Model extends CI_Model {
 
 			} else {
 
-				if($errors == ''){
+				if(trim($errors) == ''){
 
 					if ($type == "edit") {
 						// Check for duplicate file name issues and replace the new file with the old file.
@@ -272,7 +273,7 @@ class Admin_Products_Model extends CI_Model {
 		 * Uploading an image ends here.
 		 */
 
-		if($errors == "" && $image_success) {
+		if(trim($errors) == "" && $image_success) {
 
 			// Images are uploaded succesfully.
 			// Insertion / Updation of Product record into the database.
@@ -284,6 +285,7 @@ class Admin_Products_Model extends CI_Model {
 											'category_id' => intval($prod_category_id),
 											'image' => $product_image_name,
 											'description' => $prod_desc,
+											'grab_url' => $prod_grab_url,
 											'valid_countries' => $valid_countries,
 											'modified_at' => $current_date,
 											'modified_from' => $ip,
@@ -322,7 +324,7 @@ class Admin_Products_Model extends CI_Model {
 			}
 		}
 
-		return $errors;
+		return trim($errors);
 	}
 
 
