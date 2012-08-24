@@ -1,3 +1,8 @@
+<script>
+var base_url = "<?php echo base_url();?>";/* global variable for the root path */
+
+</script>
+<script type="text/javascript" src="<?php echo base_url("js"); ?>/category.js"></script>
 
       <!-- Begin main-content div -->
       <div class="flt-l wid_100" id="main-content">
@@ -31,6 +36,8 @@
           <p class="links">
           Home <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>"> Computers <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>"> Kids  Computers
           </p>
+           <div class="sample mgn-15b">
+              <p class="head mgn-0"> <img class="flt-l mgn-10l mgn-r" alt="time" src="<?php echo base_url().'images/time-icon.png';?>"> Today's Free Samples <em>We have 127 Free Coupons for you today</em></p>
            <?php if(isset($product) && $product!=''){
             foreach ($product as $product_key=>$product_values){ ?>
         <!-- Begin Samples here -->
@@ -41,12 +48,27 @@
             <br/><?php echo $product_values['description'];?>
           </p>
           <br />
-          <div class="star">
-            <img src="<?php echo base_url().'img/star-full.png';?>" alt="full" />
-             <img src="<?php echo base_url().'img/star-full.png';?>" alt="full" />
-             <img src="<?php echo base_url().'img/star-full.png';?>" alt="full" />
-            <img src="<?php echo base_url().'img/star-full.png';?>" alt="full" />
-             <img src="<?php echo base_url().'img/star-full.png';?>" alt="full" />
+         <div class="star" id="ratings">
+            <?php 
+            if($product_values['product_rating'] != 0 ){
+              for($i=1 ;$i<=$product_values['product_rating'];$i++){ ?>
+              <img src="<?php echo base_url(); ?>img/star-full.png" alt="full" />
+              <?php } 
+            }else{
+              for($i=1 ;$i<=5;$i++){ ?>
+              <img src="<?php echo base_url(); ?>img/star-off.png" alt="full"  onclick="prod_rating(<?php echo $product_values['id'];?>,<?php echo $i;?>);"/>
+              <input type="hidden" name="rating_vote" value="<?php echo $i;?>" /> 
+              <?php } 
+            }
+
+            if($product_values['product_rating'] != 0 && $product_values['product_rating'] < 5){
+              for($i=1;$i<=(5-$product_values['product_rating']);$i++){ ?>
+              <img src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>,<?php echo $product_values['product_rating'] +$i; ?>);"/>
+              <input type="hidden" name="rating_vote" value="<?php echo $product_values['product_rating'] +$i; ?>" />
+              <?php }
+            }
+            ?>
+            
           </div>
           <div class="clear"></div>
           <a class="grab flt-r">grab it now!</a>
@@ -65,10 +87,31 @@
           </div>
           <!-- End Samples here -->
         </div>
+      
         <?php } } else{
 
                   echo "No Products are avaiable";
                 }?>
+
+                <div class="pages">
+        <!--<a href="#">&lt;</a>
+          <a href="#">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#" class="current">4</a>
+          <a href="#">5</a>
+          <span class="more">
+            <strong>&hellip;</strong>
+          </span>
+          <a href="#">10</a>
+          <a href="#">20</a>
+          <a href="#">30</a>
+          <a href="#">&gt;</a>  -->
+          <?php echo $this->pagination->create_links();?>
+        </div> 
+        <!-- End sample here -->
+      </div>
+
         
             <div class="tabs">
               <ul>

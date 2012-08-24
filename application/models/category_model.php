@@ -40,6 +40,7 @@ class Category_Model extends CI_Model {
 	// get inital product based on the modified date
 	function get_products($cat_id,$num,$offset){
 		
+		//echo $cat_id;echo $num;echo $offset;exit;
 		$product_details = array();
 		$product_rating = array();
 		$product =array();
@@ -146,6 +147,15 @@ class Category_Model extends CI_Model {
 		$count = $query->num_rows();
 		return $count;
 
+
+	}
+
+	function getCount($id){
+
+		$query=$this->db->query("select * from products  where category_id = ". $id ." order by modified_at desc");
+		
+		$count = $query->num_rows();
+		return $count;
 
 	}
 

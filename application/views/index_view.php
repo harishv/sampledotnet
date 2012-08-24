@@ -1,8 +1,15 @@
+<?php 
+if(!$render){
+
+?>
 <script>
 var base_url = "<?php echo base_url();?>";/* global variable for the root path */
 
 </script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/category.js"></script>
+<div id="replace"><!-- for the refreshing issue  start-->
+<?php }?>  
+
 
 <!-- Begin main-content div -->
 <div id="main-content" class="flt-l wid_100">
@@ -138,7 +145,8 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 					</p>
 					<br />
 
-					<div class="star">
+
+					<div class="star" id="ratings">
 						<?php 
 						if($product_values['product_rating'] != 0 ){
 							for($i=1 ;$i<=$product_values['product_rating'];$i++){ ?>
@@ -296,3 +304,6 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 	</div>
 	<!-- End main-content div -->
 </div>
+<?php if(!$render){ ?>
+</div><!-- for the refreshing issue  end-->
+<?php } ?>

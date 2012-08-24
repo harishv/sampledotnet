@@ -11,6 +11,8 @@ function prod_rating(id,count){
 		{
 			//alert(res.status == 'succuss');return false;
 			if(res.status == 'succuss'){
+
+				 //$('#ratings').html();
 				window.location =baseurl;
 			}
 		 }

@@ -35,10 +35,10 @@ class CI_Pagination {
 	var $num_links			=  2; // Number of "digit" links to show before/after the currently viewed page
 	var $cur_page			=  0; // The current page being viewed
 	var $use_page_numbers	= FALSE; // Use page number for segment instead of offset
-	var $first_link			= '&lsaquo; First';
+	var $first_link			= '';
 	var $next_link			= '&gt;';
 	var $prev_link			= '&lt;';
-	var $last_link			= 'Last &rsaquo;';
+	var $last_link			= '';
 	var $uri_segment		= 3;
 	var $full_tag_open		= '';
 	var $full_tag_close		= '';
@@ -225,11 +225,11 @@ class CI_Pagination {
 		$output = '';
 
 		// Render the "First" link
-		if  ($this->first_link !== FALSE AND $this->cur_page > ($this->num_links + 1))
+		/*if  ($this->first_link !== FALSE AND $this->cur_page > ($this->num_links + 1))
 		{
 			$first_url = ($this->first_url == '') ? $this->base_url : $this->first_url;
 			$output .= $this->first_tag_open.'<a '.$this->anchor_class.'href="'.$first_url.'">'.$this->first_link.'</a>'.$this->first_tag_close;
-		}
+		}*/
 
 		// Render the "previous" link
 		if  ($this->prev_link !== FALSE AND $this->cur_page != 1)
@@ -311,7 +311,7 @@ class CI_Pagination {
 		}
 
 		// Render the "Last" link
-		if ($this->last_link !== FALSE AND ($this->cur_page + $this->num_links) < $num_pages)
+		/*if ($this->last_link !== FALSE AND ($this->cur_page + $this->num_links) < $num_pages)
 		{
 			if ($this->use_page_numbers)
 			{
@@ -322,7 +322,7 @@ class CI_Pagination {
 				$i = (($num_pages * $this->per_page) - $this->per_page);
 			}
 			$output .= $this->last_tag_open.'<a '.$this->anchor_class.'href="'.$this->base_url.$this->prefix.$i.$this->suffix.'">'.$this->last_link.'</a>'.$this->last_tag_close;
-		}
+		}*/
 
 		// Kill double slashes.  Note: Sometimes we can end up with a double slash
 		// in the penultimate link so we'll kill all double slashes.
