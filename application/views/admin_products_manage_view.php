@@ -49,7 +49,7 @@
 					:</label>
 				<div class="controls">
 					<input type="text" class="input-xlarge" id="prod_name" name="prod_name"
-						placeholder="<?php echo $this->lang->line('admin_prod_mng_prod_name_ph'); ?>" value="<?php echo ($set)? $product["name"] : ""; ?>" />
+						placeholder="<?php echo $this->lang->line('admin_prod_mng_prod_name_ph'); ?>" value="<?php echo ($set)? $this->Common_Model->clear_string($product["name"]) : ""; ?>" />
 					<!-- <p class="help-block">example: admin@admin.com</p> -->
 				</div>
 			</div>
@@ -88,11 +88,19 @@
 					:</label>
 				<div class="controls">
 					<textarea class="input-xlarge" rows="3" id="prod_desc"
-						name="prod_desc" placeholder="<?php echo $this->lang->line('admin_prod_mng_desc_ph'); ?>"><?php echo ($set) ? $product['description'] : ""; ?></textarea>
+						name="prod_desc" placeholder="<?php echo $this->lang->line('admin_prod_mng_desc_ph'); ?>"><?php echo ($set) ? $this->Common_Model->clear_string($product['description']) : ""; ?></textarea>
 					<!-- <p class="help-block">example: admin@admin.com</p> -->
 				</div>
 			</div>
 
+			<div class="control-group">
+				<label class="control-label" for="prod_grab_url"><?php echo $this->lang->line('admin_prod_mng_prod_grab_url'); ?>
+					:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="prod_grab_url" name="prod_grab_url"
+						placeholder="<?php echo $this->lang->line('admin_prod_mng_prod_grab_url_ph'); ?>" value="<?php echo ($set)? $this->Common_Model->clear_string($product["grab_url"]) : ""; ?>" />
+				</div>
+			</div>
 
 			<div class="control-group">
 				<label class="control-label" for="prod_image"><?php echo $this->lang->line('admin_prod_mng_image'); ?>
