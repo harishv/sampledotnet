@@ -115,8 +115,8 @@ $lang["admin_index_desc"]					=	"Admin Home";
 
 $lang["admin_prod_index_title"]				=	"Products Management System";
 $lang["admin_prod_index_desc"]				=	"This is the primary section, where we are going to manage all products related information.";
-$lang["admin_prod_manager_categories"]		=	"Manager Categories";
-$lang["admin_prod_manager_products"]		=	"Manager Products";
+$lang["admin_prod_manager_categories"]		=	"Manage Categories";
+$lang["admin_prod_manager_products"]		=	"Manage Products";
 
 
 /**
@@ -125,8 +125,8 @@ $lang["admin_prod_manager_products"]		=	"Manager Products";
 
 $lang["admin_doc_index_title"]				=	"Documents Management System";
 $lang["admin_doc_index_desc"]				=	"This is the primary section, where we are going to manage all documents related information.";
-$lang["admin_doc_manager_categories"]		=	"Manager Categories";
-$lang["admin_doc_manager_documents"]		=	"Manager Documents";
+$lang["admin_doc_manager_categories"]		=	"Manage Categories";
+$lang["admin_doc_manager_documents"]		=	"Manage Documents";
 
 
 /**
@@ -166,7 +166,7 @@ $lang["admin_prod_add_title"]				=	"Add Product Form";
 $lang["admin_prod_update_title"]			=	"Update Product Form";
 $lang["admin_prod_mng_prod_name"]			=	"Product Name";
 $lang["admin_prod_mng_prod_name_ph"]		=	"Product Name";
-$lang["admin_prod_mng_cat"]					=	"Category";
+$lang["admin_prod_mng_cat"]					=	"Product Category";
 $lang["admin_prod_mng_sel_a_cat"]			=	"Select a Category";
 $lang["admin_prod_mng_desc"]				=	"Product Description";
 $lang["admin_prod_mng_desc_ph"]				=	"Product Description";

@@ -169,11 +169,11 @@ class Admin_Products_Model extends CI_Model {
 
 		$errors = "";
 
-		$errors .= (isset($prod_name) && trim($prod_name) == "") ? "Product Name Sholdnot be empty<br />" : "";
+		$errors .= (isset($prod_name) && trim($prod_name) == "") ? "Product Name shouldn't be empty<br />" : "";
 		$errors .= (isset($prod_category_id) && (trim($prod_category_id) == "" || trim($prod_category_id) == 0)) ? "Please select a Product Category<br />" : "";
-		$errors .= (isset($prod_desc) && trim($prod_desc) == "") ? "Product Description Sholdnot be empty<br />" : "";
-		$errors .= (isset($prod_grab_url) && trim($prod_grab_url) == "") ? "Product Grab URL Sholdnot be empty<br />" : "";
-		$errors .= (isset($valid_country_ids) && count($valid_country_ids) < 1) ? "Please select atleast one Valid Countries<br />" : "";
+		$errors .= (isset($prod_desc) && trim($prod_desc) == "") ? "Product Description shouldn't be empty<br />" : "";
+		$errors .= (isset($prod_grab_url) && trim($prod_grab_url) == "") ? "Product Grab URL shouldn't be empty<br />" : "";
+		$errors .= ( !isset($valid_country_ids) || (isset($valid_country_ids) && count($valid_country_ids) < 1) )? "Please select atleast one Valid Country<br />" : "";
 
 		// Get the Product Id and Image Id to define images names
 		$max_product_id = $this->get_max_product_id();
@@ -263,7 +263,7 @@ class Admin_Products_Model extends CI_Model {
 					$thumb_image_upload['new_image'] = $upload_path . "/" . THUMBS_DIR . "/" . THUMB_EXT . $product_image_name;
 					$thumb_image_upload['thumb_marker'] = "";
 					$thumb_image_upload['create_thumb'] = FALSE;
-					$thumb_image_upload['maintain_ratio'] = TRUE;
+					$thumb_image_upload['maintain_ratio'] = FALSE;
 					$thumb_image_upload['quality']= IMAGE_QUALITY;
 					$thumb_image_upload['width'] = PRODUCT_IMAGE_WIDTH;
 					$thumb_image_upload['height'] = PRODUCT_IMAGE_HEIGHT;
@@ -378,7 +378,7 @@ class Admin_Products_Model extends CI_Model {
 
 		$errors = "";
 
-		$errors .= (isset($prod_cat_name) && trim($prod_cat_name) == "") ? "Product's Category Name Sholdnot be empty<br />" : "";
+		$errors .= (isset($prod_cat_name) && trim($prod_cat_name) == "") ? "Product's Category Name shouldn't be empty<br />" : "";
 		$errors .= (!isset($prod_cat_choice) || ((isset($prod_cat_choice) && (trim($prod_cat_choice) == "")))) ? "Please select a Product's Category choice<br />" : "";
 
 		if (isset($prod_cat_choice)) {
