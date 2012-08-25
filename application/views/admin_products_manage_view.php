@@ -6,6 +6,7 @@
 
 <div class="row">
 	<div class="span8">
+
 		<?php
 		$set = (isset($product) && is_array($product)) ? true : false;
 

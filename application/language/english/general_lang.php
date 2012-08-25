@@ -59,6 +59,7 @@ $lang["records_per_page"]		=	"records per page";
 $lang["note"]					=	"Note";
 $lang["error"]					=	"Error!";
 $lang["success"]				=	"Success!";
+$lang["n_a"]					=	"N/A";
 $lang["no_data"]				=	"No data to display";
 $lang["back_to_list"]			=	"Back to List";
 $lang["or_divider"]				=	"|";
@@ -177,6 +178,19 @@ $lang["admin_prod_add_btn"]					=	"Add Product";
 $lang["admin_prod_update_btn"]				=	"Update Product";
 
 
+/**
+ * Products Manage Page
+ */
+$lang["back_to_categories_list"]			=	"Back to Categories List";
+$lang["admin_prod_cat_add_title"]			=	"Add Product's Category Form";
+$lang["admin_prod_cat_update_title"]		=	"Update Product's Category Form";
+$lang["admin_prod_cat_add_btn"]				=	"Add Category";
+$lang["admin_prod_cat_update_btn"]			=	"Update Category";
+$lang["admin_prod_cat_mng_prod_name"]		=	"Category Name";
+$lang["admin_prod_cat_mng_prod_name_ph"]	=	"Category Name";
+$lang["admin_prod_cat_mng_cat_choice"]		=	"Category Choice";
+$lang["admin_prod_cat_mng_parent_cat"]		=	"Parent Category";
+$lang["admin_prod_cat_mng_sel_a_cat"]		=	"Select a Parent Category";
 
 
 /* End of file general_lang.php */
