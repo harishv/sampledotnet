@@ -18,7 +18,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
                 <?php if(isset($category) && $category !=''){
                       foreach($category as $cat_id=>$cat_values){ ?>
                 <li>
-                  <a href="<?php echo base_url().'index/get_category_product/'.$cat_values['id'];?>"><?php echo $cat_values['prod_cat_name'];?></a>
+                  <a href="<?php echo base_url().'category/get_category_product/'.$cat_values['id'];?>"><?php echo $cat_values['prod_cat_name'];?></a>
                 </li>
                 <?php } }else{
 
@@ -42,18 +42,19 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
             foreach ($product as $product_key=>$product_values){ ?>
         <!-- Begin Samples here -->
         <div class="samples">
-          <img src="<?php echo base_url().'img/only-today.png';?>" alt="only today" class="only-today" />
-          <a href="<?php echo base_url().'product';?>"><img src="<?php echo base_url().'img/huggie-small.png';?>" alt="huggies" class="small" /><a/>
-          <p class="pdg_10px"> <a href="<?php echo base_url().'product';?>"><strong><?php echo $product_values['name'];?></strong></a>
+          <img src="<?php echo base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
+          <a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><?php $image_properties = array('src' => PROD_THUMB_IMG_PATH.'thumb_'.$product_values['image'],'alt' => $product_values['name'],'class'=>'small');
+                echo img($image_properties);?><a/>
+          <p class="pdg_10px"> <a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><strong><?php echo $product_values['name'];?></strong></a>
             <br/><?php echo $product_values['description'];?>
           </p>
           <br />
          <div class="star" id="ratings">
             <?php 
             if($product_values['product_rating'] != 0 ){
-              for($i=1 ;$i<=$product_values['product_rating'];$i++){ ?>
-              <img src="<?php echo base_url(); ?>img/star-full.png" alt="full" />
-              <?php } 
+              for($i=1 ;$i<=$product_values['product_rating'];$i++){ 
+                $image_properties = array('src' => 'img/star-full.png','alt' => 'full'); echo img($image_properties);
+               } 
             }else{
               for($i=1 ;$i<=5;$i++){ ?>
               <img src="<?php echo base_url(); ?>img/star-off.png" alt="full"  onclick="prod_rating(<?php echo $product_values['id'];?>,<?php echo $i;?>);"/>
@@ -74,14 +75,20 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
           <a class="grab flt-r">grab it now!</a>
           <div class="social clear">
             <a href="#">
-              <img src="<?php echo base_url().'img/facebook.jpg';?>" alt="facebook" />
+              <?php $image_properties = array('src' => 'img/facebook.jpg','alt' => 'facebook');
+                echo img($image_properties);?>
+              
             </a>
             <a href="#">
-              <img src="<?php echo base_url().'img/skype.jpg';?>" alt="skype" />
+              
+              <?php $image_properties = array('src' => 'img/skype.jpg','alt' => 'skype');
+                echo img($image_properties);?>
             </a>
             <span class="share">
               <a href="#">
-                <img src="<?php echo base_url().'img/share.jpg';?>" alt="share" class="flt-r" />
+                <?php $image_properties = array('src' => 'img/share.jpg','alt' => 'share','class'=>'flt-r');
+                echo img($image_properties);?>
+                
               </a>
             </span>
           </div>
@@ -162,16 +169,54 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
             <!-- End search -->
           </div>
           <ul class="btn">
-            <li><a href="#"><img alt="share a sample" src="<?php echo base_url().'img/share-a-sample.png';?>"></a></li>
+      <li>
+        <a href="#">
+          <?php $image_properties = array('src' => 'img/share-a-sample.png','alt' => 'share a sample');
+                echo img($image_properties);?>
+          
+        </a>
+      </li>
+    </ul>
           </ul>
-          <p class="free-sample"> <img class="flt-r" alt="gift" src="<?php echo base_url().'img/gift.png';?>"> Get free samples<br>
-            0n <strong>Facebook</strong><br>
-            <a href="#"><img alt="like" src="<?php echo base_url().'img/like.jpg';?>"></a> </p>
+    <p class="free-sample">
+      <?php $image_properties = array('src' => 'img/gift.png','alt' => 'gift','class'=>'flt-r');
+                echo img($image_properties);?>
+      
+      Get free samples
+      <br />
+      0n
+      <strong>Facebook</strong>
+      <br />
+      <a href="#">
+        <?php $image_properties = array('src' => 'img/like.jpg','alt' => 'like');
+                echo img($image_properties);?>
+        
+      </a>
+    </p>
           <ul class="btn">
-            <li><a href="#"><img alt="follow us on twitter" src="<?php echo base_url().'img/follow-twitter.png';?>"></a></li>
-            <li><a href="#"><img alt="add to circles" src="<?php echo base_url().'img/add-to-circles.png';?>"></a></li>
-            <li><a href="#"><img alt="pintrest" src="<?php echo base_url().'img/pintrest.png';?>"></a></li>
-          </ul>
+      <li>
+        <a href="#">
+          <?php $image_properties = array('src' => 'img/follow-twitter.png','alt' => 'follow us on twitter');
+                echo img($image_properties);?>
+          
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <?php $image_properties = array('src' => 'img/add-to-circles.png','alt' => 'add to circles');
+                echo img($image_properties);?>
+          
+          
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <?php $image_properties = array('src' => 'img/pintrest.png','alt' => 'pintrest');
+                echo img($image_properties);?>
+          
+        </a>
+      </li>
+    </ul>
           <!-- Begin Subscribe div -->
           <div class="subscribe"> <img class="mgn-15b" alt="free samples" src="<?php echo base_url().'img/free-samples.png';?>">
             <input type="text" onfocus="this.value=''" value="Enter Your Name" class="free">

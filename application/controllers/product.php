@@ -7,11 +7,22 @@ class Product extends CI_Controller {
 
 		// Load the necessary stuff...
 		$this->load->model('category_model');
+		$this->load->model('product_model');
+		$this->load->model('common_model');
+
 
 	}
 
 	public function index () {
+		
+	}
+	public function product_detail(){
+		$product_id = $this->uri->segment(3);
+
 		$this->load->view("template/header");
+		$data['product_details'] = $this->product_model->get_product_details($product_id);
+		$data['country_names'] = $this->common_model->get_country_names($data['product_details'][0]['valid_countries']);
+		
 		$data['category'] = $this->category_model->get_category();
 		$this->load->view("product",$data);
 		$this->load->view("template/footer");

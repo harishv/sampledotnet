@@ -63,8 +63,8 @@ class Index extends CI_Controller {
 
 		$data['product'] = $this->category_model->get_products($cat_id,$id,$config1['per_page']);
 
-		$cat_id = $this->uri->segment(3);
-		$data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
+		
+		
 
 		$data['category'] = $this->category_model->get_category();
 		$this->load->view("template/header");
