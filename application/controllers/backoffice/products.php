@@ -125,18 +125,18 @@ class Products extends CI_Controller {
 	function categories_list()
 	{
 		// Load the success or error values(if any)
-		if($this->session->userdata('category_upload_errors')){
-			$data['errors'] = $this->session->userdata('category_upload_errors');
+		if($this->session->userdata('prod_cat_upload_errors')){
+			$data['errors'] = $this->session->userdata('prod_cat_upload_errors');
 
-			$newdata = array( 'category_upload_errors'  => "" );
+			$newdata = array( 'prod_cat_upload_errors'  => "" );
 
 			$this->session->set_userdata($newdata);
 		}
 
-		if($this->session->userdata('category_upload_success')){
-			$data['success'] = $this->session->userdata('category_upload_success');
+		if($this->session->userdata('prod_cat_upload_success')){
+			$data['success'] = $this->session->userdata('prod_cat_upload_success');
 
-			$newdata = array( 'category_upload_success'  => "" );
+			$newdata = array( 'prod_cat_upload_success'  => "" );
 
 			$this->session->set_userdata($newdata);
 		}
@@ -173,10 +173,10 @@ class Products extends CI_Controller {
 
 	public function prod_cat_manage_action($type = "add")
 	{
-		echo "<pre>";
-		print_r($this->input->post());
-		echo "</pre>";
-		exit();
+		// echo "<pre>";
+		// print_r($this->input->post());
+		// echo "</pre>";
+		// exit();
 
 		if ($type == "edit") {
 			$prod_cat_id = $this->input->post('prod_cat_id');

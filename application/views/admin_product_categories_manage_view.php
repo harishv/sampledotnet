@@ -93,10 +93,10 @@
 			</div>
 
 			<div id="parent_cat_dropdown" class="control-group">
-				<label class="control-label" for="prod_category_id"><?php echo $this->lang->line('admin_prod_cat_mng_parent_cat'); ?>
+				<label class="control-label" for="prod_parent_category_id"><?php echo $this->lang->line('admin_prod_cat_mng_parent_cat'); ?>
 					:</label>
 				<div class="controls">
-					<select class="input-xlarge" id="prod_category_id" name="prod_category_id">
+					<select class="input-xlarge" id="prod_parent_category_id" name="prod_parent_category_id">
 						<option value="">-- <?php echo $this->lang->line('admin_prod_cat_mng_sel_a_cat'); ?> --</option>
 						<?php foreach ($categories as $parent_category) {
 								if (isset($category) && $category['id'] == $parent_category['id']) {
