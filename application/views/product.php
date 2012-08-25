@@ -1,4 +1,10 @@
 
+<script>
+var base_url = "<?php echo base_url();?>";/* global variable for the root path */
+
+</script>
+<script type="text/javascript" src="<?php echo base_url("js"); ?>/category.js"></script>
+ 
       <!-- Begin main-content div -->
       <div class="flt-l wid_100" id="main-content">
         <!-- Begin content div -->
@@ -12,7 +18,7 @@
                 
                 <?php if(isset($category) && $category !=''){
                         foreach($category as $cat_id=>$cat_values){ ?>
-                <li><a href="<?php echo base_url().'index/get_category_product/'.$cat_values['id'];?>"><?php echo $cat_values['prod_cat_name'];?></a></li>
+                <li><a href="<?php echo base_url().'category/get_category_product/'.$cat_values['id'];?>"><?php echo $cat_values['prod_cat_name'];?></a></li>
                 <?php } }else{
 
                   echo "No Products are avaiable";
@@ -30,25 +36,46 @@
           <p class="links">
           Home <img alt="blue" src="images/blue-bullet.jpg"> Computers <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>"> Kids  Computers
           </p>
+         
             <!-- Begin sample here -->
             <div class="sample mgn-15b">
               <p class="head mgn-15b"> <span class="mgn-10l">Educational toys Learning Machine</span></p>
              <div class="computers">
-              <img alt="computer" src="<?php echo base_url().'img/toy-computer.jpg';?>">
+              <?php $image_properties = array('src' => PROD_IMG_PATH.$product_details[0]['image']);echo img($image_properties);?>
               <p>
               <strong>Educational Toys Learning Machine</strong><br>
-              All moms deserve to be rewarded. If your baby could thank you, they’d never stop. Gifts to Grow gives you the rewards you deserve, simply by buying Pampers diapers and wipes. Earn points toward scooters, strollers, books, magazine subscriptions, gift cards, and even charitable donations. Join now and get 100 Free Points.<br><br>
+             <?php echo $product_details[0]['description'];?><br><br>
 You will also receive periodic <a class="email" href="#">emails and special offers</a>.
               </p>
+
               <p class="grey">
-              <span><strong>Valid in:</strong> India, USA</span>
-              <em><strong class="flt-l">User Rating:</strong><img alt="full" src="<?php echo base_url().'img/star-full.png';?>"> <img alt="full" src="images/star-full.png"> <img alt="full" src="images/star-full.png"> <img alt="full" src="<?php echo base_url().'img/star-full.png';?>"> <img alt="full" src="<?php echo base_url().'img/star-off.png';?>"> 
+              <span><strong>Valid in:</strong><?php if(isset($country_names) && $country_names!= ''){  echo implode(', ',$country_names);}?></span>
+              <em><strong class="flt-l">User Rating:</strong>
+                <?php 
+            if($product_details[0]['product_rating'] != 0 ){
+              for($i=1 ;$i<=$product_details[0]['product_rating'];$i++){ ?>
+              <img src="<?php echo base_url().'img/star-full.png';?>" alt="full" />
+              <?php } 
+            }else{
+              for($i=1 ;$i<=5;$i++){ ?>
+              <img src="<?php echo base_url().'img/star-off.png';?>" alt="full"  onclick="prod_rating(<?php echo $product_details[0]['id'];?>,<?php echo $i;?>);"/>
+              <input type="hidden" name="rating_vote" value="<?php echo $i;?>" /> 
+              <?php } 
+            }
+
+            if($product_details[0]['product_rating'] != 0 && $product_details[0]['product_rating'] < 5){
+              for($i=1;$i<=(5-$product_details[0]['product_rating']);$i++){ ?>
+              <img src="<?php echo base_url().'img/star-off.png';?>" alt="full" onclick="prod_rating(<?php echo $product_details[0]['id'];?>,<?php echo $product_details[0]['product_rating'] +$i; ?>);"/>
+              <input type="hidden" name="rating_vote" value="<?php echo $product_details[0]['product_rating'] +$i; ?>" />
+              <?php }
+            }
+            ?>
               </em>
               </p>
               <p class="grey">
               <span>Report Invalid</span>
               <em>(15) comments</em> </p>
-              <p><a class="grab flt-r" href="#">grab it now!</a></p>
+              <p><a class="grab flt-r" href="<?php echo $product_details[0]['grab_url'];?>">grab it now!</a></p>
               <div class="hgt-15px wid_100"></div>
               <img alt="social" src="<?php echo base_url().'img/social1.jpg';?>">
               <div class="hgt-15px wid_100"></div>
