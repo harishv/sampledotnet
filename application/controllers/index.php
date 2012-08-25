@@ -36,6 +36,9 @@ class Index extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['category'] = $this->category_model->get_category();
 		$data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
+		$data['featured_products'] = $this->category_model->get_featured_products();
+
+
 		$data['slider'] = $this->load->view('slider', $data, TRUE);
 
 		$data['render'] = false;

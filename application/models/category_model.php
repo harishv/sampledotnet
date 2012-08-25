@@ -40,10 +40,8 @@ class Category_Model extends CI_Model {
 	// get inital product based on the modified date
 	function get_products($cat_id,$num,$offset){
 		
-		//echo $cat_id;echo $num;echo $offset;exit;
-		$product_details = array();
-		$product_rating = array();
-		$product =array();
+		
+		
 		$this->db->select('*');
 		$this->db->from('products');
 		$this->db->where('status_id', 1);
@@ -54,35 +52,7 @@ class Category_Model extends CI_Model {
 		$this->db->limit($offset,$num);
 		$result = $this->db->get();
 
-		//echo $this->db->last_query();exit;
-		/*if($cat_id !=0)
-		$where = " where category_id =".$cat_id;
-		else
-		$where ="";
-
-		$query=$this->db->query("select * from products ".$where." order by modified_at desc");
-
-		$product_details['product'] = $query->result_array();
-
-		//echo "<pre>";print_r($product_details);exit;
-
-		foreach($product_details['product'] as $key=>$values){
-
-			$query_rating=$this->db->query("select * from prod_ratings where prod_id = ".$values['id']);
-
-			$product_rating['rating'] = $query_rating->result_array();
-			$product = array_merge($product_details['product'],$product_rating['rating']);
-
-			
-			
-		}
-
-		echo "<pre>";print_r($product);exit;
-
 		
-
-		echo "<pre>";print_r($product);exit;*/
-
 
 		if ($result->num_rows() == 0) {
 			return false;
@@ -91,6 +61,22 @@ class Category_Model extends CI_Model {
 		}
 
 		return false;
+
+	}
+
+	function get_featured_products(){
+		$this->db->select('*');
+		$this->db->from('products');
+		$this->db->where('status_id', 1);
+		$this->db->order_by("modified_at", "desc"); 
+		$result = $this->db->get();
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			return $result->result_array();
+		}
+		return false;
+
 
 	}
 
