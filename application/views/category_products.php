@@ -37,7 +37,10 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
           Home <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>"> Computers <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>"> Kids  Computers
           </p>
            <div class="sample mgn-15b">
-              <p class="head mgn-0"> <img class="flt-l mgn-10l mgn-r" alt="time" src="<?php echo base_url().'images/time-icon.png';?>"> Today's Free Samples <em>We have 127 Free Coupons for you today</em></p>
+              <p class="head mgn-0"> 
+                 <?php $image_properties = array('src' => 'img/time-icon.png','alt' => 'time','class'=>'flt-l mgn-10l mgn-r');
+                echo img($image_properties);?>
+                Today's Free Samples <em>We have 127 Free Coupons for you today</em></p>
            <?php if(isset($product) && $product!=''){
             foreach ($product as $product_key=>$product_values){ ?>
         <!-- Begin Samples here -->
@@ -224,7 +227,11 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
             <a class="subscribe-btn" href="#">&nbsp;</a>
             <!-- End Subscribe div -->
           </div>
-          <img class="mgn-15b" alt="fab turbo" src="images/fap-turbo.jpg"> <img alt="kaboom" src="<?php echo base_url().'img/kaboom.jpg';?>">
+         
+          <?php $image_properties = array('src' => 'img/fap-turbo.jpg','alt' => 'fab turbo','class'=>'mgn-15b');
+                echo img($image_properties);?>
+          <?php $image_properties = array('src' => 'img/kaboom.jpg','alt' => 'kaboom');
+                echo img($image_properties);?>
           <!-- End sidebar div -->
         </div>
         <!-- End main-content div -->
