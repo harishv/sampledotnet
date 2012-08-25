@@ -128,7 +128,7 @@
 									<td>
 										<?php
 											$name = $this->Common_Model->get_prod_cat_name($category["parent_cat_id"]);
-											echo (!$name) ? "-- No Parent --" : $name;
+											echo (!$name) ? $this->lang->line('n_a') : $name;
 										?>
 									</td>
 									<td>

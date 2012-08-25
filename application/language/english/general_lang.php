@@ -59,6 +59,7 @@ $lang["records_per_page"]		=	"records per page";
 $lang["note"]					=	"Note";
 $lang["error"]					=	"Error!";
 $lang["success"]				=	"Success!";
+$lang["n_a"]					=	"N/A";
 $lang["no_data"]				=	"No data to display";
 $lang["back_to_list"]			=	"Back to List";
 $lang["or_divider"]				=	"|";
@@ -114,8 +115,8 @@ $lang["admin_index_desc"]					=	"Admin Home";
 
 $lang["admin_prod_index_title"]				=	"Products Management System";
 $lang["admin_prod_index_desc"]				=	"This is the primary section, where we are going to manage all products related information.";
-$lang["admin_prod_manager_categories"]		=	"Manager Categories";
-$lang["admin_prod_manager_products"]		=	"Manager Products";
+$lang["admin_prod_manager_categories"]		=	"Manage Categories";
+$lang["admin_prod_manager_products"]		=	"Manage Products";
 
 
 /**
@@ -124,8 +125,8 @@ $lang["admin_prod_manager_products"]		=	"Manager Products";
 
 $lang["admin_doc_index_title"]				=	"Documents Management System";
 $lang["admin_doc_index_desc"]				=	"This is the primary section, where we are going to manage all documents related information.";
-$lang["admin_doc_manager_categories"]		=	"Manager Categories";
-$lang["admin_doc_manager_documents"]		=	"Manager Documents";
+$lang["admin_doc_manager_categories"]		=	"Manage Categories";
+$lang["admin_doc_manager_documents"]		=	"Manage Documents";
 
 
 /**
@@ -165,7 +166,7 @@ $lang["admin_prod_add_title"]				=	"Add Product Form";
 $lang["admin_prod_update_title"]			=	"Update Product Form";
 $lang["admin_prod_mng_prod_name"]			=	"Product Name";
 $lang["admin_prod_mng_prod_name_ph"]		=	"Product Name";
-$lang["admin_prod_mng_cat"]					=	"Category";
+$lang["admin_prod_mng_cat"]					=	"Product Category";
 $lang["admin_prod_mng_sel_a_cat"]			=	"Select a Category";
 $lang["admin_prod_mng_desc"]				=	"Product Description";
 $lang["admin_prod_mng_desc_ph"]				=	"Product Description";
@@ -177,6 +178,19 @@ $lang["admin_prod_add_btn"]					=	"Add Product";
 $lang["admin_prod_update_btn"]				=	"Update Product";
 
 
+/**
+ * Products Manage Page
+ */
+$lang["back_to_categories_list"]			=	"Back to Categories List";
+$lang["admin_prod_cat_add_title"]			=	"Add Product's Category Form";
+$lang["admin_prod_cat_update_title"]		=	"Update Product's Category Form";
+$lang["admin_prod_cat_add_btn"]				=	"Add Category";
+$lang["admin_prod_cat_update_btn"]			=	"Update Category";
+$lang["admin_prod_cat_mng_prod_name"]		=	"Category Name";
+$lang["admin_prod_cat_mng_prod_name_ph"]	=	"Category Name";
+$lang["admin_prod_cat_mng_cat_choice"]		=	"Category Choice";
+$lang["admin_prod_cat_mng_parent_cat"]		=	"Parent Category";
+$lang["admin_prod_cat_mng_sel_a_cat"]		=	"Select a Parent Category";
 
 
 /* End of file general_lang.php */

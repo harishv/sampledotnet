@@ -169,11 +169,11 @@ class Admin_Products_Model extends CI_Model {
 
 		$errors = "";
 
-		$errors .= (isset($prod_name) && trim($prod_name) == "") ? "Product Name Sholdnot be empty<br />" : "";
+		$errors .= (isset($prod_name) && trim($prod_name) == "") ? "Product Name shouldn't be empty<br />" : "";
 		$errors .= (isset($prod_category_id) && (trim($prod_category_id) == "" || trim($prod_category_id) == 0)) ? "Please select a Product Category<br />" : "";
-		$errors .= (isset($prod_desc) && trim($prod_desc) == "") ? "Product Description Sholdnot be empty<br />" : "";
-		$errors .= (isset($prod_grab_url) && trim($prod_grab_url) == "") ? "Product Grab URL Sholdnot be empty<br />" : "";
-		$errors .= (isset($valid_country_ids) && count($valid_country_ids) < 1) ? "Please select atleast one Valid Countries<br />" : "";
+		$errors .= (isset($prod_desc) && trim($prod_desc) == "") ? "Product Description shouldn't be empty<br />" : "";
+		$errors .= (isset($prod_grab_url) && trim($prod_grab_url) == "") ? "Product Grab URL shouldn't be empty<br />" : "";
+		$errors .= ( !isset($valid_country_ids) || (isset($valid_country_ids) && count($valid_country_ids) < 1) )? "Please select atleast one Valid Country<br />" : "";
 
 		// Get the Product Id and Image Id to define images names
 		$max_product_id = $this->get_max_product_id();
@@ -263,7 +263,7 @@ class Admin_Products_Model extends CI_Model {
 					$thumb_image_upload['new_image'] = $upload_path . "/" . THUMBS_DIR . "/" . THUMB_EXT . $product_image_name;
 					$thumb_image_upload['thumb_marker'] = "";
 					$thumb_image_upload['create_thumb'] = FALSE;
-					$thumb_image_upload['maintain_ratio'] = TRUE;
+					$thumb_image_upload['maintain_ratio'] = FALSE;
 					$thumb_image_upload['quality']= IMAGE_QUALITY;
 					$thumb_image_upload['width'] = PRODUCT_IMAGE_WIDTH;
 					$thumb_image_upload['height'] = PRODUCT_IMAGE_HEIGHT;
@@ -368,6 +368,72 @@ class Admin_Products_Model extends CI_Model {
 		return trim($errors);
 	}
 
+	function manage_product_category($type)
+	{
+		extract($this->input->post());
+
+		$user = $this->session->userdata("admin_user");
+		$current_date = date('Y-m-d H:i:s');
+		$ip = $_SERVER['REMOTE_ADDR'];
+
+		$errors = "";
+
+		$errors .= (isset($prod_cat_name) && trim($prod_cat_name) == "") ? "Product's Category Name shouldn't be empty<br />" : "";
+		$errors .= (!isset($prod_cat_choice) || ((isset($prod_cat_choice) && (trim($prod_cat_choice) == "")))) ? "Please select a Product's Category choice<br />" : "";
+
+		if (isset($prod_cat_choice)) {
+			if ($prod_cat_choice == 'child') {
+				$errors .= (isset($prod_parent_category_id) && $prod_parent_category_id == '') ? "Please select a Product Categories Parent Category<br />" : "";
+			} else {
+				$prod_parent_category_id = 0;
+			}
+		} else {
+			$prod_parent_category_id = 0;
+		}
+
+		if(trim($errors) == "") {
+
+			$prod_cat_information = array (	'prod_cat_name' => $prod_cat_name,
+											'parent_cat_id' => intval($prod_parent_category_id),
+											'modified_at' => $current_date,
+											'modified_from' => $ip,
+											'modified_by' => $user["id"] );
+
+			if($type == "add"){
+
+				$prod_cat_information['status_id'] = 0; // Status 0 represents Inactive
+				$prod_cat_information['created_at'] = $current_date;
+				$prod_cat_information['created_from'] = $ip;
+				$prod_cat_information['created_by'] = $user["id"];
+
+				$this->db->insert('prod_categories', $prod_cat_information);
+
+			} else if ($type == "edit"){
+
+				$this->db->where('id', intval($prod_cat_id));
+				$this->db->update('prod_categories', $prod_cat_information);
+
+			}
+
+			$affected_rows = $this->db->affected_rows();
+
+			if($affected_rows > 0){
+
+				if($type == "add"){
+					return $prod_cat_information;
+				} else if($type == "edit"){
+					return true;
+				}
+
+			} else {
+
+				$errors .= "Database insertion error<br />";
+
+			}
+		}
+
+		return trim($errors);
+	}
 
 };
 
