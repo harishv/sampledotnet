@@ -16,7 +16,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 	<!-- Begin content div -->
 	<div id="content" class="flt-l">
 		<div class="hgt-15px wid_100"></div>
-		<span class="small flt-r pdg_15px">Updated 4 hours ago</span>
+		<span class="small flt-r pdg_15px"><?php echo "Updated ".$product_updated." ago";?></span>
 		<h1>Featured Samples</h1>
 		<span class="bdr-btm"></span>
 		<div class="hgt-15px"></div>

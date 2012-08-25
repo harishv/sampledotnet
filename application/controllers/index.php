@@ -7,6 +7,7 @@ class Index extends CI_Controller {
 
 		// Load the necessary stuff...
 		$this->load->model('category_model');
+		$this->load->model('common_model');
 		$this->load->library('pagination');
 		$this->load->helper('url');
 
@@ -29,16 +30,14 @@ class Index extends CI_Controller {
 		$config['cur_tag_close'] ='</a>';
 
 
-
-
-
-
 		$this->pagination->initialize($config);
 		$data['category'] = $this->category_model->get_category();
 		$data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
 		$data['featured_products'] = $this->category_model->get_featured_products();
+		$data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
 
-
+		
+		
 		$data['slider'] = $this->load->view('slider', $data, TRUE);
 
 		$data['render'] = false;
