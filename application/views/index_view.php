@@ -28,86 +28,18 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 				
 			</a>
 			<ul id="mycarousel"  class="jcarousel-skin-tango mgn-15b">
+				<?php //echo "<pre>";print_r($featured_products);exit;?>
+				 <?php if(isset($featured_products) && $featured_products!=''){
+						foreach ($featured_products as $featured_products_key=>$featured_products_values){ ?>
 				<li>
 					<a href="#" class="current">
-						<?php $image_properties = array('src' => 'img/huggies.png','alt' => 'Huggies');
+						<a href="<?php echo base_url().'product/product_detail/'.$featured_products_values['id'];?>"><?php $image_properties = array('src' => PROD_THUMB_IMG_PATH.'thumb_'.$featured_products_values['image'],'alt' => $featured_products_values['name'],'class'=>'small');
 								echo img($image_properties);?>
 						<br />
-						Ketchup &amp; Jams
+						<?php echo $featured_products_values['name'];?>
 					</a>
 				</li>
-				<li>
-					<a href="#">
-						<?php $image_properties = array('src' => 'img/huggies.png','alt' => 'Huggies');
-								echo img($image_properties);?>
-						<br />
-						Ketchup &amp; Jams
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<?php $image_properties = array('src' => 'img/huggies.png','alt' => 'Huggies');
-								echo img($image_properties);?>
-						<br />
-						Ketchup &amp; Jams
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<?php $image_properties = array('src' => 'img/huggies.png','alt' => 'Huggies');
-								echo img($image_properties);?>
-						<br />
-						Ketchup &amp; Jams
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<?php $image_properties = array('src' => 'img/huggies.png','alt' => 'Huggies');
-								echo img($image_properties);?>
-						<br />
-						Ketchup &amp; Jams
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<?php $image_properties = array('src' => 'img/huggies.png','alt' => 'Huggies');
-								echo img($image_properties);?>
-						<br />
-						Ketchup &amp; Jams
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<?php $image_properties = array('src' => 'img/huggies.png','alt' => 'Huggies');
-								echo img($image_properties);?>
-						<br />
-						Ketchup &amp; Jams
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<?php $image_properties = array('src' => 'img/huggies.png','alt' => 'Huggies');
-								echo img($image_properties);?>
-						<br />
-						Ketchup &amp; Jams
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<?php $image_properties = array('src' => 'img/huggies.png','alt' => 'Huggies');
-								echo img($image_properties);?>
-						<br />
-						Ketchup &amp; Jams
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<?php $image_properties = array('src' => 'img/huggies.png','alt' => 'Huggies');
-								echo img($image_properties);?>
-						<br />
-						Ketchup &amp; Jams
-					</a>
-				</li>
+				<?php } } ?>
 			</ul>
 			<a href="#" class="flt-l mgn-15px next">
 				<?php $image_properties = array('src' => 'img/next.jpg','alt' => 'Previous');
