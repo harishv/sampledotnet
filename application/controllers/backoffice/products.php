@@ -88,6 +88,7 @@ class Products extends CI_Controller {
 		// print_r($_POST);
 		// echo "</pre>";
 		// exit;
+
 		if ($type == "edit") {
 			$prod_id = $this->input->post('prod_id');
 		}
