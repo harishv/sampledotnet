@@ -1,8 +1,88 @@
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.validate.js"></script>
+<!-- <script type="text/javascript" src="http://jquery.bassistance.de/validate/lib/jquery.metadata.js"></script> -->
+<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.metadata.js"></script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/bootstrap-transfer.js"></script>
 
 <link rel="stylesheet" type="text/css" media="screen"
 	href="<?php echo base_url(); ?>css/bootstrap-transfer.css" />
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$("#product_manage_form").validate({
+		rules: {
+			prod_name: {
+					required: true
+				},
+			prod_category_id: {
+					required: true
+				},
+			prod_desc: {
+					required: true
+				},
+			prod_grab_url: {
+					required: true,
+					url: true
+				},
+			prod_image: {
+					required: true,
+					accept: "png|jpeg|jpg|gif",
+					filesize: 2097152
+				}
+			},
+		messages: {
+			prod_name: {
+					required: "Product Name is a required field."
+				},
+			prod_category_id: {
+					required: "Please select a Product Category."
+				},
+			prod_desc: {
+					required: "Product Description is a required field."
+				},
+			prod_grab_url: {
+					required: "Grab URL is a required field.",
+					url: "Please enter a valid Grab URL."
+				},
+			prod_image: {
+					required: "Product Image is a required field.",
+					accept: "Please upload an image of type (jpg, jpeg, gif or png) only.",
+					filesize: "Image of size upto 2MB is only allowed."
+				}
+			},
+		errorClass: "error", // control-group error
+		validClass: "success", // control-group success
+		errorElement: "span", // class='help-inline
+		highlight: function(element, errorClass, validClass) {
+			if (element.type === 'radio') {
+				this.findByName(element.name).parent("div").parent("div").removeClass(validClass).addClass(errorClass);
+			} else {
+				$(element).parent("div").parent("div").removeClass(validClass).addClass(errorClass);
+			}
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			if (element.type === 'radio') {
+				this.findByName(element.name).parent("div").parent("div").removeClass(errorClass).addClass(validClass);
+			} else {
+				$(element).parent("div").parent("div").removeClass(errorClass).addClass(validClass);
+			}
+		}
+	});
+
+	// Function for validating uploaded file size using JQuery
+	jQuery.validator.addMethod(
+    "filesize",
+     function(value, element, param) {
+         if (this.optional(element)) // return true on optional element
+             return true;
+        return element.files[0].size <= param;
+     }, jQuery.validator.messages.filesize );
+
+});
+
+
+</script>
 
 <div class="row">
 	<div class="span8">
