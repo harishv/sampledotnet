@@ -173,146 +173,151 @@ class Admin_Products_Model extends CI_Model {
 		$errors .= (isset($prod_category_id) && (trim($prod_category_id) == "" || trim($prod_category_id) == 0)) ? "Please select a Product Category<br />" : "";
 		$errors .= (isset($prod_desc) && trim($prod_desc) == "") ? "Product Description shouldn't be empty<br />" : "";
 		$errors .= (isset($prod_grab_url) && trim($prod_grab_url) == "") ? "Product Grab URL shouldn't be empty<br />" : "";
+		if (isset($prod_grab_url) && trim($prod_grab_url) != "") {
+			$errors .= (!$this->Validate->is_valid_url($prod_grab_url)) ? "Please provide a valid Product Grab URL<br />" : "";
+		}
 		$errors .= ( !isset($valid_country_ids) || (isset($valid_country_ids) && count($valid_country_ids) < 1) )? "Please select atleast one Valid Country<br />" : "";
 
-		// Get the Product Id and Image Id to define images names
-		$max_product_id = $this->get_max_product_id();
-		if($max_product_id[0]['id'] == null){
-			$product_id = 1;
-		} else {
-			$product_id = $max_product_id[0]['id'] + 1;
-		}
-
-		// Image Uploads - Start
-
-		// Base Upload Path Generally uploads
-		$upload_path = UPLOAD_DIR;
-
-		// Product's Images Upload path
-		$upload_path .= "/" . PRODUCTS_DIR;
-
-		if($type == "add"){
-			$image_success = false;
-		} else if ($type == "edit"){
-			$image_success = true;
-		}
-
-		/**
-		 * Uploading an image starts here
-		 */
-		if($_FILES['prod_image']['name'] != ""){
-
-			// Set image flag to false first
-			$image_success = false;
-
-			// Image Base and New Names
-			$base_filename = $_FILES['prod_image']['name'];
-			$ext = strrchr($base_filename, ".");
-
-			$base_filename = "product_image" . $ext;
-
-			if($type == "add"){
-
-				$product_image_name = "product_" . $product_id . $ext;
-
-			} else if($type == "edit"){
-
-				$product_image_name = $this->input->post('edit_product_image');
-
+		if(trim($errors) == ''){
+			// Get the Product Id and Image Id to define images names
+			$max_product_id = $this->get_max_product_id();
+			if($max_product_id[0]['id'] == null){
+				$product_id = 1;
+			} else {
+				$product_id = $max_product_id[0]['id'] + 1;
 			}
 
-			// Common config image values
-			$config['upload_path'] = $upload_path; //$config
-			$config['allowed_types'] = ALLOWED_IMG_TYPES;
+			// Image Uploads - Start
 
-			// Small Image Name
-			$config['file_name']= $product_image_name;
+			// Base Upload Path Generally uploads
+			$upload_path = UPLOAD_DIR;
 
-			$this->load->library('upload', $config);
+			// Product's Images Upload path
+			$upload_path .= "/" . PRODUCTS_DIR;
 
-			if ( ! $this->upload->do_upload('prod_image')) {
+			if($type == "add"){
+				$image_success = false;
+			} else if ($type == "edit"){
+				$image_success = true;
+			}
 
-				$errors .= $this->upload->display_errors();
+			/**
+			 * Uploading an image starts here
+			 */
+			if($_FILES['prod_image']['name'] != ""){
 
-			} else {
+				// Set image flag to false first
+				$image_success = false;
 
-				if(trim($errors) == ''){
+				// Image Base and New Names
+				$base_filename = $_FILES['prod_image']['name'];
+				$ext = strrchr($base_filename, ".");
 
-					if ($type == "edit") {
-						// Check for duplicate file name issues and replace the new file with the old file.
-						// ex: assume product_image_name = product_5.gif
-						$addition = substr(strrchr($product_image_name, "_"), 1); // 5.gif
-						$file_ext = strrchr($product_image_name, "."); // .gif
-						$img_id = str_replace($file_ext, "", $addition) . "1"; // 51
-						$custom_file_name = str_replace($addition, $img_id . $file_ext, $product_image_name); // product_51.gif
+				$base_filename = "product_image" . $ext;
+
+				if($type == "add"){
+
+					$product_image_name = "product_" . $product_id . $ext;
+
+				} else if($type == "edit"){
+
+					$product_image_name = $this->input->post('edit_product_image');
+
+				}
+
+				// Common config image values
+				$config['upload_path'] = $upload_path; //$config
+				$config['allowed_types'] = ALLOWED_IMG_TYPES;
+
+				// Small Image Name
+				$config['file_name']= $product_image_name;
+
+				$this->load->library('upload', $config);
+
+				if ( ! $this->upload->do_upload('prod_image')) {
+
+					$errors .= $this->upload->display_errors();
+
+				} else {
+
+					if(trim($errors) == ''){
+
+						if ($type == "edit") {
+							// Check for duplicate file name issues and replace the new file with the old file.
+							// ex: assume product_image_name = product_5.gif
+							$addition = substr(strrchr($product_image_name, "_"), 1); // 5.gif
+							$file_ext = strrchr($product_image_name, "."); // .gif
+							$img_id = str_replace($file_ext, "", $addition) . "1"; // 51
+							$custom_file_name = str_replace($addition, $img_id . $file_ext, $product_image_name); // product_51.gif
+
+							// Change file permission to execlutable one
+							@chmod($upload_path . "/" . $product_image_name, 0775);
+
+							if (file_exists($upload_path . "/" . $custom_file_name)) {
+								rename($upload_path . "/" . $product_image_name, $upload_path . "/" . "_part_" . $product_image_name);
+								rename($upload_path . "/" . $custom_file_name, $upload_path . "/" . $product_image_name);
+							}
+						}
 
 						// Change file permission to execlutable one
 						@chmod($upload_path . "/" . $product_image_name, 0775);
 
-						if (file_exists($upload_path . "/" . $custom_file_name)) {
-							rename($upload_path . "/" . $product_image_name, $upload_path . "/" . "_part_" . $product_image_name);
-							rename($upload_path . "/" . $custom_file_name, $upload_path . "/" . $product_image_name);
+						$thumb_image_upload['image_library'] = 'gd2';
+						$thumb_image_upload['source_image'] =  $upload_path . "/" . $product_image_name;
+						$thumb_image_upload['new_image'] = $upload_path . "/" . THUMBS_DIR . "/" . THUMB_EXT . $product_image_name;
+						$thumb_image_upload['thumb_marker'] = "";
+						$thumb_image_upload['create_thumb'] = FALSE;
+						$thumb_image_upload['maintain_ratio'] = FALSE;
+						$thumb_image_upload['quality']= IMAGE_QUALITY;
+						$thumb_image_upload['width'] = PRODUCT_IMAGE_WIDTH;
+						$thumb_image_upload['height'] = PRODUCT_IMAGE_HEIGHT;
+
+						$this->load->library('image_lib', $thumb_image_upload);
+
+						if (!$this->image_lib->resize())
+						{
+							// unlink $product_image_name
+							unlink($upload_path."/".$product_image_name);
+
+							// Replace the old existing image while edit mode if the thumb fails with the new one.
+							if ($type == "edit" && file_exists($upload_path . "/" . "_part_" . $product_image_name)) {
+								rename($upload_path . "/" . "_part_" . $product_image_name, $upload_path . "/" . $product_image_name);
+							}
+
+							$errors .= $this->image_lib->display_errors();
+
+						} else {
+
+							// Making image success flag true to represent the success.
+							$image_success = true;
+
+							// Change file permission to execlutable one
+							@chmod($upload_path . "/" . THUMBS_DIR . "/" . THUMB_EXT . $product_image_name, 0775);
+
+							// Unlink the old existing image while edit mode if the thumb creation is successful.
+							if ($type == "edit" && file_exists($upload_path . "/" . "_part_" . $product_image_name)) {
+								unlink($upload_path . "/" . "_part_" . $product_image_name);
+							}
+
 						}
-					}
 
-					// Change file permission to execlutable one
-					@chmod($upload_path . "/" . $product_image_name, 0775);
-
-					$thumb_image_upload['image_library'] = 'gd2';
-					$thumb_image_upload['source_image'] =  $upload_path . "/" . $product_image_name;
-					$thumb_image_upload['new_image'] = $upload_path . "/" . THUMBS_DIR . "/" . THUMB_EXT . $product_image_name;
-					$thumb_image_upload['thumb_marker'] = "";
-					$thumb_image_upload['create_thumb'] = FALSE;
-					$thumb_image_upload['maintain_ratio'] = FALSE;
-					$thumb_image_upload['quality']= IMAGE_QUALITY;
-					$thumb_image_upload['width'] = PRODUCT_IMAGE_WIDTH;
-					$thumb_image_upload['height'] = PRODUCT_IMAGE_HEIGHT;
-
-					$this->load->library('image_lib', $thumb_image_upload);
-
-					if (!$this->image_lib->resize())
-					{
-						// unlink $product_image_name
-						unlink($upload_path."/".$product_image_name);
-
-						// Replace the old existing image while edit mode if the thumb fails with the new one.
-						if ($type == "edit" && file_exists($upload_path . "/" . "_part_" . $product_image_name)) {
-							rename($upload_path . "/" . "_part_" . $product_image_name, $upload_path . "/" . $product_image_name);
-						}
-
-						$errors .= $this->image_lib->display_errors();
-
-					} else {
-
-						// Making image success flag true to represent the success.
-						$image_success = true;
-
-						// Change file permission to execlutable one
-						@chmod($upload_path . "/" . THUMBS_DIR . "/" . THUMB_EXT . $product_image_name, 0775);
-
-						// Unlink the old existing image while edit mode if the thumb creation is successful.
-						if ($type == "edit" && file_exists($upload_path . "/" . "_part_" . $product_image_name)) {
-							unlink($upload_path . "/" . "_part_" . $product_image_name);
-						}
+						// unlink base_small_filename
+						// unlink($upload_path."/".$base_filename);
 
 					}
+				}
 
-					// unlink base_small_filename
-					// unlink($upload_path."/".$base_filename);
-
+			} else {
+				if($image_success){
+					if($type == "edit"){
+						$product_image_name = $this->input->post('edit_product_image');
+					}
 				}
 			}
-
-		} else {
-			if($image_success){
-				if($type == "edit"){
-					$product_image_name = $this->input->post('edit_product_image');
-				}
-			}
+			/**
+			 * Uploading an image ends here.
+			 */
 		}
-		/**
-		 * Uploading an image ends here.
-		 */
 
 		if(trim($errors) == "" && $image_success) {
 
