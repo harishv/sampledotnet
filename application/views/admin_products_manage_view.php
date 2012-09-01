@@ -79,6 +79,11 @@ $(document).ready(function() {
         return element.files[0].size <= param;
      }, jQuery.validator.messages.filesize );
 
+	$('#prod_image').change(function () {
+		$('#prod_image').removeAttr('name');
+		$('#prod_image').attr('name', 'prod_image');
+	});
+
 });
 
 
@@ -195,6 +200,9 @@ $(document).ready(function() {
 												);
 							echo img($image_properties); ?>
 							<input type='hidden' id='edit_product_image' name='edit_product_image' value='<?php echo $product["image"]; ?>' />
+							<script type="text/javascript">
+								$('#prod_image').attr('name', 'prod_image_edit');
+							</script>
 					<?php } ?>
 				</div>
 			</div>
