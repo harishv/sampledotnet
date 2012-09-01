@@ -9,6 +9,7 @@ class Products extends CI_Controller {
 		// Load necessary stuff..
 		$this->load->model('Admin_Products_Model');
 		$this->load->model('Common_Model');
+		$this->load->model('Validate');
 
 		// Check if admin is Logged In - Else redirect to admin-login page
 		if(!$this->user_status->admin_is_signed_in()){

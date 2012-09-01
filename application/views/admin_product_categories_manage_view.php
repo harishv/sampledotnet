@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.validate.js"></script>
+<!-- <script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.validate.js"></script> -->
 
 <link rel="stylesheet" type="text/css" media="screen"
 	href="<?php echo base_url(); ?>css/bootstrap-transfer.css" />
@@ -22,7 +22,88 @@
 			}
 		});
 
+		$('#prod_cat_name').blur(function () {
+			validate_category_name();
+		});
+
+		$('.prod_cat_choice').blur(function () {
+			validate_category_choice();
+		});
+
+		$('#prod_parent_category_id').change(function () {
+			validate_parent_category();
+		});
+
 	} );
+
+	function validate_category_form () {
+		validate_category_name();
+		validate_category_choice();
+
+		var prod_cat_choice = $('.prod_cat_choice:checked').val();
+
+		if (prod_cat_choice == 'child') {
+			validate_parent_category();
+		} else {
+			$('#prod_parent_category_error').html('');
+		}
+
+		var prod_cat_name_error =	$('#prod_cat_name_error').html();
+		var prod_cat_choice_error =	$('#prod_cat_choice_error').html();
+		var prod_parent_category_error = $('#prod_parent_category_error').html();
+
+		if ($.trim(prod_cat_name_error) === '' && $.trim(prod_cat_choice_error) === '') {
+			if (prod_cat_choice == 'child') {
+				if ($.trim(prod_parent_category_error) !== '') {
+					// alert('false');
+					return false;
+				}
+			}
+			// alert('true');
+			return true;
+		}
+
+		return false;
+	}
+
+	function validate_category_name () {
+		var prod_cat_name = $.trim($('#prod_cat_name').val());
+
+		if (prod_cat_name === undefined || prod_cat_name == null || prod_cat_name === '') {
+			$('#prod_cat_name_error').html('Category Name is a required field.');
+			$('#prod_cat_name').parent("div").parent("div").removeClass("success").addClass("error");
+		} else {
+			$('#prod_cat_name_error').html('');
+			$('#prod_cat_name').parent("div").parent("div").removeClass("error").addClass("success");
+		}
+
+	}
+
+	function validate_category_choice () {
+		var prod_cat_choice = $.trim($('.prod_cat_choice:checked').val());
+
+		if (prod_cat_choice === undefined || prod_cat_choice == null || prod_cat_choice === '') {
+			$('#prod_cat_choice_error').html('Please select a Category choice.');
+			$('#prod_cat_choice_error').parent("div").parent("div").removeClass("success").addClass("error");
+		} else {
+			$('#prod_cat_choice_error').html('');
+			$('#prod_cat_choice_error').parent("div").parent("div").removeClass("error").addClass("success");
+		}
+
+	}
+
+	function validate_parent_category () {
+		var prod_parent_category_id = $.trim($('#prod_parent_category_id').val());
+
+		if (prod_parent_category_id === undefined || prod_parent_category_id == null || prod_parent_category_id === '') {
+			$('#prod_parent_category_error').html('Please select a Parent Category.');
+			$('#prod_parent_category_error').parent("div").parent("div").removeClass("success").addClass("error");
+		} else {
+			$('#prod_parent_category_error').html('');
+			$('#prod_parent_category_error').parent("div").parent("div").removeClass("error").addClass("success");
+		}
+
+	}
 
 </script>
 
@@ -54,7 +135,7 @@
 			<?php } ?>
 
 			<?php
-				$attributes = array ("class" => "form-horizontal", "id" => "prod_cat_manage_form", "name" => "prod_cat_manage_form");
+				$attributes = array ("class" => "form-horizontal", "id" => "prod_cat_manage_form", "name" => "prod_cat_manage_form", "onsubmit" => "return validate_category_form()");
 				$action = ADMINFOLDER . "/products/prod_cat_manage_action";
 
 				if ($set) {
@@ -73,7 +154,7 @@
 				<div class="controls">
 					<input type="text" class="input-xlarge" id="prod_cat_name" name="prod_cat_name"
 						placeholder="<?php echo $this->lang->line('admin_prod_cat_mng_prod_name_ph'); ?>" value="<?php echo ($set)? $this->Common_Model->clear_string($category["prod_cat_name"]) : ""; ?>" />
-					<!-- <p class="help-block">example: admin@admin.com</p> -->
+					<span class="help-inline" id="prod_cat_name_error"></span>
 				</div>
 			</div>
 
@@ -89,6 +170,7 @@
 						<input type="radio" class="prod_cat_choice" value="child" name="prod_cat_choice" <?php if(isset($category) && $category["parent_cat_id"] != 0) echo 'checked="checked"'; ?>>
 						Sub-Category
 					</label>
+					<span class="help-inline" id="prod_cat_choice_error" style="vertical-align: bottom;"></span>
 				</div>
 			</div>
 
@@ -109,6 +191,7 @@
 								<option value="<?php echo $parent_category['id']; ?>" <?php echo $selected; ?>><?php echo $parent_category['prod_cat_name']; ?></option>
 						<?php } ?>
 					</select>
+					<span class="help-inline" id="prod_parent_category_error"></span>
 				</div>
 			</div>
 
