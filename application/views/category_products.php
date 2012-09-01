@@ -1,8 +1,15 @@
+<?php 
+if(!$render){
+
+?>
 <script>
 var base_url = "<?php echo base_url();?>";/* global variable for the root path */
 
 </script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/category.js"></script>
+<div id="replace"><!-- for the refreshing issue  start-->
+<?php }?>  
+
 
       <!-- Begin main-content div -->
       <div class="flt-l wid_100" id="main-content">
@@ -46,8 +53,8 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
         <!-- Begin Samples here -->
         <div class="samples">
           <img src="<?php echo base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
-          <a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><?php $image_properties = array('src' => PROD_THUMB_IMG_PATH.'thumb_'.$product_values['image'],'alt' => $product_values['name'],'class'=>'small');
-                echo img($image_properties);?><a/>
+          
+          <a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$product_values['image'];?>"  width ='54' height ='63' class='small'/>
           <p class="pdg_10px"> <a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><strong><?php echo $product_values['name'];?></strong></a>
             <br/><?php echo $product_values['description'];?>
           </p>
@@ -236,4 +243,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
         </div>
         <!-- End main-content div -->
       </div>
+<?php if(!$render){ ?>
+</div><!-- for the refreshing issue  end-->
+<?php } ?>
     
