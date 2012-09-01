@@ -41,7 +41,8 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
             <div class="sample mgn-15b">
               <p class="head mgn-15b"> <span class="mgn-10l"><?php echo $product_details[0]['name'];?></span></p>
              <div class="computers">
-              <?php $image_properties = array('src' => PROD_IMG_PATH.$product_details[0]['image']);echo img($image_properties);?>
+              <?php //$image_properties = array('src' => PROD_IMG_PATH.$product_details[0]['image']);echo img($image_properties);?>
+              <img src="<?php echo base_url().PROD_IMG_PATH.$product_details[0]['image'];?>" width='215' height='215' />
               <p>
               <strong><?php echo $product_details[0]['name'];?></strong><br>
              <?php echo $product_details[0]['description'];?><br><br>

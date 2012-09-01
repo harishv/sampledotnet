@@ -7,8 +7,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 
 </script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/category.js"></script>
-<div id="replace"><!-- for the refreshing issue  start-->
-<?php }?>  
+
 
 
 <!-- Begin main-content div -->
@@ -16,7 +15,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 	<!-- Begin content div -->
 	<div id="content" class="flt-l">
 		<div class="hgt-15px wid_100"></div>
-		<span class="small flt-r pdg_15px">Updated 4 hours ago</span>
+		<span class="small flt-r pdg_15px"><?php echo "Updated ".$product_updated." ago";?></span>
 		<h1>Featured Samples</h1>
 		<span class="bdr-btm"></span>
 		<div class="hgt-15px"></div>
@@ -33,10 +32,13 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 						foreach ($featured_products as $featured_products_key=>$featured_products_values){ ?>
 				<li>
 					<a href="#" class="current">
-						<a href="<?php echo base_url().'product/product_detail/'.$featured_products_values['id'];?>"><?php $image_properties = array('src' => PROD_THUMB_IMG_PATH.'thumb_'.$featured_products_values['image'],'alt' => $featured_products_values['name'],'class'=>'small');
-								echo img($image_properties);?>
+						
+								
+							 
+							<a href="<?php echo base_url().'product/product_detail/'.$featured_products_values['id'];?>"><img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$featured_products_values['image'];?>" alt="Huggies" width ='86' height ='98'/>
+						
 						<br />
-						<?php echo $featured_products_values['name'];?>
+						<?php $featured_short_desc = substr($featured_products_values['name'],0,8); if(strlen($featured_products_values['name']) > 12) echo $featured_short_desc."..."; else echo $featured_products_values['name']; ?>
 					</a>
 				</li>
 				<?php } } ?>
@@ -62,6 +64,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 								foreach($category as $cat_id=>$cat_values){ ?>
 					<li>
 						<a href="<?php echo base_url().'category/get_category_product/'.$cat_values['id'];?>"><?php echo $cat_values['prod_cat_name'];?></a>
+
 					</li>
 					<?php } } ?>
 					
@@ -79,20 +82,21 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 					<img src="<?php echo base_url(); ?>img/time-icon.png" alt="time" class="flt-l mgn-10l mgn-r" />
 					Today's Free Samples <em>We have 127 Free Coupons for you today</em>
 				</p>
-
+				<div id="replace"><!-- for the refreshing issue  start-->
+						<?php }?>  
 				<?php if(isset($product) && $product!=''){
 						foreach ($product as $product_key=>$product_values){ ?>
 				<!-- Begin Samples here -->
 				<div class="samples">
 					<img src="<?php echo base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
 					
-					<a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><?php $image_properties = array('src' => PROD_THUMB_IMG_PATH.'thumb_'.$product_values['image'],'alt' => $product_values['name'],'class'=>'small');
-								echo img($image_properties);?><a/>
+						<a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$product_values['image'];?>"  width ='54' height ='63' class='small'/>
 					<p class="pdg_10px"> <a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><strong><?php echo $product_values['name'];?></strong></a>
 						<br/><?php  $short_desc = substr($product_values['description'],0,50); if(strlen($product_values['description']) > 50) echo $short_desc."..."; else echo $product_values['description'];?>
 					</p>
 					<br />
 
+					
 
 					<div class="star" id="ratings">
 						<?php 
@@ -116,6 +120,8 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 						?>
 						
 					</div>
+					
+					
 
 					<div class="clear"></div>
 					<a  class="grab flt-r" href="<?php echo $product_values['grab_url'];?>">grab it now!</a>
@@ -149,7 +155,6 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 				
 				
 				
-				
 			<div class="pages">
 				<!--<a href="#">&lt;</a>
 					<a href="#">1</a>
@@ -166,6 +171,9 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 					<a href="#">&gt;</a>  -->
 					<?php echo $this->pagination->create_links();?>
 				</div> 
+				<?php if(!$render){ ?>
+						</div><!-- for the refreshing issue  end-->
+				
 				<!-- End sample here -->
 			</div>
 			<!-- Begin tabs here -->
@@ -277,6 +285,5 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 	</div>
 	<!-- End main-content div -->
 </div>
-<?php if(!$render){ ?>
-</div><!-- for the refreshing issue  end-->
+
 <?php } ?>
