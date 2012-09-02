@@ -31,8 +31,11 @@
 </div>
 <div id="boxes">
 <div id="dialog" class="window">
+
 <div id="lr-box" >
+
  <div class="top-bg">
+ 	<a href="#"class="close"/><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
   <div class="txt-1">Login here!</div>
   <div class="txt-2">or Sign in with </div>
  </div><!-- top-bg -->
@@ -60,6 +63,7 @@
 <div id="register" class="window">
 <div id="lr-box-reg">
  <div class="top-bg">
+ 	<a href="#"class="close"/><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
   <div class="txt-1">New User? Sign Up</div>
   <div class="txt-2">or Sign in with </div>
  </div><!-- top-bg -->
@@ -79,7 +83,7 @@
   </div><!-- form-box --><br>
   <div class="login-box">
    <input type="submit" value="Login">
-   <a style="width:180px;" href="#">Already have an account? Login!</a>
+   <a style="width:180px;" href="#dialog" name="modal" class='iframe'>Already have an account? Login!</a>
   </div>
   <a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a>
   </div><!-- middle-bg -->
