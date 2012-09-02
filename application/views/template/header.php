@@ -1,5 +1,6 @@
 <?php error_reporting(E_ALL); ?>
 <?php echo doctype('html5'); ?>
+<html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title><?php echo $this->lang->line("title"); ?></title>

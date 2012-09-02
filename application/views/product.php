@@ -1,3 +1,12 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <script type="text/javascript">var switchTo5x=false;</script>
 
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -105,9 +114,11 @@ You will also receive periodic <a class="email" href="#">emails and special offe
                 <span class='st_email_button' displayText='Email'></span>
               </div>
               <div class="hgt-15px wid_100"></div>
-              <img alt="social" src="<?php echo base_url().'img/social2.jpg';?>">
+              <!-- <img alt="social" src="<?php echo base_url().'img/social2.jpg';?>"> -->
+              <div class="hgt-15px wid_100">
+                &nbsp;<fb:like href="<?php echo base_url()."/product/product_detail/".$product_details[0]['id'];?>" send="true" width="450" show_faces="true"></fb:like>
+              </div>
               <div class="hgt-15px wid_100"></div>
-
               </div>
               <!-- End sample here -->
             </div>
