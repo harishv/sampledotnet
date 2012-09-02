@@ -42,6 +42,8 @@ $(document).ready(function() {
 		
 		//Get the A tag
 		var id = $(this).attr('href');
+
+
 	
 		//Get the screen height and width
 		var maskHeight = $(document).height();
@@ -68,6 +70,14 @@ $(document).ready(function() {
 		$(id).fadeIn(2000); 
 	
 	});
+	$('.window .close').click(function (e) {
+		//Cancel the link behavior
+		e.preventDefault();
+		
+		$('#mask').hide();
+		$('.window').hide();
+	});	
+	
 });
 
 </script>
