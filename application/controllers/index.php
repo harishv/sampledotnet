@@ -32,7 +32,9 @@ class Index extends CI_Controller {
 
 		$this->pagination->initialize($config);
 		$data['category'] = $this->category_model->get_category();
+
 		$data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
+		
 		$data['featured_products'] = $this->category_model->get_featured_products();
 		$data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
 
@@ -52,7 +54,7 @@ class Index extends CI_Controller {
 
 
 		
-		$config1['base_url'] = base_url().'index/get_category_product/'.$cat_id;
+		$config1['base_url'] = base_url().'category/get_category_product/'.$cat_id;
 		$config1['total_rows'] = $this->category_model->getCount($cat_id);
 		$config1['per_page'] = 2;
 		$config1['cur_tag_open']  ='<a class="current">';
@@ -79,7 +81,7 @@ class Index extends CI_Controller {
 		$product_id = $this->input->post('prod_id');
 		$rating_vote = $this->input->post('vote_value');
 		$rating = $this->category_model->insert_rating($product_id, $rating_vote);
-		/*$data = array();
+		$data = array();
 
 		$id = $var;
 
@@ -99,12 +101,14 @@ class Index extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['category'] = $this->category_model->get_category();
 		$data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
+		$data['featured_products'] = $this->category_model->get_featured_products();
+		$data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
 		$data['slider'] = $this->load->view('slider', $data, TRUE);
 
-		$data['render'] = true;*/
+		$data['render'] = true;
 		
 		if(is_bool($rating)){
-			//$return['page'] = $this->load->view('index_view',$data,TRUE);
+			$return['page'] = $this->load->view('index_view',$data,TRUE);
 			$return['status'] = 'succuss';
 			echo json_encode($return);exit;
 		}

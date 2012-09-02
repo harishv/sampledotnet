@@ -12,15 +12,68 @@ class Category_Model extends CI_Model {
 	// This function is for checking the posted login values with the database table
 	function get_category(){
 
-		$cat = array();
+		$result = array();
 		$sub_cat = array();
-		$category = array();
+		$category_result = array();
 		$this->db->select('*');
 		$this->db->from('prod_categories');
 		$this->db->where('parent_cat_id',0);
 		$this->db->where('status_id', 1); // status_id = 1 resembles Active
 
 		$result = $this->db->get();
+
+
+		/*$query_cat = $this->db->query("select * from prod_categories where parent_cat_id = 0 and status_id = 1");
+		if($query_cat->num_rows() > 0){
+
+			$cat_result = $query_cat->result_array();
+
+			//echo "<pre>";print_r($cat_result);
+		//}
+
+		//if(isset($cat_result) && $cat_result!=''){
+			foreach($cat_result as $sub_cat_key => $sub_cat_values){
+
+				$query_sub_cat = $this->db->query("select * from prod_categories where parent_cat_id = ". $sub_cat_values['id']." and status_id = 1");
+				
+				if($query_sub_cat->num_rows() > 0){
+				$sub_cat_result['sub_cat'][] = $query_sub_cat->result_array();
+				}
+			}
+		}
+
+		//exit;
+		$result = array_merge($cat_result , $sub_cat_result);
+
+		
+
+		return $result;
+
+
+		$data = array();
+     $this->db->select('*');
+     $this->db->where('status_id', 1);
+    $this->db->from('prod_categories');
+     $this->db->groupby('parent_cat_id,id');
+     $Q = $this->db->get('prod_categories');
+     echo $this->db->last_query();
+     exit;
+     if ($Q->num_rows() > 0){
+       foreach ($Q->result() as $row){
+			if ($row->parentid > 0){
+				$data[0][$row->parentid]['children'][$row->id] = $row->name;
+			
+			}else{
+				$data[0][$row->id]['name'] = $row->name;
+			}
+		}
+    }
+    $Q->free_result(); 
+    return $data; 
+
+
+		//return $sub_cat_result;*/
+
 
 		
 
@@ -35,6 +88,46 @@ class Category_Model extends CI_Model {
 		return false;
 
 
+	}
+
+	public function get_sub_cat($id){
+
+		$this->db->select('*');
+		$this->db->from('prod_categories');
+		$this->db->where('parent_cat_id',$id);
+		$this->db->where('status_id', 1); // status_id = 1 resembles Active
+		
+		$result = $this->db->get();
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			return $result->result_array();
+		}
+
+		return false;
+
+	}
+
+	public function get_bread_crums($id){
+
+		$result = array();
+		$query = $this->db->query("select prod_cat_name as sub_cat_name ,parent_cat_id from prod_categories where id=". $id);
+		if ($query->num_rows() > 0){
+		   $row = (array)$query->row(); 
+		}
+		
+			$query_cat_name = $this->db->query("select prod_cat_name as cat_name from prod_categories where id = ". $row['parent_cat_id']);
+			if ($query_cat_name->num_rows() > 0){
+			   $row_cat = (array)$query_cat_name->row(); 
+			}else
+			$row_cat = array('cat_name' =>'');
+
+			$result = array_merge($row , $row_cat);
+			
+			return $result;
+		
+		
 	}
 
 	// get inital product based on the modified date

@@ -32,14 +32,11 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 						foreach ($featured_products as $featured_products_key=>$featured_products_values){ ?>
 				<li>
 					<a href="#" class="current">
-						
-								
-							 
-							<a href="<?php echo base_url().'product/product_detail/'.$featured_products_values['id'];?>"><img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$featured_products_values['image'];?>" alt="Huggies" width ='86' height ='98'/>
-						
+						<a href="<?php echo base_url().'product/product_detail/'.$featured_products_values['id'];?>"><img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$featured_products_values['image'];?>" alt="Huggies" width ='86' height ='98'/>
 						<br />
 						<?php $featured_short_desc = substr($featured_products_values['name'],0,8); if(strlen($featured_products_values['name']) > 12) echo $featured_short_desc."..."; else echo $featured_products_values['name']; ?>
 					</a>
+					
 				</li>
 				<?php } } ?>
 			</ul>
@@ -61,11 +58,23 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 				
 				<ul>
 					<?php if(isset($category) && $category !=''){
-								foreach($category as $cat_id=>$cat_values){ ?>
+								foreach($category as $cat_id=>$cat_values){ 
+									$sub_cat = $this->category_model->get_sub_cat($cat_values['id']);?>
 					<li>
-						<a href="<?php echo base_url().'category/get_category_product/'.$cat_values['id'];?>"><?php echo $cat_values['prod_cat_name'];?></a>
-
-					</li>
+						
+						<a href="<?php if($sub_cat =='')echo base_url().'category/get_category_product/'.$cat_values['id']; else echo "#";?>"><?php echo $cat_values['prod_cat_name'];?></a>
+						
+					
+					<?php  if(isset($sub_cat) && $sub_cat !=''){ ?> 
+							<ol>
+								<?php foreach($sub_cat as $sub_cat_id=>$sub_cat_values){ ?>
+								
+									<li> <a href="<?php echo base_url().'category/get_category_product/'.$sub_cat_values['id'];?>"><?php echo $sub_cat_values['prod_cat_name'];?></a> </li>
+								
+						<?php 	} ?>
+						</ol>	
+							<?php } ?>
+							</li>
 					<?php } } ?>
 					
 				</ul>

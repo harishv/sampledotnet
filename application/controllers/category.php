@@ -29,10 +29,12 @@ class Category extends CI_Controller {
 		
 
 		$data['product'] = $this->category_model->get_products($cat_id,$id,$config1['per_page']);
+		$data['bread_crum'] = $this->category_model->get_bread_crums($cat_id);
+		
 
 		
 		
-
+		$data['render'] = false;
 		$data['category'] = $this->category_model->get_category();
 		$this->load->view("template/header");
 		$this->load->view("category_products",$data);

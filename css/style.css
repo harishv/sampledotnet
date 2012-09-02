@@ -78,10 +78,41 @@ select option { width:100%; float:left }
 
 /* categories */
 .categories { width:100%; float:left }
-.categories ul { float:left; width:100%; }
+.categories ul { float:left; width:100%; position:relative;}
 .categories ul li { border-bottom:1px solid #ebebeb; float:left; width:100%; }
-.categories ul li a { text-decoration:none; padding:5px 0 5px 20px; color:#666666; float:left }
-.categories ul li a:hover { color:#000001 }
+.categories ul li a { text-decoration:none; padding:5px 0 5px 20px; color:#666666; width:89%; float:left }
+.categories ul li a:hover { color:#000001; background-color:#37ade8; display:block; width:89%;}
+.categories ul li a.active{background-color:#37ade8; color:#000001;}
+
+.categories ul li ol{
+ width:135px;
+ min-height:200px;
+ background-color:#37ade8;
+ position:absolute;
+ left:178px;
+ z-index:999;
+ top:26px;
+ display:none;
+ padding-bottom:5px;
+}
+.categories ul li ol li{
+ width:135px;
+ padding:5px 0px 0px 15px;
+ border:none;
+ background:url(../img/arrow.png) no-repeat 6px 9px;
+}
+.categories ul li ol li a{
+ padding:0px;
+ margin:0px;
+ font-size:11px;
+ font-family:Arial, Helvetica, sans-serif;
+ color:#FFFFFF;
+ width:89%;
+}
+.categories ul li:hover ol{
+ display:block;
+}
+
 /* ================================================================== */
 
 /* samples */

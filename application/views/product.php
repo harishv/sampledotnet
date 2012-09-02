@@ -17,12 +17,24 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
               <ul>
                 
                 <?php if(isset($category) && $category !=''){
-                        foreach($category as $cat_id=>$cat_values){ ?>
-                <li><a href="<?php echo base_url().'category/get_category_product/'.$cat_values['id'];?>"><?php echo $cat_values['prod_cat_name'];?></a></li>
-                <?php } }else{
-
-                  echo "No Products are avaiable";
-                }?>
+                foreach($category as $cat_id=>$cat_values){ 
+                  $sub_cat = $this->category_model->get_sub_cat($cat_values['id']);?>
+          <li>
+            
+            <a href="<?php if($sub_cat =='')echo base_url().'category/get_category_product/'.$cat_values['id']; else echo "#";?>"><?php echo $cat_values['prod_cat_name'];?></a>
+            
+          
+          <?php  if(isset($sub_cat) && $sub_cat !=''){ ?> 
+              <ol>
+                <?php foreach($sub_cat as $sub_cat_id=>$sub_cat_values){ ?>
+                
+                  <li> <a href="<?php echo base_url().'category/get_category_product/'.$sub_cat_values['id'];?>"><?php echo $sub_cat_values['prod_cat_name'];?></a> </li>
+                
+            <?php   } ?>
+            </ol> 
+              <?php } //else echo "No Product Avaiable";?>
+              </li>
+          <?php } } //else echo "No Product Avaiable";?>
 
                 
               </ul>
@@ -34,7 +46,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
           <!-- Begin column 2 -->
           <div class="col-2 flt-l">
           <p class="links">
-          Home <img alt="blue" src="images/blue-bullet.jpg"> Computers <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>"> Kids  Computers
+          Home <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>"><?php if(isset($bread_crum) && $bread_crum !='')echo $bread_crum['cat_name'];?> <?php if($bread_crum['cat_name'] !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') echo $bread_crum['sub_cat_name'];?>
           </p>
          
             <!-- Begin sample here -->

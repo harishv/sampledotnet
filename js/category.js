@@ -13,7 +13,8 @@ function prod_rating(id,count){
 			if(res.status == 'succuss'){
 
 				 //$('#ratings').html();
-				window.location =baseurl;
+				 $("#replace").html(res.page);
+				//window.location =baseurl;
 			}
 		 }
 		});
