@@ -43,7 +43,9 @@ $(document).ready(function() {
 		
 		//Get the A tag
 		var id = $(this).attr('href');
-
+		
+		if($('#dialog').css("display")=="block"){$('#dialog').css("display","none");}
+		if($('#register').css("display")=="block"){$('#register').css("display","none");}  
 
 	
 		//Get the screen height and width

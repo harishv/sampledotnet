@@ -499,5 +499,16 @@ p {
 	margin: 12px 11px 0 0;
 }
 
+#errors_data, #errors_data p, .errors_data {
+    color: Red;
+}
+#success_data, #success_data p, .success_data {
+    color: green;
+}
+.sucuss_data{
+  color: green;
+}
+
+
 
 
