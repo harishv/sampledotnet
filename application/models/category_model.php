@@ -109,10 +109,10 @@ class Category_Model extends CI_Model {
 
 	}
 
-	public function get_bread_crums($id){
+	public function get_bread_crums($id = 0){
 
 		$result = array();
-		$query = $this->db->query("select prod_cat_name as sub_cat_name ,parent_cat_id from prod_categories where id=". $id);
+		$query = $this->db->query("select prod_cat_name as sub_cat_name, parent_cat_id from prod_categories where id = ". intval($id));
 		if ($query->num_rows() > 0){
 		   $row = (array)$query->row(); 
 		}

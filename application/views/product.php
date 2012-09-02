@@ -123,74 +123,30 @@ You will also receive periodic <a class="email" href="#">emails and special offe
               <!-- End sample here -->
             </div>
             <!-- Begin comments here -->
-            <div class="comment"><p class="flt-r">
-            <a href="#"><img class="flt-l" alt="facebook" src="<?php echo base_url().'img/facebook-login.jpg';?>"></a>
-            <span class="flt-l">or</span>
-            <a href="#"><img alt="login" src="<?php echo base_url().'img/login.jpg';?>"></a>
-
-            </p>
-            <h3>Enter your comments</h3>
-            <textarea class="clear mgn-15b" rows="3"></textarea>
+            <!-- Facebook Comments Section -->
+            <fb:comments href="<?php echo base_url()."/product/product_detail/".$product_details[0]['id'];?>" num_posts="3" width="540"></fb:comments>
             <!-- End comments here -->
-            </div>
-            <!-- comments -->
-            <div class="comments">
-            <img alt="img" src="<?php echo base_url().'img/img-comment.jpg';?>">
-            <p>
-            <strong class="mgn-r">James JH   </strong> <strong class="mgn-r">|</strong>  <span>4 hours ago</span><br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam, nisl in lacinia imperdiet, nisl turpis tristique neque, eu feugiat risus enim ac ipsum. Ut ultricies lectus venenatis tortor.
-            </p>
-            </div>
-            <!-- comments -->
-            <div class="comments">
-            <img alt="img" src="<?php echo base_url().'img/img-comment.jpg';?>">
-            <p>
-            <strong class="mgn-r">James JH   </strong> <strong class="mgn-r">|</strong>  <span>4 hours ago</span><br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam, nisl in lacinia imperdiet, nisl turpis tristique neque, eu feugiat risus enim ac ipsum. Ut ultricies lectus venenatis tortor.
-            </p>
-            </div>
-            <!-- comments -->
-            <div class="comments">
-            <img alt="img" src="<?php echo base_url().'img/img-comment.jpg';?>">
-            <p>
-            <strong class="mgn-r">James JH   </strong> <strong class="mgn-r">|</strong>  <span>4 hours ago</span><br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam, nisl in lacinia imperdiet, nisl turpis tristique neque, eu feugiat risus enim ac ipsum. Ut ultricies lectus venenatis tortor.
-            </p>
-            </div>
             <!-- Begin tabs here -->
             <div class="tabs">
               <ul>
-                <li><a class="current" href="#">Beauty</a></li>
-                <li><a href="#">Health</a></li>
-                <li><a href="#">Kids</a></li>
-                <li><a href="#">Pets</a></li>
-                <li class="last"><a href="#">Games</a></li>
+                <li>
+                  <a href="#" class="current">Beauty</a>
+                </li>
+                <li>
+                  <a href="#">Health</a>
+                </li>
+                <li>
+                  <a href="#">Kids</a>
+                </li>
+                <li>
+                  <a href="#">Pets</a>
+                </li>
+                <li class="last">
+                  <a href="#">Games</a>
+                </li>
               </ul>
-              <p> <span class="hgt-15px wid_100"></span> <img alt="huggies" src="<?php echo base_url().'img/huggies1.jpg';?>"><br>
-                <span class="hgt-8px wid_100"></span> <strong>Ketchup &amp; Jams</strong><br>
-                When you buy one bag
-                M&amp;M’S Brand Pretzel
-                Chocolate Candies
-                (9.9 oz. or larger). </p>
-              <p> <span class="hgt-15px wid_100"></span> <img alt="horlicks" src="<?php echo base_url().'img/horlicks.jpg';?>"><br>
-                <span class="hgt-15px wid_100"></span> <span class="hgt-8px wid_100"></span> <strong>Ketchup &amp; Jams</strong><br>
-                When you buy one bag
-                M&amp;M’S Brand Pretzel
-                Chocolate Candies
-                (9.9 oz. or larger). </p>
-              <p> <img alt="barbosol" src="<?php echo base_url().'img/barbosol.jpg';?>"><br>
-                <strong>Ketchup &amp; Jams</strong><br>
-                When you buy one bag
-                M&amp;M’S Brand Pretzel
-                Chocolate Candies
-                (9.9 oz. or larger). </p>
-              <p class="last"> <img alt="coke" src="<?php echo base_url().'img/coke.jpg';?>"><br>
-                <span class="hgt-15px wid_100"></span> <strong>Ketchup &amp; Jams</strong><br>
-                When you buy one bag
-                M&amp;M’S Brand Pretzel
-                Chocolate Candies
-                (9.9 oz. or larger). </p>
-            <iframe class="playground" src="slider.html"></iframe>
+
+              <?php echo $slider;?>
               <!-- End tabs here -->
             </div>
             <!-- End column 2 -->
@@ -209,9 +165,15 @@ You will also receive periodic <a class="email" href="#">emails and special offe
           <ul class="btn">
             <li><a href="#"><img alt="share a sample" src="<?php echo base_url().'img/share-a-sample.png';?>"></a></li>
           </ul>
-          <p class="free-sample"> <img class="flt-r" alt="gift" src="images/gift.png"> Get free samples<br>
+          <p class="free-sample">
+            <?php $image_properties = array('src' => 'img/gift.png','alt' => 'gift','class'=>'flt-r');
+                echo img($image_properties);?>
+                Get free samples<br />
             0n <strong>Facebook</strong><br>
-            <a href="#"><img alt="like" src="images/like.jpg"></a> </p>
+            <a href="#">
+              <?php $image_properties = array('src' => 'img/like.jpg','alt' => 'like');
+                echo img($image_properties);?>
+              </a> </p>
           <ul class="btn">
             <li><a href="#"><img alt="follow us on twitter" src="<?php echo base_url().'img/follow-twitter.png';?>"></a></li>
             <li><a href="#"><img alt="add to circles" src="<?php echo base_url().'img/add-to-circles.png';?>"></a></li>
@@ -230,4 +192,3 @@ You will also receive periodic <a class="email" href="#">emails and special offe
         <!-- End main-content div -->
       </div>
       <!-- End inner wrapper div -->
-

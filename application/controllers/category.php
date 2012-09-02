@@ -32,6 +32,7 @@ class Category extends CI_Controller {
 		$data['bread_crum'] = $this->category_model->get_bread_crums($cat_id);
 		
 
+		$data['slider'] = $this->load->view('slider', $data, TRUE);
 		
 		
 		$data['render'] = false;

@@ -10,6 +10,10 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 <div id="replace"><!-- for the refreshing issue  start-->
 <?php }?>  
 
+<script type="text/javascript">var switchTo5x=false;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "18f4acdf-af25-4d39-b663-78b081a6f60e"}); </script>
+
 
       <!-- Begin main-content div -->
       <div class="flt-l wid_100" id="main-content">
@@ -95,23 +99,10 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
           <div class="clear"></div>
           <a class="grab flt-r">grab it now!</a>
           <div class="social clear">
-            <a href="#">
-              <?php $image_properties = array('src' => 'img/facebook.jpg','alt' => 'facebook');
-                echo img($image_properties);?>
-              
-            </a>
-            <a href="#">
-              
-              <?php $image_properties = array('src' => 'img/skype.jpg','alt' => 'skype');
-                echo img($image_properties);?>
-            </a>
-            <span class="share">
-              <a href="#">
-                <?php $image_properties = array('src' => 'img/share.jpg','alt' => 'share','class'=>'flt-r');
-                echo img($image_properties);?>
-                
-              </a>
-            </span>
+            <span class='st_facebook'></span>
+            <span class='st_twitter'></span>
+            <span class='st_googleplus'></span>
+            <span class='st_sharethis'></span>
           </div>
           <!-- End Samples here -->
         </div>
@@ -122,60 +113,34 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
                 }?>
 
                 <div class="pages">
-        <!--<a href="#">&lt;</a>
-          <a href="#">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#" class="current">4</a>
-          <a href="#">5</a>
-          <span class="more">
-            <strong>&hellip;</strong>
-          </span>
-          <a href="#">10</a>
-          <a href="#">20</a>
-          <a href="#">30</a>
-          <a href="#">&gt;</a>  -->
-          <?php echo $this->pagination->create_links();?>
-        </div> 
+                  <?php echo $this->pagination->create_links();?>
+                </div> 
         <!-- End sample here -->
       </div>
 
-        
-            <div class="tabs">
-              <ul>
-                <li><a class="current" href="#">Beauty</a></li>
-                <li><a href="#">Health</a></li>
-                <li><a href="#">Kids</a></li>
-                <li><a href="#">Pets</a></li>
-                <li class="last"><a href="#">Games</a></li>
-              </ul>
-              <p> <span class="hgt-15px wid_100"></span> <img alt="huggies" src="<?php echo base_url().'img/huggies1.jpg';?>"><br>
-                <span class="hgt-8px wid_100"></span> <strong>Ketchup &amp; Jams</strong><br>
-                When you buy one bag
-                M&amp;M’S Brand Pretzel
-                Chocolate Candies 
-                (9.9 oz. or larger). </p>
-              <p> <span class="hgt-15px wid_100"></span> <img alt="horlicks" src="<?php echo base_url().'img/horlicks.jpg';?>"><br>
-                <span class="hgt-15px wid_100"></span> <span class="hgt-8px wid_100"></span> <strong>Ketchup &amp; Jams</strong><br>
-                When you buy one bag
-                M&amp;M’S Brand Pretzel
-                Chocolate Candies 
-                (9.9 oz. or larger). </p>
-              <p> <img alt="barbosol" src="<?php echo base_url().'img/barbosol.jpg';?>"><br>
-                <strong>Ketchup &amp; Jams</strong><br>
-                When you buy one bag
-                M&amp;M’S Brand Pretzel
-                Chocolate Candies 
-                (9.9 oz. or larger). </p>
-              <p class="last"> <img alt="coke" src="<?php echo base_url().'img/coke.jpg';?>"><br>
-                <span class="hgt-15px wid_100"></span> <strong>Ketchup &amp; Jams</strong><br>
-                When you buy one bag
-                M&amp;M’S Brand Pretzel
-                Chocolate Candies 
-                (9.9 oz. or larger). </p>
-            <iframe class="playground" src="slider.html"></iframe> 
-              <!-- End tabs here -->
-            </div>
+          <!-- Begin tabs here -->
+      <div class="tabs">
+        <ul>
+          <li>
+            <a href="#" class="current">Beauty</a>
+          </li>
+          <li>
+            <a href="#">Health</a>
+          </li>
+          <li>
+            <a href="#">Kids</a>
+          </li>
+          <li>
+            <a href="#">Pets</a>
+          </li>
+          <li class="last">
+            <a href="#">Games</a>
+          </li>
+        </ul>
+
+        <?php echo $slider;?>
+        <!-- End tabs here -->
+      </div>
             <!-- End column 2 -->
           </div>
           <!-- End content div -->
