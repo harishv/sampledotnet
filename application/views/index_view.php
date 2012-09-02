@@ -10,6 +10,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 
 
 
+
 <!-- Begin main-content div -->
 <div id="main-content" class="flt-l wid_100">
 	<!-- Begin content div -->

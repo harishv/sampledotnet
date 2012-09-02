@@ -33,10 +33,15 @@
 		<?php echo anchor("#", $this->lang->line("nav_contact_us")); ?>
 	</li>
 </ul>
-<p class="login-here">
-	<span><?php echo $this->lang->line("nav_login")."!"; ?></span>
-	<?php echo $this->lang->line("nav_become_a_member"); ?>
+<p class="login-here"><span><a href="#dialog" name="modal" class='iframe' ><?php echo $this->lang->line("nav_login")."!"; ?></a></span>
+	<!--<span><?php //echo $this->lang->line("nav_login")."!"; ?></span> -->
+	
+	<a href="#register" name="modal" class='iframe'><?php echo $this->lang->line("nav_become_a_member"); ?></a> 
 </p>
+
+
+
+
 <p class="bg-icon clr-none">
 	<?php echo img(array("src" => "/img/rss.png", "alt" => $this->lang->line("nav_rss"))); ?>
 </p>

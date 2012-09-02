@@ -37,7 +37,7 @@ $lang["nav_my_profile"]				=	"My Profile";
 $lang["nav_change_password"]		=	"Change Password";
 $lang["nav_signin"]					=	"Sign In";
 $lang["nav_signout"]				=	"Sign Out";
-$lang["nav_login"]					=	"Log In";
+//$lang["nav_login"]					=	"Log In";
 $lang["nav_logout"]					=	"Log Out";
 
 $lang["nav_txt_view_my_profile"]	=	"View my profile page";
