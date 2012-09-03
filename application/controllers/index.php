@@ -36,7 +36,7 @@ class Index extends CI_Controller {
 		$data['featured_products'] = $this->category_model->get_featured_products();
 		$data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
 
-		$data['slider'] = $this->load->view('slider', $data, TRUE);
+		// $data['slider'] = $this->load->view('slider', $data, TRUE);
 
 		$data['render'] = false;
 		$this->load->view("template/header");
@@ -44,6 +44,10 @@ class Index extends CI_Controller {
 		$this->load->view("template/footer");
 	}
 
+	public function get_left_navigation()
+	{
+		$this->load->view("template/leftnav.php");
+	}
 
 	public function get_category_product($cat_id,$id='0'){
 
