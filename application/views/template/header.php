@@ -95,7 +95,7 @@ $(document).ready(function() {
 			<div id="header">
 				<?php echo anchor(base_url(), img(array("src" => "/img/logo.jpg", "alt" => $this->lang->line("brand_name"), "class" => "mgn-15b")), array("class" => "flt-l mgn-15px")); ?>
 				<span class="flt-l slogan">Grab it Now!</span>
-				<?php echo img(array("src" => "/img/colocation-america", "alt" => $this->lang->line("header_colocation_america"), "class" => "flt-r")); ?>
+				<?php echo img(array("src" => "/img/colocation-america.jpg", "alt" => $this->lang->line("header_colocation_america"), "class" => "flt-r")); ?>
 				<!-- Navigation starts here -->
 				<div class="wid_100 flt-l" >
 					<?php include_once 'topnav.php';?>
