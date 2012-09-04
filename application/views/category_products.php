@@ -20,38 +20,10 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
         <!-- Begin content div -->
         <div class="flt-l" id="content"> 
         
-          <!-- Begin column 1 -->
-          <div class="col-1 bdr-1 flt-l mgn-r">
-            <!-- Begin categories -->
-            <div class="categories mgn-15b">
-              <p class="head mgn-0"><span class="mgn-20l">Categories</span></p>
-              <ul>
-                <?php if(isset($category) && $category !=''){
-                foreach($category as $cat_id=>$cat_values){ 
-                  $sub_cat = $this->category_model->get_sub_cat($cat_values['id']);?>
-          <li>
-            
-            <a href="<?php if($sub_cat =='')echo base_url().'category/get_category_product/'.$cat_values['id']; else echo "#";?>"><?php echo $cat_values['prod_cat_name'];?></a>
-            
-          
-          <?php  if(isset($sub_cat) && $sub_cat !=''){ ?> 
-              <ol>
-                <?php foreach($sub_cat as $sub_cat_id=>$sub_cat_values){ ?>
-                
-                  <li> <a href="<?php echo base_url().'category/get_category_product/'.$sub_cat_values['id'];?>"><?php echo $sub_cat_values['prod_cat_name'];?></a> </li>
-                
-            <?php   } ?>
-            </ol> 
-              <?php } ?>
-              </li>
-          <?php } } ?>
-          
-              </ul>
-              <!-- End categories -->
-            </div>
-            <img class="mgn-10l mgn-15b" alt="ad" src="<?php echo base_url().'img/left-ad.jpg';?>">
-            <!-- End column 1 -->
-          </div>
+         <!-- Begin column 1 -->
+			<?php include_once 'template/leftnav.php';?>
+		<!-- End column 1 -->
+  
           <!-- Begin column 2 -->
           <div class="col-2 flt-l">
           <p class="links">
@@ -118,105 +90,18 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
         <!-- End sample here -->
       </div>
 
-          <!-- Begin tabs here -->
-      <div class="tabs">
-        <ul>
-          <li>
-            <a href="#" class="current">Beauty</a>
-          </li>
-          <li>
-            <a href="#">Health</a>
-          </li>
-          <li>
-            <a href="#">Kids</a>
-          </li>
-          <li>
-            <a href="#">Pets</a>
-          </li>
-          <li class="last">
-            <a href="#">Games</a>
-          </li>
-        </ul>
-
-        <?php echo $slider;?>
-        <!-- End tabs here -->
-      </div>
+         
+      	<!-- Begin tabs here -->
+				<?php include_once 'template/footer_carousel.php';?>
+		<!-- End tabs here -->
             <!-- End column 2 -->
           </div>
           <!-- End content div -->
         </div>
-        <!-- Begin sidebar div -->
-        <div class="flt-r" id="sidebar">
-          <!-- Begin search -->
-          <div class="search">
-            <input type="text" onfocus="this.value=''" value="search" class="sch">
-            <br>
-            <a class="grab flt-r">search</a>
-            <!-- End search -->
-          </div>
-          <ul class="btn">
-      <li>
-        <a href="#">
-          <?php $image_properties = array('src' => 'img/share-a-sample.png','alt' => 'share a sample');
-                echo img($image_properties);?>
-          
-        </a>
-      </li>
-    </ul>
-          </ul>
-    <p class="free-sample">
-      <?php $image_properties = array('src' => 'img/gift.png','alt' => 'gift','class'=>'flt-r');
-                echo img($image_properties);?>
-      
-      Get free samples
-      <br />
-      0n
-      <strong>Facebook</strong>
-      <br />
-      <a href="#">
-        <?php $image_properties = array('src' => 'img/like.jpg','alt' => 'like');
-                echo img($image_properties);?>
-        
-      </a>
-    </p>
-          <ul class="btn">
-      <li>
-        <a href="#">
-          <?php $image_properties = array('src' => 'img/follow-twitter.png','alt' => 'follow us on twitter');
-                echo img($image_properties);?>
-          
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <?php $image_properties = array('src' => 'img/add-to-circles.png','alt' => 'add to circles');
-                echo img($image_properties);?>
-          
-          
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <?php $image_properties = array('src' => 'img/pintrest.png','alt' => 'pintrest');
-                echo img($image_properties);?>
-          
-        </a>
-      </li>
-    </ul>
-          <!-- Begin Subscribe div -->
-          <div class="subscribe"> <img class="mgn-15b" alt="free samples" src="<?php echo base_url().'img/free-samples.png';?>">
-            <input type="text" onfocus="this.value=''" value="Enter Your Name" class="free">
-            <input type="text" onfocus="this.value=''" value="Enter Your Email" class="free">
-            <a class="subscribe-btn" href="#">&nbsp;</a>
-            <!-- End Subscribe div -->
-          </div>
-         
-          <?php $image_properties = array('src' => 'img/fap-turbo.jpg','alt' => 'fab turbo','class'=>'mgn-15b');
-                echo img($image_properties);?>
-          <?php $image_properties = array('src' => 'img/kaboom.jpg','alt' => 'kaboom');
-                echo img($image_properties);?>
-          <!-- End sidebar div -->
-        </div>
+       
+       <!-- Begin sidebar div -->
+		<?php include_once 'template/rightnav.php';?>
+	   <!-- End sidebar div -->
         <!-- End main-content div -->
       </div>
 <?php if(!$render){ ?>

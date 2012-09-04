@@ -25,7 +25,7 @@ class Product extends CI_Controller {
 
 		$data['country_names'] = $this->common_model->get_country_names($data['product_details'][0]['valid_countries']);
 
-		$data['slider'] = $this->load->view('slider', $data, TRUE);
+		//$data['slider'] = $this->load->view('slider', $data, TRUE);
 
 		$data['category'] = $this->category_model->get_category();
 		$this->load->view("product",$data);
