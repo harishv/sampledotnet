@@ -27,7 +27,7 @@
 		<script type="text/javascript">
 			jQuery(document).ready(function() {
 				jQuery('#mycarousel').jcarousel({
-					start: 2
+					start: 1
 				});
 			});
 
