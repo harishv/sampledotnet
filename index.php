@@ -35,7 +35,7 @@ if (defined('ENVIRONMENT'))
 		case 'development':
 			error_reporting(E_ALL);
 		break;
-	
+
 		case 'testing':
 		case 'production':
 			error_reporting(0);
@@ -190,6 +190,18 @@ if (defined('ENVIRONMENT'))
 
 		define('APPPATH', BASEPATH.$application_folder.'/');
 	}
+
+	// Setting the TimeZone Value
+
+	ini_set('date.timezone', 'Asia/Calcutta');
+
+	if( ! ini_get('date.timezone') )
+	{
+	   //date_default_timezone_set('Asia/Calcutta');
+	   ini_set('date.timezone', 'Asia/Calcutta');
+	   // ini_set('date.timezone', 'America/Los_Angeles');
+	}
+	ini_set('max_execution_time',120);
 
 /*
  * --------------------------------------------------------------------

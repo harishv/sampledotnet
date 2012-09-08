@@ -107,6 +107,21 @@ class Index extends CI_Controller {
 		}
 	}
 
+	function email()
+	{
+		$this->email->from('admin@sample.net', 'Sample.net Admin');
+		$this->email->to('harish.varada@gmail.com');
+		$this->email->cc('harishv@koderoom.com');
+		// $this->email->bcc('them@their-example.com');
+
+		$this->email->subject('Email Test');
+		$this->email->message('<b>Testing</b> <br />the email class.');
+
+		$this->email->send();
+
+		echo $this->email->print_debugger();
+	}
+
 
 }
 
