@@ -47,7 +47,7 @@ ul#main-nav ul li a:hover { color:#000001 }
 option#india { background:url(../img/india-flag.jpg) no-repeat left top; padding-left:30px; }
 /* =============================================================================== */
 /* selector */
-div.selector { line-height: 26px; height: 35px; width:235px; float:right; padding:8px 0 0 15px; border-left:1px solid #bdbcbd;position:relative;z-index:200 }
+div.selector { line-height: 26px; height: 35px; width:235px; float:right; padding:8px 0 0 15px; border-left:1px solid #bdbcbd;position:relative;z-index:200000; top:0px;}
 select { width:88%; margin:8px 0 0 10px }
 select option { width:100%; float:left }
 /* margins */
@@ -907,5 +907,9 @@ color:#0c3b93;
 }
 
 
-
-
+/* Overriding Bootstrap functionality */
+blockquote {
+	border-left: none;
+	margin: 0;
+	padding: 0;
+}
