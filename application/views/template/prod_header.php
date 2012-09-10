@@ -98,7 +98,7 @@
 					<?php echo img(array("src" => "/img/colocation-america.jpg", "alt" => $this->lang->line("header_colocation_america"), "class" => "flt-r")); ?>
 					<!-- Navigation starts here -->
 					<div class="wid_100 flt-l" >
-						<?php include_once 'topnav.php';?>
+						<?php include_once 'prod_topnav.php';?>
 					</div>
 					<!-- Navigation ends here -->
 				<!-- End Header div -->

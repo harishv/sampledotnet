@@ -21,7 +21,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
         <div class="flt-l" id="content"> 
         
          <!-- Begin column 1 -->
-			<?php include_once 'template/leftnav.php';?>
+			<?php include_once 'template/prod_leftnav.php';?>
 		<!-- End column 1 -->
   
           <!-- Begin column 2 -->
@@ -92,7 +92,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 
          
       	<!-- Begin tabs here -->
-				<?php include_once 'template/footer_carousel.php';?>
+				<?php include_once 'template/prod_footer_carousel.php';?>
 		<!-- End tabs here -->
             <!-- End column 2 -->
           </div>
@@ -100,7 +100,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
         </div>
        
        <!-- Begin sidebar div -->
-		<?php include_once 'template/rightnav.php';?>
+		<?php include_once 'template/prod_rightnav.php';?>
 	   <!-- End sidebar div -->
         <!-- End main-content div -->
       </div>

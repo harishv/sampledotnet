@@ -16,18 +16,18 @@ class Documents extends CI_Controller {
 
 
         
-		$this->load->view("template/header");
+		$this->load->view("template/prod_header");
 		$this->load->view("docs_list",$data);
-		$this->load->view("template/footer");
+		$this->load->view("template/prod_footer");
 	}
     
     public function showDoc(){ 
         include_once(APPPATH.'libraries/scribd.php');
         $this->_changeStatus('public');
         
-		$this->load->view("template/header");
+		$this->load->view("template/prod_header");
 		$this->load->view("document");
-		$this->load->view("template/footer");
+		$this->load->view("template/prod_footer");
 	}
     private function _changeStatus($status){
     $scribd_api_key = "3awse6c8wfkgc2ssueqjf";

@@ -18,11 +18,11 @@ if(!$render) { ?>
 		<span class="bdr-btm"></span>
 		<div class="hgt-15px"></div>
 		<!-- Begin slideshow -->
-			<?php include_once 'template/header_carousel.php';?>
+			<?php include_once 'template/prod_header_carousel.php';?>
 		<!-- End slideshow -->
 
 		<!-- Begin column 1 -->
-			<?php include_once 'template/leftnav.php';?>
+			<?php include_once 'template/prod_leftnav.php';?>
 		<!-- End column 1 -->
 
 		<!-- Begin column 2 -->
@@ -102,7 +102,7 @@ if(!$render) { ?>
 				<!-- End sample here -->
 			</div>
 			<!-- Begin tabs here -->
-				<?php include_once 'template/footer_carousel.php';?>
+				<?php include_once 'template/prod_footer_carousel.php';?>
 			<!-- End tabs here -->
 			<h2>What is Sample.net</h2>
 			<p class="bdr-btm1">Lorem ipsum dolor sit amet, consectetuer
@@ -122,7 +122,7 @@ if(!$render) { ?>
 		<!-- End content div -->
 	</div>
 	<!-- Begin sidebar div -->
-		<?php include_once 'template/rightnav.php';?>
+		<?php include_once 'template/prod_rightnav.php';?>
 	<!-- End sidebar div -->
 </div>
 <!-- End main-content div -->

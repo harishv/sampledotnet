@@ -37,9 +37,9 @@ class Category extends CI_Controller {
 		
 		$data['render'] = false;
 		$data['category'] = $this->category_model->get_category();
-		$this->load->view("template/header");
+		$this->load->view("template/prod_header");
 		$this->load->view("category_products",$data);
-		$this->load->view("template/footer");
+		$this->load->view("template/prod_footer");
 	}
 
 }

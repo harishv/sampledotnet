@@ -24,7 +24,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
         <!-- Begin content div -->
         <div class="flt-l" id="content">
          <!-- Begin column 1 -->
-			<?php include_once 'template/leftnav.php';?>
+			<?php include_once 'template/prod_leftnav.php';?>
 		<!-- End column 1 -->
           <div class="col-2 flt-l">
           <p class="links">
@@ -95,7 +95,7 @@ You will also receive periodic <a class="email" href="#">emails and special offe
             <fb:comments href="<?php echo base_url()."/product/product_detail/".$product_details[0]['id'];?>" num_posts="3" width="540"></fb:comments>
             <!-- End comments here -->
             <!-- Begin tabs here -->
-				<?php include_once 'template/footer_carousel.php';?>
+				<?php include_once 'template/prod_footer_carousel.php';?>
 			<!-- End tabs here -->
             <!-- End column 2 -->
           </div>
@@ -103,7 +103,7 @@ You will also receive periodic <a class="email" href="#">emails and special offe
         </div>
        
         <!-- Begin sidebar div -->
-		<?php include_once 'template/rightnav.php';?>
+		<?php include_once 'template/prod_rightnav.php';?>
 	<!-- End sidebar div -->
         <!-- End main-content div -->
       </div>

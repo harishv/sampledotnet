@@ -39,15 +39,15 @@ class Index extends CI_Controller {
 		// $data['slider'] = $this->load->view('slider', $data, TRUE);
 
 		$data['render'] = false;
-		$this->load->view("template/header");
-		$this->load->view("index_view",$data);
-		$this->load->view("template/footer");
+		$this->load->view("template/prod_header");
+		$this->load->view("prod_index_view",$data);
+		$this->load->view("template/prod_footer");
 	}
 
-	public function get_left_navigation()
+	/*public function get_left_navigation()
 	{
-		$this->load->view("template/leftnav.php");
-	}
+		$this->load->view("template/prod_leftnav");
+	}*/
 
 	public function get_category_product($cat_id,$id='0'){
 
@@ -64,9 +64,9 @@ class Index extends CI_Controller {
 		$data['product'] = $this->category_model->get_products($cat_id,$id,$config1['per_page']);
 
 		$data['category'] = $this->category_model->get_category();
-		$this->load->view("template/header");
+		$this->load->view("template/prod_header");
 		$this->load->view("category_products",$data);
-		$this->load->view("template/footer");
+		$this->load->view("template/prod_footer");
 	}
 
 	public  function product_rating($var=''){
@@ -101,7 +101,7 @@ class Index extends CI_Controller {
 		$data['render'] = true;
 
 		if(is_bool($rating)){
-			$return['page'] = $this->load->view('index_view',$data,TRUE);
+			$return['page'] = $this->load->view('prod_index_view',$data,TRUE);
 			$return['status'] = 'succuss';
 			echo json_encode($return);exit;
 		}
