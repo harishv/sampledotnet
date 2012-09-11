@@ -33,10 +33,19 @@
 		<?php echo anchor("#", $this->lang->line("nav_contact_us")); ?>
 	</li>
 </ul>
-<p class="login-here"><span><a href="#dialog" name="modal" class='iframe' ><?php echo $this->lang->line("nav_login")."!"; ?></a></span>
-	<!--<span><?php //echo $this->lang->line("nav_login")."!"; ?></span> -->
-	
-	<a href="#register" name="modal" class='iframe'><?php echo $this->lang->line("nav_become_a_member"); ?></a> 
+<p class="login-here"><span><?php 
+	$user_info = $this->session->userdata('user');
+	?>
+	<a href="#dialog" name="modal" class='iframe' ><?php if(isset($user_info) && $user_info !=''){ $attributes=array('id'=>'signout'); echo anchor( 'login/logout', "(Sign Out)", $attributes );}else { echo $this->lang->line("nav_login")."!"; }?></a></span>
+	<?php 
+
+	if($user_info !=''){ ?>
+		 <span class="iframe"><?php echo "welcome,"." ".ucfirst($user_info['first_name']);  ?></span>
+	<?php }else{ ?>
+		<a href="#register" name="modal" class='iframe'><?php echo $this->lang->line("nav_become_a_member"); ?></a>
+	<?php }	 ?>
+		
+	</a> 
 </p>
 
 

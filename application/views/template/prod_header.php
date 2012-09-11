@@ -23,6 +23,9 @@
 		<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
 
 		<script src="<?php echo base_url("js"); ?>/jquery.jcarousel.js"></script>
+		<script type="text/javascript">
+		var base_url = "<?php echo base_url();?>";/* global variable for the root path */
+		</script>
 
 		<script type="text/javascript">
 			jQuery(document).ready(function() {

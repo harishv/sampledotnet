@@ -12,9 +12,12 @@ class Register_Model extends CI_Model {
 	public function register_new_user()
 	{
 
-		
+		//echo "asdfasdfasdf";exit;
+		$errors = '';
+		echo $first_name = $this->input->post('first_name');exit;
 		
 
+		$last_name = $this->input->post('last_name');
 		$email = $this->input->post('email_add');
 		$password = $this->input->post('pass');
 		$re_password = $this->input->post('re_pass');
@@ -23,6 +26,39 @@ class Register_Model extends CI_Model {
 		$current_date = date('Y-m-d H:i:s');
 		$ip = $_SERVER['REMOTE_ADDR'];
 
+		if(trim($first_name) == '' ){
+			$errors .= 'First Name should not be null or empty<br/>';
+		}
+		if(trim($last_name) == ''){
+			$errors .='Last Name should not be null or empty<br/>';
+		}
+		$email_valid = $this->user_validations->is_email($email);
+
+
+		if(is_string($email_valid))
+			$errors .= $email_valid."<br/>";
+		
+		
+		
+		$password =$this->input->post('pass');
+		
+		$re_password = $this->input->post('re_pass');
+		
+		
+		if( trim($password) == ""){
+			$errors .= "Password should not be null or empty.<br/>";
+		}
+		else if((trim($re_password) == "") || ($re_password !== $password)){
+			$errors .= "Password and Verify password should be same<br/>";
+		}else if((strlen($re_password) < 6) && (strlen($password) < 6)){
+			$errors .= "Password should contain at least 6 characters<br/>";
+		}
+
+
+		if($errors !=''){
+
+			return $errors;
+		}
 
 
 			
@@ -30,7 +66,6 @@ class Register_Model extends CI_Model {
 		$user_information = array ( 
 									'email' => $email,
 									'password' => md5($password),
-									'status_id' => 1,
 									'created_at' => $current_date,
 									'created_from' => $ip,
 									'created_by' => 0,
@@ -41,9 +76,22 @@ class Register_Model extends CI_Model {
 		);
 
 		$this->db->insert('users', $user_information);
-		$affected_rows = $this->db->affected_rows();
-		if($affected_rows > 0)
-			return true;
+		/*$last_id = $this->db->insert_id();
+		$encode_last_id=base64_encode($last_id);
+		$encode_last_id=rtrim($encode_last_id,"/(([=]) || ([+]))/"); 
+		$this->email->to($email);
+		$this->email->from('sampel@sample.com', 'admin');
+		$this->email->subject('Welcome to Sample');
+		$message_url = base_url().'login/active_account/'.$encode_last_id;
+		$mail_result = $this->email->send();
+
+		if(!$mail_result){
+			return false;
+		}else{*/
+			$affected_rows = $this->db->affected_rows();
+			if($affected_rows > 0)
+				return true;
+			//}
 	}
 	public function check_email_address_availability($email,$status='1') {
 

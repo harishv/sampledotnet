@@ -39,6 +39,13 @@
   <div class="txt-2">or Sign in with </div>
  </div><!-- top-bg -->
  <div class="middle-bg">
+ <div id="errors_data">
+      <?php echo (isset($errors)) ? $errors : '';?>
+  </div>
+     <?php $attributes = array('id' => 'userlogin', 'name'=>'userlogin', 'onsubmit'=>'return validate_login()'); ?>
+   <?php echo form_open('login/login_check/',$attributes); ?>
+
+
   <div class="form-box">
     <div class="text">Email: </div>
     <div class="form"><input type="text"  name="email_address" id="email_address"></div>
@@ -50,7 +57,8 @@
   <div class="login-box">
    <input type="submit" value="Login">
    <a href="#">Forgot your password?</a>
-  </div><br>
+  </div><?php echo form_close();?>
+  <br>
   <div class="login-box">
    <span>Don't have an account? <a style="color:#053f79; text-decoration:underline;" href="#register" name="modal" >Register now</a></span>  </div>
   <a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a> </div>
@@ -88,7 +96,16 @@
    <?php $attributes = array('id' => 'userlogin', 'name'=>'userlogin', 'onsubmit'=>'return validate_registerform()'); ?>
    <?php echo form_open('register/register_user/',$attributes); ?>
    
-  
+   <div class="form-box">
+    <div class="text">First Name: </div>
+    <div class="form"><input type="text"  name="frist_name" id="first_name"></div>
+  </div><!-- form-box --><br>
+
+  <div class="form-box">
+    <div class="text">Last Name: </div>
+    <div class="form"><input type="text"  name="last_name" id="last_name"></div>
+  </div><!-- form-box --><br>
+
   <div class="form-box" id="email_reg">
     <div class="text">Email: </div>
     <div class="form"><input type="text" name="email_add"  id="email_add" ></div>

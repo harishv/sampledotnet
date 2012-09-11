@@ -36,9 +36,7 @@ return true;
 
 function validateEmail(element, typeSent){
 	if(typeof(typeSent)==='undefined') typeSent = "object";
-	//var emailPattern = /^[a-zA-Z0-9]+[a-zA-Z0-9._]+@[a-zA-Z]+\.(([a-zA-Z]{2,3})|([a-zA-Z]{2}\.[a-zA-Z]{2}))$/;
-	//var emailPattern=/^[a-z0-9]+((\.[a-z0-9]+)*(\_[a-z0-9]+)*)*@[a-zA-Z]+\.(([a-zA-Z]{2,3})|([a-zA-Z]{2}\.[a-zA-Z]{2}))$/;
-	var emailPattern=/^[a-z0-9]+((\.[a-z0-9]+)*(\_[a-z0-9]+)*)*@[a-zA-Z]+\.[a-zA-Z.]*[a-zA-Z]$/;
+	var emailPattern=/^[a-z0-9]+((\.[a-z0-9]+)*(\_[a-z0-9]+)*)*@[a-zA-Z]+\.(([a-zA-Z]{2,3})|([a-zA-Z]{2}\.[a-zA-Z]{2}))$/;
 	if (typeSent == 'value') {
 		var compound_email = element.split("<");
 		
@@ -60,13 +58,31 @@ function validate_registerform() {
 	
 	var errors = "";
 
-	
+	var  first_name_obj = document.getElementById('first_name');
+	var  last_name_obj = document.getElementById('last_name');
 	var email_address_obj = document.getElementById('email_add');
 	var  ts_password_obj = document.getElementById('pass');
 	var  ts_re_password_obj = document.getElementById('re_pass');
 
 	
 	
+	if(!validate_isnull(first_name_obj)) {
+	
+	   errors += "First Name should not be null or empty<br >";
+	   document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+	if(!validate_isnull(last_name_obj)) {
+	
+	   errors += "Late Name should not be null or empty<br >";
+	   document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+
 	if(!validate_isnull(email_address_obj)) {
 	   errors += "Email should not be null or empty<br />";
 	   document.getElementById('errors_data_signup').innerHTML="";
@@ -112,9 +128,9 @@ function validate_registerform() {
 
 	if($.trim(errors) == '')
 	{
-				$('#errors_data_signup').html("");
+		$('#errors_data_signup').html("");
 		// Call check Login Ajax call
-		var customURL = "index.php/register/register_user";
+		var customURL =  base_url+"register/register_user";
 		var data = $('#userlogin').serialize(true);
 
 		$.ajax({
@@ -123,8 +139,10 @@ function validate_registerform() {
 			  data: data,
   			  dataType:'json',
 			  success: function(result){
+			  		
 				if(result.status == "success" )
 				  {
+
 						$("#success_data_signup").html(result.data);
 						document.getElementById('success_data_signup').style.display = 'block';
 						
@@ -148,6 +166,52 @@ function validate_registerform() {
 		});
 
 	}
+	return false;
+}
+
+
+
+function validate_login() {
+	
+	var errors = "";
+	var email = $.trim($('#email_address').val());
+	var password= $('#password').val();
+	
+	errors += (email == undefined || email == "") ? "Email Id should not be null or empty<br />" : "";
+	if(errors == ''){
+		errors += (!validateEmail(document.getElementById("email_address"))) ? "Please enter a valid Email Id<br />" : "";
+	}
+	
+	errors += (password == undefined || password == "") ? "Password should not be null or empty<br />" : "";
+	
+	if ($.trim(errors) == "") {
+		$('#errors_data').html("");
+		
+		// Call check Login Ajax call
+		var customURL = base_url+"login/login_check";
+		var data = $('#userlogin').serialize(true);
+
+		$.ajax({
+			  url: customURL,
+			  type: 'POST',
+			  data: data,		  
+			  success: function(result){
+			  		alert("sadfasdf");exit;
+			  		alert(result);return false;
+				  if(result == true){
+				
+
+					window.location.href = window.location.href;
+					
+				  } else if(result == 123) {
+					  $('#errors_data').html("Login Failed");
+				 	 
+				  }
+			  }
+		});
+	}
+	
+	$('#errors_data').html(errors);
 	return false;
 }
 
