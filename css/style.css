@@ -26,7 +26,7 @@ div#sidebar { width:25% }
 .head em { font-style:normal; font-size:14px }
 /* =============================================================== */
 /* Navigation header */
-ul#main-nav { list-style:none; float:left; padding:16px 25px 0 0; width:375px }
+ul#main-nav { list-style:none; float:left; padding:16px 25px 0 0; width:375px; position:relative; z-index:1000; }
 ul#main-nav li { float:left; padding:0 10px; position:relative; z-index:1; background:url(../img/nav-border.jpg) no-repeat right 3px }
 ul#main-nav li.last { padding-right:0; background:none }
 ul#main-nav li a { color:#fffffe; font:bold 12px Arial, Helvetica, sans-serif; text-transform:capitalize; padding:0 0 13px; float:left }
@@ -37,6 +37,7 @@ ul#main-nav ul li { border-right:1px solid #000001; width:120px; float:left; pad
 ul#main-nav ul li.last { border:none }
 ul#main-nav ul li a { color:#666666; text-decoration:none; width:120px; float:left; line-height:18px!important; padding:0; font:normal 11px Arial, Helvetica, sans-serif }
 ul#main-nav ul li a:hover { color:#000001 }
+
 /* ====================================================================== */
 
 .bg-icon { background:url(../img/bg-icon.png) no-repeat left top; padding:5px 0 0 5px; float:left; width:29px; height:29px; clear:left; margin:7px 0 0 }
@@ -258,7 +259,7 @@ ul, ol {
 .sidebar ul li{
  clear:both;
  width:0px;
- 
+
 }
 
 .sidebar ul li a{
@@ -342,7 +343,7 @@ p {
  margin-bottom:10px;
  border-bottom:1px solid #dbdad5;
  border-right:1px solid #dbdad5;
- 
+
 }
 #featured-document .sub{
  width:713px;
@@ -495,7 +496,7 @@ color:#0c3b93;
  padding-top:10px;
  padding-bottom:10px;
  text-align:center;
- 
+
 }
 .hgt-15px .top-container, .top-container{
   width:200px;
@@ -631,7 +632,7 @@ color:#0c3b93;
  font-weight:bold;
  font-size:11px;
  float:left;
- 
+
 }
 .download-box a:hover, .download-box1 a:hover{
  text-decoration:underline;
@@ -662,12 +663,12 @@ color:#0c3b93;
   position:relative;
   padding-left:30px;
   padding-top:20px;
-  
+
 }
 #lr-box> .middle-bg .form-box{
   width:340px;
   height:27px;
-  
+
 }
 #lr-box> .middle-bg .form-box .form{
  width:256px;
@@ -777,12 +778,12 @@ color:#0c3b93;
   position:relative;
   padding-left:30px;
   padding-top:20px;
-  
+
 }
 #lr-box-reg> .middle-bg .form-box{
   width:340px;
   height:27px;
-  
+
 }
 #lr-box-reg> .middle-bg .form-box .form{
  width:256px;
