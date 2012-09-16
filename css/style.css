@@ -191,10 +191,22 @@ ul.btn li a { background:url(../img/bg-right-nav.jpg) repeat-x left top #e2e2e2;
 ul.btn li a:hover { opacity:1.0 }
 /* ================================================================================ */
 /* subscribe */
-.subscribe { background:url(../img/subscribe-bg.jpg) repeat-x left top; float:left; width:90%; padding:0 8px 22px 15px; margin:10px 0 15px 1px }
+.subscribe { background:url(../img/subscribe-bg.jpg) repeat-x left top; float:left; width:90%; padding:0 8px 0px 15px; margin:10px 0 15px 1px; min-height:20px; }
+/*
 input.free { background:url(../img/bg-input1.jpg) repeat-x left top; border:1px solid #a6d0e7; width:95%; padding:3px; margin:0 0 5px }
 .subscribe-btn { background:url(../img/subscribe-now.png) no-repeat left top; width:102px; height:23px; float:right; margin:0 3px 0 0 }
 .subscribe-btn:hover { background:url(../img/subscribe-now.png) no-repeat left -24px }
+ */
+.subscribe a{
+ color:#818181;
+ font-family:"Myriad Pro";
+ font-size:20px;
+ font-weight:bold;
+}
+.subscribe .gap{
+ margin-bottom:50px;
+ margin-right:10px;
+}
 /* ================================================================================ */
 
 /* free sample */
@@ -952,3 +964,6 @@ blockquote {
 	padding: 0;
 }
 
+form {
+	margin: 0 0 0 0;
+}

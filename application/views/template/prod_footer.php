@@ -143,13 +143,13 @@
 					<input type="submit" value="Register" />
 					<a href="#dialog" name="modal" class='iframe' style="width:180px;">Already have an account? Login!</a>
 				</div>
-				<a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a>
+				<!-- <a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a>-->
 				<?php echo form_close();?>
 			<!-- middle-bg -->
 			</div>
-		<!-- top-bg -->
-		<div class="bottom-bg"></div>
-		<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" />-->
+			<!-- top-bg -->
+			<div class="bottom-bg"></div>
+			<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" />-->
 		</div>
 	</div>
 
@@ -256,10 +256,10 @@
 				<!--<a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a>-->
 			<!-- middle-bg -->
 			</div>
-		<!-- top-bg -->
-		<div class="bottom-bg"></div>
-		<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" /> -->
-	</div>
+			<!-- top-bg -->
+			<div class="bottom-bg"></div>
+			<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" /> -->
+		</div>
 	</div>
 	<div id="mask"></div>
 </div>
