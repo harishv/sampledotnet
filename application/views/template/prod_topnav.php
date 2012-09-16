@@ -6,33 +6,6 @@
 <ul id="main-nav">
 	<li>
 		<?php echo anchor(base_url(), $this->lang->line("nav_categories"), array ("class" => "current")); ?>
-    	<!--
-    	<ul>
-			<li class="last"><a href="#">Mobiles</a>
-				<ol>
-					<li><a href="#">Legal</a></li>
-					<li><a href="#">Business</a></li>
-					<li><a href="#">Personal Finance</a></li>
-					<li><a href="#">Technology</a></li>
-					<li><a href="#">Education</a></li>
-				</ol>
-			</li>
-			<li class="last"><a href="#">Gadgets</a>
-				<ol>
-					<li><a href="#">Legal</a></li>
-					<li><a href="#">Business</a></li>
-					<li><a href="#">Personal Finance</a></li>
-				</ol>
-			</li>
-			<li class="last"><a href="#">Cameras</a>
-				<ol>
-					<li><a href="#">Legal</a></li>
-					<li><a href="#">Business</a></li>
-					<li><a href="#">Personal Finance</a></li>
-				</ol>
-			</li>
-		</ul>
-		-->
 		<ul>
 			<?php
 				if(isset($category) && $category !='') {
@@ -55,13 +28,8 @@
 		</ul>
   	</li>
 	<li>
-		<?php echo anchor("#", $this->lang->line("nav_samples")); ?>
+		<?php echo anchor("", $this->lang->line("nav_samples")); ?>
 	</li>
-	<!--
-	<li>
-		<?php echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
-	</li>
-	-->
 	<li>
 		<?php //echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
 		<a href="#user_profile" name="modal" class='iframe'><?php echo "user Profile";?> </a>
