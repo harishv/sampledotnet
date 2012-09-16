@@ -41,7 +41,7 @@ class Index extends CI_Controller {
 		$data['render'] = false;
 		$this->load->view("template/prod_header");
 		$this->load->view("prod_index_view",$data);
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/prod_footer",$data);
 	}
 
 	/*public function get_left_navigation()
@@ -110,8 +110,8 @@ class Index extends CI_Controller {
 	function email()
 	{
 		$this->email->from('admin@sample.net', 'Sample.net Admin');
-		$this->email->to('harish.varada@gmail.com');
-		$this->email->cc('harishv@koderoom.com');
+		$this->email->to('sudhakar1214@gmail.com');
+		//$this->email->cc('harishv@koderoom.com');
 		// $this->email->bcc('them@their-example.com');
 
 		$this->email->subject('Email Test');

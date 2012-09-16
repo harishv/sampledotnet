@@ -19,6 +19,7 @@
 		<!-- <script src="<?php echo base_url("js"); ?>/jquery-1.7.1.min.js"></script> -->
 		<script src="<?php echo base_url("js"); ?>/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery-latest.pack.js"></script>
+		<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.datePicker.js"></script>
 
 		<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
 
@@ -35,10 +36,26 @@
 			});
 
 			$(document).ready(function() {
+
+				
 				//==============Script that runs the modal windows for Invite Friends, and Login
 				//==============================================================================
 				//select all the a tag with name equal to modal
 				$('a[name=modal]').click(function(e) {
+
+					$(function() {
+						
+					var date = new Date();
+					date.setYear('2007');
+					$("#datepicker").datepicker({
+						
+						changeMonth: true,
+						changeYear: true,
+						maxDate: '+0d',
+						defaultDate: date
+					});
+				});
+
 					//Cancel the link behavior
 					e.preventDefault();
 

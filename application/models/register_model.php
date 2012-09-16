@@ -12,9 +12,11 @@ class Register_Model extends CI_Model {
 	public function register_new_user()
 	{
 
-		//echo "asdfasdfasdf";exit;
+
+		
 		$errors = '';
-		echo $first_name = $this->input->post('first_name');exit;
+		
+		$first_name = $this->input->post('frist_name');
 		
 
 		$last_name = $this->input->post('last_name');
@@ -75,23 +77,27 @@ class Register_Model extends CI_Model {
 									
 		);
 
+
 		$this->db->insert('users', $user_information);
-		/*$last_id = $this->db->insert_id();
+		$last_id = $this->db->insert_id();
 		$encode_last_id=base64_encode($last_id);
 		$encode_last_id=rtrim($encode_last_id,"/(([=]) || ([+]))/"); 
 		$this->email->to($email);
 		$this->email->from('sampel@sample.com', 'admin');
 		$this->email->subject('Welcome to Sample');
 		$message_url = base_url().'login/active_account/'.$encode_last_id;
+		$this->email->message($message_url); 
 		$mail_result = $this->email->send();
+
+		
 
 		if(!$mail_result){
 			return false;
-		}else{*/
+		}else{
 			$affected_rows = $this->db->affected_rows();
 			if($affected_rows > 0)
 				return true;
-			//}
+			}
 	}
 	public function check_email_address_availability($email,$status='1') {
 
@@ -107,5 +113,63 @@ class Register_Model extends CI_Model {
 			return $result->row();
 		else
 			return false;
+	}
+
+	public function update_user_profile(){
+
+		$errors = '';
+		$dob = $this->input->post('dob');
+		$gender = $this->input->post('gender');
+		$address1 = $this->input->post('address1');
+		$address2 = $this->input->post('address2');
+		$state = $this->input->post('state');
+		$city = $this->input->post('city');
+		$zip = $this->input->post('zip');
+		$category = $this->input->post('cat_name');
+		$cat_id = implode($category,',');
+		
+
+		if(trim($dob) == '' ){
+			$errors .= 'DateOfBrith should not be null or empty<br/>';
+		}
+		if(trim($address1) == '' ){
+			$errors .= 'Address should not be null or empty<br/>';
+		}
+		if(trim($address2) == '' ){
+			$errors .= 'Address should not be null or empty<br/>';
+		}
+		if(trim($state) == '' ){
+			$errors .= 'State should not be null or empty<br/>';
+		}
+		if(trim($city) == '' ){
+			$errors .= 'City should not be null or empty<br/>';
+		}
+
+		if($errors !='')
+			return $errors;
+		
+
+		$user_profile_information = array ( 
+									'dob' => $dob,
+									'gender' => $gender,
+									'address_1' => $address1,
+									'address_2' => $address2,
+									'category_id'=>$cat_id,
+									'city' => $city,
+									'state' => $state,
+									'zip' => $zip,
+									
+									
+		);
+
+		$this->db->where('user_id' , 1);
+		$this->db->update('users',$user_profile_information);
+
+		
+		$affected_rows = $this->db->affected_rows();
+		if($affected_rows > 0){
+			return true;
+		}
+
 	}
 }

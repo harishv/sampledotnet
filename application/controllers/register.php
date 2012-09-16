@@ -19,9 +19,9 @@ class Register extends CI_Controller {
 		$return_json= array('status' => "error");
 		$data = array();
 		$data['errors'] = "";
-		$email = $this->input->post('email_add');
+		/*$email = $this->input->post('email_add');
 		$password = $this->input->post('pass');
-		$re_password = $this->input->post('re_pass');
+		$re_password = $this->input->post('re_pass');*/
 		
 		
 		$current_date = date('Y-m-d H:i:s');
@@ -72,6 +72,29 @@ class Register extends CI_Controller {
 			return "Email Address '".urldecode($emailid)."'has already been registered. Please try a different one or go to Login to access your account. ";
 		else
 			return urldecode($emailid)." @@ active ";
+	}
+
+
+	public function user_profile(){
+
+		$return_json= array('status' => "error");
+		$data = array();
+		$data['errors'] = "";
+		$user_profile = $this->register_model->update_user_profile();
+
+		
+		if(is_string($user_profile) ){
+			$return_json['data'] =$user_profile;
+		}
+		else{
+		$return_json['status'] = "success";
+		$return_json['data'] = "Thank you for signing up";
+		}
+
+		echo json_encode($return_json);
+		
+
+
 	}
 
 

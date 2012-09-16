@@ -5,7 +5,7 @@ if(!$render) { ?>
 <!-- ShareThis Scripts to display Social media Shares over the page -->
 <script type="text/javascript">var switchTo5x=false;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "18f4acdf-af25-4d39-b663-78b081a6f60e"}); </script>
+
 
 <!-- Begin main-content div -->
 <div id="main-content" class="flt-l wid_100">

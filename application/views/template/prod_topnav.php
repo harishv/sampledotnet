@@ -29,6 +29,16 @@
 	<li>
 		<?php echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
 	</li>
+
+	<li>
+		<?php //echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
+		<a href="#user_profile" name="modal" class='iframe'><?php echo "user Profile";?> </a>
+	</li>
+
+	<li>
+		<?php echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
+	</li>
+
 	<li class="last">
 		<?php echo anchor("#", $this->lang->line("nav_contact_us")); ?>
 	</li>

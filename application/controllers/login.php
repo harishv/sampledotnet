@@ -18,7 +18,7 @@ class Login extends CI_Controller {
 		$data['errors'] = '';
 
 		$user_access = $this->login_model->check_user_login();
-		
+
 		//echo $this->input->post('rememberme');exit;
 		if( count($user_access) > 0 )
 		{
@@ -31,6 +31,24 @@ class Login extends CI_Controller {
 		} else {
 			//redirect('login/login_failed/123');
 			return false;
+		}
+	}
+
+	function active_account(){
+		$user_id = base64_decode($this->uri->segment(3));
+
+		$status['status'] = $this->login_model->active_status($user_id);
+
+		if(is_bool($status['status'])){
+
+			
+			$succuss = $status['status'];
+
+			$newdata = array( 'login_errors'  => $succuss );
+
+			$this->session->set_userdata($newdata);
+			redirect(base_url());
+
 		}
 	}
 

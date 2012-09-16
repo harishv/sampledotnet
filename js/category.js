@@ -67,7 +67,7 @@ function validate_registerform() {
 	
 	
 	if(!validate_isnull(first_name_obj)) {
-	
+		
 	   errors += "First Name should not be null or empty<br >";
 	   document.getElementById('errors_data_signup').innerHTML="";
 	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
@@ -140,6 +140,7 @@ function validate_registerform() {
   			  dataType:'json',
 			  success: function(result){
 			  		
+
 				if(result.status == "success" )
 				  {
 
@@ -189,15 +190,14 @@ function validate_login() {
 		
 		// Call check Login Ajax call
 		var customURL = base_url+"login/login_check";
-		var data = $('#userlogin').serialize(true);
+		var data = $('#user_login').serialize(true);
 
 		$.ajax({
 			  url: customURL,
 			  type: 'POST',
 			  data: data,		  
 			  success: function(result){
-			  		alert("sadfasdf");exit;
-			  		alert(result);return false;
+			  		
 				  if(result == true){
 				
 
@@ -213,6 +213,98 @@ function validate_login() {
 	
 	$('#errors_data').html(errors);
 	return false;
+}
+
+
+
+function validate_user_profile(){
+
+
+	var errors = "";
+
+	
+	var address1_obj = document.getElementById('address1');
+
+	var  address2_obj = document.getElementById('address2');
+	var  state_obj = document.getElementById('state');
+	var city_obj =document.getElementById('city');
+	var zip_obj =document.getElementById('zip');
+
+	
+	
+	if(!validate_isnull(address1_obj)) {
+	
+	   errors += "Address 1 should not be null or empty<br >";
+	   document.getElementById('errors_data_user_profile').innerHTML="";
+	   document.getElementById('errors_data_user_profile').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+	if(!validate_isnull(address2_obj)) {
+	
+	   errors += "Address2 should not be null or empty<br >";
+	   document.getElementById('errors_data_user_profile').innerHTML="";
+	   document.getElementById('errors_data_user_profile').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+
+	if(!validate_isnull(state_obj)) {
+	
+	   errors += "state should not be null or empty<br >";
+	   document.getElementById('errors_data_user_profile').innerHTML="";
+	   document.getElementById('errors_data_user_profile').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+	if(!validate_isnull(city_obj)) {
+	
+	   errors += "City should not be null or empty<br >";
+	   document.getElementById('errors_data_user_profile').innerHTML="";
+	   document.getElementById('errors_data_user_profile').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+	if(!validate_isnull(zip_obj)) {
+	
+	   errors += "Zip code  should not be null or empty<br >";
+	   document.getElementById('errors_data_user_profile').innerHTML="";
+	   document.getElementById('errors_data_user_profile').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+
+	
+	if ($.trim(errors) == "") {
+		$('#errors_data').html("");
+		
+		// Call check Login Ajax call
+		var customURL = base_url+"register/user_profile";
+		var data = $('#user_profile').serialize(true);
+
+		$.ajax({
+			  url: customURL,
+			  type: 'POST',
+			  data: data,
+			  dataType:'json',		  
+			  success: function(response){
+			  		console.log(response);
+			  	alert(response.status);return false;
+				  if(response.status == "success"){
+				
+				  	
+				  	$("#success_data_user_profile").html(response.data);
+				  	document.getElementById('success_data_user_profile').style.display = 'block';
+					
+					
+				  } else{
+					  $('#errors_data_user_profile').html(response.data);
+				 	 
+				  }
+			  }
+		});
+	}
+
 }
 
 
