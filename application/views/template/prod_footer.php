@@ -36,7 +36,7 @@
 			<div class="top-bg">
 				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
 				<div class="txt-1">Login here!</div>
-				<div class="txt-2">or Sign in with </div>
+				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
 			<div class="middle-bg">
@@ -72,12 +72,12 @@
 						<a style="color:#053f79; text-decoration:underline;" href="#register" name="modal" >Register now</a>
 					</span>
 				</div>
-				<a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a>
+				<!-- <a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a> -->
 			<!-- middle-bg -->
 			</div>
 			<!-- top-bg -->
 			<div class="bottom-bg"></div>
-			<img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" />
+			<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" /> -->
 		</div>
 	</div>
 
@@ -86,7 +86,7 @@
 			<div class="top-bg">
 				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
 				<div class="txt-1">New User? Sign Up</div>
-				<div class="txt-2">or Sign in with </div>
+				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
 			<div class="middle-bg">
@@ -149,7 +149,8 @@
 			</div>
 		<!-- top-bg -->
 		<div class="bottom-bg"></div>
-		<img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>"></div>
+		<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" />-->
+		</div>
 	</div>
 
 	<?php // user profile popup?>
@@ -170,7 +171,7 @@
 			<div class="top-bg">
 				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
 				<div class="txt-1">New User? Sign Up</div>
-				<div class="txt-2">or Sign in with </div>
+				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
 			<div class="middle-bg">
@@ -237,7 +238,7 @@
 				<!-- form-box -->
 				</div>
 				<br />
-				<div class="form-box" id="email_reg">
+				<!-- <div class="form-box" id="email_reg"> -->
 					<div class="text">Categories: </div>
 					<div class="form">
 						<?php
@@ -247,17 +248,18 @@
 						<br/>
 						<?php } ?>
 					</div>
-				</div>
+				<!-- </div> -->
 				<div class="login-box" id="login_reg">
 					<input type="submit" value="Update" />
 				</div>
-				<a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a>
+				<?php echo form_close();?>
+				<!--<a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a>-->
 			<!-- middle-bg -->
 			</div>
 		<!-- top-bg -->
 		<div class="bottom-bg"></div>
-		<?php echo form_close();?>
-		<img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>"></div>
+		<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" /> -->
+	</div>
 	</div>
 	<div id="mask"></div>
 </div>

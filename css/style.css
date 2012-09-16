@@ -684,11 +684,13 @@ color:#0c3b93;
   position:relative;
 }
 #lr-box> .middle-bg{
-  width:655px;
+
+  text-align: center;
+  width:555px;
   height:auto !important;
   background:url(../img/middle-bg.png) repeat-y;
   position:relative;
-  padding-left:30px;
+  padding-left:130px;
   padding-top:20px;
 
 }
@@ -799,13 +801,13 @@ color:#0c3b93;
   position:relative;
 }
 #lr-box-reg> .middle-bg{
-  width:655px;
+  text-align: center;
+  width:555px;
   height:auto !important;
   background:url(../img/middle-bg.png) repeat-y;
   position:relative;
-  padding-left:30px;
+  padding-left:130px;
   padding-top:20px;
-
 }
 #lr-box-reg> .middle-bg .form-box{
   width:340px;
