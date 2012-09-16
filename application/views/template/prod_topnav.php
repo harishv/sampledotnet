@@ -6,41 +6,71 @@
 <ul id="main-nav">
 	<li>
 		<?php echo anchor(base_url(), $this->lang->line("nav_categories"), array ("class" => "current")); ?>
+    	<!--
     	<ul>
-			<li>
-				<a href="#">Mobiles</a>
-				<a href="#">Cameras</a>
-				<a href="#">Computers</a>
-				<a href="#">Gadgets</a>
-				<a href="#">Automobiles</a>
-				<a href="#">Kitchen</a>
-				<a href="#">Jewellery</a>
+			<li class="last"><a href="#">Mobiles</a>
+				<ol>
+					<li><a href="#">Legal</a></li>
+					<li><a href="#">Business</a></li>
+					<li><a href="#">Personal Finance</a></li>
+					<li><a href="#">Technology</a></li>
+					<li><a href="#">Education</a></li>
+				</ol>
 			</li>
-			<li class="last">
-				<a href="#">Gifts</a>
-				<a href="#">Fashion</a>
-				<a href="#">Health</a>
-				<a href="#">Home Decor</a>
-				<a href="#">Sports</a>
+			<li class="last"><a href="#">Gadgets</a>
+				<ol>
+					<li><a href="#">Legal</a></li>
+					<li><a href="#">Business</a></li>
+					<li><a href="#">Personal Finance</a></li>
+				</ol>
 			</li>
+			<li class="last"><a href="#">Cameras</a>
+				<ol>
+					<li><a href="#">Legal</a></li>
+					<li><a href="#">Business</a></li>
+					<li><a href="#">Personal Finance</a></li>
+				</ol>
+			</li>
+		</ul>
+		-->
+		<ul>
+			<?php
+				if(isset($category) && $category !='') {
+					foreach($category as $cat_id=>$cat_values) {
+						$sub_cat = $this->category_model->get_sub_cat($cat_values['id']); ?>
+						<li class="last">
+							<a href="<?php if($sub_cat =='')echo base_url().'category/get_category_product/'.$cat_values['id']; else echo "#";?>"><?php echo $cat_values['prod_cat_name'];?></a>
+							<?php if(isset($sub_cat) && $sub_cat !='') { ?>
+							<ol>
+								<?php foreach($sub_cat as $sub_cat_id=>$sub_cat_values) { ?>
+								<li>
+									<a href="<?php echo base_url().'category/get_category_product/'.$sub_cat_values['id'];?>"><?php echo $sub_cat_values['prod_cat_name'];?></a>
+								</li>
+								<?php } ?>
+							</ol>
+							<?php } ?>
+						</li>
+				<?php }
+				} ?>
 		</ul>
   	</li>
 	<li>
 		<?php echo anchor("#", $this->lang->line("nav_samples")); ?>
 	</li>
+	<!--
 	<li>
 		<?php echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
 	</li>
-
+	-->
 	<li>
 		<?php //echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
 		<a href="#user_profile" name="modal" class='iframe'><?php echo "user Profile";?> </a>
 	</li>
-
+	<!--
 	<li>
 		<?php echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
 	</li>
-
+	-->
 	<li class="last">
 		<?php echo anchor("#", $this->lang->line("nav_contact_us")); ?>
 	</li>

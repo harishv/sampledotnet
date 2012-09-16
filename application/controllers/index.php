@@ -39,7 +39,7 @@ class Index extends CI_Controller {
 		// $data['slider'] = $this->load->view('slider', $data, TRUE);
 
 		$data['render'] = false;
-		$this->load->view("template/prod_header");
+		$this->load->view("template/prod_header", $data);
 		$this->load->view("prod_index_view",$data);
 		$this->load->view("template/prod_footer",$data);
 	}
@@ -64,7 +64,7 @@ class Index extends CI_Controller {
 		$data['product'] = $this->category_model->get_products($cat_id,$id,$config1['per_page']);
 
 		$data['category'] = $this->category_model->get_category();
-		$this->load->view("template/prod_header");
+		$this->load->view("template/prod_header", $data);
 		$this->load->view("category_products",$data);
 		$this->load->view("template/prod_footer");
 	}

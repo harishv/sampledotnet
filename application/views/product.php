@@ -73,7 +73,7 @@ You will also receive periodic <a class="email" href="#">emails and special offe
               <p><a class="grab flt-r" href="<?php echo $product_details[0]['grab_url'];?>">grab it now!</a></p>
               <div class="hgt-15px wid_100"></div>
               <!-- <img alt="social" src="<?php echo base_url().'img/social1.jpg';?>"> -->
-              <div class="hgt-15px wid_100">
+              <div class="social-networks-div hgt-15px wid_100">
                 <span class='st_facebook_button' displayText='Facebook'></span>
                 <span class='st_twitter_button' displayText='Tweet'></span>
                 <span class='st_linkedin_button' displayText='LinkedIn'></span>
