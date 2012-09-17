@@ -19,7 +19,6 @@ class Product extends CI_Controller {
 	public function product_detail(){
 		$product_id = $this->uri->segment(3);
 
-		$this->load->view("template/prod_header");
 		$data['product_details'] = $this->product_model->get_product_details($product_id);
 		$data['bread_crum'] = $this->category_model->get_bread_crums($data['product_details'][0]['category_id']);
 
@@ -28,6 +27,7 @@ class Product extends CI_Controller {
 		//$data['slider'] = $this->load->view('slider', $data, TRUE);
 
 		$data['category'] = $this->category_model->get_category();
+		$this->load->view("template/prod_header", $data);
 		$this->load->view("product",$data);
 		$this->load->view("template/prod_footer");
 	}

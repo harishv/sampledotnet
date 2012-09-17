@@ -41,7 +41,17 @@
 				echo img($image_properties); ?></a>
 		</li>
 	</ul>
-	<!-- Begin Subscribe div -->
+
+	<div class="subscribe">
+		<a href="#"><?php
+			$image_properties = array('src' => 'img/free-samples.png','alt' => 'free samples','class'=>'mgn-15b gap', 'width'=>'35', 'height'=>'50');
+			echo img($image_properties);
+		?>
+		<span>Subscribe Now to get
+		free Samples by E-mail </span></a>
+	<!-- End Subscribe div -->
+	</div>
+	<!-- Begin Subscribe div
 	<div class="subscribe">
 		<?php
 			$image_properties = array('src' => 'img/free-samples.png','alt' => 'free samples','class'=>'mgn-15b');
@@ -51,7 +61,7 @@
 		<input type="text" class="free" value="Enter Your Email" onFocus="this.value=''" />
 		<a href="#" class="subscribe-btn">&nbsp;</a>
 	</div>
-	<!-- End Subscribe div -->
+	End Subscribe div -->
 	<?php
 		$image_properties = array('src' => 'img/fap-turbo.jpg','alt' => 'fab turbo','class'=>'mgn-15b');
 		echo img($image_properties);
