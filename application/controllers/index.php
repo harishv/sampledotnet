@@ -10,6 +10,8 @@ class Index extends CI_Controller {
 		$this->load->model('common_model');
 		$this->load->library('pagination');
 		$this->load->helper('url');
+		
+		
 
 	}
 
@@ -70,7 +72,11 @@ class Index extends CI_Controller {
 	}
 
 	public  function product_rating($var=''){
-
+		
+echo "asdf";exit;
+		$login_data = $this->session->set_userdata($newdata);
+		
+		print_r($login_data);exit;
 		$product_id = $this->input->post('prod_id');
 		$rating_vote = $this->input->post('vote_value');
 		$rating = $this->category_model->insert_rating($product_id, $rating_vote);
@@ -96,7 +102,7 @@ class Index extends CI_Controller {
 		$data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
 		$data['featured_products'] = $this->category_model->get_featured_products();
 		$data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
-		$data['slider'] = $this->load->view('slider', $data, TRUE);
+		//$data['slider'] = $this->load->view('slider', $data, TRUE);
 
 		$data['render'] = true;
 

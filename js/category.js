@@ -1,24 +1,42 @@
-function prod_rating(id,count){
+$(document).ready(function() {
+	
+	$('.star').raty({
+		
+		
+  		click: function(score, evt) {
+				
+			var id= $(this).attr('value');
+			 
+			
+	   		var data = { 'prod_id' : id ,'vote_value':score};
+			var baseurl = base_url;
+			$.ajax({
+				url: baseurl+'index/product_rating',
+				type: 'POST',
+				data:data,
+				dataType :'json',
+				success: function(res)
+				{
+					//alert(res.status == 'succuss');return false;
+					if(res.status == 'succuss'){
+		
+						 //$('#ratings').html();
+						 $("#replace").html(res.page);
+					
+						//window.location =baseurl;
+					}
+				 }
+			});
 
-		var data = { 'prod_id' : id ,'vote_value':count};
-		var baseurl = base_url;
-		$.ajax({
-		url: baseurl+'index/product_rating',
-		type: 'POST',
-		data:data,
-		dataType :'json',
-		success: function(res)
-		{
-			//alert(res.status == 'succuss');return false;
-			if(res.status == 'succuss'){
+		}
+		
+	});
 
-				 //$('#ratings').html();
-				 $("#replace").html(res.page);
-				//window.location =baseurl;
-			}
-		 }
-		});
-}
+
+
+	
+});
+
 
 // checking for the null validation 
 function validate_isnull(field_id)
@@ -195,15 +213,16 @@ function validate_login() {
 		$.ajax({
 			  url: customURL,
 			  type: 'POST',
-			  data: data,		  
+			  data: data,
+			  dataType: 'json',		  
 			  success: function(result){
-			  		
-				  if(result == true){
+					
+				  if(result.sucuss == 'sucuss'){
 				
 
 					window.location.href = window.location.href;
 					
-				  } else if(result == 123) {
+				  } else if(result.sucuss == 'failure') {
 					  $('#errors_data').html("Login Failed");
 				 	 
 				  }

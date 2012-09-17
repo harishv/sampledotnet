@@ -18,20 +18,23 @@ class Login extends CI_Controller {
 		$data['errors'] = '';
 
 		$user_access = $this->login_model->check_user_login();
-
+		
 		//echo $this->input->post('rememberme');exit;
 		if( count($user_access) > 0 )
 		{
+			
 			$newdata = array( 'name'  => 'userlogin',
 							  'user'  => $user_access,
 			);
 			$this->session->set_userdata($newdata);
-			return true;
+			$return_json['sucuss'] ='sucuss';
 
 		} else {
-			//redirect('login/login_failed/123');
-			return false;
+			
+			$return_json['sucuss'] ='failure';
 		}
+
+		echo json_encode($return_json);
 	}
 
 	function active_account(){
