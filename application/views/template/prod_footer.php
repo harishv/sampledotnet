@@ -133,7 +133,7 @@
 				<!-- form-box -->
 				</div>
 				<br />
-				<div class="form-box" id="re_pass_reg" >
+				<div class="form-box" id="re_pass_reg" >i
 					<div class="text">Re-Password:</div>
 					<div class="form"><input type="password"  name="re_pass" id="re_pass" ></div>
 				<!-- form-box -->

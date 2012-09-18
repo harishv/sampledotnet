@@ -178,6 +178,9 @@ class Admin_Products_Model extends CI_Model {
 		}
 		$errors .= ( !isset($valid_country_ids) || (isset($valid_country_ids) && count($valid_country_ids) < 1) )? "Please select atleast one Valid Country<br />" : "";
 
+		if (!isset($prod_featured)) $prod_featured = 0;
+		if (!isset($prod_only_today)) $prod_only_today = 0;
+
 		if(trim($errors) == ''){
 			// Get the Product Id and Image Id to define images names
 			$max_product_id = $this->get_max_product_id();
@@ -204,7 +207,7 @@ class Admin_Products_Model extends CI_Model {
 			/**
 			 * Uploading an image starts here
 			 */
-			if($_FILES['prod_image']['name'] != ""){
+			if(isset($_FILES['prod_image']) && $_FILES['prod_image']['name'] != ""){
 
 				// Set image flag to false first
 				$image_success = false;
@@ -332,6 +335,8 @@ class Admin_Products_Model extends CI_Model {
 											'image' => $product_image_name,
 											'description' => $prod_desc,
 											'grab_url' => $prod_grab_url,
+											'featured' => $prod_featured,
+											'only_today' => $prod_only_today,
 											'valid_countries' => $valid_countries,
 											'modified_at' => $current_date,
 											'modified_from' => $ip,

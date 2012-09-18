@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 22, 2012 at 09:09 AM
+-- Generation Time: Sep 18, 2012 at 08:54 AM
 -- Server version: 5.1.63
--- PHP Version: 5.3.6-13ubuntu3.8
+-- PHP Version: 5.3.6-13ubuntu3.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -461,8 +461,12 @@ CREATE TABLE IF NOT EXISTS `products` (
   `category_id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `grab_url` varchar(255) NOT NULL,
+  `featured` tinyint(1) NOT NULL,
+  `only_today` tinyint(1) NOT NULL,
   `valid_countries` text,
   `status_id` smallint(6) NOT NULL,
+  `product_rating` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `created_from` varchar(20) NOT NULL,
   `created_by` int(11) NOT NULL,
@@ -470,17 +474,26 @@ CREATE TABLE IF NOT EXISTS `products` (
   `modified_from` varchar(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `category_id`, `image`, `description`, `valid_countries`, `status_id`, `created_at`, `created_from`, `created_by`, `modified_at`, `modified_from`, `modified_by`) VALUES
-(1, 'Mobile_Prod_1', 1, '', 'Mobile_Prod_1', '1,2,3,4,5,6', 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-21 01:07:05', '127.0.0.1', 1),
-(2, 'Camera_Prod_1', 2, '', 'Camera_Prod_1', '10,202,30,50', 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-21 01:23:38', '127.0.0.1', 1),
-(3, 'Mobile_Prod_2', 1, '', 'Mobile_Prod_2', '1,2,3,4,5,6', 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-21 01:23:42', '127.0.0.1', 1),
-(4, 'Camera_Prod_2', 2, '', 'Camera_Prod_2', '10,22,30,50', 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-21 01:14:10', '127.0.0.1', 1);
+INSERT INTO `products` (`id`, `name`, `category_id`, `image`, `description`, `grab_url`, `featured`, `only_today`, `valid_countries`, `status_id`, `product_rating`, `created_at`, `created_from`, `created_by`, `modified_at`, `modified_from`, `modified_by`) VALUES
+(5, 'Necklace 1', 7, 'product_5.gif', 'Necklace 1 desc', 'http://www.trendseeder.com/shop/product_item_page/MTAw', 1, 1, '2,6,7,11,13,14,16,19,21,26,28,30,42,47,49,55,60', 1, 3, '2012-08-23 02:29:00', '127.0.0.1', 1, '2012-08-24 11:34:47', '127.0.0.1', 1),
+(6, 'Diamond Necklace 1', 7, 'product_6.jpg', 'Diamond Necklace 1 Desc', 'http://www.trendseeder.com/shop/product_item_page/MTAw', 1, 1, '224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239', 1, 3, '2012-08-23 02:33:16', '127.0.0.1', 1, '2012-08-23 04:07:28', '127.0.0.1', 1),
+(7, 'Diamond Necklace 2', 7, 'product_7.jpg', 'Diamond Necklace 2', 'http://www.trendseeder.com/shop/', 1, 1, '2,3,4,5,6,7,8,9,10', 1, 3, '2012-08-23 02:34:26', '127.0.0.1', 1, '2012-08-24 23:34:53', '127.0.0.1', 1),
+(8, 'Mobile_1', 14, 'product_8.jpg', 'mob 1', 'http://www.trendseeder.com/shop/', 1, 1, '41,42,43,44,45,46,47,48,49,50,51,52,53,54,55', 1, 0, '2012-08-25 01:18:39', '127.0.0.1', 1, '2012-08-25 01:39:28', '127.0.0.1', 1),
+(9, 'Mobile_2', 16, 'product_9.jpg', 'mob 2', 'http://www.trendseeder.com/shop/', 1, 1, '98,88,89,87,92,91,93,94,96,97,95,90', 1, 0, '2012-08-25 01:19:22', '127.0.0.1', 1, '2012-08-25 18:32:16', '127.0.0.1', 1),
+(10, 'Mobile_3', 14, 'product_10.jpg', 'mobile 3', 'http://www.trendseeder.com/shop/', 1, 1, '3,6,5,4,7,8,2', 1, 4, '2012-08-25 01:19:54', '127.0.0.1', 1, '2012-08-25 18:32:34', '127.0.0.1', 1),
+(11, 'Camera 1', 2, 'product_11.jpg', 'cam 1', 'http://www.trendseeder.com/shop/', 1, 1, '6,7,8', 1, 0, '2012-08-25 01:21:52', '127.0.0.1', 1, '2012-08-25 01:23:33', '127.0.0.1', 1),
+(12, 'Camera 2', 2, 'product_12.jpg', 'cam 2', 'http://www.trendseeder.com/shop/', 1, 1, '4,5,6,7,8,9', 1, 0, '2012-08-25 01:23:01', '127.0.0.1', 1, '2012-08-25 01:23:35', '127.0.0.1', 1),
+(13, 'Camera 3', 2, 'product_13.jpg', 'jkhjhkhkjk', 'http://www.trendseeder.com/shop/', 1, 1, '3,4,5,6,7,8', 1, 0, '2012-08-25 01:23:29', '127.0.0.1', 1, '2012-08-25 01:23:36', '127.0.0.1', 1),
+(14, 'Testing', 12, 'product_14.jpg', 'Testing', 'google.com', 1, 1, '3,17,6,60,13,1,9,5,11,4,12,7,16,10,15,14,18,32,25,21,20,36,22,37,27,28,33,30,19,35,34,31,106,29,24,23,26,116,47,38,51,122,41,208,46,48,52,39,49,118,42,40,45,50,98,53,54,57,56,58,59,214,61,63,205,88,65,62,67,68,71,73,70,69,74,75,80,172,209,76,85,79,55,82,83,89,84,78,87,92,91,81,86,93,94,99,96,229,97,95,100,108,105,101,107,102,104,103,109,44,111,113,110,112,123,114,117,120,121,115,124,133,125,130,129,134,127,131,132,145,141,139,153,155,152,142,150,140,147,148,151,239,154,72,137,136,144,138,149,135,156,143,157,166,165,163,8,158,168,162,159,161,167,160,146,164,169,175,182,180,170,173,183,171,174,178,176,181,179,184,185,186,188,189,195,119,126,177,230,237,200,204,190,201,187,192,199,194,198,196,191,202,241,90,66,128,203,197,206,193,43,221,212,222,211,210,213,217,219,216,218,215,207,220,224,223,2,77,226,225,227,228,235,231,234,232,233,236,64,238,240,243,242,244', 1, 5, '2012-08-25 18:48:12', '127.0.0.1', 1, '2012-08-25 19:06:34', '127.0.0.1', 1),
+(15, 'Lappy', 19, 'product_15.jpg', 'Lappy', 'http://www.trendseeder.com/dasdasdasd', 1, 1, '3,17', 1, 5, '2012-08-25 18:50:51', '127.0.0.1', 1, '2012-08-25 18:54:06', '127.0.0.1', 1),
+(16, 'Testing', 12, 'product_16.jpg', 'Product Test', 'http://google.com', 1, 0, '60,13,9,11', 1, 5, '2012-08-25 19:03:22', '127.0.0.1', 1, '2012-09-18 08:53:28', '127.0.0.1', 1),
+(17, 'Hello', 16, 'product_17.jpg', 'mhslkhlksjdlskjdlajsdlkajsdljka', 'https://jsdhksd.com', 1, 1, '6,60,5', 0, 0, '2012-09-01 03:21:25', '127.0.0.1', 1, '2012-09-01 03:21:25', '127.0.0.1', 1);
 
 -- --------------------------------------------------------
 
@@ -500,14 +513,14 @@ CREATE TABLE IF NOT EXISTS `prod_categories` (
   `modified_from` varchar(20) NOT NULL,
   `modified_by` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `prod_categories`
 --
 
 INSERT INTO `prod_categories` (`id`, `prod_cat_name`, `parent_cat_id`, `status_id`, `created_at`, `created_from`, `created_by`, `modified_at`, `modified_from`, `modified_by`) VALUES
-(1, 'Mobiles ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(1, 'Mobilez', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-25 17:16:59', '127.0.0.1', 1),
 (2, 'Cameras ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
 (3, 'Computers ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
 (4, 'Gadgets ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
@@ -516,10 +529,21 @@ INSERT INTO `prod_categories` (`id`, `prod_cat_name`, `parent_cat_id`, `status_i
 (7, 'Jewellery ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
 (8, 'Gifts ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
 (9, 'Fashion ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
-(10, 'Health ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(10, 'Health Care', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-25 17:15:08', '127.0.0.1', 1),
 (11, 'Home Decor ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
 (12, 'Apparel', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
-(13, 'Sports ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0);
+(13, 'Sports ', 0, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(14, 'Nokia', 1, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(15, 'Samsung', 1, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(16, 'Blackberry', 1, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-25 02:47:17', '127.0.0.1', 1),
+(17, 'Sony Erricson', 1, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-25 02:47:04', '127.0.0.1', 1),
+(18, 'Iphone', 1, 1, '2012-08-11 08:40:33', '202.53.15.132', 0, '2012-08-11 08:40:33', '192.168.30.44', 0),
+(19, 'Laptops', 3, 1, '2012-08-25 17:17:32', '127.0.0.1', 1, '2012-08-25 17:17:38', '127.0.0.1', 1),
+(20, 'Cloths', 9, 1, '2012-08-25 17:18:08', '127.0.0.1', 1, '2012-08-25 17:18:44', '127.0.0.1', 1),
+(21, 'Cloths', 0, 0, '2012-08-25 19:28:05', '127.0.0.1', 1, '2012-08-25 19:28:18', '127.0.0.1', 1),
+(22, 'dasdasdasda', 7, 0, '2012-08-25 19:28:53', '127.0.0.1', 1, '2012-08-25 19:29:22', '127.0.0.1', 1),
+(23, 't1t1t1t', 0, 0, '2012-09-03 01:05:15', '127.0.0.1', 1, '2012-09-03 01:05:15', '127.0.0.1', 1),
+(24, 't2t2t2t2t', 12, 2, '2012-09-03 01:05:43', '127.0.0.1', 1, '2012-09-03 23:40:54', '127.0.0.1', 1);
 
 -- --------------------------------------------------------
 
@@ -540,7 +564,39 @@ CREATE TABLE IF NOT EXISTS `prod_ratings` (
 INSERT INTO `prod_ratings` (`user_id`, `prod_id`, `rating`) VALUES
 (1, 1, '4'),
 (2, 1, '2'),
-(3, 1, '3');
+(3, 1, '3'),
+(1, 10, '4'),
+(1, 16, '5'),
+(1, 15, '5'),
+(1, 14, '5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `scribd_documents`
+--
+
+CREATE TABLE IF NOT EXISTS `scribd_documents` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `doc_id` int(10) NOT NULL COMMENT 'scribd suploaded document id',
+  `access_key` varchar(100) NOT NULL COMMENT 'scribd access key',
+  `secret_password` varchar(100) NOT NULL,
+  `pdfdoc_category` int(5) NOT NULL,
+  `doc_type` varchar(10) NOT NULL,
+  `thumb_url` varchar(200) NOT NULL,
+  `uploaded_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `scribd_documents`
+--
+
+INSERT INTO `scribd_documents` (`id`, `doc_id`, `access_key`, `secret_password`, `pdfdoc_category`, `doc_type`, `thumb_url`, `uploaded_date`) VALUES
+(1, 104315212, 'key-1nf0mr3z3ltwa40360dj', '18vgsspmhhy1teg5q6t9', 1, 'private', '', '2012-08-29'),
+(2, 104315382, 'key-22mapyq3dgwmxryfq0qz', '1nga20qjqfmp7c2mqxmw', 1, 'private', '', '2012-08-29'),
+(3, 104315921, 'key-1ok4x305ikn82uyj8lue', 'hnl6szr1211ugd35k3y', 1, 'private', '', '2012-08-29'),
+(4, 104316053, 'key-xqhciwrh4yyhoojquqy', '1hvpvnurleognl95kb7u', 1, 'private', '', '2012-08-29');
 
 -- --------------------------------------------------------
 

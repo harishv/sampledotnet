@@ -208,6 +208,28 @@ $(document).ready(function() {
 			</div>
 
 			<div class="control-group">
+				<label for="prod_featured" class="control-label"><?php echo $this->lang->line('admin_prod_mng_featured'); ?>
+					:</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="prod_featured" name="prod_featured" value="1" <?php if($set && $product["featured"]) echo 'checked="checked"'; ?>>
+						<?php echo $this->lang->line('admin_prod_mng_featured_note'); ?>
+					</label>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label for="prod_only_today" class="control-label"><?php echo $this->lang->line('admin_prod_mng_only_today'); ?>
+					:</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="prod_only_today" name="prod_only_today" value="1" <?php if($set && $product["only_today"]) echo 'checked="checked"'; ?>>
+						<?php echo $this->lang->line('admin_prod_mng_only_today_note'); ?>
+					</label>
+				</div>
+			</div>
+
+			<div class="control-group">
 				<label class="control-label" for="valid_country_ids"><?php echo $this->lang->line('admin_prod_mng_valid_cont'); ?>
 					:</label>
 				<div class="controls">
