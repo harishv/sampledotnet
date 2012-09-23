@@ -76,7 +76,10 @@
 					if ($('#register').css("display") == "block") {
 						$('#register').css("display", "none");
 					}
-
+					if ($('#forgotpassword').css("display") == "block") {
+						$('#forgotpassword').css("display", "none");
+					}
+					
 					//Get the screen height and width
 					var maskHeight = $(document).height();
 					var maskWidth = $(window).width();

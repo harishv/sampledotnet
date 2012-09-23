@@ -238,6 +238,16 @@ class Category_Model extends CI_Model {
 
 	}
 
+	function insert_grab($prod_id,$url,$user_id){
+
+		$data = array('prod_id'=>$prod_id,'grab_url'=>$url,'user_id' => $user_id);
+		$this->db->insert('tracking',$data);
+
+		return true;
+
+
+	}
+
 
 
 };

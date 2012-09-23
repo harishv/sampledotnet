@@ -913,6 +913,118 @@ color:#0c3b93;
 }
 
 
+#lr-box-pass{
+ width:685px;
+ min-height:100px;
+ position:relative;
+}
+#lr-box-pass> .top-bg{
+  width:685px;
+  height:69px;
+  background:url(../img/top-bg.png) no-repeat;
+  position:relative;
+}
+#lr-box-pass> .middle-bg{
+  text-align: center;
+  width:555px;
+  height:auto !important;
+  background:url(../img/middle-bg.png) repeat-y;
+  position:relative;
+  padding-left:130px;
+  padding-top:20px;
+}
+#lr-box-pass> .middle-bg .form-box{
+  width:340px;
+  height:27px;
+
+}
+#lr-box-pass> .middle-bg .form-box .form{
+ width:256px;
+ height:26px;
+ background:url(../img/form-bg.png) no-repeat;
+ float:right;
+ padding-left:1px;
+ padding-top:1px;
+}
+#lr-box-pass> .middle-bg .form-box .form input{
+  width:250px;
+  height:25px;
+  background:url(../img/form-bg-1.png) repeat-x;
+  border:none;
+  padding-left:5px;
+  color:#7b7b7b;
+}
+#lr-box-pass> .middle-bg .form-box .text{
+ width:83px;
+ height:22px;
+ float:left;
+ font-family:Arial, Helvetica, sans-serif;
+ font-size:12px;
+ font-weight:bold;
+ color:#014284;
+ padding-top:5px;
+}
+#lr-box-pass> .middle-bg .login-box{
+ width:257px;
+ height:30px;
+ padding-left:83px;
+}
+#lr-box-pass> .middle-bg .login-box input{
+  width:77px;
+  height:27px;
+  background:url(../img/login-bg.png) repeat-x;
+  text-align:center;
+  cursor:pointer;
+  float:left;
+  color:#FFFFFF;
+}
+#lr-box-pass> .middle-bg .login-box> a{
+ display:block;
+ height:22px;
+ width:150px;
+ float:right;
+ text-align:right;
+ color:#000000;
+ font-family:Arial, Helvetica, sans-serif;
+ font-size:11px;
+ text-decoration:underline;
+ padding-top:5px;
+}
+#lr-box-pass> .middle-bg .login-box span{
+ color:#053f79;
+ font-family:Arial, Helvetica, sans-serif;
+ font-size:11px;
+}
+#lr-box-pass> .bottom-bg{
+  width:685px;
+  height:21px;
+  background:url(../img/bottom-bg.png) no-repeat;
+  position:relative;
+}
+#lr-box-pass> .top-bg .txt-1{
+	width:222px;
+	height:19px;
+	position:absolute;
+	left: 28px;
+	top: 39px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	color:#014284;
+}
+#lr-box-pass> .top-bg .txt-2{
+	width:150px;
+	height:19px;
+	position:absolute;
+	left: 414px;
+	top: 39px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	color:#014284;
+}
+
+
 
 #boxes .window {
 	position:absolute;

@@ -19,6 +19,8 @@
 				<li>
 					<?php echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
 				</li>
+				
+
 				<li class="last">
 					<?php echo anchor("#", $this->lang->line("nav_contact_us")); ?>
 				</li>
@@ -63,7 +65,7 @@
 				<br />
 				<div class="login-box">
 					<input type="submit" value="Login" />
-					<a href="#">Forgot your password?</a>
+					<a href="#forgotpassword" name="modal">Forgot your password?</a>
 				</div>
 				<?php echo form_close();?>
 				<br />
@@ -155,16 +157,7 @@
 
 	<?php // user profile popup?>
 
-	<?php
-		if($this->session->userdata('login_errors') != "") {
-			$errors=$this->session->userdata('login_errors');
-			$error_child = array('login_errors'  => '');
-			$this->session->unset_userdata($error_child);
-		}
-
-		if(isset($errors) && $errors !='') { ?>
-			<script>$("#register").css('display','block');</script>
-	<?php } ?>
+	
 
 	<div id="user_profile" class="window">
 		<div id="lr-box-reg">
@@ -258,9 +251,52 @@
 			</div>
 			<!-- top-bg -->
 			<div class="bottom-bg"></div>
+			<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php //echo base_url().'img/line.jpg';?>" /> -->
+		</div>
+	</div>
+
+
+	<div id="forgotpassword" class="window">
+		<div id="lr-box-pass" >
+			<div class="top-bg">
+				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
+				<div class="txt-1">ForgetPassword</div>
+				<!-- <div class="txt-2">or Sign in with </div> -->
+			<!-- top-bg -->
+			</div>
+			<div class="middle-bg">
+				<div id="forget_errors_data" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
+				<div id="success_data_forgot"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
+				<?php
+					$attributes = array('id' => 'forgot_password', 'name'=>'forgot_password', 'onsubmit'=>'return validate_forgetpassword()');
+				?>
+				<?php echo form_open('login/forget_password_action/',$attributes); ?>
+				<div class="form-box">
+					<div class="text">Email: </div>
+					<div class="form">
+						<input type="text" name="forgot_address" id="forgot_address">
+					</div>
+				<!-- form-box -->
+				</div>
+				<br />
+				
+				<div class="login-box">
+					<input type="submit" value="Submit" />
+				
+				</div>
+				<?php echo form_close();?>
+				<br />
+				
+				<!-- <a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a> -->
+			<!-- middle-bg -->
+			</div>
+			<!-- top-bg -->
+			<div class="bottom-bg"></div>
 			<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" /> -->
 		</div>
 	</div>
+
+
 	<div id="mask"></div>
 </div>
 

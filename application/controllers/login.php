@@ -55,6 +55,88 @@ class Login extends CI_Controller {
 		}
 	}
 
+	public function forget_password_action(){
+
+		$return_json= array('status' => "error");
+		$data = array();
+		$data['errors'] = "";
+
+		$email = $this->login_model->forgot_password_email();
+
+		if (count($email) > 0) {
+
+			$email_result = $this->login_model->forgot_password_send_email($email);
+
+			if(is_string($email_result)){
+				
+				$return_json['status'] = "failure";
+				$return_json['data'] = $email_result;
+			}else if(is_bool($email_result)){
+				$return_json['status'] = "sucuss";
+				$return_json['data'] = "Email has Send Succussfully";
+			}
+		}else{
+
+			$return_json['status'] = "failure";
+			$return_json['data'] = "Enter Email id not exists";
+
+				
+		}
+
+		echo json_encode($return_json);
+
+
+	}
+
+
+	function change_password($id, $pw_encrypt) {
+		
+		$user_id = base64_decode($id);
+
+		$result = $this->login_model->check_password_change_authentication($user_id, $pw_encrypt);
+
+
+
+
+		$data['errors'] = '';
+
+		$this->load->view('template/prod_header');
+		if( count($result) > 0 ){
+			$data['user_id'] = $result['user_id'];
+			$this->load->view('change_password', $data);
+		} else {
+			$data['link_errors'] = "Email Link has been Expired";
+			$this->load->view('forgot_password', $data);
+		}
+		$this->load->view('template/prod_footer');
+	}
+
+	function change_password_action() {
+		$data['errors'] = "";
+		
+		$user_details = $this->login_model->change_password();
+
+		$this->load->view('template/prod_header');
+
+		if( is_string($user_details) )
+		{
+			$data['pass_errors'] = $user_details;
+
+			$this->load->view('change_password', $data);
+		} else {
+			//$data['success'] = "***Password Change Succesfull***";
+
+			$this->load->view('change_password_confirm', $data);
+		}
+
+		$this->load->view('template/prod_footer');
+
+
+	}
+	
+
+
+
 	function logout(){
 
 		$this->session->unset_userdata('user');

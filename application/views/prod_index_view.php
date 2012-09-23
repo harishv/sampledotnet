@@ -61,7 +61,7 @@ if(!$render) { ?>
 									<div class="star" value="<?php echo $product_values['id'];?>" datarating="<?php echo $product_values['product_rating'];?>"></div>
 									
 									<div class="clear"></div>
-									<a class="grab flt-r" href="<?php echo $product_values['grab_url'];?>">grab it now!</a>
+									<a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_values['id'];?> ','<?php echo $product_values['grab_url'];?>')">grab it now!</a>
 										<div class="social clear">
 											<span class='st_facebook'></span>
 											<span class='st_twitter'></span>

@@ -38,6 +38,40 @@ $(document).ready(function() {
 });
 
 
+
+function grab_now(id,url){
+
+
+	var data = { 'prod_id' : id,'grab_url':url};
+			var baseurl = base_url;
+
+			$.ajax({
+				url: baseurl+'index/grab_now',
+				type: 'POST',
+				data:data,
+				dataType :'json',
+				success: function(res)
+				{
+					
+					//alert(res.status == 'succuss');return false;
+					if(res.status == 'succuss'){
+		
+						
+						window.location.assign(url);
+						 $("#replace").html(res.page);
+					
+						//window.location =baseurl;
+					}else{
+						alert(res.data);
+					}
+				 }
+			});
+
+
+
+}
+
+
 // checking for the null validation 
 function validate_isnull(field_id)
 {
@@ -323,6 +357,74 @@ function validate_user_profile(){
 			  }
 		});
 	}
+	return false;
+
+}
+
+
+function validate_forgetpassword(){
+
+	var errors = "";
+
+	
+	var username_obj = document.getElementById('forgot_address');
+
+	
+
+	if(!validate_isnull(username_obj)) {
+	   errors += "Email should not be null or empty<br />";
+	   document.getElementById('forget_errors_data').innerHTML="";
+	   document.getElementById('forget_errors_data').innerHTML=$.trim(errors);
+	   return false;		
+	} else if(username_obj.value.length > 60)
+	{
+		errors += "Email should not be more than 60 characters<br />";
+		document.getElementById('forget_errors_data').innerHTML="";
+	   document.getElementById('forget_errors_data').innerHTML=$.trim(errors);
+	   return false;		
+	}
+	else if(!validateEmail(username_obj)) {
+		errors += "Please enter valid email<br />";
+		document.getElementById('forget_errors_data').innerHTML="";
+	   document.getElementById('forget_errors_data').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+
+
+	if ($.trim(errors) == "") {
+		$('#forget_errors_data	').html("");
+		
+		// Call check Login Ajax call
+		var customURL = base_url+"login/forget_password_action";
+		var data_forgot = $('#forgot_password').serialize(true);
+
+
+
+		$.ajax({
+			  url: customURL,
+			  type: 'POST',
+			  data: data_forgot,
+			  dataType:'json',		  
+			  success: function(response){
+			  	
+			  			
+				  if(response.status == "sucuss"){
+				
+				  	
+				  	$("#success_data_forgot").html(response.data);
+				  	document.getElementById('success_data_forgot').style.display = 'block';
+					
+					
+				  } else{
+					  $('#forget_errors_data').html(response.data);
+				 	 
+				  }
+			  }
+		});
+	}
+	return false;
+
 
 }
 

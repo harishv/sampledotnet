@@ -10,6 +10,13 @@ class Index extends CI_Controller {
 		$this->load->model('common_model');
 		$this->load->library('pagination');
 		$this->load->helper('url');
+		$this->load->library('session');
+
+		$login_data = $this->session->userdata('user');
+
+		
+
+
 		
 		
 
@@ -73,10 +80,10 @@ class Index extends CI_Controller {
 
 	public  function product_rating($var=''){
 		
-echo "asdf";exit;
-		$login_data = $this->session->set_userdata($newdata);
+
+		$login_data = $this->session->userdata('newdata');
 		
-		print_r($login_data);exit;
+		
 		$product_id = $this->input->post('prod_id');
 		$rating_vote = $this->input->post('vote_value');
 		$rating = $this->category_model->insert_rating($product_id, $rating_vote);
@@ -111,6 +118,26 @@ echo "asdf";exit;
 			$return['status'] = 'succuss';
 			echo json_encode($return);exit;
 		}
+	}
+
+
+	public function grab_now(){
+
+
+		$id =$this->input->post('prod_id');
+		$grab_url = $this->input->post('grab_url');
+		$login_data = $this->session->userdata('user');
+		if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
+			$result = $this->category_model->insert_grab($id,$grab_url,$login_data['user_id']);
+			$return['status'] = 'succuss';
+
+		}else{
+			$return['status']= 'failure';
+			$return['data']='Please Login with you creadtials';
+
+		}
+
+		echo json_encode($return);exit;
 	}
 
 	function email()
