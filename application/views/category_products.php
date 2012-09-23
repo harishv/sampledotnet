@@ -69,7 +69,8 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
             
           </div>
           <div class="clear"></div>
-          <a class="grab flt-r">grab it now!</a>
+         
+          <a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_values['id'];?> ','<?php echo $product_values['grab_url'];?>')">grab it now!</a>
           <div class="social clear">
             <span class='st_facebook'></span>
             <span class='st_twitter'></span>
