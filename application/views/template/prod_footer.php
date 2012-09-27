@@ -135,7 +135,7 @@
 				<!-- form-box -->
 				</div>
 				<br />
-				<div class="form-box" id="re_pass_reg" >i
+				<div class="form-box" id="re_pass_reg" >
 					<div class="text">Re-Password:</div>
 					<div class="form"><input type="password"  name="re_pass" id="re_pass" ></div>
 				<!-- form-box -->
@@ -171,7 +171,7 @@
 				<div id="errors_data_user_profile" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
 				<div id="success_data_user_profile"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
 				<?php
-					$attributes = array('id' => 'user_profile', 'name'=>'user_profile', 'onsubmit'=>'return validate_user_profile()');
+					$attributes = array('id' => 'user_profile_data', 'name'=>'user_profile', 'onsubmit'=>'return validate_user_profile()');
 				?>
 				<?php echo form_open('register/user_profile/', $attributes); ?>
 				<div class="form-box">

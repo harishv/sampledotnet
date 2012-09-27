@@ -116,7 +116,8 @@ class Register_Model extends CI_Model {
 	}
 
 	public function update_user_profile(){
-
+		
+		
 		$errors = '';
 		$dob = $this->input->post('dob');
 		$gender = $this->input->post('gender');
@@ -126,6 +127,7 @@ class Register_Model extends CI_Model {
 		$city = $this->input->post('city');
 		$zip = $this->input->post('zip');
 		$category = $this->input->post('cat_name');
+		
 		$cat_id = implode($category,',');
 		
 

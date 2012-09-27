@@ -197,6 +197,10 @@ function validate_registerform() {
 				  {
 
 						$("#success_data_signup").html(result.data);
+						$('#userlogin').each (function(){  
+    					this.reset();
+ 						}); 
+						
 						document.getElementById('success_data_signup').style.display = 'block';
 						
 						
@@ -331,9 +335,10 @@ function validate_user_profile(){
 	if ($.trim(errors) == "") {
 		$('#errors_data').html("");
 		
+		alert(base_url);
 		// Call check Login Ajax call
 		var customURL = base_url+"register/user_profile";
-		var data = $('#user_profile').serialize(true);
+		var data = $('#user_profile_data').serialize(true);
 
 		$.ajax({
 			  url: customURL,
@@ -341,13 +346,16 @@ function validate_user_profile(){
 			  data: data,
 			  dataType:'json',		  
 			  success: function(response){
-			  		console.log(response);
-			  	alert(response.status);return false;
+			  		
 				  if(response.status == "success"){
 				
 				  	
 				  	$("#success_data_user_profile").html(response.data);
+					$('#user_profile_data').each (function(){  
+    					this.reset();
+ 						}); 
 				  	document.getElementById('success_data_user_profile').style.display = 'block';
+					
 					
 					
 				  } else{
@@ -413,6 +421,9 @@ function validate_forgetpassword(){
 				
 				  	
 				  	$("#success_data_forgot").html(response.data);
+					$('#forgot_password').each (function(){  
+    					this.reset();
+ 						}); 
 				  	document.getElementById('success_data_forgot').style.display = 'block';
 					
 					
