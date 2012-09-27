@@ -14,12 +14,6 @@ class Index extends CI_Controller {
 
 		$login_data = $this->session->userdata('user');
 
-		
-
-
-		
-		
-
 	}
 
 	public function index ($var='') {
@@ -79,11 +73,9 @@ class Index extends CI_Controller {
 	}
 
 	public  function product_rating($var=''){
-		
 
 		$login_data = $this->session->userdata('newdata');
-		
-		
+
 		$product_id = $this->input->post('prod_id');
 		$rating_vote = $this->input->post('vote_value');
 		$rating = $this->category_model->insert_rating($product_id, $rating_vote);
@@ -98,11 +90,8 @@ class Index extends CI_Controller {
 		$config['total_rows'] = $this->category_model->getAllCount();
 		$config['per_page'] = 2;
 
-
 		$config['cur_tag_open']  ='<b class="currentpage">';
 		$config['cur_tag_close'] ='</b>';
-
-
 
 		$this->pagination->initialize($config);
 		$data['category'] = $this->category_model->get_category();
@@ -123,21 +112,23 @@ class Index extends CI_Controller {
 
 	public function grab_now(){
 
-
 		$id =$this->input->post('prod_id');
 		$grab_url = $this->input->post('grab_url');
 		$login_data = $this->session->userdata('user');
 		if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
 			$result = $this->category_model->insert_grab($id,$grab_url,$login_data['user_id']);
 			$return['status'] = 'succuss';
-
 		}else{
 			$return['status']= 'failure';
 			$return['data']='Please Login with you creadtials';
-
 		}
 
 		echo json_encode($return);exit;
+	}
+
+	function share_sample()
+	{
+		# code...
 	}
 
 	function email()

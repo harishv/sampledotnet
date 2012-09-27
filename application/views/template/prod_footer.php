@@ -163,7 +163,7 @@
 		
 		<div id="lr-box-reg">
 			<div class="top-bg">
-				
+				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
 				<div class="txt-1">Please Update Your Information</div>
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
@@ -257,6 +257,83 @@
 		</div>
 	</div>
 
+	<?php // Share a Sample ?>
+	<div id="share_sample" class="window">
+		<div id="lr-box" >
+			<div class="top-bg">
+				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
+				<div class="txt-1">Share a Sample Here!</div>
+				<!-- <div class="txt-2">or Sign in with </div> -->
+			<!-- top-bg -->
+			</div>
+			<div class="middle-bg">
+				<div id="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
+				<?php
+					$attributes = array('id' => 'share_sample', 'name'=>'share_sample', 'onsubmit'=>'return validate_sample()');
+				?>
+				<?php echo form_open('index/share_sample/', $attributes); ?>
+				<div class="form-box">
+					<div class="text">Name: </div>
+					<div class="form">
+						<input type="text" name="name"  id="name">
+					</div>
+				<!-- form-box -->
+				</div>
+				<br />
+				<div class="form-box">
+					<div class="text">Email: </div>
+					<div class="form">
+						<input type="text" name="email_address" id="email_address">
+					</div>
+				<!-- form-box -->
+				</div>
+				<br />
+				<div class="form-box">
+					<div class="text">Company: </div>
+					<div class="form">
+						<input type="text" name="company"  id="company">
+					</div>
+				<!-- form-box -->
+				</div>
+				<br />
+				<div class="form-box">
+					<div class="text">Product Title: </div>
+					<div class="form">
+						<input type="text" name="title"  id="title">
+					</div>
+				<!-- form-box -->
+				</div>
+				<br />
+				<div class="form-box">
+					<div class="text">Product Description: </div>
+					<div class="form">
+						<textarea rows="3" cols="10" name="desc" id="desc"></textarea>
+					</div>
+				<!-- form-box -->
+				</div>
+				<br />
+				<div style="clear: both;"></div>
+				<div class="form-box">
+					<div class="text">URL: </div>
+					<div class="form">
+						<input type="text" name="url"  id="url">
+					</div>
+				<!-- form-box -->
+				</div>
+				<br />
+				<div class="login-box">
+					<input type="submit" value="Share Now!" />
+				</div>
+				<?php echo form_close();?>
+				<br />
+			<!-- middle-bg -->
+			</div>
+			<!-- top-bg -->
+			<div class="bottom-bg"></div>
+			<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" /> -->
+		</div>
+	</div>
+
 
 	<div id="forgotpassword" class="window">
 		<div id="lr-box-pass" >
@@ -281,14 +358,14 @@
 				<!-- form-box -->
 				</div>
 				<br />
-				
+
 				<div class="login-box">
 					<input type="submit" value="Submit" />
-				
+
 				</div>
 				<?php echo form_close();?>
 				<br />
-				
+
 				<!-- <a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a> -->
 			<!-- middle-bg -->
 			</div>
@@ -300,15 +377,7 @@
 
 
 	<div id="mask"></div>
-
-
 </div>
-
-
-
-
-
-
 
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/bootstrap.js"></script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/prettify.js"></script>

@@ -39,7 +39,7 @@
 		<?php echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
 	</li>
 	-->
-	
+
 
 	<li class="last">
 		<?php echo anchor("#", $this->lang->line("nav_contact_us")); ?>
@@ -56,8 +56,6 @@
 	<?php }else{ ?>
 		<a href="#register" name="modal" class='iframe'><?php echo $this->lang->line("nav_become_a_member"); ?></a>
 	<?php }	 ?>
-
-	</a>
 </p>
 
 

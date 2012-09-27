@@ -7,7 +7,7 @@
 	</div>
 	<ul class="btn">
 		<li>
-			<a href="#"> <?php
+			<a href="#share_sample" name="modal" class="iframe"><?php
 				$image_properties = array('src' => 'img/share-a-sample.png','alt' => 'share a sample');
 				echo img($image_properties);
 			?></a>
@@ -43,7 +43,8 @@
 	</ul>
 
 	<div class="subscribe">
-		<a href="#"><?php
+		<?php $user_info = $this->session->userdata('user'); ?>
+		<a href="#<?php echo (isset($user_info) && $user_info != '') ? 'user_profile' : 'dialog'; ?>" name="modal" class="iframe"><?php
 			$image_properties = array('src' => 'img/free-samples.png','alt' => 'free samples','class'=>'mgn-15b gap', 'width'=>'35', 'height'=>'50');
 			echo img($image_properties);
 		?>
