@@ -342,7 +342,7 @@ function validate_user_profile(){
 	if ($.trim(errors) == "") {
 		$('#errors_data').html("");
 		
-		alert(base_url);
+		
 		// Call check Login Ajax call
 		var customURL = base_url+"register/user_profile";
 		var data = $('#user_profile_data').serialize(true);

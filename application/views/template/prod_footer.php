@@ -160,14 +160,16 @@
 	
 
 	<div id="user_profile" class="window">
+		
 		<div id="lr-box-reg">
 			<div class="top-bg">
-				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
-				<div class="txt-1">New User? Sign Up</div>
+				
+				<div class="txt-1">Please Update Your Information</div>
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
 			<div class="middle-bg">
+				
 				<div id="errors_data_user_profile" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
 				<div id="success_data_user_profile"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
 				<?php
@@ -298,7 +300,15 @@
 
 
 	<div id="mask"></div>
+
+
 </div>
+
+
+
+
+
+
 
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/bootstrap.js"></script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/prettify.js"></script>
