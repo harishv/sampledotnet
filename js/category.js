@@ -280,15 +280,22 @@ function validate_user_profile(){
 	var errors = "";
 
 	
+	var dob_obj = document.getElementById('datepicker1');
 	var address1_obj = document.getElementById('address1');
-
 	var  address2_obj = document.getElementById('address2');
 	var  state_obj = document.getElementById('state');
 	var city_obj =document.getElementById('city');
 	var zip_obj =document.getElementById('zip');
 
 	
+	if(!validate_isnull(dob_obj)) {
 	
+	   errors += "Date of Brith should not be null or empty<br >";
+	   document.getElementById('errors_data_user_profile').innerHTML="";
+	   document.getElementById('errors_data_user_profile').innerHTML=$.trim(errors);
+	   return false;
+	}
+
 	if(!validate_isnull(address1_obj)) {
 	
 	   errors += "Address 1 should not be null or empty<br >";
