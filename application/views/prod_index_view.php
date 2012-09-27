@@ -38,11 +38,15 @@ if(!$render) { ?>
 					<!-- for the refreshing issue start-->
 					<?php } ?>
 					<?php
+
+						//echo "<pre>";print_r($product);
 						if(isset($product) && $product != '') {
 							foreach ($product as $product_key => $product_values) { ?>
 								<!-- Begin Samples here -->
 								<div class="samples">
+									<?php if($product_values['only_today'] == 1 ){ ?>
 									<img src="<?php echo base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
+									<?php } ?>
 									<a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>">
 										<img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$product_values['image'];?>" width='54' height='63' class='small' />
 									</a>

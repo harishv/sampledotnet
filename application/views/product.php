@@ -47,7 +47,7 @@ You will also receive periodic <a class="email" href="#">emails and special offe
               <span><strong>Valid in:</strong><?php if(isset($country_names) && $country_names!= ''){  echo implode(', ',$country_names);}?></span>
               <em><strong class="flt-l">User Rating:</strong>
                 <?php
-            if($product_details[0]['product_rating'] != 0 ){
+            /*if($product_details[0]['product_rating'] != 0 ){
               for($i=1 ;$i<=$product_details[0]['product_rating'];$i++){ ?>
               <img src="<?php echo base_url().'img/star-full.png';?>" alt="full" />
               <?php }
@@ -63,14 +63,15 @@ You will also receive periodic <a class="email" href="#">emails and special offe
               <img src="<?php echo base_url().'img/star-off.png';?>" alt="full" onclick="prod_rating(<?php echo $product_details[0]['id'];?>,<?php echo $product_details[0]['product_rating'] +$i; ?>);"/>
               <input type="hidden" name="rating_vote" value="<?php echo $product_details[0]['product_rating'] +$i; ?>" />
               <?php }
-            }
+            } */
             ?>
-              </em>
+			<div class="star" value="<?php echo $product_details[0]['id'];?>" datarating="<?php echo $product_details[0]['product_rating'];?>"></div>
+            </em>
               </p>
               <p class="grey">
               <span>Report Invalid</span>
               <em>(15) comments</em> </p>
-              <p><a class="grab flt-r" href="<?php echo $product_details[0]['grab_url'];?>">grab it now!</a></p>
+			  <p><a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_details[0]['id'];?> ','<?php echo $product_details[0]['grab_url'];?>')"  >grab it now!</a></p>
               <div class="hgt-15px wid_100"></div>
               <!-- <img alt="social" src="<?php echo base_url().'img/social1.jpg';?>"> -->
               <div class="social-networks-div hgt-15px wid_100">

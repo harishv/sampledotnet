@@ -161,6 +161,7 @@ class Category_Model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('products');
 		$this->db->where('status_id', 1);
+		$this->db->where('featured',1);
 		$this->db->order_by("modified_at", "desc"); 
 		$result = $this->db->get();
 		if ($result->num_rows() == 0) {

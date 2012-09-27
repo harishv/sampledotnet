@@ -39,7 +39,10 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
             foreach ($product as $product_key=>$product_values){ ?>
         <!-- Begin Samples here -->
         <div class="samples">
+
+		<?php if($product_values['only_today'] == 1){ ?>
           <img src="<?php echo base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
+		<?php } ?>
           
           <a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$product_values['image'];?>"  width ='54' height ='63' class='small'/>
           <p class="pdg_10px"> <a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><strong><?php echo $product_values['name'];?></strong></a>
