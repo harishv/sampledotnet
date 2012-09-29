@@ -493,8 +493,8 @@ function validate_sample(){
 	}
 	else if(!validateEmail(email_obj)) {
 		errors += "Please enter valid email<br />";
-		document.getElementById('errors_data_signup').innerHTML="";
-	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+		document.getElementById('sample_errors_data').innerHTML="";
+	   document.getElementById('sample_errors_data').innerHTML=$.trim(errors);
 	   return false;
 	}
 	if(!validate_isnull(company_obj)) {
