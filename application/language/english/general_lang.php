@@ -117,7 +117,7 @@ $lang["admin_prod_index_title"]				=	"Products Management System";
 $lang["admin_prod_index_desc"]				=	"This is the primary section, where we are going to manage all products related information.";
 $lang["admin_prod_manager_categories"]		=	"Manage Categories";
 $lang["admin_prod_manager_products"]		=	"Manage Products";
-$lang["admin_prod_manager_samples"]         =   "Share A Sample";
+$lang["admin_prod_manager_samples"]         =   "Share a Sample";
 
 
 /**
