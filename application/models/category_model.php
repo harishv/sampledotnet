@@ -294,12 +294,16 @@ class Category_Model extends CI_Model {
 			return $errors;
 		}
 
+		$created_at = date('Y-m-d H:i:s');
 
-		$data = array('name'=>$name,
-					  'company'=>$company,
-					  'title'=>$title,
-					 'desc'=>$desc,
-					  'url'=>$url);
+		$created_from = $_SERVER['REMOTE_ADDR'];
+		$data = array('sample_name'=>$name,
+					  'sample_company'=>$company,
+					  'sample_title'=>$title,
+					 'sample_desc'=>$desc,
+					  'sample_url'=>$url,
+					  'created_at' => $created_at,
+					  'created_from' =>$created_from);
 		$this->db->insert('share_sample',$data);
 		$this->email->to($email);
 		$this->email->from('sampel@sample.com', 'admin');
