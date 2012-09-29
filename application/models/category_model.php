@@ -298,6 +298,7 @@ class Category_Model extends CI_Model {
 
 		$created_from = $_SERVER['REMOTE_ADDR'];
 		$data = array('sample_name'=>$name,
+					 'sample_email'=>$email,
 					  'sample_company'=>$company,
 					  'sample_title'=>$title,
 					 'sample_desc'=>$desc,

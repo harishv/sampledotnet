@@ -28,6 +28,26 @@ class Admin_Products_Model extends CI_Model {
 
 	}
 
+	function get_samples(){
+
+		$this->db->select('*');
+		$this->db->from('share_sample');
+		$this->db->order_by("created_at", "desc");
+		// $this->db->where('status_id', 1); // status_id = 1 resembles Active
+
+		$result = $this->db->get();
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			return $result->result_array();
+		}
+
+		return false;
+
+
+	}
+
 	function get_product_details($id){
 
 		$this->db->select('*');

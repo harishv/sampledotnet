@@ -8,4 +8,5 @@
 <div class="row jumbotron">
 	<?php echo anchor(ADMINFOLDER . "/products/categories_list", $this->lang->line("admin_prod_manager_categories"), array("class" => "btn btn-large btn-primary span3 btn-span3")); ?>
 	<?php echo anchor(ADMINFOLDER . "/products/products_list", $this->lang->line("admin_prod_manager_products"), array("class" => "btn btn-large btn-success span3 btn-span3")); ?>
+	<?php echo anchor(ADMINFOLDER . "/products/sample_list", $this->lang->line("admin_prod_manager_samples"), array("class" => "btn btn-large btn-success span3 btn-span3")); ?>
 </div>

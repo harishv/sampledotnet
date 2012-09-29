@@ -117,6 +117,7 @@ $lang["admin_prod_index_title"]				=	"Products Management System";
 $lang["admin_prod_index_desc"]				=	"This is the primary section, where we are going to manage all products related information.";
 $lang["admin_prod_manager_categories"]		=	"Manage Categories";
 $lang["admin_prod_manager_products"]		=	"Manage Products";
+$lang["admin_prod_manager_samples"]         =   "Share A Sample";
 
 
 /**
@@ -157,6 +158,23 @@ $lang["admin_prod_cat_list_tbl_cat_name"]	=	"Category Name";
 $lang["admin_prod_cat_list_tbl_parent_cat_name"] =	"Parent Category Name";
 $lang["admin_prod_cat_list_tbl_status"]		=	"Status";
 $lang["admin_prod_cat_list_tbl_actions"]	=	"Actions";
+
+
+/**
+ * Sample List Page
+ */
+
+$lang["admin_sample_list_title"]				=	"Sample List";
+$lang["admin_sample_list_tbl_sample_name"]	=	"Name";
+$lang["admin_sample_list_tbl_sample_email"] =	"Email";
+$lang["admin_sample_list_tbl_sample_company"]= "Company";
+$lang["admin_sample_list_tbl_sample_title"] =	"Title";
+$lang["admin_sample_list_tbl_sample_url"]	=	"Url";
+$lang["admin_sample_list_tbl_sample_desc"]	=	"Description";
+$lang["admin_prod_cat_list_tbl_actions"]	=	"Actions";
+$lang["admin_sample_view"]					=	"View";
+
+
 
 
 /**

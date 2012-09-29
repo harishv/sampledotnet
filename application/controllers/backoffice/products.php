@@ -49,6 +49,33 @@ class Products extends CI_Controller {
 		$this->load->view("template/admin_footer");
 	}
 
+
+
+	public function sample_list(){
+
+		$data["sample_list"] = $this->Admin_Products_Model->get_samples();
+		$this->load->view("template/admin_header");
+		$this->load->view("admin_sample_list_view", $data);
+		$this->load->view("template/admin_footer");
+	}
+
+	public function sample_manage($id = false)
+	{
+
+		// Load the error values(if any) while managing a product
+		
+		if ($id) {
+			$data["sample_product"] = $this->Admin_Products_Model->get_sample_details($id);
+		}
+
+		
+
+		$this->load->view("template/admin_header");
+		$this->load->view("admin_products_manage_view", $data);
+		$this->load->view("template/admin_footer");
+	}
+
+
 	public function product_change_status()
 	{
 		echo $this->Admin_Products_Model->change_status();
