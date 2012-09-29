@@ -10,6 +10,7 @@ class Index extends CI_Controller {
 		$this->load->model('common_model');
 		$this->load->library('pagination');
 		$this->load->helper('url');
+		$this->load->library('user_validations');
 		$this->load->library('session');
 
 		$login_data = $this->session->userdata('user');
@@ -126,9 +127,23 @@ class Index extends CI_Controller {
 		echo json_encode($return);exit;
 	}
 
-	function share_sample()
-	{
-		# code...
+	public function share_sample(){
+	
+		$return_json= array('status' => "error");
+		$data = array();
+		$data['errors'] = "";
+
+		$sharesample = $this->category_model->share_sample();
+
+		if(is_string($sharesample) ){
+			$return_json['data'] =$sharesample;
+		}
+		else{
+		$return_json['status'] = "success";
+		$return_json['data'] = "Thank you for Share a Sample";
+		}
+
+		echo json_encode($return_json);
 	}
 
 	function email()

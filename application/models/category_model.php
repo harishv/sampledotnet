@@ -249,6 +249,83 @@ class Category_Model extends CI_Model {
 
 	}
 
+	function share_sample(){
+
+		$name = $this->input->post('name');
+		$email = $this->input->post('share_email_address');
+		$company = $this->input->post('company');
+		$title =$this->input->post('title');
+		$desc = $this->input->post('desc');
+		$url = $this->input->post('url');
+
+		$errors ='';
+
+		if(trim($name) == ''){
+			$errors .= "Name should not be null or empty<br/>";
+		}
+		$email_valid = $this->user_validations->is_email($email);
+
+
+		if(is_string($email_valid))
+			$errors .= $email_valid."<br/>";
+		
+		if(trim($company) == ''){
+			$errors .= "Company Name should not be null or empty<br >";
+		}
+		if(trim($title) == ''){
+			$errors .= 'Title should not be null or empty<br >';
+		}
+		if(trim($desc) ==''){
+			$errors .= 'Desc should not be null or empty<br >';
+		}
+		if(trim($url) == ''){
+			$errors .= 'URL should not be null or empty<br >';
+		}
+		$url_valid = $this->user_validations->is_validurl($url);
+
+
+		if(is_string($url_valid))
+			$errors .= $url_valid."<br/>";
+
+
+		
+		if($errors !=''){
+
+			return $errors;
+		}
+
+
+		$data = array('name'=>$name,
+					  'company'=>$company,
+					  'title'=>$title,
+					 'desc'=>$desc,
+					  'url'=>$url);
+		$this->db->insert('share_sample',$data);
+		$this->email->to($email);
+		$this->email->from('sampel@sample.com', 'admin');
+		$this->email->subject('Sample Details');
+		$message = "<b>Sample Details</b>"."<br><br><br>";
+		$message .= "Name : ".$name."<br>";
+		$message .= "Email : ".$email ."<br>";
+		$message .= "Title : ".$title ."<br>";
+		$message .= "Company : ".$company ."<br>";
+		$message .= "Description : ".$desc ."<br>";
+		$message .= "URL : ".$url ."<br>";
+		$this->email->message($message);
+		$mail_result = $this->email->send();
+
+
+		if(!$mail_result){
+			return false;
+		}else{
+			$affected_rows = $this->db->affected_rows();
+			if($affected_rows > 0)
+				return true;
+		}
+		
+
+	}
+
 
 
 };

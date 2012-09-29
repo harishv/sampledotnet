@@ -267,9 +267,10 @@
 			<!-- top-bg -->
 			</div>
 			<div class="middle-bg">
-				<div id="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
+				<div id="sample_errors_data" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
+				<div id="sample_succuss_data" class="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
 				<?php
-					$attributes = array('id' => 'share_sample', 'name'=>'share_sample', 'onsubmit'=>'return validate_sample()');
+					$attributes = array('id' => 'sharesample', 'name'=>'share_sample', 'onsubmit'=>'return validate_sample()');
 				?>
 				<?php echo form_open('index/share_sample/', $attributes); ?>
 				<div class="form-box">
@@ -283,7 +284,7 @@
 				<div class="form-box">
 					<div class="text">Email: </div>
 					<div class="form">
-						<input type="text" name="email_address" id="email_address">
+						<input type="text" name="share_email_address" id="share_email_address">
 					</div>
 				<!-- form-box -->
 				</div>
@@ -307,12 +308,12 @@
 				<div class="form-box">
 					<div class="text">Product Description: </div>
 					<div class="form">
-						<textarea rows="3" cols="10" name="desc" id="desc"></textarea>
+						<input type="text"  name="desc" id="desc" />
 					</div>
 				<!-- form-box -->
 				</div>
 				<br />
-				<div style="clear: both;"></div>
+				
 				<div class="form-box">
 					<div class="text">URL: </div>
 					<div class="form">

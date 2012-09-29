@@ -101,10 +101,10 @@ class User_validations {
 	{
 		if($str=="")
 		{
-			return "error_1008";
+			return "URL should not to be null or Empty";
 		}
 		else{
-			return (!preg_match("/^(((http|https):\/\/)?)((www)?)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix" , $str)) ? "error_1009" : TRUE;
+			return (!preg_match("/^(((http|https):\/\/)?)((www)?)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/i" , $str)) ? "URL is not in the correct format" : TRUE;
 		}
 	}
 	/** function for displaying error messages

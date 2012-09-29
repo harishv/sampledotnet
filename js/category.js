@@ -102,6 +102,16 @@ function validateEmail(element, typeSent){
 	}
 	return emailPattern.test(element.value);  
 } 
+function validate_url(field_url){
+
+ 	var urlregex = /^(((http|https):\/\/)?)((www)?)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/i;
+	if(urlregex.test(field_url.value)){
+
+		return(true);
+	}
+	return(false);
+}
+
 
 
 
@@ -443,6 +453,133 @@ function validate_forgetpassword(){
 	}
 	return false;
 
+
+}
+
+function validate_sample(){
+
+	var errors = "";
+
+	var  name_obj = document.getElementById('name');
+	var  email_obj = document.getElementById('share_email_address');
+	var company_obj = document.getElementById('company');
+	var  title_obj = document.getElementById('title');
+	var  desc_obj = document.getElementById('desc');
+	var url_obj = document.getElementById('url');
+
+	
+	
+	if(!validate_isnull(name_obj)) {
+		
+	   errors += "Name should not be null or empty<br >";
+	   document.getElementById('sample_errors_data').innerHTML="";
+	   document.getElementById('sample_errors_data').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+	
+
+	if(!validate_isnull(email_obj)) {
+	   errors += "Email should not be null or empty<br />";
+	   document.getElementById('sample_errors_data').innerHTML="";
+	   document.getElementById('sample_errors_data').innerHTML=$.trim(errors);
+	   return false;		
+	} else if(email_obj.value.length > 60)
+	{
+		errors += "Email should not be more than 60 characters<br />";
+		document.getElementById('sample_errors_data').innerHTML="";
+	   document.getElementById('sample_errors_data').innerHTML=$.trim(errors);
+	   return false;		
+	}
+	else if(!validateEmail(email_obj)) {
+		errors += "Please enter valid email<br />";
+		document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;
+	}
+	if(!validate_isnull(company_obj)) {
+		
+	   errors += "Company Name should not be null or empty<br >";
+	   document.getElementById('sample_errors_data').innerHTML="";
+	   document.getElementById('sample_errors_data').innerHTML=$.trim(errors);
+	   return false;
+	}
+	if(!validate_isnull(title_obj)) {
+		
+	   errors += "Title should not be null or empty<br >";
+	   document.getElementById('sample_errors_data').innerHTML="";
+	   document.getElementById('sample_errors_data').innerHTML=$.trim(errors);
+	   return false;
+	}
+	if(!validate_isnull(desc_obj)) {
+		
+	   errors += "Desc should not be null or empty<br >";
+	   document.getElementById('sample_errors_data').innerHTML="";
+	   document.getElementById('sample_errors_data').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+	if(!validate_isnull(url_obj)){
+	   errors += "URL should not be null or empty<br>";
+	   document.getElementById('sample_errors_data').innerHTML="";
+	   document.getElementById('sample_errors_data').innerHTML=$.trim(errors);
+	   return false;
+	}
+	else if(url_obj.value.length>500)
+	{
+	 	errors +="URL should be less than 500 characters<br/>";
+	 	document.getElementById('sample_errors_data').innerHTML="";
+	   	document.getElementById('sample_errors_data').innerHTML=$.trim(errors);
+	   	return false;
+
+	}
+	else if(!validate_url(url_obj)){
+	    errors += "URL is not in the correct format<br>";
+	    document.getElementById('sample_errors_data').innerHTML="";
+	   	document.getElementById('sample_errors_data').innerHTML=$.trim(errors);
+	   	return false;	
+	}
+
+	
+
+	
+
+	if($.trim(errors) == '')
+	{
+		$('#sample_errors_data').html("");
+		// Call check Login Ajax call
+		var customURL =  base_url+"index/share_sample";
+		var data = $('#sharesample').serialize();
+		
+
+		$.ajax({
+			  url: customURL,
+			  type: 'POST',
+			  data: data,
+  			  dataType:'json',
+			  success: function(response){
+			  		
+
+				if(response.status == "success"){
+				
+				  	
+				  	$("#sample_succuss_data").html(response.data);
+					$('#sharesample').each (function(){  
+    					this.reset();
+ 						}); 
+				  	document.getElementById('sample_succuss_data').style.display = 'block';
+					
+					
+					
+				  } else{
+					  $('#sample_errors_data').html(response.data);
+				 	 
+				  }
+			  }
+		});
+
+	}
+	return false;
 
 }
 
