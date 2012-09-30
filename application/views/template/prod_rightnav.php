@@ -43,6 +43,11 @@
 	</ul>
 
 	<div class="subscribe">
+        <a href="#"><img src="<?php echo base_url("img"); ?>/free-samples.png" alt="free samples" width="35" height="50" align="left" class="mgn-15b gap" />
+        <span>Subscribe Now to get free Samples by E-mail</span></a>
+        <!-- End Subscribe div -->
+    </div>
+<!-- 	<div class="subscribe">
 		<?php $user_info = $this->session->userdata('user'); ?>
 		<a href="#<?php echo (isset($user_info) && $user_info != '') ? 'user_profile' : 'dialog'; ?>" name="modal" class="iframe"><?php
 			$image_properties = array('src' => 'img/free-samples.png','alt' => 'free samples','class'=>'mgn-15b gap', 'width'=>'35', 'height'=>'50');
@@ -50,8 +55,8 @@
 		?>
 		<span>Subscribe Now to get
 		free Samples by E-mail </span></a>
-	<!-- End Subscribe div -->
 	</div>
+ -->	<!-- End Subscribe div -->
 	<!-- Begin Subscribe div
 	<div class="subscribe">
 		<?php

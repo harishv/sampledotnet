@@ -307,13 +307,14 @@
 				<br />
 				<div class="form-box">
 					<div class="text">Product Description: </div>
-					<div class="form">
-						<input type="text"  name="desc" id="desc" />
+					<div class="text-area">
+						<textarea rows="3" cols="30"></textarea>
 					</div>
 				<!-- form-box -->
 				</div>
 				<br />
-				
+				<br />
+				<div style="clear:both"></div>
 				<div class="form-box">
 					<div class="text">URL: </div>
 					<div class="form">

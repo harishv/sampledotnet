@@ -727,7 +727,7 @@ color:#0c3b93;
   padding-left:5px;
   color:#7b7b7b;
 }
-#lr-box> .middle-bg .form-box .text{
+#lr-box> .middle-bg .form-box .text, .text{
  width:83px;
  height:22px;
  float:left;
@@ -735,6 +735,10 @@ color:#0c3b93;
  font-size:12px;
  font-weight:bold;
  color:#014284;
+ padding-top:5px;
+}
+.form{
+ padding-left:85px;
  padding-top:5px;
 }
 #lr-box> .middle-bg .login-box{
@@ -797,7 +801,18 @@ color:#0c3b93;
 	color:#014284;
 }
 
-
+#lr-box> .middle-bg .form-box .text-area{
+ width:256px;
+ height:65px;
+ background:url(../img/text-area.png) no-repeat;
+ float:right;
+ padding-left:1px;
+ padding-top:1px;
+}
+#lr-box> .middle-bg .form-box .text-area> textarea{
+  background:url(../img/text-area-bg.png) repeat-x;
+  height: 49px;
+}
 
 
 
