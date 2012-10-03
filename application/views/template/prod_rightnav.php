@@ -41,33 +41,15 @@
 				echo img($image_properties); ?></a>
 		</li>
 	</ul>
-
 	<div class="subscribe">
-        <a href="#"><img src="<?php echo base_url("img"); ?>/free-samples.png" alt="free samples" width="35" height="50" align="left" class="mgn-15b gap" />
-        <span>Subscribe Now to get free Samples by E-mail</span></a>
-        <!-- End Subscribe div -->
-    </div>
-<!-- 	<div class="subscribe">
 		<?php $user_info = $this->session->userdata('user'); ?>
 		<a href="#<?php echo (isset($user_info) && $user_info != '') ? 'user_profile' : 'dialog'; ?>" name="modal" class="iframe"><?php
-			$image_properties = array('src' => 'img/free-samples.png','alt' => 'free samples','class'=>'mgn-15b gap', 'width'=>'35', 'height'=>'50');
+			$image_properties = array('src' => 'img/free-samples.png','alt' => 'free samples','class'=>'mgn-15b gap', 'width'=>'35', 'height'=>'50', 'align'=>'left');
 			echo img($image_properties);
 		?>
-		<span>Subscribe Now to get
-		free Samples by E-mail </span></a>
+		<span>Subscribe Now to get free Samples by E-mail </span></a>
+	<!-- End Subscribe div -->
 	</div>
- -->	<!-- End Subscribe div -->
-	<!-- Begin Subscribe div
-	<div class="subscribe">
-		<?php
-			$image_properties = array('src' => 'img/free-samples.png','alt' => 'free samples','class'=>'mgn-15b');
-			echo img($image_properties);
-		?>
-		<input type="text" class="free" value="Enter Your Name" onFocus="this.value=''" />
-		<input type="text" class="free" value="Enter Your Email" onFocus="this.value=''" />
-		<a href="#" class="subscribe-btn">&nbsp;</a>
-	</div>
-	End Subscribe div -->
 	<?php
 		$image_properties = array('src' => 'img/fap-turbo.jpg','alt' => 'fab turbo','class'=>'mgn-15b');
 		echo img($image_properties);
