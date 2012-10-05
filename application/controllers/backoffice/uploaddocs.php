@@ -31,19 +31,27 @@ class Uploaddocs extends CI_Controller {
                 $data['message'] =  'Moved success fully';
             }
 
-            $file_type = explode('.',$file_name);
-            $UpdloadData = array();
-            $UpdloadData = $this->_createIPaper($path, $file_type[1], "private");
-            $UpdloadData['pdfdoc_category'] = $this->input->post('category');
-            $UpdloadData['doc_type'] = $this->input->post('doctype');
-            $Docsettings = $this->getThumbUrl($UpdloadData['doc_id']);
-            $UploadData['thumb_url'] = $Docsettings['thumbnail_url']; 
-            $UpdloadData['uploaded_date'] = date('Y-m-d');
+            $file_type       = explode('.',$file_name);
+            $UpdloadData     = $this->_createIPaper($path, $file_type[1], "private");
+            $pdfdoc_category = $this->input->post('category');
+            $access          = $this->input->post('doctype');
+            $docsettings     = $this->getThumbUrl($UpdloadData['doc_id']);
+            $uploaded_date   = date('Y-m-d');
+            $UpdloadData     = array('doc_id'     => $docsettings['doc_id'],
+                                'doc_title'       => $docsettings['title'],
+                                'access_key'      => $docsettings['access_key'],
+                                'secret_password' => $docsettings['secret_password'],
+                                'pdfdoc_category' => $pdfdoc_category ,
+                                'access'          => $docsettings['access'],
+                                'thumbnail_url'   => $docsettings['thumbnail_url'],
+                                'uploaded_date'   => $uploaded_date);
+           // echo "<pre>";
+            //print_r($UpdloadData);
             $this->load->model('Scribd_Documents_Model');
             $last_insert_id =  $this->Scribd_Documents_Model->add_document_details($UpdloadData);
             try  
             {  
-                   if($last_insert_id == 0){
+                   if($last_insert_id == 0) {
                        throw new Exception( 'Something really gone wrong', 0, $e);  
             
                        } 
@@ -58,9 +66,9 @@ class Uploaddocs extends CI_Controller {
             if($last_insert_id > 0) {
                     echo "Uploaded success fully";
                 } 
-		$this->load->view("template/admin_header");
+		//$this->load->view("template/admin_header");
 		$this->load->view("uploaddocs", $data);
-		$this->load->view("template/admin_footer");
+		//$this->load->view("template/admin_footer");
 	}
      
     private function _createIPaper($File, $FileType, $Access="private")
