@@ -19,8 +19,6 @@
 				<li>
 					<?php echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
 				</li>
-				
-
 				<li class="last">
 					<?php echo anchor("#", $this->lang->line("nav_contact_us")); ?>
 				</li>
@@ -106,7 +104,7 @@
 				<div class="form-box">
 					<div class="text">First Name: </div>
 					<div class="form">
-						<input type="text"  name="frist_name" id="first_name" />
+						<input type="text"  name="first_name" id="first_name" />
 					</div>
 				<!-- form-box -->
 				</div>
@@ -157,10 +155,10 @@
 
 	<?php // user profile popup?>
 
-	
+
 
 	<div id="user_profile" class="window">
-		
+
 		<div id="lr-box-reg">
 			<div class="top-bg">
 				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
@@ -169,7 +167,7 @@
 			<!-- top-bg -->
 			</div>
 			<div class="middle-bg">
-				
+
 				<div id="errors_data_user_profile" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
 				<div id="success_data_user_profile"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
 				<?php
@@ -308,7 +306,7 @@
 				<div class="form-box">
 					<div class="text">Product Description: </div>
 					<div class="text-area">
-						<textarea rows="3" cols="30"></textarea>
+						<textarea id="desc" name="desc" rows="3" cols="30"></textarea>
 					</div>
 				<!-- form-box -->
 				</div>

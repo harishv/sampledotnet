@@ -69,7 +69,7 @@
 
 <div class="row">
 	<h3 style="float: left;"><?php echo $this->lang->line('admin_sample_list_title'); ?></h3>
-	
+
 	<br />
 	<hr />
 	<div class="container">
@@ -113,22 +113,20 @@
 								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_company"); ?></th>
 								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_title"); ?></th>
 								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_url"); ?></th>
-								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_desc"); ?></th>
-								
+								<th width="30%"><?php echo $this->lang->line("admin_sample_list_tbl_sample_desc"); ?></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php foreach ($sample_list as $sample_list) { ?>
 								<tr>
 									<td><?php echo $tableCount; ?></td>
-									
 									<td><?php echo $sample_list['sample_name'];?></td>
 									<td><?php echo $sample_list['sample_email'];?></td>
 									<td><?php echo $sample_list['sample_company'];?></td>
 									<td><?php echo $sample_list['sample_title'];?></td>
 									<td><?php echo $sample_list['sample_url'];?></td>
 									<td><?php echo $sample_list['sample_desc'];?></td>
-																
+
 								</tr>
 							<?php
 									$tableCount++;

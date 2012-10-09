@@ -13,17 +13,17 @@ class Register_Model extends CI_Model {
 	{
 
 
-		
+
 		$errors = '';
-		
-		$first_name = $this->input->post('frist_name');
-		
+
+		$first_name = $this->input->post('first_name');
+
 
 		$last_name = $this->input->post('last_name');
 		$email = $this->input->post('email_add');
 		$password = $this->input->post('pass');
 		$re_password = $this->input->post('re_pass');
-		
+
 
 		$current_date = date('Y-m-d H:i:s');
 		$ip = $_SERVER['REMOTE_ADDR'];
@@ -39,14 +39,14 @@ class Register_Model extends CI_Model {
 
 		if(is_string($email_valid))
 			$errors .= $email_valid."<br/>";
-		
-		
-		
+
+
+
 		$password =$this->input->post('pass');
-		
+
 		$re_password = $this->input->post('re_pass');
-		
-		
+
+
 		if( trim($password) == ""){
 			$errors .= "Password should not be null or empty.<br/>";
 		}
@@ -63,9 +63,10 @@ class Register_Model extends CI_Model {
 		}
 
 
-			
 
-		$user_information = array ( 
+
+		$user_information = array ( 'first_name' => $first_name,
+									'last_name' => $last_name,
 									'email' => $email,
 									'password' => md5($password),
 									'created_at' => $current_date,
@@ -74,22 +75,22 @@ class Register_Model extends CI_Model {
 									'modified_at' => $current_date,
 									'modified_from' => $ip,
 									'modified_by' => 0,
-									
+
 		);
 
 
 		$this->db->insert('users', $user_information);
 		$last_id = $this->db->insert_id();
 		$encode_last_id=base64_encode($last_id);
-		$encode_last_id=rtrim($encode_last_id,"/(([=]) || ([+]))/"); 
+		$encode_last_id=rtrim($encode_last_id,"/(([=]) || ([+]))/");
 		$this->email->to($email);
 		$this->email->from('sampel@sample.com', 'admin');
 		$this->email->subject('Welcome to Sample');
 		$message_url = base_url().'login/active_account/'.$encode_last_id;
-		$this->email->message($message_url); 
+		$this->email->message($message_url);
 		$mail_result = $this->email->send();
 
-		
+
 
 		if(!$mail_result){
 			return false;
@@ -116,8 +117,8 @@ class Register_Model extends CI_Model {
 	}
 
 	public function update_user_profile(){
-		
-		
+
+
 		$errors = '';
 		$dob = $this->input->post('dob');
 		$gender = $this->input->post('gender');
@@ -127,9 +128,9 @@ class Register_Model extends CI_Model {
 		$city = $this->input->post('city');
 		$zip = $this->input->post('zip');
 		$category = $this->input->post('cat_name');
-		
+
 		$cat_id = implode($category,',');
-		
+
 
 		if(trim($dob) == '' ){
 			$errors .= 'DateOfBrith should not be null or empty<br/>';
@@ -149,9 +150,9 @@ class Register_Model extends CI_Model {
 
 		if($errors !='')
 			return $errors;
-		
 
-		$user_profile_information = array ( 
+
+		$user_profile_information = array (
 									'dob' => $dob,
 									'gender' => $gender,
 									'address_1' => $address1,
@@ -160,14 +161,14 @@ class Register_Model extends CI_Model {
 									'city' => $city,
 									'state' => $state,
 									'zip' => $zip,
-									
-									
+
+
 		);
 
 		$this->db->where('user_id' , 1);
 		$this->db->update('users',$user_profile_information);
 
-		
+
 		$affected_rows = $this->db->affected_rows();
 		if($affected_rows > 0){
 			return true;

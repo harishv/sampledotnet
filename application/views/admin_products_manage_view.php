@@ -249,6 +249,8 @@ $(document).ready(function() {
 							]);
 							<?php if($set){ ?>
 								t.set_values([<?php echo $product['valid_countries']; ?>]);
+							<?php } else { ?>
+								t.set_values(["15", "38", "77", "226"]);
 							<?php } ?>
 							// t.set_values(["2", "4"]);
 							// console.log(t.get_values());

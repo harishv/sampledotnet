@@ -37,6 +37,7 @@ class Index extends CI_Controller {
 
 		$data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
 
+		$data["countries"] = $this->common_model->get_countries();
 		$data['featured_products'] = $this->category_model->get_featured_products();
 		$data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
 
@@ -65,6 +66,7 @@ class Index extends CI_Controller {
 
 		$this->pagination->initialize($config1);
 
+		$data["countries"] = $this->common_model->get_countries();
 		$data['product'] = $this->category_model->get_products($cat_id,$id,$config1['per_page']);
 
 		$data['category'] = $this->category_model->get_category();

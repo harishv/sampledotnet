@@ -149,7 +149,7 @@ select option { width:100%; float:left }
 .samples p strong, .tabs p strong { color:#0c3b93; font:bold 12px Arial, Helvetica, sans-serif }
 .only-today { position:absolute; right:0; top:0 }
 img.small { float:left; padding:30px 15px 15px; }
-.star { float:left; padding:0 0 10px 3px; clear:left; width:85% }
+.star { float:left; padding:0 3px 10px 3px; clear:left; width:100% }
 .star img { float:left; margin:0 3px 0 0 }
 .social { background:url(../img/bg-social.jpg) no-repeat left top; width:101px; padding:6px 3px 0 10px; height:20px; }
 .social img { float:left; margin:0 5px 0 0 }

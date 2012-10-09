@@ -65,10 +65,13 @@
 <div class="selector">
 	<!-- <iframe src="<?php echo base_url(); ?>iframes/select"></iframe> -->
     <form name="myform" id="myform"  action="getvalue.php" enctype="multipart/form-data" method="post">
-
         <select style="width:208px">
           <option value="calendar" selected="selected" title="<?php echo base_url("img"); ?>/india-flag.jpg">Choose Your Country</option>
-          <option value="shopping_cart" title="<?php echo base_url("img"); ?>/india-flag.jpg">Shopping Cart</option>
+          <?php if (count($countries) > 0) {
+          			foreach ($countries as $country) { ?>
+          			<option value="<?php echo $country["id"]; ?>" title="<?php echo base_url("img"); ?>/india-flag.jpg"><?php echo $country["name"]; ?></option>
+	          <?php }
+	    		} ?>
         </select>
 
     </form>

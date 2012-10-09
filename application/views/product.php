@@ -40,7 +40,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
               <p>
               <strong><?php echo $product_details[0]['name'];?></strong><br>
              <?php echo $product_details[0]['description'];?><br><br>
-You will also receive periodic <a class="email" href="#">emails and special offers</a>.
+<!-- You will also receive periodic <a class="email" href="#">emails and special offers</a>.-->
               </p>
 
               <p class="grey">
