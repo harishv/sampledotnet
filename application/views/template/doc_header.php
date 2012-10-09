@@ -13,7 +13,7 @@
 		<link href="<?php echo base_url("css"); ?>/bootstrap-responsive.css" type="text/css" rel="stylesheet">
 		<!-- <link href="<?php echo base_url("css"); ?>/prettify.css" type="text/css" rel="stylesheet" /> -->
 		<!-- <link href="<?php echo base_url("css"); ?>/docs.css" type="text/css" rel="stylesheet" /> -->
-		<link href="<?php echo base_url("css"); ?>/style.css" type="text/css" rel="stylesheet" />
+		<link href="<?php echo base_url("css"); ?>/style-new.css" type="text/css" rel="stylesheet" />
 		<link href="<?php echo base_url("css"); ?>/skin.css" type="text/css" rel="stylesheet" />
         <link href="<?php echo base_url("css"); ?>/colorbox.css" type="text/css" rel="stylesheet" />
 		<script src="<?php echo base_url("js"); ?>/jquery-1.4.2.min.js"></script>
