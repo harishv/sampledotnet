@@ -1,3 +1,10 @@
+<?php  if($this->session->userdata('comment_errors')!="") {
+$errors=$this->session->userdata('comment_errors'); 
+  $error_child = array('comment_errors'  => '', );
+  $this->session->unset_userdata($error_child);
+  
+  }
+?>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -31,6 +38,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
           Home <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>"><?php if(isset($bread_crum) && $bread_crum !='')echo $bread_crum['cat_name'];?> <?php if($bread_crum['cat_name'] !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') echo $bread_crum['sub_cat_name'];?>
           </p>
 
+			
             <!-- Begin sample here -->
             <div class="sample mgn-15b">
               <p class="head mgn-15b"> <span class="mgn-10l"><?php echo $product_details[0]['name'];?></span></p>
@@ -70,7 +78,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
               </p>
               <p class="grey">
               <span>Report Invalid</span>
-              <em>(15) comments</em> </p>
+              <em><a id = "display_comments" href="#">(<?php if(isset($comments) && $comments !=''){ echo count($comments); } else echo "0";?>) comments</a></em> </p>
 			  <p><a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_details[0]['id'];?> ','<?php echo $product_details[0]['grab_url'];?>')"  >grab it now!</a></p>
               <div class="hgt-15px wid_100"></div>
               <!-- <img alt="social" src="<?php echo base_url().'img/social1.jpg';?>"> -->
@@ -84,6 +92,40 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
               </div>
               <div class="hgt-15px wid_100"></div>
               <!-- <img alt="social" src="<?php echo base_url().'img/social2.jpg';?>"> -->
+			<!-- comments section start-->
+			<div id="normal_comments" style="display:none">
+			<div class="comment"><p class="flt-r">
+           
+            </p>
+            <h3>Enter your comments</h3> <?php //print($errors);?>
+			<div id="errors_comments" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
+			<?php
+					$attributes = array('id' => 'comments_data', 'name'=>'comments_data', 'method'=>'post');
+				?>
+				<?php echo form_open('product/user_comments/', $attributes); ?>
+			<input type="hidden" name="prod_id" value="<?php echo $product_details[0]['id'];?>" />
+            <textarea rows="3" class="clear mgn-15b" id="comment_area" name="comment_area"></textarea>
+           	<input type="submit" name="submit" value="Submit" />
+			</form>
+            </div>
+            <!-- comments -->
+			 <?php if(isset($comments) && $comments !=''){
+					foreach($comments as $key=>$values){ ?>
+            <div class="comments">
+			 
+            <img src="images/img-comment.jpg" alt="img" />
+            <p>
+            <strong class="mgn-r">James JH   </strong> <strong class="mgn-r">|</strong>  <span>4 hours ago</span><br />
+          			
+					 <?php echo $values['comments'];  ?>
+					
+					
+            </p>
+            </div>
+            <?php } } ?>
+            </div>
+			<div>
+			<!-- comments section end
               <div class="hgt-15px wid_100">
                 &nbsp;<fb:like href="<?php echo base_url()."/product/product_detail/".$product_details[0]['id'];?>" send="true" width="450" show_faces="true"></fb:like>
               </div>
