@@ -21,7 +21,7 @@ class Product extends CI_Controller {
 
 		$data['product_details'] = $this->product_model->get_product_details($product_id);
 		$data['comments'] = $this->product_model->get_comments($product_id);
-		
+
 		$data['bread_crum'] = $this->category_model->get_bread_crums($data['product_details'][0]['category_id']);
 
 		$data["countries"] = $this->common_model->get_countries();

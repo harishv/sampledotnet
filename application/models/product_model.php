@@ -25,26 +25,26 @@ class Product_Model extends CI_Model {
 	}
 
 	function get_comments($id){
-		
-		$query = $this->db->query("select c.*, u.first_name from comments c, users u where c.user_id = u.user_id and  c.prod_id = ". $id ." and c.status_id = 1");
-		
-		if ($query->num_rows() > 0) 
-			return $query->result_array();
-		else 
-			return false;
-		
 
-		
+		$query = $this->db->query("SELECT comments.*, users.first_name, users.last_name FROM comments LEFT JOIN users ON comments.user_id = users.user_id WHERE comments.prod_id =  $id AND comments.status_id = 1");
+
+		if ($query->num_rows() > 0)
+			return $query->result_array();
+		else
+			return false;
+
+
+
 	}
 
 	function insert_comments($id,$user_id){
 
-		
+
 		$comment = $this->input->post('comment_area');
 		$data = array('user_id'=>$user_id,'prod_id'=>$id,'comments'=>$comment);
 		$this->db->insert('comments',$data);
 		return true;
 
-		
+
 	}
 }

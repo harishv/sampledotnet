@@ -171,7 +171,7 @@
 
 				<?php } ?>
 			});
-
+/*
 		$(document).ready(function() {
 
 			<?php $login_data = $this->session->userdata('user');
@@ -181,7 +181,7 @@
 					$('#login_comments').css("display", "none");
 				<?php } ?>
 		});
-		
+		 */
 		</script>
 	</head>
 	<body>
