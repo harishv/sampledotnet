@@ -41,7 +41,7 @@ class Product_Model extends CI_Model {
 
 
 		$comment = $this->input->post('comment_area');
-		$data = array('user_id'=>$user_id,'prod_id'=>$id,'comments'=>$comment);
+		$data = array('user_id'=>$user_id,'prod_id'=>$id,'comments'=>$comment,'status_id'=>1);
 		$this->db->insert('comments',$data);
 		return true;
 
