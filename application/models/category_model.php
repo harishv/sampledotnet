@@ -12,75 +12,17 @@ class Category_Model extends CI_Model {
 	// This function is for checking the posted login values with the database table
 	function get_category(){
 
-		$result = array();
-		$sub_cat = array();
-		$category_result = array();
+		$category_id_arr = array();
 
-		// $result = $this->db->query("SELECT * FROM prod_categories WHERE parent_cat_id = 0 AND status_id = 1 AND id IN (SELECT DISTINCT(category_id) FROM `products` WHERE status_id = 1)");
-
-		$this->db->select('*');
-		$this->db->from('prod_categories');
-		$this->db->where('parent_cat_id',0);
-		$this->db->where('status_id', 1);
-
-		$result = $this->db->get();
-
-
-		/*$query_cat = $this->db->query("select * from prod_categories where parent_cat_id = 0 and status_id = 1");
-		if($query_cat->num_rows() > 0){
-
-			$cat_result = $query_cat->result_array();
-
-			//echo "<pre>";print_r($cat_result);
-		//}
-
-		//if(isset($cat_result) && $cat_result!=''){
-			foreach($cat_result as $sub_cat_key => $sub_cat_values){
-
-				$query_sub_cat = $this->db->query("select * from prod_categories where parent_cat_id = ". $sub_cat_values['id']." and status_id = 1");
-				
-				if($query_sub_cat->num_rows() > 0){
-				$sub_cat_result['sub_cat'][] = $query_sub_cat->result_array();
-				}
+		$category_ids = $this->db->query("(SELECT DISTINCT(products.category_id) FROM products WHERE products.status_id = 1) UNION (SELECT prod_categories.parent_cat_id AS category_id FROM prod_categories WHERE prod_categories.parent_cat_id != 0 AND prod_categories.status_id = 1 AND id IN (SELECT DISTINCT(products.category_id) FROM products WHERE products.status_id = 1))");
+		if ($category_ids->num_rows > 0) {
+			$cat_id_arr = $category_ids->result_array();
+			foreach ($cat_id_arr as $category_id) {
+				array_push($category_id_arr, $category_id['category_id']);
 			}
 		}
 
-		//exit;
-		$result = array_merge($cat_result , $sub_cat_result);
-
-		
-
-		return $result;
-
-
-		$data = array();
-     $this->db->select('*');
-     $this->db->where('status_id', 1);
-    $this->db->from('prod_categories');
-     $this->db->groupby('parent_cat_id,id');
-     $Q = $this->db->get('prod_categories');
-     echo $this->db->last_query();
-     exit;
-     if ($Q->num_rows() > 0){
-       foreach ($Q->result() as $row){
-			if ($row->parentid > 0){
-				$data[0][$row->parentid]['children'][$row->id] = $row->name;
-			
-			}else{
-				$data[0][$row->id]['name'] = $row->name;
-			}
-		}
-    }
-    $Q->free_result(); 
-    return $data; 
-
-
-		//return $sub_cat_result;*/
-
-
-		
-
-
+		$result = $this->db->query("SELECT * FROM prod_categories WHERE parent_cat_id = 0 AND status_id = 1 AND id IN (".implode(",", $category_id_arr).")");
 
 		if ($result->num_rows() == 0) {
 			return false;
@@ -89,18 +31,11 @@ class Category_Model extends CI_Model {
 		}
 
 		return false;
-
-
 	}
 
 	public function get_sub_cat($id){
 
-		$this->db->select('*');
-		$this->db->from('prod_categories');
-		$this->db->where('parent_cat_id',$id);
-		$this->db->where('status_id', 1); // status_id = 1 resembles Active
-		
-		$result = $this->db->get();
+		$result = $this->db->query("SELECT * FROM prod_categories WHERE parent_cat_id = $id AND status_id = 1 AND id IN (SELECT DISTINCT(category_id) FROM products WHERE status_id = 1)");
 
 		if ($result->num_rows() == 0) {
 			return false;
@@ -115,40 +50,38 @@ class Category_Model extends CI_Model {
 	public function get_bread_crums($id = 0){
 
 		$result = array();
+
 		$query = $this->db->query("select prod_cat_name as sub_cat_name, parent_cat_id from prod_categories where id = ". intval($id));
 		if ($query->num_rows() > 0){
-		   $row = (array)$query->row(); 
+		   $row = (array)$query->row();
 		}
-		
+
 			$query_cat_name = $this->db->query("select prod_cat_name as cat_name from prod_categories where id = ". $row['parent_cat_id']);
 			if ($query_cat_name->num_rows() > 0){
-			   $row_cat = (array)$query_cat_name->row(); 
+			   $row_cat = (array)$query_cat_name->row();
 			}else
 			$row_cat = array('cat_name' =>'');
 
 			$result = array_merge($row , $row_cat);
-			
+
 			return $result;
-		
-		
+
+
 	}
 
 	// get inital product based on the modified date
 	function get_products($cat_id,$num,$offset){
-		
-		
-		
+
 		$this->db->select('*');
 		$this->db->from('products');
 		$this->db->where('status_id', 1);
-		if($cat_id !=0)
-		$this->db->where('category_id',$cat_id);
 
-		$this->db->order_by("modified_at", "desc"); 
+		if($cat_id !=0)
+			$this->db->where('category_id',$cat_id);
+
+		$this->db->order_by("modified_at", "desc");
 		$this->db->limit($offset,$num);
 		$result = $this->db->get();
-
-		
 
 		if ($result->num_rows() == 0) {
 			return false;
@@ -161,40 +94,45 @@ class Category_Model extends CI_Model {
 	}
 
 	function get_featured_products(){
+
 		$this->db->select('*');
 		$this->db->from('products');
 		$this->db->where('status_id', 1);
 		$this->db->where('featured',1);
-		$this->db->order_by("modified_at", "desc"); 
+		$this->db->order_by("modified_at", "desc");
+
 		$result = $this->db->get();
+
 		if ($result->num_rows() == 0) {
 			return false;
 		} else {
 			return $result->result_array();
 		}
+
 		return false;
-
-
 	}
 
 	function get_rating(){
+
 		$this->db->select('*');
 		$this->db->from('prod_ratings');
+
 		$result = $this->db->get();
+
 		if ($result->num_rows() == 0) {
 			return false;
 		} else {
 			return $result->result_array();
 		}
+
 		return false;
 	}
 
 	public function insert_rating($prod_id,$rating){
 
 		$user_id = 1;
-		
-		//getting the rating 
 
+		//getting the rating
 		$query = $this->db->query("select * from prod_ratings where prod_id = ".$prod_id." and user_id = ".$user_id);
 		if($query->num_rows() > 0){
 
@@ -225,7 +163,7 @@ class Category_Model extends CI_Model {
 	}
 
 	function getAllCount(){
-		
+
 		$query=$this->db->query("select * from products  order by modified_at desc");
 		$count = $query->num_rows();
 		return $count;
@@ -236,7 +174,7 @@ class Category_Model extends CI_Model {
 	function getCount($id){
 
 		$query=$this->db->query("select * from products  where category_id = ". $id ." order by modified_at desc");
-		
+
 		$count = $query->num_rows();
 		return $count;
 
@@ -253,12 +191,12 @@ class Category_Model extends CI_Model {
 	}
 
 	function get_user_profile($id){
-		
+
 		$query = $this->db->query("select * from users where user_id = ". $id);
 		if($query->num_rows() > 0){
 			return $query->result_array();
 		}
-		
+
 	}
 
 	function share_sample(){
@@ -280,7 +218,7 @@ class Category_Model extends CI_Model {
 
 		if(is_string($email_valid))
 			$errors .= $email_valid."<br/>";
-		
+
 		if(trim($company) == ''){
 			$errors .= "Company Name should not be null or empty<br >";
 		}
@@ -300,7 +238,7 @@ class Category_Model extends CI_Model {
 			$errors .= $url_valid."<br/>";
 
 
-		
+
 		if($errors !=''){
 
 			return $errors;
@@ -339,7 +277,7 @@ class Category_Model extends CI_Model {
 			if($affected_rows > 0)
 				return true;
 		}
-		
+
 
 	}
 
