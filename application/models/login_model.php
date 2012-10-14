@@ -136,9 +136,11 @@ class Login_Model extends CI_Model {
 	function change_password() {
 
 		
-		$user_id = $this->input->post('user_id');
+		$user_id = $this->session->userdata('change_user_id');
+		//echo $user_id = $this->input->post('user_id');echo "<br/>";
 		$password = $this->input->post('password');
 		$re_password = $this->input->post('repassword');
+		
 
 		
 		$errors = "";

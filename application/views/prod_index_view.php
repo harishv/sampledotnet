@@ -62,7 +62,28 @@ if(!$render) { ?>
 										?>
 									</p>
 									<br />
-									<div class="star" value="<?php echo $product_values['id'];?>" datarating="<?php echo $product_values['product_rating'];?>"></div>
+									<div class="star" id="ratings">
+										<?php
+										if($product_values['product_rating'] != 0 ) {
+										for($i=1; $i<=$product_values['product_rating']; $i++) { ?>
+										<img src="<?php echo base_url(); ?>img/star-full.png" alt="full" />
+										<?php }
+										} else {
+										for($i=1; $i<=5; $i++) { ?>
+										<img src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>, <?php echo $i;?>);" />
+										<input type="hidden" name="rating_vote" value="<?php echo $i;?>" />
+										<?php }
+										}
+
+										if($product_values['product_rating'] != 0 && $product_values['product_rating'] < 5) {
+										for($i=1;$i<=(5-$product_values['product_rating']);$i++){ ?>
+										<img src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>, <?php echo $product_values['product_rating'] +$i; ?>);" />
+										<input type="hidden" name="rating_vote" value="<?php echo $product_values['product_rating'] +$i; ?>" />
+										<?php }
+										}
+										?>
+									</div>
+									<!--<div class="star" value="<?php //echo $product_values['id'];?>" datarating="<?php //echo $product_values['product_rating'];?>"></div> -->
 									
 									<div class="clear"></div>
 									<a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_values['id'];?> ','<?php echo $product_values['grab_url'];?>')">grab it now!</a>

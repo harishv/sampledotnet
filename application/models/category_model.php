@@ -252,6 +252,15 @@ class Category_Model extends CI_Model {
 
 	}
 
+	function get_user_profile($id){
+		
+		$query = $this->db->query("select * from users where user_id = ". $id);
+		if($query->num_rows() > 0){
+			return $query->result_array();
+		}
+		
+	}
+
 	function share_sample(){
 
 		$name = $this->input->post('name');

@@ -19,7 +19,7 @@ class Login extends CI_Controller {
 
 		$user_access = $this->login_model->check_user_login();
 		
-		//echo $this->input->post('rememberme');exit;
+		
 		if( count($user_access) > 0 )
 		{
 			
@@ -27,14 +27,17 @@ class Login extends CI_Controller {
 							  'user'  => $user_access,
 			);
 			$this->session->set_userdata($newdata);
-			$return_json['sucuss'] ='sucuss';
+			$this->session->set_userdata (array('header_action' => 'user_profile'));
+			redirect(base_url());
 
-		} else {
+			//$return_json['sucuss'] ='sucuss';
+
+		} //else {
 			
-			$return_json['sucuss'] ='failure';
-		}
+			//$return_json['sucuss'] ='failure';
+		//}
 
-		echo json_encode($return_json);
+		//echo json_encode($return_json);
 	}
 
 	function active_account(){
@@ -42,14 +45,12 @@ class Login extends CI_Controller {
 
 		$status['status'] = $this->login_model->active_status($user_id);
 
+		
+
 		if(is_bool($status['status'])){
 
 			
-			$succuss = $status['status'];
-
-			$newdata = array( 'login_errors'  => $succuss );
-
-			$this->session->set_userdata($newdata);
+			$this->session->set_userdata (array('header_action' => 'user_login','succuss_message' => 'You Account has been Activated'));
 			redirect(base_url());
 
 		}
@@ -91,45 +92,52 @@ class Login extends CI_Controller {
 
 	function change_password($id, $pw_encrypt) {
 		
+		
 		$user_id = base64_decode($id);
 
 		$result = $this->login_model->check_password_change_authentication($user_id, $pw_encrypt);
 
-
-
-
 		$data['errors'] = '';
 
-		$this->load->view('template/prod_header');
+		//$this->load->view('template/prod_header');
 		if( count($result) > 0 ){
-			$data['user_id'] = $result['user_id'];
-			$this->load->view('change_password', $data);
+			
+			//$this->load->view('change_password', $data);
+			$this->session->set_userdata ( array('header_action' => 'changepassword','change_user_id' => $user_id));
+			redirect('index','refresh');
 		} else {
-			$data['link_errors'] = "Email Link has been Expired";
-			$this->load->view('forgot_password', $data);
+			//$data['link_errors'] = "Email Link has been Expired";
+			//$this->load->view('forgot_password', $data);
 		}
-		$this->load->view('template/prod_footer');
+		//$this->load->view('template/prod_footer');
 	}
 
 	function change_password_action() {
 		$data['errors'] = "";
 		
 		$user_details = $this->login_model->change_password();
+		
 
-		$this->load->view('template/prod_header');
+		//$this->load->view('template/prod_header');
 
-		if( is_string($user_details) )
+		
+
+
+
+		if(is_string($user_details) )
 		{
-			$data['pass_errors'] = $user_details;
-
-			$this->load->view('change_password', $data);
-		} else {
+			$return_json['status'] = "failure";
+			$return_json['data'] = "Failure";
+		} else if(is_array($user_details)) {
 			//$data['success'] = "***Password Change Succesfull***";
 
-			$this->load->view('change_password_confirm', $data);
+			$return_json['status'] = "succuss";
+			$return_json['data'] = "Password Has been Changed Sucussufully";
 		}
 
-		$this->load->view('template/prod_footer');
+		echo json_encode($return_json);
+
+	
 
 
 	}

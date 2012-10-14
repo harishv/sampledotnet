@@ -171,17 +171,38 @@
 
 				<?php } ?>
 			});
-/*
+
+		
+
+
 		$(document).ready(function() {
 
-			<?php $login_data = $this->session->userdata('user');
-				if($login_data['user_id'] !=''){ ?>
-					$('#login_comments').css("display", "block");
-				<?php } else { ?>
-					$('#login_comments').css("display", "none");
+				//==============Script that runs the modal windows for Invite Friends, and Login
+				//==============================================================================
+				//select all the a tag with name equal to modal
+
+				//Cancel the link behavior
+
+				//Get the A tag
+				var id = $(this).attr('href');
+						<?php $header_action = $this->session->userdata('header_action');
+								$succuss_msg = $this->session->unset_userdata('succuss_message');
+								if(isset($header_action)) {
+									if($header_action == 'changepassword') { ?>
+					$('#changepassword').css("display", "block");
+									<?php } else if ($header_action == 'user_login') { ?>
+					$('#dialog').css("display", "block");
+									<?php } else if ($header_action == 'user_profile') { ?>
+					$('#user_profile').css("display", "block");
+									<?php }  ?>
+					
+
 				<?php } ?>
-		});
-		 */
+
+				
+			});
+
+		
 		</script>
 	</head>
 	<body>

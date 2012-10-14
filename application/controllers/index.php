@@ -18,8 +18,17 @@ class Index extends CI_Controller {
 	}
 
 	public function index ($var='') {
+
 		$data = array();
 
+		$login_data = $this->session->userdata('user');
+		
+		if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
+			$data['user_profile'] = $this->category_model->get_user_profile($login_data['user_id']);
+		}
+		
+		
+		
 		$id = $var;
 
 		if($id == "")

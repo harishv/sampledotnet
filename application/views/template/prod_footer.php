@@ -39,8 +39,9 @@
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
-			<div class="middle-bg">
+			<div class="middle-bg"> 
 				<div id="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
+				<div id="success_data_signup"  class ="sucuss_data" style="display:none;"><?php $succuss_msg = $this->session->userdata('succuss_message'); if(isset($succuss_msg) && $succuss_msg !='' ) { echo $succuss;} ?></div>
 				<?php
 					$attributes = array('id' => 'user_login', 'name'=>'user_login', 'onsubmit'=>'return validate_login()');
 				?>
@@ -134,7 +135,7 @@
 				</div>
 				<br />
 				<div class="form-box" id="re_pass_reg" >
-					<div class="text">Re-Password:</div>
+					<div class="text">Confirm Password:</div>
 					<div class="form"><input type="password"  name="re_pass" id="re_pass" ></div>
 				<!-- form-box -->
 				</div>
@@ -174,10 +175,13 @@
 					$attributes = array('id' => 'user_profile_data', 'name'=>'user_profile', 'onsubmit'=>'return validate_user_profile()');
 				?>
 				<?php echo form_open('register/user_profile/', $attributes); ?>
+
+				<input type="hidden" name="user_id" value="<?php if(isset($user_profile[0]['id']) && $user_profile[0]['id'] !='') echo $user_profile[0]['id']; else echo "";?>" >
+				
 				<div class="form-box">
 					<div class="text">DOB: </div>
 					<div class="form">
-						<input type="text"  name="dob"  id="datepicker1">
+						<input type="text"  name="dob"  id="datepicker1" value="<?php if(isset($user_profile[0]['dob']) && $user_profile[0]['dob'] !='') echo $user_profile[0]['dob']; else echo "";?>">
 					</div>
 				<!-- form-box -->
 				</div>
@@ -185,6 +189,7 @@
 				<div class="form-box">
 					<div class="text">Gender: </div>
 					<div>
+						<?php $checked = "checked"; ?>
 						<input type="radio" name="gender" id="gender" checked="checked" value="M" />Male
 						<input type="radio" name="gender" value="F" />Female
 					</div>
@@ -194,7 +199,7 @@
 				<div class="form-box" id="email_reg">
 					<div class="text">Street Address 1: </div>
 					<div class="form">
-						<input type="text" name="address1" id="address1" />
+						<input type="text" name="address1" id="address1" value="<?php if(isset($user_profile[0]['address_1']) && $user_profile[0]['address_1'] !='') echo $user_profile[0]['address_1']; else echo "";?>" >
 					</div>
 				<!-- form-box -->
 				</div>
@@ -202,7 +207,7 @@
 				<div class="form-box" id="email_reg">
 					<div class="text">Street Address 2: </div>
 					<div class="form">
-						<input type="text" name="address2" id="address2" />
+						<input type="text" name="address2" id="address2" value="<?php if(isset($user_profile[0]['address_1']) && $user_profile[0]['address_2'] !='') echo $user_profile[0]['address_2']; else echo "";?>" >
 					</div>
 				<!-- form-box -->
 				</div>
@@ -210,7 +215,7 @@
 				<div class="form-box" id="email_reg">
 					<div class="text">City: </div>
 					<div class="form">
-						<input type="text" name="city" id="city" />
+						<input type="text" name="city" id="city" value="<?php if(isset($user_profile[0]['city']) && $user_profile[0]['city'] !='') echo $user_profile[0]['city']; else echo "";?>"/>
 					</div>
 				<!-- form-box -->
 				</div>
@@ -218,7 +223,7 @@
 				<div class="form-box" id="email_reg">
 					<div class="text">State: </div>
 					<div class="form">
-						<input type="text" name="state" id="state" />
+						<input type="text" name="state" id="state" value="<?php if(isset($user_profile[0]['state']) && $user_profile[0]['state'] !='') echo $user_profile[0]['state']; else echo "";?>" />
 					</div>
 				<!-- form-box -->
 				</div>
@@ -226,7 +231,7 @@
 				<div class="form-box" id="email_reg">
 					<div class="text">Zip: </div>
 					<div class="form">
-						<input type="text" name="zip"  id="zip" />
+						<input type="text" name="zip"  id="zip" value="<?php if(isset($user_profile[0]['zip']) && $user_profile[0]['zip'] !='') echo $user_profile[0]['zip']; else echo "";?>"/>
 					</div>
 				<!-- form-box -->
 				</div>
@@ -366,14 +371,64 @@
 				<?php echo form_close();?>
 				<br />
 
-				<!-- <a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a> -->
-			<!-- middle-bg -->
+				
 			</div>
 			<!-- top-bg -->
 			<div class="bottom-bg"></div>
-			<!-- <img style="position:absolute; z-index:1000; left: 382px; top: 39px;" src="<?php echo base_url().'img/line.jpg';?>" /> -->
+			
 		</div>
 	</div>
+
+
+
+
+<div id="changepassword" class="window">
+		<div id="lr-box-pass" >
+			<div class="top-bg">
+				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
+				<div class="txt-1">ChangePassword</div>
+				<!-- <div class="txt-2">or Sign in with </div> -->
+			<!-- top-bg -->
+			</div>
+			<div class="middle-bg">
+				<div id="change_pwd_errors_data" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
+				<div id="success_pwd_data"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
+				<?php
+					$attributes = array('id' => 'change_password', 'name'=>'change_password', 'onsubmit'=>'return validate_chanagepassword()');
+				?>
+				<?php echo form_open('login/forget_password_action/',$attributes); ?>
+				<div class="form-box">
+					<div class="text">New Password: </div>
+					<div class="form">
+						<input id="password_cp" type="password" size="30" name="password">
+					</div>
+				
+				</div>
+				<div class="form-box">
+					<div class="text">Confirm Password: </div>
+					<div class="form">
+						<input id="repassword" type="password" size="30" name="repassword">
+					</div>
+				
+				</div>
+				<br />
+
+				<div class="login-box">
+					<input type="submit" value="Submit" />
+
+				</div>
+				<?php echo form_close();?>
+				<br />
+
+				
+			</div>
+			<!-- top-bg -->
+			<div class="bottom-bg"></div>
+			
+		</div>
+	</div>
+
+
 
 
 	<div id="mask"></div>
