@@ -55,7 +55,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
               <span><strong>Valid in:</strong><?php if(isset($country_names) && $country_names!= ''){  echo implode(', ',$country_names);}?></span>
               <em><strong class="flt-l">User Rating:</strong>
                 <?php
-            /*if($product_details[0]['product_rating'] != 0 ){
+            if($product_details[0]['product_rating'] != 0 ){
               for($i=1 ;$i<=$product_details[0]['product_rating'];$i++){ ?>
               <img src="<?php echo base_url().'img/star-full.png';?>" alt="full" />
               <?php }
@@ -71,9 +71,9 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
               <img src="<?php echo base_url().'img/star-off.png';?>" alt="full" onclick="prod_rating(<?php echo $product_details[0]['id'];?>,<?php echo $product_details[0]['product_rating'] +$i; ?>);"/>
               <input type="hidden" name="rating_vote" value="<?php echo $product_details[0]['product_rating'] +$i; ?>" />
               <?php }
-            } */
+            } 
             ?>
-			<div class="star" value="<?php echo $product_details[0]['id'];?>" datarating="<?php echo $product_details[0]['product_rating'];?>"></div>
+			
             </em>
               </p>
               <p class="grey">
@@ -94,7 +94,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
               <!-- <img alt="social" src="<?php echo base_url().'img/social2.jpg';?>"> -->
 			<!-- comments section start-->
 			<div id="normal_comments" style="display:none">
-			<div class="comment"><p class="flt-r">
+			<div class="comment" id="login_comments"><p class="flt-r">
            
             </p>
             <h3>Enter your comments</h3> <?php //print($errors);?>
@@ -115,7 +115,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 			 
             <img src="images/img-comment.jpg" alt="img" />
             <p>
-            <strong class="mgn-r">James JH   </strong> <strong class="mgn-r">|</strong>  <span>4 hours ago</span><br />
+            <strong class="mgn-r"><?php echo $values['first_name'];?>  </strong> <strong class="mgn-r">|</strong>  <span>4 hours ago</span><br />
           			
 					 <?php echo $values['comments'];  ?>
 					

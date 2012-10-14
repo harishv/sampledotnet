@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
 	
 	$('.star').raty({
 		
@@ -35,7 +35,31 @@ $(document).ready(function() {
 
 
 	
-});
+}); */
+
+
+function prod_rating(id,count){
+
+		var data = { 'prod_id' : id ,'vote_value':count};
+		var baseurl = base_url;
+		$.ajax({
+		url: baseurl+'index/product_rating',
+		type: 'POST',
+		data:data,
+		dataType :'json',
+		success: function(res)
+		{
+		//alert(res.status == 'succuss');return false;
+		if(res.status == 'succuss'){
+
+		//$('#ratings').html();
+		$("#replace").html(res.page);
+		//window.location =baseurl;
+		}
+		}
+		});
+}
+
 
 
 
@@ -244,9 +268,9 @@ function validate_login() {
 	var email = $.trim($('#email_address').val());
 	var password= $('#password').val();
 	
-	errors += (email == undefined || email == "") ? "Email Id should not be null or empty<br />" : "";
+	errors += (email == undefined || email == "") ? "Email should not be null or empty<br />" : "";
 	if(errors == ''){
-		errors += (!validateEmail(document.getElementById("email_address"))) ? "Please enter a valid Email Id<br />" : "";
+		errors += (!validateEmail(document.getElementById("email_address"))) ? "Please enter a valid Email<br />" : "";
 	}
 	
 	errors += (password == undefined || password == "") ? "Password should not be null or empty<br />" : "";
@@ -581,7 +605,193 @@ function validate_sample(){
 	}
 	return false;
 
+
+	
+
 }
+
+function validate_comments(){
+
+		var errors = "";
+
+	var  comment_obj = document.getElementById('comment_area');
+	
+	
+	
+	if(!validate_isnull(comment_obj)) {
+		
+	   errors += "Comments should not be null or empty<br >";
+	   document.getElementById('errors_comments').innerHTML="";
+	   document.getElementById('errors_comments').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+		if($.trim(errors) == '')
+	{
+		$('#errors_comments').html("");
+		// Call check Login Ajax call
+		var customURL =  base_url+"product/user_comments";
+		var data = $('#comments_data').serialize();
+		
+
+		$.ajax({
+			  url: customURL,
+			  type: 'POST',
+			  data: data,
+  			  dataType:'json',
+			  success: function(response){
+			  		
+
+				if(response.status == "success"){
+				
+				  	
+				  	$("#sample_succuss_data").html(response.data);
+					$('#sharesample').each (function(){  
+    					this.reset();
+ 						}); 
+				  	document.getElementById('sample_succuss_data').style.display = 'block';
+					
+					
+					
+				  } else{
+					  $('#sample_errors_data').html(response.data);
+				 	 
+				  }
+			  }
+		});
+
+	}
+	return false;
+
+	
+}
+
+
+$("#display_comments").live("click", function(){
+		
+		$("#normal_comments").css('display','block');
+	});
+
+
+function validate_chanagepassword() {
+	
+	var errors = "";
+
+	
+	var  ts_password_obj = document.getElementById('password_cp');
+	var  ts_re_password_obj = document.getElementById('repassword');
+
+	
+	
+	if(!validate_isnull(first_name_obj)) {
+		
+	   errors += "First Name should not be null or empty<br >";
+	   document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+	if(!validate_isnull(last_name_obj)) {
+	
+	   errors += "Late Name should not be null or empty<br >";
+	   document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+
+	if(!validate_isnull(email_address_obj)) {
+	   errors += "Email should not be null or empty<br />";
+	   document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;		
+	} else if(email_address_obj.value.length > 60)
+	{
+		errors += "Email should not be more than 60 characters<br />";
+		document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;		
+	}
+	else if(!validateEmail(email_address_obj)) {
+		errors += "Please enter valid email<br />";
+		document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;
+	}
+
+	if(!validate_isnull(ts_password_obj)) {
+	   errors += "Password should not be null or empty<br />";
+	   document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;		
+	} else if (ts_password_obj.value.length < 8){
+		errors += "Password should contain at least 8 characters<br />";
+		document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;
+	} else {
+		if(!validate_isnull(ts_re_password_obj)){
+		   errors += "Verify Password should not be null or empty<br />";
+		   document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;		
+		} else if(ts_password_obj.value !=ts_re_password_obj.value)	{
+			errors += "Password and Verify password should be same<br />";
+			document.getElementById('errors_data_signup').innerHTML="";
+	   document.getElementById('errors_data_signup').innerHTML=$.trim(errors);
+	   return false;
+		}
+	}
+
+	if($.trim(errors) == '')
+	{
+		$('#errors_data_signup').html("");
+		// Call check Login Ajax call
+		var customURL =  base_url+"register/register_user";
+		var data = $('#userlogin').serialize(true);
+
+		$.ajax({
+			  url: customURL,
+			  type: 'POST',
+			  data: data,
+  			  dataType:'json',
+			  success: function(result){
+			  		
+
+				if(result.status == "success" )
+				  {
+
+						$("#success_data_signup").html(result.data);
+						$('#userlogin').each (function(){  
+    					this.reset();
+ 						}); 
+						
+						document.getElementById('success_data_signup').style.display = 'block';
+						
+						
+				  }
+				  else
+				  {		
+						if(result.data.search("@@")!=-1){
+				                 var email_data=result.data.split(" @@");
+				                
+				                 document.getElementById('errors_email_singup').style.display = 'block';
+				                 document.getElementById('errors_email_singup').style.color = 'red';
+				  		$('#email_replace').html(email_data[0]);
+						
+				  		}else{
+						$("#errors_data_signup").html(result.data);
+						}
+						
+				  } 
+			  }
+		});
+
+	}
+	return false;
+}
+
+
 
 
 

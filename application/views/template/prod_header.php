@@ -171,6 +171,17 @@
 
 				<?php } ?>
 			});
+
+		$(document).ready(function() {
+
+			<?php $login_data = $this->session->userdata('user');
+				if($login_data['user_id'] !=''){ ?>
+					$('#login_comments').css("display", "block");
+				<?php } else { ?>
+					$('#login_comments').css("display", "none");
+				<?php } ?>
+		});
+		
 		</script>
 	</head>
 	<body>

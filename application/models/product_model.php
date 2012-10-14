@@ -25,19 +25,14 @@ class Product_Model extends CI_Model {
 	}
 
 	function get_comments($id){
-		$status =1;
-		$this->db->select('*');
-		$this->db->from('comments');
-		$this->db->where('prod_id',$id);
-		$this->db->where('status_id',$status);
-		$result = $this->db->get();
-		if ($result->num_rows() == 0) {
+		
+		$query = $this->db->query("select c.*, u.first_name from comments c, users u where c.user_id = u.user_id and  c.prod_id = ". $id ." and c.status_id = 1");
+		
+		if ($query->num_rows() > 0) 
+			return $query->result_array();
+		else 
 			return false;
-		} else {
-			return $result->result_array();
-		}
-
-		return false;
+		
 
 		
 	}
