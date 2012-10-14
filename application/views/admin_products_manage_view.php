@@ -2,9 +2,12 @@
 <!-- <script type="text/javascript" src="http://jquery.bassistance.de/validate/lib/jquery.metadata.js"></script> -->
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.metadata.js"></script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/bootstrap-transfer.js"></script>
+<script type="text/javascript" src="<?php echo base_url("js"); ?>/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="<?php echo base_url("js"); ?>/bootstrap-timepicker.js"></script>
 
-<link rel="stylesheet" type="text/css" media="screen"
-	href="<?php echo base_url(); ?>css/bootstrap-transfer.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url(); ?>css/bootstrap-transfer.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url(); ?>css/bootstrap-datepicker.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url(); ?>css/bootstrap-timepicker.css" />
 
 <script type="text/javascript">
 
@@ -249,13 +252,66 @@ $(document).ready(function() {
 							]);
 							<?php if($set){ ?>
 								t.set_values([<?php echo $product['valid_countries']; ?>]);
-							<?php } else { ?>
+							<?php }/* else { ?>
 								t.set_values(["15", "38", "77", "226"]);
-							<?php } ?>
+							<?php } */?>
 							// t.set_values(["2", "4"]);
 							// console.log(t.get_values());
 						});
 					</script>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label for="prod_status" class="control-label"><?php echo $this->lang->line('admin_prod_mng_status'); ?>
+					:</label>
+				<div class="controls">
+					<script type="text/javascript">
+						$(function () {
+							$('#prod_status_scheduled').click(function () {
+								var prod_status_sch = $('#prod_status_scheduled:checked').val();
+
+								if (prod_status_sch == 1) {
+									$('#prod_status_schedule_div').show();
+									$('#prod_status_dropdown_div').hide();
+								} else {
+									$('#prod_status_dropdown_div').show();
+									$('#prod_status_schedule_div').hide();
+								}
+
+							});
+						});
+					</script>
+					<label class="checkbox">
+						<input type="checkbox" id="prod_status_scheduled" name="prod_status_scheduled" value="1">
+						<?php echo $this->lang->line('admin_prod_mng_scheduled'); ?>
+					</label>
+					<div id="prod_status_dropdown_div">
+						<?php $user_info = $this->session->userdata('admin_user'); ?>
+						<select class="input-xlarge" id="prod_status" name="prod_status">
+							<option value="0" <?php if($set && $product["status_id"] == 0) echo 'selected="selected"'; ?>><?php echo $this->lang->line('admin_prod_mng_status_inactive'); ?></option>
+							<option value="1" <?php if($set && $product["status_id"] == 1) echo 'selected="selected"'; ?>><?php echo $this->lang->line('admin_prod_mng_status_active'); ?></option>
+							<?php if ($user_info['admin_type_ref_id'] == 1) { ?>
+								<option value="2" <?php if($set && $product["status_id"] == 2) echo 'selected="selected"'; ?>><?php echo $this->lang->line('admin_prod_mng_status_deleted'); ?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<div id="prod_status_schedule_div" style="display:none;">
+						<script type="text/javascript">
+							$(function(){
+								$('#prod_status_schedule_date').datepicker();
+								$('#prod_status_schedule_time').timepicker();
+							});
+						</script>
+						<div class="input-append date" id="prod_status_schedule_date" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+							<input class="input-small" size="16" type="text" value="12-02-2012" readonly />
+							<span class="add-on"><i class="icon-calendar"></i></span>
+						</div>
+						<div class="input-append bootstrap-timepicker-component">
+							<input type="text" id="prod_status_schedule_time" class="input-small" readonly />
+							<span class="add-on"><i class="icon-time"></i></span>
+						</div>
+					</div>
 				</div>
 			</div>
 

@@ -137,7 +137,7 @@
 									<td>
 										<div class="status_text_<?php echo $product["id"]; ?>">
 											<?php if ($product["status_id"] != 2){ ?>
-												<div class="switch" id="onandoff_<?php echo $product["id"]; ?>" onclick="return change_status(<?php echo $product["id"]; ?>)"></div>
+												<div class="status-switch" id="onandoff_<?php echo $product["id"]; ?>" onclick="return change_status(<?php echo $product["id"]; ?>)"></div>
 												<?php if ($product["status_id"] == 1){ ?>
 													<script type="text/javascript">
 														$('#onandoff_<?php echo $product["id"]; ?>').addClass('active_on');

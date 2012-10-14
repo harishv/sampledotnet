@@ -141,7 +141,7 @@
 				<br />
 				<div class="login-box" id="login_reg">
 					<input type="submit" value="Register" />
-					<a href="#dialog" name="modal" class='iframe' style="width:180px;">Already have an account? Login!</a>
+					<span style="margin-left: 20px;">Already have an account? <a href="#dialog" name="modal" class='iframe' style="color:#053f79; text-decoration:underline;">Login!</a></span>
 				</div>
 				<!-- <a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a>-->
 				<?php echo form_close();?>

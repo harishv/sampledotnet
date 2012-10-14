@@ -18,7 +18,7 @@ table thead th {
   cursor: pointer;
 }
 
-.switch {
+.status-switch {
     background: url(../img/switch.png) no-repeat 0 -2px;
     width: 56px;
     height: 26px;

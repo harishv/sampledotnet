@@ -23,14 +23,11 @@
 
 		</script>
 
-
 		<script src="<?php echo base_url("js"); ?>/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery-latest.pack.js"></script>
 		<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.datePicker.js"></script>
 		<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.raty.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.raty.js"></script>
-
-
 
 		<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
 
@@ -45,7 +42,6 @@
 
 			$(document).ready(function() {
 
-
 				//==============Script that runs the modal windows for Invite Friends, and Login
 				//==============================================================================
 				//select all the a tag with name equal to modal
@@ -53,16 +49,16 @@
 
 					$(function() {
 
-					var date = new Date();
-					date.setYear('2007');
-					$("#datepicker").datepicker({
+						var date = new Date();
+						date.setYear('2007');
+						$("#datepicker").datepicker({
 
-						changeMonth: true,
-						changeYear: true,
-						maxDate: '+0d',
-						defaultDate: date
+							changeMonth: true,
+							changeYear: true,
+							maxDate: '+0d',
+							defaultDate: date
+						});
 					});
-				});
 
 					//Cancel the link behavior
 					e.preventDefault();
@@ -79,7 +75,7 @@
 					if ($('#forgotpassword').css("display") == "block") {
 						$('#forgotpassword').css("display", "none");
 					}
-					
+
 					//Get the screen height and width
 					var maskHeight = $(document).height();
 					var maskWidth = $(window).width();
@@ -114,38 +110,32 @@
 					$('#mask').hide();
 					$('.window').hide();
 				});
+
 			});
-<?php
-if($this->session->userdata('login_errors')!="") {
-  $errors=$this->session->userdata('login_errors');
-  $error_child = array('login_errors'  => '', );
-  $this->session->unset_userdata($error_child);
-  
-  } 
 
-?>
-		$(document).ready(function() {
+			<?php
+				if($this->session->userdata('login_errors') != "") {
+					$errors=$this->session->userdata('login_errors');
+					$error_child = array('login_errors'  => '', );
+					$this->session->unset_userdata($error_child);
+				}
+			?>
 
-					
-
+			$(document).ready(function() {
 
 				//==============Script that runs the modal windows for Invite Friends, and Login
 				//==============================================================================
 				//select all the a tag with name equal to modal
-				//$('a[name=modal]').click(function(e) {
 
-					
+				//Cancel the link behavior
 
-					//Cancel the link behavior
-					
-					
-					//Get the A tag
-					var id = $(this).attr('href');
-					
-					<?php if(isset($errors) && $errors !=''){ ?>
-					$('#user_profile').css("display","block") ;
-					
-					
+				//Get the A tag
+				var id = $(this).attr('href');
+
+				<?php if (isset($errors) && $errors != '') { ?>
+
+					$('#user_profile').css("display", "block");
+
 					//Get the screen height and width
 					var maskHeight = $(document).height();
 					var maskWidth = $(window).width();
@@ -171,19 +161,16 @@ if($this->session->userdata('login_errors')!="") {
 					//transition effect
 					$(id).fadeIn(2000);
 
-			//	});
+					$('.window .close').click(function(e) {
+						//Cancel the link behavior
+						e.preventDefault();
 
-				$('.window .close').click(function(e) {
-					//Cancel the link behavior
-					e.preventDefault();
-
-					$('#mask').hide();
-					$('.window').hide();
-				});
+						$('#mask').hide();
+						$('.window').hide();
+					});
 
 				<?php } ?>
 			});
-
 		</script>
 	</head>
 	<body>
