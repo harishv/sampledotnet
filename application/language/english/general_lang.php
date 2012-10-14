@@ -138,6 +138,7 @@ $lang["admin_prod_list_title"]				=	"Products List";
 $lang["admin_prod_add_new"]					=	"Add New Product";
 $lang["admin_prod_edit"]					=	"Edit";
 $lang["admin_prod_delete"]					=	"Delete";
+$lang["admin_prod_comments"]				=	"Comments";
 $lang["admin_prod_deleted"]					=	"Deleted";
 $lang["admin_prod_list_tbl_prod_name"]		=	"Products Name";
 $lang["admin_prod_list_tbl_category"]		=	"Category";
@@ -160,12 +161,24 @@ $lang["admin_prod_cat_list_tbl_parent_cat_name"] =	"Parent Category Name";
 $lang["admin_prod_cat_list_tbl_status"]		=	"Status";
 $lang["admin_prod_cat_list_tbl_actions"]	=	"Actions";
 
+/**
+ * Comments List Page
+ */
+$lang["admin_prod_cmnt_list_prod_name"]		=	"Product Name";
+$lang["admin_prod_cmnt_list_cat_name"]		=	"Category Name";
+$lang["admin_prod_cmnt_list_title"]			=	"Comments";
+$lang["admin_prod_cmnt_list_status"]		=	"Status";
+$lang["admin_prod_cmnt_list_actions"]		=	"Actions";
+$lang["admin_prod_cmnt_list_cmnt_deleted"]	=	"Deleted";
+$lang["admin_prod_cmnt_list_delete"]		=	"Delete";
+$lang["admin_prod_cmnt_list_back_to_prod_list"] =	"Back to Products List";
+
 
 /**
  * Sample List Page
  */
 
-$lang["admin_sample_list_title"]				=	"Sample List";
+$lang["admin_sample_list_title"]			=	"Sample List";
 $lang["admin_sample_list_tbl_sample_name"]	=	"Name";
 $lang["admin_sample_list_tbl_sample_email"] =	"Email";
 $lang["admin_sample_list_tbl_sample_company"]= "Company";

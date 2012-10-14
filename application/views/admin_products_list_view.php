@@ -13,7 +13,9 @@
 			"sPaginationType": "bootstrap",
 			"oLanguage": {
 				"sLengthMenu": "_MENU_ <?php echo $this->lang->line('records_per_page'); ?>"
-			}
+			},
+			"aLengthMenu": [ 25, 50, 100, 200 ],
+			"iDisplayLength": 25
 		} );
 	} );
 
@@ -113,7 +115,7 @@
 								<th><?php echo $this->lang->line("admin_prod_list_tbl_prod_name"); ?></th>
 								<th><?php echo $this->lang->line("admin_prod_list_tbl_category"); ?></th>
 								<th><?php echo $this->lang->line("admin_prod_list_tbl_status"); ?></th>
-								<th><?php echo $this->lang->line("admin_prod_list_tbl_actions"); ?></th>
+								<th width="300px;"><?php echo $this->lang->line("admin_prod_list_tbl_actions"); ?></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -155,6 +157,9 @@
 												echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_product(".$product['id'].")"));
 											} ?>
 										</span>
+										<?php if ($product["comments_count"] > 0) {
+											echo anchor(ADMINFOLDER . "/products/show_comments/" . $product["id"], '<i class="icon-pencil icon-white"></i> <b>'.$this->lang->line('admin_prod_comments').'</b>', array ("class" => "btn btn-mini btn-info"));
+										} ?>
 									</td>
 								</tr>
 							<?php

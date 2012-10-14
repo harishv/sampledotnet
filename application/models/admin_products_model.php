@@ -11,12 +11,13 @@ class Admin_Products_Model extends CI_Model {
 
 	function get_products($category = 0){
 
-		$this->db->select('*');
-		$this->db->from('products');
-		$this->db->order_by("modified_at", "desc");
-		// $this->db->where('status_id', 1); // status_id = 1 resembles Active
+		$result = $this->db->query("SELECT products.*, COUNT(comments.prod_id) AS comments_count FROM products LEFT JOIN comments ON products.id = comments.prod_id GROUP BY products.id ORDER BY products.modified_at DESC");
 
-		$result = $this->db->get();
+		// $this->db->select('*');
+		// $this->db->from('products');
+		// $this->db->order_by("modified_at", "desc");
+
+		// $result = $this->db->get();
 
 		if ($result->num_rows() == 0) {
 			return false;
@@ -46,6 +47,19 @@ class Admin_Products_Model extends CI_Model {
 		return false;
 
 
+	}
+
+	function get_comments($prod_id)
+	{
+		$result = $this->db->query("SELECT comments.*,  users.first_name FROM comments, users WHERE comments.user_id = users.user_id AND comments.prod_id = " . $prod_id);
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			return $result->result_array();
+		}
+
+		return false;
 	}
 
 	function get_product_details($id){
@@ -143,6 +157,20 @@ class Admin_Products_Model extends CI_Model {
 							  'modified_by' => $user['id']);
 
 		if ($this->db->update('products', $update_data, array('id' => $product_id))) {
+			return true;
+		}
+
+		return false;
+	}
+
+	function change_comment_status()
+	{
+		$comment_id = trim($this->input->post("comment_id"));
+		$status_id = trim($this->input->post("status"));
+
+		$update_data = array ('status_id' => $status_id);
+
+		if ($this->db->update('comments', $update_data, array('id' => $comment_id))) {
 			return true;
 		}
 

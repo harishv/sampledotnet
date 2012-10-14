@@ -61,14 +61,10 @@ class Products extends CI_Controller {
 
 	public function sample_manage($id = false)
 	{
-
 		// Load the error values(if any) while managing a product
-		
 		if ($id) {
 			$data["sample_product"] = $this->Admin_Products_Model->get_sample_details($id);
 		}
-
-		
 
 		$this->load->view("template/admin_header");
 		$this->load->view("admin_products_manage_view", $data);
@@ -79,6 +75,11 @@ class Products extends CI_Controller {
 	public function product_change_status()
 	{
 		echo $this->Admin_Products_Model->change_status();
+	}
+
+	public function product_change_comment_status()
+	{
+		echo $this->Admin_Products_Model->change_comment_status();
 	}
 
 	public function category_change_status()
@@ -248,6 +249,18 @@ class Products extends CI_Controller {
 
 			redirect(ADMINFOLDER.'/products/categories_list', 'refresh');
 		}
+	}
+
+	function show_comments($prod_id)
+	{
+		// echo $prod_id;
+
+		$data["comments_list"] = $this->Admin_Products_Model->get_comments($prod_id);
+		$data["product"] = $this->Admin_Products_Model->get_product_details($prod_id);
+
+		$this->load->view("template/admin_header");
+		$this->load->view("admin_products_comments_list_view", $data);
+		$this->load->view("template/admin_footer");
 	}
 
 }
