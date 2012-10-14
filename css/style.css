@@ -273,7 +273,7 @@ p.grey em { font-style:normal; float:right; width:49%; padding:3px 0 }
 p.grey strong { color:#000001; font-size:11px }
 p.grey img { margin:0; float:left }
 /* comments */
-.comment { background:#dcedfa; float:left; width:94%; padding:5px; margin:0 0 10px 10px; border:1px solid #bec5cb; }
+.comment { background:#dcedfa; float:left; width:95.6%; padding:2%; border:1px solid #bec5cb; }
 .h3 { color:#0c3b93; font:bold 16px Arial, Helvetica, sans-serif; }
 .comment img { float:left; margin:0 5px }
 textarea { background:#fff; border:1px solid #e8e8e8; width:95%; padding:2% }
@@ -1118,3 +1118,17 @@ form {
 	background-color:#37ade8;
 	color:#FF0000;
 }
+
+ .comment-box{
+ background:#eeeeee;
+ margin:0px;
+ padding:0px;
+ clear:both;
+ border-left:1px solid #bec5cb;
+ border-right:1px solid #bec5cb;
+}
+.comment-box .comments p{
+ padding-left:10px;
+}
+/*.comment { background:#dcedfa; float:left; width:96%; padding:2%; margin:0 0 15px; border:1px solid #bec5cb; }*/
+ .comments { width:99%; float:left; padding:10px 0px 0px 0px; border-bottom:1px dashed #333333; }

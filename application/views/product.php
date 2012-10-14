@@ -94,6 +94,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 
 			<!-- comments section start-->
 			<div id="normal_comments" style="display: none;">
+			<div class="comment-box">
 			<?php
 				$user_data = $this->session->userdata('user');
 				if ($user_data['user_id'] != '') { ?>
@@ -128,6 +129,8 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 						</div>
 						<?php }
 					} ?>
+				<div style='clear:both;'></div>
+			</div>
 			</div>
 
 			<!-- Begin Facebook Comments here -->
