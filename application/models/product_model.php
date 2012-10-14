@@ -25,9 +25,11 @@ class Product_Model extends CI_Model {
 	}
 
 	function get_comments($id){
+		$status =1;
 		$this->db->select('*');
-		$this->db->from('user_comments');
+		$this->db->from('comments');
 		$this->db->where('prod_id',$id);
+		$this->db->where('status_id',$status);
 		$result = $this->db->get();
 		if ($result->num_rows() == 0) {
 			return false;
@@ -42,9 +44,10 @@ class Product_Model extends CI_Model {
 
 	function insert_comments($id,$user_id){
 
+		
 		$comment = $this->input->post('comment_area');
 		$data = array('user_id'=>$user_id,'prod_id'=>$id,'comments'=>$comment);
-		$this->db->insert('user_comments',$data);
+		$this->db->insert('comments',$data);
 		return true;
 
 		
