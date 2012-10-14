@@ -79,13 +79,12 @@ class Register extends CI_Controller {
 
 
 		$login_data = $this->session->userdata('user');
-		print_r($login_data);
-exit;
+		
 		$return_json= array('status' => "error");
 		$data = array();
 		$data['errors'] = "";
 		
-		$user_profile = $this->register_model->update_user_profile();
+		$user_profile = $this->register_model->update_user_profile($login_data['user_id']);
 
 		
 		if(is_string($user_profile) ){

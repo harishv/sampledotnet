@@ -181,6 +181,9 @@ class Login_Model extends CI_Model {
 			$affected_rows = $this->db->affected_rows();
 
 			if($affected_rows > 0){
+				
+				$this->session->unset_userdata('header_action');
+				$this->session->unset_userdata('change_user_id');
 				return $data;
 			} /*else {
 				$errors .= "DB Insertion error<br />";
@@ -189,6 +192,40 @@ class Login_Model extends CI_Model {
 
 		}
 
+	}
+
+	function get_userprofile_info($user_id){
+
+		$query = $this->db->query("select * from users where user_id = ".$user_id);
+		if($query ->num_rows > 0){
+			$result = $query->result_array();
+		}
+		
+		if(isset($result)){
+			if($result[0]['dob'] == '' )
+				return false;
+			else if($result[0]['gender'] == '')
+				return false;
+			else if($result[0]['address_1'] == '')
+				return false;
+			else if($result[0]['address_2'] == '')
+				return false;
+			else if($result[0]['city'] == '')
+				return false;
+			else if($result[0]['state'] == '')
+				return false;
+			else if($result[0]['zip'] == '')
+				return false;
+			else if($result[0]['category_id'] == '')
+				return false;
+			else
+			return true;
+
+			
+			
+		}
+			
+		
 	}
 
 

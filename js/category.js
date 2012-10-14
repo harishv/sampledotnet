@@ -394,7 +394,11 @@ function validate_user_profile(){
 				  	$("#success_data_user_profile").html(response.data);
 					$('#user_profile_data').each (function(){  
     					this.reset();
- 						}); 
+ 						});
+					$("form#user_profile_data input[type='text']").each(function() {
+					$(this).val('');
+				}); 
+					document.getElementById('errors_data_user_profile').style.display = 'none';
 				  	document.getElementById('success_data_user_profile').style.display = 'block';
 					
 					

@@ -18,6 +18,8 @@ class Login extends CI_Controller {
 		$data['errors'] = '';
 
 		$user_access = $this->login_model->check_user_login();
+
+		
 		
 		
 		if( count($user_access) > 0 )
@@ -27,17 +29,33 @@ class Login extends CI_Controller {
 							  'user'  => $user_access,
 			);
 			$this->session->set_userdata($newdata);
-			$this->session->set_userdata (array('header_action' => 'user_profile'));
-			redirect(base_url());
 
-			//$return_json['sucuss'] ='sucuss';
+			$login_data = $this->session->userdata('user');
+			//$active_user_id = $this->session->userdata('active_user_id');
+			if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
 
-		} //else {
+			$get_user_info =  $this->login_model->get_userprofile_info($login_data['user_id']);
+				
+			}
 			
-			//$return_json['sucuss'] ='failure';
-		//}
 
-		//echo json_encode($return_json);
+			if(!$get_user_info)
+				$this->session->set_userdata(array('header_action' => 'user_profile'));
+		
+			
+		
+			
+			
+
+			$return_json['sucuss'] ='sucuss';
+			
+
+		} else {
+			
+			$return_json['sucuss'] ='failure';
+		}
+
+		echo json_encode($return_json);
 	}
 
 	function active_account(){
@@ -148,6 +166,7 @@ class Login extends CI_Controller {
 	function logout(){
 
 		$this->session->unset_userdata('user');
+		$this->session->unset_userdata ('header_action');
 		redirect(base_url(),'refresh');
 		
 	}

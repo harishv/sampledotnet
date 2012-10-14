@@ -181,7 +181,7 @@
 				<div class="form-box">
 					<div class="text">DOB: </div>
 					<div class="form">
-						<input type="text"  name="dob"  id="datepicker1" value="<?php if(isset($user_profile[0]['dob']) && $user_profile[0]['dob'] !='') echo $user_profile[0]['dob']; else echo "";?>">
+						<input type="text"  name="dob"  id="datepicker1" value="<?php if(isset($user_profile[0]['dob'])) if($user_profile[0]['dob'] !='0000-00-00') { $timestamp = strtotime($user_profile[0]['dob']); echo date('m-d-Y',$timestamp);} else echo "";?>">
 					</div>
 				<!-- form-box -->
 				</div>

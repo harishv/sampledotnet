@@ -116,11 +116,16 @@ class Register_Model extends CI_Model {
 			return false;
 	}
 
-	public function update_user_profile(){
+	public function update_user_profile($user_id){
 
 
 		$errors = '';
 		$dob = $this->input->post('dob');
+		$dob1 = explode('-',$dob); // mm-dd-yyyy
+		
+		$formated_dob = $dob1[2].'-'.$dob1[0].'-'.$dob1[1];
+		
+		
 		$gender = $this->input->post('gender');
 		$address1 = $this->input->post('address1');
 		$address2 = $this->input->post('address2');
@@ -153,7 +158,7 @@ class Register_Model extends CI_Model {
 
 
 		$user_profile_information = array (
-									'dob' => $dob,
+									'dob' => $formated_dob,
 									'gender' => $gender,
 									'address_1' => $address1,
 									'address_2' => $address2,
@@ -165,12 +170,14 @@ class Register_Model extends CI_Model {
 
 		);
 
-		$this->db->where('user_id' , 1);
+		$this->db->where('user_id' , $user_id);
 		$this->db->update('users',$user_profile_information);
 
 
 		$affected_rows = $this->db->affected_rows();
 		if($affected_rows > 0){
+
+			$this->session->unset_userdata('header_action');
 			return true;
 		}
 

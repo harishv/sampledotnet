@@ -113,66 +113,7 @@
 
 			});
 
-			<?php
-				if($this->session->userdata('login_errors') != "") {
-					$errors=$this->session->userdata('login_errors');
-					$error_child = array('login_errors'  => '', );
-					$this->session->unset_userdata($error_child);
-				}
-			?>
-
-			$(document).ready(function() {
-
-				//==============Script that runs the modal windows for Invite Friends, and Login
-				//==============================================================================
-				//select all the a tag with name equal to modal
-
-				//Cancel the link behavior
-
-				//Get the A tag
-				var id = $(this).attr('href');
-
-				<?php if (isset($errors) && $errors != '') { ?>
-
-					$('#user_profile').css("display", "block");
-
-					//Get the screen height and width
-					var maskHeight = $(document).height();
-					var maskWidth = $(window).width();
-
-					//Set heigth and width to mask to fill up the whole screen
-					$('#mask').css({
-						'width': maskWidth,
-						'height': maskHeight
-					});
-
-					//transition effect
-					$('#mask').fadeIn(1000);
-					$('#mask').fadeTo("slow", 0.8);
-
-					//Get the window height and width
-					var winH = $(window).height();
-					var winW = $(window).width();
-
-					//Set the popup window to center
-					$(id).css('top', winH / 3 - $(id).height() / 2);
-					$(id).css('left', winW / 3 - $(id).width() / 2);
-
-					//transition effect
-					$(id).fadeIn(2000);
-
-					$('.window .close').click(function(e) {
-						//Cancel the link behavior
-						e.preventDefault();
-
-						$('#mask').hide();
-						$('.window').hide();
-					});
-
-				<?php } ?>
-			});
-
-		
+			
 
 
 		$(document).ready(function() {
@@ -186,7 +127,6 @@
 				//Get the A tag
 				var id = $(this).attr('href');
 						<?php $header_action = $this->session->userdata('header_action');
-								$succuss_msg = $this->session->unset_userdata('succuss_message');
 								if(isset($header_action)) {
 									if($header_action == 'changepassword') { ?>
 					$('#changepassword').css("display", "block");
@@ -195,6 +135,7 @@
 									<?php } else if ($header_action == 'user_profile') { ?>
 					$('#user_profile').css("display", "block");
 									<?php }  ?>
+					//Get the screen height and width
 					
 
 				<?php } ?>

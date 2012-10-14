@@ -19,6 +19,8 @@ class Index extends CI_Controller {
 
 	public function index ($var='') {
 
+
+		
 		$data = array();
 
 		$login_data = $this->session->userdata('user');
