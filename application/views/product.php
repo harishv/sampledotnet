@@ -91,11 +91,12 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 						<div class="hgt-15px wid_100"></div>
 					</div>
 				</div>
+
 			<!-- comments section start-->
-			<div id="normal_comments" style="display:none">
+			<div id="normal_comments" style="display: none;">
 			<?php
 				$user_data = $this->session->userdata('user');
-				if (isset($user_data)) { ?>
+				if ($user_data['user_id'] != '') { ?>
 					<div class="comment" id="login_comments">
 						<p class="flt-r"></p>
 							<h3>Enter your comments</h3>
@@ -112,6 +113,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 							<?php echo form_close(); ?>
 					</div>
 			<?php } ?>
+
 			<!-- comments -->
 			 <?php if(isset($comments) && $comments !=''){
 					foreach($comments as $key=>$values){ ?>

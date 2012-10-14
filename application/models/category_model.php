@@ -15,10 +15,13 @@ class Category_Model extends CI_Model {
 		$result = array();
 		$sub_cat = array();
 		$category_result = array();
+
+		// $result = $this->db->query("SELECT * FROM prod_categories WHERE parent_cat_id = 0 AND status_id = 1 AND id IN (SELECT DISTINCT(category_id) FROM `products` WHERE status_id = 1)");
+
 		$this->db->select('*');
 		$this->db->from('prod_categories');
 		$this->db->where('parent_cat_id',0);
-		$this->db->where('status_id', 1); // status_id = 1 resembles Active
+		$this->db->where('status_id', 1);
 
 		$result = $this->db->get();
 

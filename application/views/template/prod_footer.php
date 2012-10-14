@@ -382,5 +382,13 @@
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/bootstrap.js"></script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/prettify.js"></script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/docs.js"></script>
+<script type="text/javascript">
+$(".categories ul li ol li").mouseover(function() {
+    $(this).parent().parent().addClass("blue");
+});
+$(".categories ul li ol li").mouseout(function() {
+    $(this).parent().parent().removeClass("blue");
+});
+</script>
 </body>
 </html>

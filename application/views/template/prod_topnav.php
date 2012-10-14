@@ -40,14 +40,21 @@
 	</li>
 	-->
 </ul>
-<p class="login-here"><span><?php
-	$user_info = $this->session->userdata('user');
-	?>
-	<a href="#dialog" name="modal" class='iframe' ><?php if(isset($user_info) && $user_info !=''){ $attributes=array('id'=>'signout'); echo anchor( 'login/logout', "(Sign Out)", $attributes );}else { echo $this->lang->line("nav_login")."!"; }?></a></span>
+<p class="login-here">
+	<span style="display: block;">
+		<?php $user_info = $this->session->userdata('user');
+			if(isset($user_info) && $user_info !=''){
+				$attributes = array('id' => 'signout', 'class' => 'iframe');
+				echo anchor( 'login/logout', "(" . $this->lang->line('nav_signout') .")", $attributes );
+			} else { ?>
+			<a href="#dialog" name="modal" class='iframe'><?php echo $this->lang->line("nav_login") . "!"; ?></a>
+		<?php } ?>
+	</span>
 	<?php
-
-	if($user_info !=''){?>
-		 <span class="iframe"><?php echo "welcome,"." ".ucfirst($user_info['first_name']);  ?></span>
+		if($user_info !='') { ?>
+		<?php echo "Welcome, "; ?>
+		 	<a href="#user_profile" name="modal" class='iframe'><?php echo ucfirst($user_info['first_name']);  ?></a>
+		 <!-- <a href="#user_profile" name="modal" class='iframe'><?php //echo "user Profile";?> </a> -->
 	<?php }else{ ?>
 		<a href="#register" name="modal" class='iframe'><?php echo $this->lang->line("nav_become_a_member"); ?></a>
 	<?php }	 ?>
