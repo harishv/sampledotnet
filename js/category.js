@@ -230,7 +230,7 @@ function validate_registerform() {
 				if(result.status == "success" )
 				  {
 
-				  			alert(result.data);return false;
+				  			
 
 						$("#reg_success_data_signup").html(result.data);
 						$('#userlogin').each (function(){
