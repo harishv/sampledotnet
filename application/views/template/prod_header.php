@@ -107,6 +107,10 @@
 					//Cancel the link behavior
 					e.preventDefault();
 
+					// Clear Messages
+					$('.errors_data').html('');
+					$('.success_data').html('');
+
 					$('#mask').hide();
 					$('.window').hide();
 				});

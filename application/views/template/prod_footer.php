@@ -34,14 +34,14 @@
 	<div id="dialog" class="window">
 		<div id="lr-box" >
 			<div class="top-bg">
-				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
+				<a href="#" class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
 				<div class="txt-1">Login here!</div>
-				<!-- <div class="txt-2">or Sign in with </div> -->
+				<!-- <div class="tsuccuss_messagext-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
 			<div class="middle-bg">
-				<div id="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
-				<div id="success_data_signup"  class ="sucuss_data" style="display:none;"><?php $succuss_msg = $this->session->userdata('succuss_message'); if(isset($succuss_msg) && $succuss_msg !='' ) { echo $succuss;} ?></div>
+				<div class="errors_data" id="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
+				<div id="success_data_signup" class ="success_data"><?php $succuss_msg = $this->session->userdata('succuss_message'); if(isset($succuss_msg) && $succuss_msg !='' ) { echo $succuss_msg;} ?></div>
 				<?php
 					$attributes = array('id' => 'user_login', 'name'=>'user_login', 'onsubmit'=>'return validate_login()');
 				?>
@@ -92,12 +92,13 @@
 			</div>
 			<div class="middle-bg">
 				<div id="errors_data_signup" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
-				<div id="reg_success_data_signup"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
 				<div id="errors_email_singup" style="display:none">
 					Email Address '<span id="email_replace"></span>'
 					<br />has already been registered.
 					<br />Please try a different one or go to Login to access your account.
 				</div>
+				<div id="reg_success_data_signup" class ="success_data"><?php echo (isset($success) && $success != '') ? $success : "";?></div>
+				<div id="user_regd_div">
 				<?php
 					$attributes = array('id' => 'userlogin', 'name'=>'userlogin', 'onsubmit'=>'return validate_registerform()');
 				?>
@@ -146,6 +147,7 @@
 				</div>
 				<!-- <a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a>-->
 				<?php echo form_close();?>
+				</div>
 			<!-- middle-bg -->
 			</div>
 			<!-- top-bg -->
@@ -164,7 +166,7 @@
 
 		<div id="lr-box-reg">
 			<div class="top-bg">
-				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
+				<a href="#" class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
 				<div class="txt-1">Please Update Your Information</div>
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
@@ -172,7 +174,8 @@
 			<div class="middle-bg">
 
 				<div id="errors_data_user_profile" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
-				<div id="success_data_user_profile"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
+				<div id="success_data_user_profile"  class ="success_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
+				<div id="user_profile_div">
 				<?php
 					$attributes = array('id' => 'user_profile_data', 'name'=>'user_profile', 'onsubmit'=>'return validate_user_profile()');
 				?>
@@ -257,6 +260,7 @@
 					<input type="submit" value="Update" />
 				</div>
 				<?php echo form_close();?>
+				</div>
 				<!--<a href="#"><img border="0" style="position:absolute; left: 397px; top: 15px;" src="<?php echo base_url().'img/facebook-1.jpg';?>"></a>-->
 			<!-- middle-bg -->
 			</div>
@@ -270,14 +274,15 @@
 	<div id="share_sample" class="window">
 		<div id="lr-box" >
 			<div class="top-bg">
-				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
+				<a href="#" class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
 				<div class="txt-1">Share a Sample Here!</div>
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
 			<div class="middle-bg">
 				<div id="sample_errors_data" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
-				<div id="sample_succuss_data" class="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
+				<div id="sample_succuss_data" class="success_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
+				<div id="share_sample_div">
 				<?php
 					$attributes = array('id' => 'sharesample', 'name'=>'share_sample', 'onsubmit'=>'return validate_sample()');
 				?>
@@ -337,6 +342,7 @@
 				</div>
 				<?php echo form_close();?>
 				<br />
+				</div>
 			<!-- middle-bg -->
 			</div>
 			<!-- top-bg -->
@@ -349,14 +355,14 @@
 	<div id="forgotpassword" class="window">
 		<div id="lr-box-pass" >
 			<div class="top-bg">
-				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
+				<a href="#" class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
 				<div class="txt-1">ForgetPassword</div>
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
 			<div class="middle-bg">
 				<div id="forget_errors_data" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
-				<div id="success_data_forgot"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
+				<div id="success_data_forgot"  class ="success_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
 				<?php
 					$attributes = array('id' => 'forgot_password', 'name'=>'forgot_password', 'onsubmit'=>'return validate_forgetpassword()');
 				?>
@@ -385,20 +391,17 @@
 		</div>
 	</div>
 
-
-
-
-<div id="changepassword" class="window">
+	<div id="changepassword" class="window">
 		<div id="lr-box-pass" >
 			<div class="top-bg">
-				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
+				<a href="#" class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
 				<div class="txt-1">ChangePassword</div>
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
 			<div class="middle-bg">
 				<div id="change_pwd_errors_data" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
-				<div id="success_pwd_data"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
+				<div id="success_pwd_data"  class ="success_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
 				<?php
 					$attributes = array('id' => 'change_password', 'name'=>'change_password', 'onsubmit'=>'return validate_chanagepassword()');
 				?>
@@ -434,9 +437,6 @@
 		</div>
 	</div>
 
-
-
-
 	<div id="mask"></div>
 </div>
 
@@ -444,11 +444,11 @@
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/prettify.js"></script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/docs.js"></script>
 <script type="text/javascript">
-$(".categories ul li ol li").mouseover(function() {
-    $(this).parent().parent().addClass("blue");
+$('.categories ul li ol li').mouseover(function() {
+	$(this).parent().parent().addClass('blue');
 });
-$(".categories ul li ol li").mouseout(function() {
-    $(this).parent().parent().removeClass("blue");
+$('.categories ul li ol li').mouseout(function() {
+	$(this).parent().parent().removeClass('blue');
 });
 </script>
 </body>

@@ -69,11 +69,11 @@ class Register extends CI_Controller {
 		if(!$result)
 			return false;
 		else if(trim($result->status_id) != "1")
-			return "Email Address '".urldecode($emailid)."'has already been registered. Please try a different one or go to Login to access your account. ";
+			return "Email Address <em>'" . urldecode($emailid) . "'</em> has already been registered.
+					<br />Please try a different one or go to Login to access your account.";
 		else
 			return urldecode($emailid)." @@ active ";
 	}
-
 
 	public function user_profile(){
 

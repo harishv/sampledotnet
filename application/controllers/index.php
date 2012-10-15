@@ -153,7 +153,7 @@ class Index extends CI_Controller {
 		}
 		else{
 		$return_json['status'] = "success";
-		$return_json['data'] = "Thank you for Share a Sample";
+		$return_json['data'] = "Thank you for sharing a sample with Sample.net";
 		}
 
 		echo json_encode($return_json);

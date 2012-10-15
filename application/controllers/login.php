@@ -60,7 +60,7 @@ class Login extends CI_Controller {
 
 		if(is_bool($status['status'])){
 
-			$this->session->set_userdata (array('header_action' => 'user_login','succuss_message' => 'You Account has been Activated succesfully, please login.'));
+			$this->session->set_userdata (array('header_action' => 'user_login', 'succuss_message' => 'You Account has been Activated succesfully, please login.'));
 			redirect(base_url());
 
 		}

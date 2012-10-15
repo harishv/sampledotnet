@@ -230,15 +230,15 @@ function validate_registerform() {
 				if(result.status == "success" )
 				  {
 
-				  			
 
-						$("#reg_success_data_signup").html(result.data);
+
+						$("#reg_success_data_signup").html("<h4>" + result.data + "</h4>");
 						$('#userlogin').each (function(){
     					this.reset();
  						});
 
-						document.getElementById('reg_success_data_signup').style.display = 'block';
-
+						$('#reg_success_data_signup').show();
+						$('#user_regd_div').hide();
 
 				  }
 				  else
@@ -395,17 +395,16 @@ function validate_user_profile(){
 				  if(response.status == "success"){
 
 
-				  	$("#success_data_user_profile").html(response.data);
+				  	$("#success_data_user_profile").html("<h4>" + response.data + "</h4>");
 					$('#user_profile_data').each (function(){
     					this.reset();
- 						});
+ 					});
 					$("form#user_profile_data input[type='text']").each(function() {
-					$(this).val('');
-				});
-					document.getElementById('errors_data_user_profile').style.display = 'none';
-				  	document.getElementById('success_data_user_profile').style.display = 'block';
-
-
+						$(this).val('');
+					});
+					$('#errors_data_user_profile').hide();
+				  	$('#user_profile_div').hide();
+				  	$('#success_data_user_profile').show();
 
 				  } else{
 					  $('#errors_data_user_profile').html(response.data);
@@ -590,18 +589,14 @@ function validate_sample(){
 			  data: data,
   			  dataType:'json',
 			  success: function(response){
-
-
 				if(response.status == "success"){
 
-
-				  	$("#sample_succuss_data").html(response.data);
+				  	$("#sample_succuss_data").html("<h4>" + response.data + "</h4>");
 					$('#sharesample').each (function(){
     					this.reset();
- 						});
-				  	document.getElementById('sample_succuss_data').style.display = 'block';
-
-
+ 					});
+ 					$('#share_sample_div').hide();
+				  	$('#sample_succuss_data').show();
 
 				  } else{
 					  $('#sample_errors_data').html(response.data);
@@ -613,14 +608,11 @@ function validate_sample(){
 	}
 	return false;
 
-
-
-
 }
 
 function validate_comments(){
 
-		var errors = "";
+	var errors = "";
 
 	var  comment_obj = document.getElementById('comment_area');
 

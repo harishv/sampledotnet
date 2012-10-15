@@ -12,8 +12,6 @@ class Register_Model extends CI_Model {
 	public function register_new_user()
 	{
 
-
-
 		$errors = '';
 
 		$first_name = $this->input->post('first_name');
