@@ -202,9 +202,9 @@ class Login_Model extends CI_Model {
 		}
 		
 		if(isset($result)){
-			/*if($result[0]['dob'] == '' )
+			if($result[0]['dob'] == '' )
 				return false;
-			else*/ if($result[0]['gender'] == '')
+			else if($result[0]['gender'] == '')
 				return false;
 			else if($result[0]['address_1'] == '')
 				return false;

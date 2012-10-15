@@ -137,7 +137,7 @@
 							id = "#user_profile";
 							$('#user_profile').css("display", "block");
 						<?php }
-					$this->session->unset_userdata('header_action');
+					$this->session->set_userdata(array('header_action' => ''));
 				?>
 
 				//Get the screen height and width

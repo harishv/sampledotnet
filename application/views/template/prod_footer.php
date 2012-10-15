@@ -39,7 +39,7 @@
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
-			<div class="middle-bg"> 
+			<div class="middle-bg">
 				<div id="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
 				<div id="success_data_signup"  class ="sucuss_data" style="display:none;"><?php $succuss_msg = $this->session->userdata('succuss_message'); if(isset($succuss_msg) && $succuss_msg !='' ) { echo $succuss;} ?></div>
 				<?php
@@ -159,6 +159,8 @@
 
 
 	<div id="user_profile" class="window">
+		<!--<script type="text/javascript" src="<?php echo base_url("js"); ?>/bootstrap-datepicker.js"></script>
+		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url(); ?>css/bootstrap-datepicker.css" /> -->
 
 		<div id="lr-box-reg">
 			<div class="top-bg">
@@ -176,15 +178,18 @@
 				?>
 				<?php echo form_open('register/user_profile/', $attributes); ?>
 
-				<input type="hidden" name="user_id" value="<?php if(isset($user_profile[0]['id']) && $user_profile[0]['id'] !='') echo $user_profile[0]['id']; else echo "";?>" >
-				
-				<div class="form-box">
+				<input type="hidden" name="user_id" value="<?php if(isset($user_profile[0]['user_id']) && $user_profile[0]['user_id'] !='') echo $user_profile[0]['user_id']; else echo "";?>" >
+
+				<div class="form-box" id="user_dob">
 					<div class="text">DOB: </div>
 					<div class="form">
 						<input type="text"  name="dob"  id="datepicker1" value="<?php if(isset($user_profile[0]['dob'])) if($user_profile[0]['dob'] !='0000-00-00') { $timestamp = strtotime($user_profile[0]['dob']); echo date('m-d-Y',$timestamp);} else echo "";?>">
+						<br>
+						Please enter date in the format (mm-dd-yyyy)
 					</div>
 				<!-- form-box -->
 				</div>
+				<div style="clear:both"></div>
 				<br />
 				<div class="form-box">
 					<div class="text">Gender: </div>
@@ -371,11 +376,11 @@
 				<?php echo form_close();?>
 				<br />
 
-				
+
 			</div>
 			<!-- top-bg -->
 			<div class="bottom-bg"></div>
-			
+
 		</div>
 	</div>
 
@@ -402,14 +407,14 @@
 					<div class="form">
 						<input id="password_cp" type="password" size="30" name="password">
 					</div>
-				
+
 				</div>
 				<div class="form-box">
 					<div class="text">Confirm Password: </div>
 					<div class="form">
 						<input id="repassword" type="password" size="30" name="repassword">
 					</div>
-				
+
 				</div>
 				<br />
 
@@ -420,11 +425,11 @@
 				<?php echo form_close();?>
 				<br />
 
-				
+
 			</div>
 			<!-- top-bg -->
 			<div class="bottom-bg"></div>
-			
+
 		</div>
 	</div>
 

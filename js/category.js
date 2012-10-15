@@ -312,10 +312,12 @@ function validate_user_profile(){
 
 
 	var errors = "";
+   document.getElementById('errors_data_user_profile').innerHTML="";
 
 	
 	var dob_obj = document.getElementById('datepicker1');
 	var address1_obj = document.getElementById('address1');
+	// alert(address1_obj.value);
 	var  address2_obj = document.getElementById('address2');
 	var  state_obj = document.getElementById('state');
 	var city_obj =document.getElementById('city');
@@ -347,17 +349,17 @@ function validate_user_profile(){
 	}
 
 
-	if(!validate_isnull(state_obj)) {
+	if(!validate_isnull(city_obj)) {
 	
-	   errors += "state should not be null or empty<br >";
+	   errors += "City should not be null or empty<br >";
 	   document.getElementById('errors_data_user_profile').innerHTML="";
 	   document.getElementById('errors_data_user_profile').innerHTML=$.trim(errors);
 	   return false;
 	}
 
-	if(!validate_isnull(city_obj)) {
+	if(!validate_isnull(state_obj)) {
 	
-	   errors += "City should not be null or empty<br >";
+	   errors += "state should not be null or empty<br >";
 	   document.getElementById('errors_data_user_profile').innerHTML="";
 	   document.getElementById('errors_data_user_profile').innerHTML=$.trim(errors);
 	   return false;

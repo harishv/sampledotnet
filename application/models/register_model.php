@@ -171,13 +171,13 @@ class Register_Model extends CI_Model {
 		);
 
 		$this->db->where('user_id' , $user_id);
-		$this->db->update('users',$user_profile_information);
+		$this->db->update('users', $user_profile_information);
 
 
 		$affected_rows = $this->db->affected_rows();
 		if($affected_rows > 0){
 
-			$this->session->unset_userdata('header_action');
+			$this->session->set_userdata(array('header_action' => ''));
 			return true;
 		}
 
