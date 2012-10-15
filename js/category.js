@@ -230,12 +230,14 @@ function validate_registerform() {
 				if(result.status == "success" )
 				  {
 
-						$("#success_data_signup").html(result.data);
+				  			alert(result.data);return false;
+
+						$("#reg_success_data_signup").html(result.data);
 						$('#userlogin').each (function(){
     					this.reset();
  						});
 
-						document.getElementById('success_data_signup').style.display = 'block';
+						document.getElementById('reg_success_data_signup').style.display = 'block';
 
 
 				  }

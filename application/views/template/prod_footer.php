@@ -92,7 +92,7 @@
 			</div>
 			<div class="middle-bg">
 				<div id="errors_data_signup" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
-				<div id="success_data_signup"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
+				<div id="reg_success_data_signup"  class ="sucuss_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
 				<div id="errors_email_singup" style="display:none">
 					Email Address '<span id="email_replace"></span>'
 					<br />has already been registered.
