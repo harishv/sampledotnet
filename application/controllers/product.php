@@ -38,7 +38,7 @@ class Product extends CI_Controller {
 	public function user_comments(){
 
 		$url = explode('/',$_SERVER['HTTP_REFERER']);
-		$formated_url = $url[4].'/'.$url['5'].'/'.$url['6'];
+		//$formated_url = $url[4].'/'.$url['5'].'/'.$url['6'];
 		
 		$login_data = $this->session->userdata('user');
 		if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
@@ -50,7 +50,7 @@ class Product extends CI_Controller {
 			
 			$newdata = array('comment_errors'  => "Please Log With Your Creditials");
 			$this->session->set_userdata($newdata);
-			redirect($formated_url,'refresh');
+			redirect($url,'refresh');
 		}
 
 		
