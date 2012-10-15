@@ -406,6 +406,19 @@ function validate_user_profile(){
 				  	$('#user_profile_div').hide();
 				  	$('#success_data_user_profile').show();
 
+				  	$('.window .close').click(function(e) {
+						e.preventDefault();
+
+						// Clear Messages
+						$('.errors_data').html('');
+						$('.success_data').html('');
+
+						$('#mask').hide();
+						$('.window').hide();
+
+						$(location).attr('href', base_url);
+					});
+
 				  } else{
 					  $('#errors_data_user_profile').html(response.data);
 
