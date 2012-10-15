@@ -185,7 +185,8 @@
 					<div class="form">
 						<input type="text"  name="dob"  id="datepicker1" value="<?php if(isset($user_profile[0]['dob'])) if($user_profile[0]['dob'] !='0000-00-00') { $timestamp = strtotime($user_profile[0]['dob']); echo date('m-d-Y',$timestamp);} else echo "";?>">
 						<br>
-						Please enter date in the format (mm-dd-yyyy)
+						<div style="clear:both"></div>
+						<span>Please enter date in the format (mm-dd-yyyy)</span>
 					</div>
 				<!-- form-box -->
 				</div>

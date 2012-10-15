@@ -14,7 +14,7 @@ class Register extends CI_Controller {
 	}
 
 	public function register_user() {
-		
+
 		//set default status
 		$return_json= array('status' => "error");
 		$data = array();
@@ -22,8 +22,8 @@ class Register extends CI_Controller {
 		/*$email = $this->input->post('email_add');
 		$password = $this->input->post('pass');
 		$re_password = $this->input->post('re_pass');*/
-		
-		
+
+
 		$current_date = date('Y-m-d H:i:s');
 		$ip = $_SERVER['REMOTE_ADDR'];
 
@@ -40,17 +40,17 @@ class Register extends CI_Controller {
 			if($check_status === false)
 			{
 				$user_details = $this->register_model->register_new_user();
-				
+
 				if(is_string($user_details) )
 				{
 					$return_json['data'] =$user_details;
-					//echo  
+					//echo
 				}
 				else //success
 				{
 					//echo '1';
 					$return_json['status'] = "success";
-					$return_json['data'] = "Thank you for signing up";
+					$return_json['data'] = "Thank you for your registration with Sampel.net.<br />Kindly check your email to complete the registration process.";
 				}
 			}
 			else
@@ -79,30 +79,30 @@ class Register extends CI_Controller {
 
 
 		$login_data = $this->session->userdata('user');
-		
+
 		$return_json= array('status' => "error");
 		$data = array();
 		$data['errors'] = "";
-		
+
 		$user_profile = $this->register_model->update_user_profile($login_data['user_id']);
 
-		
+
 		if(is_string($user_profile) ){
 			$return_json['data'] =$user_profile;
 		}
 		else{
 		$return_json['status'] = "success";
-		$return_json['data'] = "Thank you for signing up";
+		$return_json['data'] = "Thank you for updating your profile.";
 		}
 
 		echo json_encode($return_json);
-		
+
 
 
 	}
 
 
-	
+
 
 
 }

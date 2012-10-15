@@ -95,29 +95,30 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 			<!-- comments section start-->
 			<div id="normal_comments" style="display: none;">
 			<div class="comment-box">
-			<?php
-				$user_data = $this->session->userdata('user');
-				if ($user_data['user_id'] != '') { ?>
-					<div class="comment" id="login_comments">
-						<p class="flt-r"></p>
-							<h3>Enter your comments</h3>
-							<div id="errors_comments" class="errors_data">
-								<?php echo (isset($errors)) ? $errors : '';?>
-							</div>
-							<?php
-								$attributes = array('id' => 'comments_data', 'name'=>'comments_data', 'method'=>'post');
-								echo form_open('product/user_comments/', $attributes);
-							?>
-								<input type="hidden" name="prod_id" value="<?php echo $product_details[0]['id'];?>" />
-								<textarea rows="3" class="clear mgn-15b" id="comment_area" name="comment_area"></textarea>
-								<input type="submit" name="submit" value="Submit" />
-							<?php echo form_close(); ?>
-					</div>
-			<?php } ?>
+				<?php
+					$user_data = $this->session->userdata('user');
+					if ($user_data['user_id'] != '') { ?>
+						<div class="comment" id="login_comments">
+							<p class="flt-r"></p>
+								<h5>Enter your comments</h5>
+								<div id="errors_comments" class="errors_data">
+									<?php echo (isset($errors)) ? $errors : '';?>
+								</div>
+								<?php
+									$attributes = array('id' => 'comments_data', 'name'=>'comments_data', 'method'=>'post');
+									echo form_open('product/user_comments/', $attributes);
+								?>
+									<input type="hidden" name="prod_id" value="<?php echo $product_details[0]['id'];?>" />
+									<textarea rows="3" class="clear mgn-15b" id="comment_area" name="comment_area"></textarea>
+									<input class="btn btn-small btn-primary pull-right" type="submit" name="submit" value="Comment" />
+								<?php echo form_close(); ?>
+						</div>
+				<?php } ?>
 
 			<!-- comments -->
-			 <?php if(isset($comments) && $comments !=''){
-					foreach($comments as $key=>$values){ ?>
+			 <?php if(isset($comments) && $comments !=''){ ?>
+			 	<h4>Comments</h4>
+				<?php foreach($comments as $key=>$values){ ?>
 						<div class="comments">
 							<p>
 								<strong class="mgn-r"><?php echo $values['first_name'] . "." . $values['last_name'];?></strong>

@@ -85,12 +85,10 @@ class Register_Model extends CI_Model {
 		$encode_last_id=rtrim($encode_last_id,"/(([=]) || ([+]))/");
 		$this->email->to($email);
 		$this->email->from('sampel@sample.com', 'admin');
-		$this->email->subject('Welcome to Sample');
-		$message_url = base_url().'login/active_account/'.$encode_last_id;
+		$this->email->subject('Welcome to Sample.net');
+		$message_url = '<a href="'. base_url().'login/active_account/' . $encode_last_id . '">Click here to activate your account</a>';
 		$this->email->message($message_url);
 		$mail_result = $this->email->send();
-
-
 
 		if(!$mail_result){
 			return false;
@@ -100,12 +98,12 @@ class Register_Model extends CI_Model {
 				return true;
 			}
 	}
-	public function check_email_address_availability($email,$status='1') {
+	public function check_email_address_availability($email, $status='1') {
 
 		//$member_type = 1;
 		$email = urldecode($email);
 
-		$query = "SELECT * FROM users WHERE email = ? AND  status_id =".$status;
+		$query = "SELECT * FROM users WHERE email = ?";// AND  status_id =".$status;
 		//$variables = array ($email, 3); // 3 is delete state in db at present
 		$variables = array ($email);
 
@@ -122,10 +120,10 @@ class Register_Model extends CI_Model {
 		$errors = '';
 		$dob = $this->input->post('dob');
 		$dob1 = explode('-',$dob); // mm-dd-yyyy
-		
+
 		$formated_dob = $dob1[2].'-'.$dob1[0].'-'.$dob1[1];
-		
-		
+
+
 		$gender = $this->input->post('gender');
 		$address1 = $this->input->post('address1');
 		$address2 = $this->input->post('address2');
@@ -170,10 +168,10 @@ class Register_Model extends CI_Model {
 
 		);
 
-		$this->db->where('user_id' , $user_id);
+		$this->db->where('user_id' , intval($user_id));
 		$this->db->update('users', $user_profile_information);
 
-
+		// echo $this->db->last_query(); exit;
 		$affected_rows = $this->db->affected_rows();
 		if($affected_rows > 0){
 
