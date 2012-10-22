@@ -42,6 +42,14 @@ $route['default_controller'] = "index";
 $route['backoffice'] = ADMINFOLDER;
 $route['404_override'] = '';
 
+// $route['detail'] = "product/test";
+$route['detail/(:num)'] = "product/test/$1";
+$route['detail/(:num)/(:any)'] = "product/test/$1/$2";
+$route['prod'] = "product/product_detail";
+
+$route['prod/(:any)/(:any)/(:num)'] = "product/seo_url/$1/$2/$3";
+// $route['prod/(:any)/(:any)/(:num)'] = "product/seo_url/$1/$2/$3";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
