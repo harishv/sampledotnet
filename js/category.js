@@ -763,6 +763,69 @@ function validate_chanagepassword() {
 }
 
 
+function mouseOverImage(id){
+		 var str = new String(id);
+    	var n=str.substr(-1);
+		
+		for(i=0;i<n;i++){
+        document.getElementById("full_off"+id).src = base_url+"img/star-full.png";
+		document.getElementById("half_on"+id).src = base_url+"img/star-full.png";
+		document.getElementById("half_off"+id).src = base_url+"img/star-full.png";
+		}
+    }
+  
+    function mouseOutImage(id){
+		 var str1 = new String(id);
+		var n=str1.substr(-1);
+		for(i=0;i<n;i++){
+    
+         document.getElementById("full_off"+id).src = base_url+"img/star-off.png";
+		document.getElementById("half_on"+id).src = base_url+"img/star-off.png";
+		document.getElementById("half_off"+id).src = base_url+"img/star-off.png";
+		}
+    }
+
+
+	function getdata(catid){
+
+	var cat_id = $("#cat_id").val();
+		
+	
+	var country_id = document.myform.get_country.options[document.myform.get_country.selectedIndex].value;
+		
+
+	
+	var data = { 'cat_id' : cat_id,'country_id':country_id};
+
+	
+	var baseurl = base_url;
+		$.ajax({
+		url: baseurl+'category/get_products',
+		type: 'POST',
+		data:data,
+		dataType :'json',
+		success: function(res)
+		{
+
+		
+		//alert(res.status == 'succuss');return false;
+		if(res.status == 'succuss'){
+
+		//$('#ratings').html();
+		$("#replace").html(res.page);
+		//window.location =baseurl;
+		}
+		}
+		});
+
+	
+	
+
+	}
+     
+
+
+
 
 
 

@@ -65,19 +65,22 @@ if(!$render) { ?>
 									<div class="star" id="ratings">
 										<?php
 										if($product_values['product_rating'] != 0 ) {
-										for($i=1; $i<=$product_values['product_rating']; $i++) { ?>
-										<img src="<?php echo base_url(); ?>img/star-full.png" alt="full" />
+										for($i=1,$j=1;$i<=$product_values['product_rating']; $i++,$j++) { ?>
+										<img id ="half_on<?php echo  $product_values['id'].$j;?>" onmouseover="mouseOverImage(<?php echo  $product_values['id'].$j;?>)"
+        onmouseout="mouseOutImage(<?php echo $j;?>);" src="<?php echo base_url(); ?>img/star-full.png" alt="full" />
 										<?php }
 										} else {
 										for($i=1; $i<=5; $i++) { ?>
-										<img src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>, <?php echo $i;?>);" />
+										<img  onmouseover="mouseOverImage(<?php echo  $product_values['id'].$i;?>);"
+        onmouseout="mouseOutImage(<?php echo  $product_values['id'].$i;?>);" id="full_off<?php echo  $product_values['id'].$i;?>" src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>, <?php echo $i;?>);" />
 										<input type="hidden" name="rating_vote" value="<?php echo $i;?>" />
 										<?php }
 										}
 
 										if($product_values['product_rating'] != 0 && $product_values['product_rating'] < 5) {
-										for($i=1;$i<=(5-$product_values['product_rating']);$i++){ ?>
-										<img src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>, <?php echo $product_values['product_rating'] +$i; ?>);" />
+										for($i=1,$k=1;$i<=(5-$product_values['product_rating']);$i++,$k++){ ?>
+										<img id="half_off<?php echo  $product_values['id'].$k;?>" onmouseover="mouseOverImage(<?php echo  $product_values['id'].$k;?>)"
+        onmouseout="mouseOutImage(<?php echo  $product_values['id'].$k;?>)" src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>, <?php echo $product_values['product_rating'] +$i; ?>);" />
 										<input type="hidden" name="rating_vote" value="<?php echo $product_values['product_rating'] +$i; ?>" />
 										<?php }
 										}
@@ -109,7 +112,7 @@ if(!$render) { ?>
 				<!-- End sample here -->
 			</div>
 			<!-- Begin tabs here -->
-				<?php include_once 'template/prod_footer_carousel.php';?>
+				<?php //include_once 'template/prod_footer_carousel.php';?>
 			<!-- End tabs here -->
 			<h2>What is Sample.net</h2>
 			<p class="bdr-btm1">Lorem ipsum dolor sit amet, consectetuer

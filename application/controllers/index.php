@@ -50,6 +50,13 @@ class Index extends CI_Controller {
 
 		$data["countries"] = $this->common_model->get_countries();
 		$data['featured_products'] = $this->category_model->get_featured_products();
+		$data['footer_category'] = $this->category_model->get_footer_category();
+		foreach($data['footer_category'] as $key=>$values){
+		
+		$data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);
+		}
+
+		//echo "<pre>";print_r($data['footer_products']);exit;
 		$data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
 
 		// $data['slider'] = $this->load->view('slider', $data, TRUE);
@@ -157,6 +164,27 @@ class Index extends CI_Controller {
 		}
 
 		echo json_encode($return_json);
+	}
+
+
+	public function get_products($id){
+
+		$data['footer_products'] = $this->category_model->get_footer_products($id);
+		$product ='';
+		if(isset($data['footer_products']) && $data['footer_products'] !=''){ 
+				foreach($data['footer_products'] as $key=>$values){ 
+
+		$product .= "<div class='item'>
+					<p class='first'> <span class='hgt-15px wid_100'></span> <img src='". base_url('img')."/barbosol.jpg' alt='huggies' class='one' /><br />
+						<span class='hgt-8px wid_100'></span> <strong> ".$values['name']."</strong><br />".
+						$values['description']."</p>
+					</div>";
+				}
+		
+		}
+
+	echo $product;exit;
+		
 	}
 
 	function email()

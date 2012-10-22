@@ -35,9 +35,9 @@
 
 		<script type="text/javascript">
 			jQuery(document).ready(function() {
-				jQuery('#mycarousel').jcarousel({
+				/*jQuery('#mycarousel').jcarousel({
 					start: 1
-				});
+				});*/
 			});
 
 			$(document).ready(function() {

@@ -7,12 +7,13 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 
 </script>
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/category.js"></script>
-<div id="replace"><!-- for the refreshing issue  start-->
-<?php }?>  
-
 <script type="text/javascript">var switchTo5x=false;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "18f4acdf-af25-4d39-b663-78b081a6f60e"}); </script>
+<div id="replace"><!-- for the refreshing issue  start-->
+<?php }?>  
+
+
 
 
       <!-- Begin main-content div -->

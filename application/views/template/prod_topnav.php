@@ -64,10 +64,20 @@
 <p class="bg-icon clr-none">
 	<?php echo img(array("src" => "/img/rss.png", "alt" => $this->lang->line("nav_rss"))); ?>
 </p>
+<?php $url = $_SERVER['REQUEST_URI'];
+
+$url = explode('/', $url);
+$catid = end($url);
+
+
+
+
+?>
 <div class="selector">
 	<!-- <iframe src="<?php echo base_url(); ?>iframes/select"></iframe> -->
     <form name="myform" id="myform"  action="getvalue.php" enctype="multipart/form-data" method="post">
-        <select style="width:208px">
+		<input hidden name="cat_id" id="cat_id" value="<?php if(isset($catid) && $catid !='') echo $catid ;?>" />
+        <select style="width:208px" name ="get_country" onchange = "getdata();">
           <option value="calendar" selected="selected" title="<?php echo base_url("img"); ?>/india-flag.jpg">Choose Your Country</option>
           <?php if (count($countries) > 0) {
           			foreach ($countries as $country) { ?>

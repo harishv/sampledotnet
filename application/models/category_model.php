@@ -83,6 +83,8 @@ class Category_Model extends CI_Model {
 		$this->db->limit($offset,$num);
 		$result = $this->db->get();
 
+	
+
 		if ($result->num_rows() == 0) {
 			return false;
 		} else {
@@ -91,6 +93,18 @@ class Category_Model extends CI_Model {
 
 		return false;
 
+	}
+
+	function get_country_products($cat_id, $country_id, $num,$offset){
+		$query = $this->db->query("select * from products where category_id = ".$cat_id. " and  valid_countries LIKE '%". $country_id."%' limit ".$num.",".$offset);
+
+		
+		if($query->num_rows() > 0)
+			return $query->result_array();
+		else 
+			return 0;
+
+		
 	}
 
 	function get_featured_products(){
@@ -110,6 +124,29 @@ class Category_Model extends CI_Model {
 		}
 
 		return false;
+	}
+
+	function get_footer_category(){
+
+		$query= $this->db->query("select DISTINCT p.category_id,pc.prod_cat_name from products p , prod_categories pc  where p.featured = 1 and p.category_id = pc.id  and p.status_id = 1 limit 0,5");
+		if($query->num_rows() > 0){
+			$result = $query->result_array();
+			
+			return $result;
+		}else
+			return 0;
+	}
+
+	function get_footer_products($id){
+		$query_prod = $this->db->query("select category_id,id,name,description,image from products where category_id = ".$id."  and featured = 1 and status_id = 1");
+				
+				if($query_prod->num_rows() > 0){
+
+					$result_prod = $query_prod->result_array();
+					return $result_prod;
+
+				}else
+					return 0;
 	}
 
 	function get_rating(){
@@ -164,7 +201,7 @@ class Category_Model extends CI_Model {
 
 	function getAllCount(){
 
-		$query=$this->db->query("select * from products  order by modified_at desc");
+		$query=$this->db->query("select * from products  where status_id = 1 order by modified_at desc");
 		$count = $query->num_rows();
 		return $count;
 
@@ -173,11 +210,22 @@ class Category_Model extends CI_Model {
 
 	function getCount($id){
 
-		$query=$this->db->query("select * from products  where category_id = ". $id ." order by modified_at desc");
+		$query=$this->db->query("select * from products  where category_id = ". $id ." and status_id = 1 order by modified_at desc");
 
 		$count = $query->num_rows();
 		return $count;
 
+	}
+
+	function get_country_prod_count($cat_id, $country_id){
+
+		$query=$this->db->query("select * from products  where category_id = ". $cat_id ." and  status_id = 1 and valid_countries LIKE '%". $country_id."%' order by modified_at desc");
+		
+		$count = $query->num_rows();
+		return $count;
+
+
+	
 	}
 
 	function insert_grab($prod_id,$url,$user_id){
