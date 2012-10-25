@@ -47,7 +47,8 @@ $route['detail/(:num)'] = "product/test/$1";
 $route['detail/(:num)/(:any)'] = "product/test/$1/$2";
 $route['prod'] = "product/product_detail";
 
-$route['prod/(:any)/(:any)/(:num)'] = "product/seo_url/$1/$2/$3";
+$route['prod/(:any)/(:any)/(:any)'] = "product/seo_child_url/$1/$2/$3";
+$route['prod/(:any)/(:any)'] = "product/seo_parent_url/$1/$2";
 // $route['prod/(:any)/(:any)/(:num)'] = "product/seo_url/$1/$2/$3";
 
 

@@ -7,6 +7,7 @@ class Common_Model extends CI_Model {
 		// Call the Model constructor
 		parent::__construct();
 
+		// $this->load->helper('inflector');
 	}
 
 	function clear_string($data='')
@@ -86,20 +87,20 @@ class Common_Model extends CI_Model {
                 // Minutes + Seconds
                 $pmin = ($edate - $sdate) / 60;
                 $premin = explode('.', $pmin);
-               
+
                 $presec = $pmin-$premin[0];
                 $sec = $presec*60;
-               
+
                 $timeshift = $premin[0].' minutes '.round($sec,0).' seconds ';
 
         } elseif($time>=3600 && $time<=86399) {
                 // Hours + Minutes
                 $phour = ($edate - $sdate) / 3600;
                 $prehour = explode('.',$phour);
-               
+
                 $premin = $phour-$prehour[0];
                 $min = explode('.',$premin*60);
-               
+
                 $presec = '0.'.$min[1];
                 $sec = $presec*60;
 
@@ -115,14 +116,28 @@ class Common_Model extends CI_Model {
 
                 $premin = ($phour*24)-$prehour[0];
                 $min = explode('.',$premin*60);
-               
+
                 $presec = '0.'.$min[1];
                 $sec = $presec*60;
-               
+
                 $timeshift = $preday[0].' days '.$prehour[0].' hours '.$min[0].' minutes '.round($sec,0).' seconds ';
 
         }
         return $timeshift;
+	}
+
+	function prepare_url($url)
+	{
+		$url_arr = explode("/", $url);
+
+		foreach ($url_arr as $index => $segment) {
+			$segment = strtolower(str_replace(' ', '-', trim($segment)));
+			// $segment = underscore($segment);
+			// quotes_to_entities()
+			$url_arr[$index] = $segment;
+		}
+
+		return implode("/", $url_arr);
 	}
 
 };
