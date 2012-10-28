@@ -695,34 +695,3 @@ function validate_chanagepassword() {
 	}
 	return false;
 }
-
-function getdata(catid) {
-	var cat_id = $("#cat_id").val();
-	var country_id = document.myform.get_country.options[document.myform.get_country.selectedIndex].value;
-
-	var data = {
-		'cat_id': cat_id,
-		'country_id': country_id
-	};
-
-	var baseurl = base_url;
-	$.ajax({
-		url: baseurl + 'category/get_products',
-		type: 'POST',
-		data: data,
-		dataType: 'json',
-		success: function(res) {
-
-
-			//alert(res.status == 'succuss');return false;
-			if (res.status == 'succuss') {
-
-				//$('#ratings').html();
-				$("#replace").html(res.page);
-				//window.location =baseurl;
-			}
-		}
-	});
-
-
-}

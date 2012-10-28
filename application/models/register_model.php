@@ -82,7 +82,7 @@ class Register_Model extends CI_Model {
 		$encode_last_id=base64_encode($last_id);
 		$encode_last_id=rtrim($encode_last_id,"/(([=]) || ([+]))/");
 		$this->email->to($email);
-		$this->email->from('sampel@sample.com', 'admin');
+		$this->email->from('admin@sample.net', 'admin');
 		$this->email->subject('Welcome to Sample.net');
 		$message_url = '<a href="'. base_url().'login/active_account/' . $encode_last_id . '">Click here to activate your account</a>';
 		$this->email->message($message_url);

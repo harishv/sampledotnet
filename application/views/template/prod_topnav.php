@@ -67,14 +67,61 @@ $url = explode('/', $url);
 $catid = end($url);
 ?>
 
+<script type="text/javascript">
+function setcountry(catid) {
+	var country_id = document.countries_list.get_country.options[document.countries_list.get_country.selectedIndex].value;
+
+	var request_type = base_url.substr(0, 5);
+
+	if (request_type != 'https') {
+		request_type = 'http';
+	}
+
+	var redirect_url = request_type + '://<?php echo $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"]; ?>';
+
+	if (redirect_url.substr(redirect_url.length - 4, 4) == '.php') {
+		redirect_url = redirect_url.replace('.php', '.html');
+	}
+	redirect_url = redirect_url.replace('.php', '');
+
+	var data = {
+		'country_id': country_id
+	};
+
+	$.ajax({
+		url: base_url + 'index/set_country',
+		type: 'POST',
+		data: data,
+		success: function(res) {
+			if (res == 'succuss') {
+				window.location = redirect_url;
+				return true;
+			}
+			return false;
+		}
+	});
+}
+</script>
+
 <div class="selector">
-	<form name="myform" id="myform"  action="getvalue.php" enctype="multipart/form-data" method="post">
+	<form name="countries_list" id="countries_list"  action="getvalue.php" enctype="multipart/form-data" method="post">
 		<input hidden name="cat_id" id="cat_id" value="<?php if(isset($catid) && $catid !='') echo $catid ;?>" />
-		<select style="width:208px" name ="get_country" onchange = "getdata();">
-		  <option value="calendar" selected="selected" title="<?php echo base_url("img"); ?>/india-flag.jpg">Choose Your Country</option>
+		<input hidden id="selected_country_id" value="226"><!-- United States default country id -->
+		<select style="width:208px" name ="get_country" onchange="return setcountry();">
+		  <option value="" selected="selected" title="">Choose Your Country</option>
 		  <?php if (count($countries) > 0) {
-					foreach ($countries as $country) { ?>
-					<option value="<?php echo $country["id"]; ?>" title="<?php echo base_url("img"); ?>/india-flag.jpg"><?php echo $country["name"]; ?></option>
+		  			if($this->session->userdata('selected_country')){
+		  				$selected_country = $this->session->userdata('selected_country');
+		  			} else {
+		  				$selected_country = 226; // United States ID in DB.
+
+		  				$newdata = array( 'selected_country'  => $selected_country );
+						$this->session->set_userdata($newdata);
+		  			}
+					foreach ($countries as $country) {
+						$selected = ($country['id'] == $selected_country) ? 'selected="selected"' : '';
+						?>
+					<option value="<?php echo $country["id"]; ?>" title="<?php echo base_url("img") . "/" . strtolower($country['code']) . "-flag.png"; ?>" <?php echo $selected; ?>><?php echo $country["name"]; ?></option>
 			  <?php }
 				} ?>
 		</select>

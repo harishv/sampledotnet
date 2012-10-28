@@ -104,7 +104,7 @@ class Login_Model extends CI_Model {
 			//$url = base_url()."login/change_password/".rtrim(base64_encode(245), "=")."/$currtimestamp";
 
 			$this->email->to($user_data['email']);
-			$this->email->from('sampel@sample.com', 'admin');
+			$this->email->from('admin@sample.net', 'admin');
 			$this->email->subject('Forgot Password');
 
 			$reset_password_link = "<a href='".$change_password_url."'>Reset your password</a>";

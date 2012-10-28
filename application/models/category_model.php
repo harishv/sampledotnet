@@ -65,8 +65,6 @@ class Category_Model extends CI_Model {
 			$result = array_merge($row , $row_cat);
 
 			return $result;
-
-
 	}
 
 	// get inital product based on the modified date
@@ -83,28 +81,40 @@ class Category_Model extends CI_Model {
 		$this->db->limit($offset,$num);
 		$result = $this->db->get();
 
-	
-
 		if ($result->num_rows() == 0) {
 			return false;
 		} else {
-			return $result->result_array();
+			$products = $result->result_array();
+
+			if($this->session->userdata('selected_country')){
+  				$selected_country = $this->session->userdata('selected_country');
+  				$result = array();
+				foreach ($products as $prod_key => $prod_data) {
+					// print_r($prod_data);
+					$valid_countries = explode(',', $prod_data['valid_countries']);
+					if (in_array($selected_country, $valid_countries)) {
+						array_push($result, $prod_data);
+					}
+				}
+				return $result;
+  			}
+
+  			return $products;
 		}
 
 		return false;
-
 	}
 
 	function get_country_products($cat_id, $country_id, $num,$offset){
 		$query = $this->db->query("select * from products where category_id = ".$cat_id. " and  valid_countries LIKE '%". $country_id."%' limit ".$num.",".$offset);
 
-		
+
 		if($query->num_rows() > 0)
 			return $query->result_array();
-		else 
+		else
 			return 0;
 
-		
+
 	}
 
 	function get_featured_products(){
@@ -131,7 +141,7 @@ class Category_Model extends CI_Model {
 		$query= $this->db->query("select DISTINCT p.category_id,pc.prod_cat_name from products p , prod_categories pc  where p.featured = 1 and p.category_id = pc.id  and p.status_id = 1 limit 0,5");
 		if($query->num_rows() > 0){
 			$result = $query->result_array();
-			
+
 			return $result;
 		}else
 			return 0;
@@ -139,7 +149,7 @@ class Category_Model extends CI_Model {
 
 	function get_footer_products($id){
 		$query_prod = $this->db->query("select category_id,id,name,description,image from products where category_id = ".$id."  and featured = 1 and status_id = 1");
-				
+
 				if($query_prod->num_rows() > 0){
 
 					$result_prod = $query_prod->result_array();
@@ -220,12 +230,12 @@ class Category_Model extends CI_Model {
 	function get_country_prod_count($cat_id, $country_id){
 
 		$query=$this->db->query("select * from products  where category_id = ". $cat_id ." and  status_id = 1 and valid_countries LIKE '%". $country_id."%' order by modified_at desc");
-		
+
 		$count = $query->num_rows();
 		return $count;
 
 
-	
+
 	}
 
 	function insert_grab($prod_id,$url,$user_id){
@@ -305,7 +315,7 @@ class Category_Model extends CI_Model {
 					  'created_from' =>$created_from);
 		$this->db->insert('share_sample',$data);
 		$this->email->to($email);
-		$this->email->from('sampel@sample.com', 'admin');
+		$this->email->from('admin@sample.net', 'admin');
 		$this->email->subject('Sample Details');
 		$message = "<b>Sample Details</b>"."<br><br><br>";
 		$message .= "Name : ".$name."<br>";

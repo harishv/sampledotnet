@@ -20,7 +20,9 @@ if(isset($products) && $products != '' && count($products) > 0) { ?>
 			<!--<div class="star" value="<?php //echo $product_value['id'];?>" datarating="<?php //echo $product_value['product_rating'];?>"></div> -->
 
 			<div class="clear"></div>
-			<a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_value['id'];?> ','<?php echo $product_value['grab_url'];?>')">grab it now!</a>
+			<?php // Temporarly allowing any user to Grab the Sample. ?>
+			<a class="grab flt-r" href="<?php echo base_url() . "product/grab_it_now/" . $product_value['id']; ?>">grab it now!</a>
+			<!-- <a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_value['id'];?> ','<?php echo $product_value['grab_url'];?>')">grab it now!</a> -->
 				<div class="social clear">
 					<span class='st_facebook'></span>
 					<span class='st_twitter'></span>

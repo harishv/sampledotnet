@@ -6,7 +6,6 @@ $errors=$this->session->userdata('comment_errors');
 	}
 ?>
 
-
 <script type="text/javascript">var switchTo5x=false;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "18f4acdf-af25-4d39-b663-78b081a6f60e"}); </script>
@@ -34,7 +33,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 				<p class="head mgn-15b"> <span class="mgn-10l"><?php echo $product_details[0]['name'];?></span></p>
 				 <div class="computers">
 					<?php //$image_properties = array('src' => PROD_IMG_PATH.$product_details[0]['image']);echo img($image_properties);?>
-					<img src="<?php echo base_url().PROD_IMG_PATH.$product_details[0]['image'];?>" width='215' height='215' />
+					<a href="<?php echo base_url().PROD_IMG_PATH.$product_details[0]['image'];?>"><img src="<?php echo base_url().PROD_IMG_PATH.$product_details[0]['image'];?>" width='215' height='215' /></a>
 					<p>
 						<!-- <strong><?php echo $product_details[0]['name'];?></strong><br> -->
 						<?php echo $product_details[0]['description'];?><br><br>
@@ -47,33 +46,33 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 							<?php
 							$product_value = $product_details[0];
 							include '5_star_rating_view.php'; ?>
-							<?php
-								/*if($product_details[0]['product_rating'] != 0 ){
-									for($i=1 ;$i<=$product_details[0]['product_rating'];$i++){ ?>
-									<img src="<?php echo base_url().'img/star-full.png';?>" alt="full" />
-									<?php }
-								}else{
-									for($i=1 ;$i<=5;$i++){ ?>
-									<img src="<?php echo base_url().'img/star-off.png';?>" alt="full"  onclick="prod_rating(<?php echo $product_details[0]['id'];?>,<?php echo $i;?>);"/>
-									<input type="hidden" name="rating_vote" value="<?php echo $i;?>" />
-									<?php }
-								}
-								if($product_details[0]['product_rating'] != 0 && $product_details[0]['product_rating'] < 5){
-									for($i=1;$i<=(5-$product_details[0]['product_rating']);$i++){ ?>
-									<img src="<?php echo base_url().'img/star-off.png';?>" alt="full" onclick="prod_rating(<?php echo $product_details[0]['id'];?>,<?php echo $product_details[0]['product_rating'] +$i; ?>);"/>
-									<input type="hidden" name="rating_vote" value="<?php echo $product_details[0]['product_rating'] +$i; ?>" />
-									<?php }
-								}*/
-							?>
 						</em>
 					</p>
+					<script type="text/javascript">
+					function report_invalid (prod_id) {
+						alert(prod_id);
+						var data = {'prod_id': prod_id};
+
+						$.ajax({
+							url: base_url + 'product/report_invalid',
+							type: 'POST',
+							data: data,
+							dataType: 'json',
+							success: function(res) {
+								alert(res.data);
+								return false;
+							}
+						});
+					}
+					</script>
 					<p class="grey">
-						<span>Report Invalid</span>
+						<span onclick="return report_invalid(<?php echo $product_details[0]['id'];?>);" style="color: #000000; cursor: pointer; text-decoration: underline;">Report Invalid</span>
 						<em title="Click to view comments" id="display_comments" style="color: #000000; cursor: pointer; text-decoration: underline;">(<?php if(isset($comments) && $comments !=''){ echo count($comments); } else echo "0";?>) comments</em>
 							<!-- <em><a id = "display_comments" href="">(<?php if(isset($comments) && $comments !=''){ echo count($comments); } else echo "0";?>) comments</a></em> -->
 					</p>
 					<p>
-						<a class="grab flt-r" onclick="grab_now('<?php echo $product_details[0]['id'];?> ','<?php echo $product_details[0]['grab_url'];?>')"  >grab it now!</a>
+						<a class="grab flt-r" href="<?php echo base_url() . "product/grab_it_now/" . $product_details[0]['id']; ?>">grab it now!</a>
+						<!-- <a class="grab flt-r" onclick="grab_now('<?php echo $product_details[0]['id'];?> ','<?php echo $product_details[0]['grab_url'];?>')"  >grab it now!</a> -->
 					</p>
 					<div class="hgt-15px wid_100"></div>
 						<div class="social-networks-div hgt-15px wid_100">

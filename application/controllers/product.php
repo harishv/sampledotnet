@@ -83,6 +83,7 @@ class Product extends CI_Controller {
 			$user_id = $login_data['user_id'];
 			$insert_comments = $this->product_model->insert_comments($product_id,$user_id);
 			redirect('product/product_detail/'.$product_id,'refresh');
+
 		}else{
 
 			$newdata = array('comment_errors'  => "Please Log With Your Creditials");
@@ -90,8 +91,58 @@ class Product extends CI_Controller {
 			redirect($url,'refresh');
 		}
 
+	}
 
+	public function grab_it_now($id='')
+	{
+		if ($id == '') {
+			redirect(base_url(), 'refresh');
+		}
 
+		$data['category'] = $this->category_model->get_category();
+		$data["countries"] = $this->common_model->get_countries();
+		$data['product_details'] = $this->product_model->get_product_details($id);
+
+		$this->load->view("template/prod_header", $data);
+		$this->load->view("product_grab_view", $data);
+		$this->load->view("template/prod_footer");
+	}
+
+	public function report_invalid()
+	{
+		$id = $this->input->post('prod_id');
+
+		if ($id == '') {
+			// $result['status'] = "failed";
+			$return['data'] = 'No proper data';
+
+		} else {
+			$data['product_details'] = $this->product_model->get_product_details($id);
+
+			$this->email->to('admin@sample.net');
+			$this->email->from('admin@sample.net', 'admin');
+			$this->email->subject('Product Reported Invalid');
+
+			$message = "The following product has been reported invalid.<br><br>";
+			$message .= "<b>Product Details</b>"."<br><br><br>";
+			$message .= "ID : ".$data['product_details'][0]['id']."<br>";
+			$message .= "Name : ".$data['product_details'][0]['name']."<br>";
+			$message .= "Grab URL : ". $data['product_details'][0]['grab_url'] ."<br>";
+
+			$this->email->message($message);
+			$mail_result = $this->email->send();
+
+			if(is_string($mail_result) ){
+				// $result['status'] = "failed";
+				$return['data'] = $mail_result;
+			}
+			else{
+				// $return['status'] = "success";
+				$return['data'] = "Thank you for reporting the product as Invalid.";
+			}
+		}
+
+		echo json_encode($result); exit();
 	}
 
 }

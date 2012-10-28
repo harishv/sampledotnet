@@ -13,7 +13,7 @@
 		<ul class="nav">
 			<li <?php echo (strstr($_SERVER['REQUEST_URI'], "/index") || "http://".$_SERVER["HTTP_HOST"].$_SERVER['REQUEST_URI'] == base_url(ADMINFOLDER)) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER, $this->lang->line('nav_home_admin')); ?></li>
 			<li id="products_nav"><?php echo anchor(ADMINFOLDER . "/products", $this->lang->line('nav_products_admin')); ?></li>
-			<li <?php echo (strstr($_SERVER['REQUEST_URI'], "/documents")) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER . "/documents", $this->lang->line('nav_documents_admin')); ?></li>
+			<!-- <li <?php echo (strstr($_SERVER['REQUEST_URI'], "/documents")) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER . "/documents", $this->lang->line('nav_documents_admin')); ?></li> -->
 		</ul>
 
 		<?php

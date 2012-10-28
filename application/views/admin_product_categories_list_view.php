@@ -134,7 +134,7 @@
 									<td>
 										<div class="status_text_<?php echo $category["id"]; ?>">
 											<?php if ($category["status_id"] != 2){ ?>
-												<div class="switch" id="onandoff_<?php echo $category["id"]; ?>" onclick="return change_status(<?php echo $category["id"]; ?>)"></div>
+												<div class="status-switch" id="onandoff_<?php echo $category["id"]; ?>" onclick="return change_status(<?php echo $category["id"]; ?>)"></div>
 												<?php if ($category["status_id"] == 1){ ?>
 													<script type="text/javascript">
 														$('#onandoff_<?php echo $category["id"]; ?>').addClass('active_on');

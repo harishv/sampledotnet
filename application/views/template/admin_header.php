@@ -25,21 +25,6 @@
 
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/docs.js"></script>
 
-	<script>
-    $(function() {
-        $( "#tabs" ).tabs({
-            beforeLoad: function( event, ui ) {
-                ui.jqXHR.error(function() {
-                    ui.panel.html(
-                        "Couldn't load this tab. We'll try to fix this as soon as possible. " +
-                        "If this wouldn't be a demo." );
-                });
-            }
-        });
-    });
-    </script>
-
-
 </head>
 <body data-offset="50" data-target=".subnav" data-spy="scroll" data-twttr-rendered="true">
 	<div class="navbar navbar-fixed-top">

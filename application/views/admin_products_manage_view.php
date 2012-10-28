@@ -256,13 +256,13 @@ $(document).ready(function() {
 								t.set_values(["15", "38", "77", "226"]);
 							<?php } */?>
 							// t.set_values(["2", "4"]);
-							// console.log(t.get_values());
+							console.log(t.get_values());
 						});
 					</script>
 				</div>
 			</div>
 
-			<div class="control-group">
+			<!-- <div class="control-group">
 				<label for="prod_status" class="control-label"><?php echo $this->lang->line('admin_prod_mng_status'); ?>
 					:</label>
 				<div class="controls">
@@ -313,7 +313,7 @@ $(document).ready(function() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="form-actions">
 				<button class="btn btn-primary" type="submit">

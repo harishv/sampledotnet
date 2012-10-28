@@ -147,7 +147,8 @@ class Login extends CI_Controller {
 	function logout(){
 
 		$this->session->unset_userdata('user');
-		$this->session->unset_userdata ('header_action');
+		$this->session->unset_userdata('header_action');
+		$this->session->unset_userdata('selected_country');
 		redirect(base_url(),'refresh');
 
 	}
