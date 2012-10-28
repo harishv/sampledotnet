@@ -39,7 +39,6 @@ if(!$render) { ?>
 					<?php } ?>
 					<?php
 
-						//echo "<pre>";print_r($product);
 						if(isset($product) && $product != '') {
 							foreach ($product as $product_key => $product_values) { ?>
 								<!-- Begin Samples here -->
@@ -112,7 +111,7 @@ if(!$render) { ?>
 				<!-- End sample here -->
 			</div>
 			<!-- Begin tabs here -->
-				<?php //include_once 'template/prod_footer_carousel.php';?>
+				<?php // include_once 'template/prod_footer_carousel.php';?>
 			<!-- End tabs here -->
 			<h2>What is Sample.net</h2>
 			<p class="bdr-btm1">Lorem ipsum dolor sit amet, consectetuer
@@ -127,6 +126,17 @@ if(!$render) { ?>
 				nobis eleifend option congue nihil imperdiet domin g id quod mazim
 				placerat facer possim assum. Typi non habent claritatem insitam.</p>
 			<h2>How to use Sample.net</h2>
+			<p class="bdr-btm1">Lorem ipsum dolor sit amet, consectetuer
+				adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+				dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+				quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
+				aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in
+				hendrerit in vulputate velit esse molestie consequat, vel illum
+				dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
+				odio dignissim qui blandit praesent luptatum zzril delenit augue
+				duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta
+				nobis eleifend option congue nihil imperdiet domin g id quod mazim
+				placerat facer possim assum. Typi non habent claritatem insitam.</p>
 			<!-- End column 2 -->
 		</div>
 		<!-- End content div -->

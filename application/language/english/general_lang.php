@@ -15,9 +15,8 @@ $lang["title_admin"]				=	$lang["brand_name"] . " | Administration";
 $lang["header_colocation_america"]	=	"colocation america";
 
 $lang["nav"]						=	"nav";
-$lang["nav_categories"]				=	"Categories";
-$lang["nav_samples"]				=	"Samples";
-$lang["nav_documents"]				=	"Documents";
+$lang["nav_products"]				=	"Product Samples";
+$lang["nav_documents"]				=	"Document Samples";
 $lang["nav_suggest_a_samples"]		=	"Suggest a Sample";
 $lang["nav_contact_us"]				=	"Contact Us";
 $lang["nav_login"]					=	"Login here";

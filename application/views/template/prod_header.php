@@ -5,14 +5,12 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<title><?php echo $this->lang->line("title"); ?></title>
+		<title><?php echo (isset($page_title)) ? $page_title . ' | ' : ''; echo $this->lang->line("title"); ?></title>
 
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>favicon.ico" />
 
 		<link href="<?php echo base_url("css"); ?>/bootstrap.css" type="text/css" rel="stylesheet">
 		<link href="<?php echo base_url("css"); ?>/bootstrap-responsive.css" type="text/css" rel="stylesheet">
-		<!-- <link href="<?php echo base_url("css"); ?>/prettify.css" type="text/css" rel="stylesheet" /> -->
-		<!-- <link href="<?php echo base_url("css"); ?>/docs.css" type="text/css" rel="stylesheet" /> -->
 		<link href="<?php echo base_url("css"); ?>/style.css" type="text/css" rel="stylesheet" />
 		<link href="<?php echo base_url("css"); ?>/skin.css" type="text/css" rel="stylesheet" />
 
@@ -35,9 +33,9 @@
 
 		<script type="text/javascript">
 			jQuery(document).ready(function() {
-				/*jQuery('#mycarousel').jcarousel({
+				jQuery('#mycarousel').jcarousel({
 					start: 1
-				});*/
+				});
 			});
 
 			$(document).ready(function() {
@@ -47,7 +45,7 @@
 				//select all the a tag with name equal to modal
 				$('a[name=modal]').click(function(e) {
 
-					$(function() {
+					/*$(function() {
 
 						var date = new Date();
 						date.setYear('2007');
@@ -58,7 +56,7 @@
 							maxDate: '+0d',
 							defaultDate: date
 						});
-					});
+					});*/
 
 					//Cancel the link behavior
 					e.preventDefault();
@@ -176,6 +174,15 @@
 		</script>
 	</head>
 	<body>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=<?php echo FB_APP_ID; ?>";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
 		<!-- Begin wrapper div -->
 		<div id="wrapper" class="flt-l wid_100">
 			<!-- Begin Container div -->

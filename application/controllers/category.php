@@ -15,14 +15,14 @@ class Category extends CI_Controller {
 
 	
 
-	public function get_category_product($cat_id,$id='0'){
+	public function get_category_product($cat_id, $id='0'){
 
 
 
 		$data["countries"] = $this->common_model->get_countries();
 		$config1['base_url'] = base_url().'category/get_category_product/'.$cat_id;
 		$config1['total_rows'] = $this->category_model->getCount($cat_id);
-		$config1['per_page'] = 2;
+		$config1['per_page'] = 10;
 		$config1['cur_tag_open']  ='<a class="current">';
 		$config1['cur_tag_close'] ='</a>';
 
@@ -52,7 +52,7 @@ class Category extends CI_Controller {
 		$data["countries"] = $this->common_model->get_countries();
 		$config1['base_url'] = base_url().'category/get_category_product/'.$cat_id;
 		$config1['total_rows'] = $this->category_model->get_country_prod_count($cat_id,$country_id);
-		$config1['per_page'] = 2;
+		$config1['per_page'] = 10;
 		$config1['cur_tag_open']  ='<a class="current">';
 		$config1['cur_tag_close'] ='</a>';
 

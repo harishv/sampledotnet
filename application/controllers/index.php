@@ -14,23 +14,18 @@ class Index extends CI_Controller {
 		$this->load->library('session');
 
 		$login_data = $this->session->userdata('user');
-
 	}
 
 	public function index ($var='') {
 
-
-		
 		$data = array();
 
 		$login_data = $this->session->userdata('user');
-		
+
 		if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
 			$data['user_profile'] = $this->category_model->get_user_profile($login_data['user_id']);
 		}
-		
-		
-		
+
 		$id = $var;
 
 		if($id == "")
@@ -38,7 +33,7 @@ class Index extends CI_Controller {
 
 		$config['base_url'] = base_url().'index/index';
 		$config['total_rows'] = $this->category_model->getAllCount();
-		$config['per_page'] = 2;
+		$config['per_page'] = 10;
 
 		$config['cur_tag_open']  ='<a class="current">';
 		$config['cur_tag_close'] ='</a>';
@@ -52,14 +47,10 @@ class Index extends CI_Controller {
 		$data['featured_products'] = $this->category_model->get_featured_products();
 		$data['footer_category'] = $this->category_model->get_footer_category();
 		foreach($data['footer_category'] as $key=>$values){
-		
-		$data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);
+			$data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);
 		}
 
-		//echo "<pre>";print_r($data['footer_products']);exit;
 		$data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
-
-		// $data['slider'] = $this->load->view('slider', $data, TRUE);
 
 		$data['render'] = false;
 		$this->load->view("template/prod_header", $data);
@@ -67,16 +58,11 @@ class Index extends CI_Controller {
 		$this->load->view("template/prod_footer",$data);
 	}
 
-	/*public function get_left_navigation()
-	{
-		$this->load->view("template/prod_leftnav");
-	}*/
-
-	public function get_category_product($cat_id,$id='0'){
+	public function get_category_product($cat_id, $id='0'){
 
 		$config1['base_url'] = base_url().'category/get_category_product/'.$cat_id;
 		$config1['total_rows'] = $this->category_model->getCount($cat_id);
-		$config1['per_page'] = 2;
+		$config1['per_page'] = 10;
 		$config1['cur_tag_open']  ='<a class="current">';
 		$config1['cur_tag_close'] ='</a>';
 
@@ -93,7 +79,7 @@ class Index extends CI_Controller {
 		$this->load->view("template/prod_footer");
 	}
 
-	public  function product_rating($var=''){
+	public function product_rating($var=''){
 
 		$login_data = $this->session->userdata('newdata');
 
@@ -105,11 +91,11 @@ class Index extends CI_Controller {
 		$id = $var;
 
 		if($id == "")
-		$id=0;
+			$id = 0;
 
 		$config['base_url'] = base_url().'index/index';
 		$config['total_rows'] = $this->category_model->getAllCount();
-		$config['per_page'] = 2;
+		$config['per_page'] = 10;
 
 		$config['cur_tag_open']  ='<b class="currentpage">';
 		$config['cur_tag_close'] ='</b>';
@@ -148,7 +134,7 @@ class Index extends CI_Controller {
 	}
 
 	public function share_sample(){
-	
+
 		$return_json= array('status' => "error");
 		$data = array();
 		$data['errors'] = "";
@@ -170,28 +156,39 @@ class Index extends CI_Controller {
 	public function get_products($id){
 
 		$data['footer_products'] = $this->category_model->get_footer_products($id);
-		$product ='';
-		if(isset($data['footer_products']) && $data['footer_products'] !=''){ 
-				foreach($data['footer_products'] as $key=>$values){ 
-
-		$product .= "<div class='item'>
-					<p class='first'> <span class='hgt-15px wid_100'></span> <img src='". base_url('img')."/barbosol.jpg' alt='huggies' class='one' /><br />
-						<span class='hgt-8px wid_100'></span> <strong> ".$values['name']."</strong><br />".
-						$values['description']."</p>
+		$products ='';
+		if(isset($data['footer_products']) && $data['footer_products'] !=''){
+			// $products .= '<div id="sliderContent" class="ui-corner-all">
+			// 			    <div class="viewer ui-corner-all">
+			// 			      <div class="content-conveyor ui-helper-clearfix tabs1">';
+				foreach($data['footer_products'] as $product){
+		$products .= "<div class='item'>
+						<p class='first'>
+							<span class='hgt-15px wid_100'></span>
+							<img src='" . base_url() . PROD_THUMB_IMG_PATH . "thumb_" . $product['image'] ."' alt='huggies' height='98' class='one' />
+							<br>
+							<span class='hgt-8px wid_100'></span>
+							<strong>" . $product['name'] . "</strong>
+							<br>" .
+							$product['description']
+						. "</p>
 					</div>";
 				}
-		
+			// $products .= '</div>
+				   //    </div>
+				   //    <div id="slider"></div>
+				   //  </div>';
 		}
 
-	echo $product;exit;
-		
+	echo $products; exit;
+
 	}
 
 	function email()
 	{
 		$this->email->from('admin@sample.net', 'Sample.net Admin');
 		$this->email->to('sudhakar1214@gmail.com');
-		//$this->email->cc('harishv@koderoom.com');
+		$this->email->cc('harishv@koderoom.com');
 		// $this->email->bcc('them@their-example.com');
 
 		$this->email->subject('Email Test');

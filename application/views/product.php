@@ -5,25 +5,16 @@ $errors=$this->session->userdata('comment_errors');
 
 	}
 ?>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-	var js, fjs = d.getElementsByTagName(s)[0];
-	if (d.getElementById(id)) return;
-	js = d.createElement(s); js.id = id;
-	js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=316879215000121";
-	fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
 
 <script type="text/javascript">var switchTo5x=false;</script>
-
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-
 <script type="text/javascript">stLight.options({publisher: "18f4acdf-af25-4d39-b663-78b081a6f60e"}); </script>
 
 <script>
 var base_url = "<?php echo base_url();?>";/* global variable for the root path */
-
 </script>
+
 <script type="text/javascript" src="<?php echo base_url("js"); ?>/category.js"></script>
 
 <!-- Begin main-content div -->
@@ -45,7 +36,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 					<?php //$image_properties = array('src' => PROD_IMG_PATH.$product_details[0]['image']);echo img($image_properties);?>
 					<img src="<?php echo base_url().PROD_IMG_PATH.$product_details[0]['image'];?>" width='215' height='215' />
 					<p>
-						<strong><?php echo $product_details[0]['name'];?></strong><br>
+						<!-- <strong><?php echo $product_details[0]['name'];?></strong><br> -->
 						<?php echo $product_details[0]['description'];?><br><br>
 					</p>
 					<p class="grey">
@@ -135,11 +126,11 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 			</div>
 
 			<!-- Begin Facebook Comments here -->
-			<fb:comments href="<?php echo base_url()."/product/product_detail/".$product_details[0]['id'];?>" num_posts="3" width="540"></fb:comments>
+			<fb:comments href="<?php echo base_url()."/product/product_detail/".$product_details[0]['id'];?>" publish_feed="true" num_posts="3" width="540"></fb:comments>
 			<!-- End comments here -->
 
 			<!-- Begin tabs here -->
-			<?php include_once 'template/prod_footer_carousel.php';?>
+			<?php // include_once 'template/prod_footer_carousel.php';?>
 			<!-- End tabs here -->
 
 		<!-- End column 2 -->

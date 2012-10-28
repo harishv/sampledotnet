@@ -47,9 +47,18 @@ define ('PRODUCTS_DIR', 'products');
 define ('DOCUMENTS_DIR', 'documents');
 define ('THUMBS_DIR', 'thumbs');
 
+
 //URL'S
 define('PROD_IMG_PATH', UPLOAD_DIR . "/" . PRODUCTS_DIR . "/");
 define('PROD_THUMB_IMG_PATH', UPLOAD_DIR . "/" . PRODUCTS_DIR . "/" . THUMBS_DIR . "/");
+
+
+// Social Share Details
+define ('FB_PAGE', '');
+define ('FB_APP_ID', '316879215000121');
+define ('TWITTER_PAGE', '');
+define ('GOOGLEPLUS_PAGE', '');
+define ('PINTEREST_PAGE', '');
 
 
 // Common Image Settings

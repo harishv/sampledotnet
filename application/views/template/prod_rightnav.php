@@ -20,23 +20,22 @@
 		?>
 		Get free samples <br /> 0n <strong>Facebook</strong>
 		<br />
-		<a href="#"><?php
-			$image_properties = array('src' => 'img/like.jpg','alt' => 'like');
-			echo img($image_properties); ?></a>
+		<?php // Please replace below base_url() with FB_PAGE ?>
+		<div class="fb_like_btn fb-like" data-href="<?php echo base_url(); ?>" data-send="false" data-width="100" data-show-faces="false"></div>
 	</p>
 	<ul class="btn">
 		<li>
-			<a href="#"><?php
+			<a href="<?php echo TWITTER_PAGE; ?>"><?php
 				$image_properties = array('src' => 'img/follow-twitter.png','alt' => 'follow us on twitter');
 				echo img($image_properties); ?></a>
 		</li>
 		<li>
-			<a href="#"><?php
+			<a href="<?php echo GOOGLEPLUS_PAGE; ?>"><?php
 				$image_properties = array('src' => 'img/add-to-circles.png','alt' => 'add to circles');
 				echo img($image_properties); ?></a>
 		</li>
 		<li>
-			<a href="#"><?php
+			<a href="<?php echo PINTEREST_PAGE; ?>"><?php
 				$image_properties = array('src' => 'img/pintrest.png','alt' => 'pintrest');
 				echo img($image_properties); ?></a>
 		</li>

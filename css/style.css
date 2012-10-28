@@ -20,13 +20,13 @@ div#main-content { background:url(../img/bg-main-content.jpg) repeat-y left top;
 div#content { width:74%; }
 div#sidebar { width:25% }
 .col-1 { width:24%; min-height:1201px }
-.min-h { min-height:1370px }
+.min-h { min-height:700px }
 .col-2 { width:73% }
 .head { background:#dbdad5; width:100%; color:#0c3b93; font:bold 18px Arial, Helvetica, sans-serif; padding:5px 0 5px 0; line-height:20px }
 .head em { font-style:normal; font-size:14px }
 /* =============================================================== */
 /* Navigation header */
-ul#main-nav { list-style:none; float:left; padding:16px 25px 0 0; width:375px; position:relative; z-index:999; }
+ul#main-nav { list-style:none; float:left; padding:16px 25px 0 0; width:430px; position:relative; z-index:999; }
 ul#main-nav li { float:left; padding:0 10px; position:relative; z-index:-0; background:url(../img/nav-border.jpg) no-repeat right 3px }
 ul#main-nav li.last { padding-right:0; background:none }
 ul#main-nav li a { color:#fffffe; font:bold 12px Arial, Helvetica, sans-serif; text-transform:capitalize; padding:0 0 13px; float:left }
@@ -67,8 +67,8 @@ ul#main-nav li ul li ol li a{
 
 /* ====================================================================== */
 
-.bg-icon { background:url(../img/bg-icon.png) no-repeat left top; padding:5px 0 0 5px; float:left; width:29px; height:29px; clear:left; margin:7px 0 0 }
-.login-here { background:url(../img/login-here.png) no-repeat left top; width:200px; height:31px; float:left; color:#000001; padding:5px 8px 3px; margin:7px 20px 0; text-align: center; }
+.bg-icon { /*background:url(../img/bg-icon.png) no-repeat left top;*/ padding:7px 3px 0; float:left; width:29px; margin:0 }
+.login-here { background:url(../img/login-here.png) no-repeat left top; width:200px; height:28px; float:left; color:#000001; padding:7px 8px 3px; margin:7px 20px 0; text-align: center; vertical-align: center; }
 .login-here span { float:right; color:#fffffe; margin-right: 10px; }
 .login-here span a, .login-here span a:hover { color:#FFFFFF; }
 .select1 { opacity:0 }
@@ -262,7 +262,7 @@ p.copy { width:40%; float:left; color:#fffffe }
 /* ============================================== */
 /* computers */
 .computers { width:100%; float:left }
-.computers p { font-size:11px; line-height:15px }
+.computers p { font-size:12px; line-height:15px; padding: 0 8px 10px; text-align: justify;}
 .computers img { margin:0 12px 0 10px; float:left }
 .computers p strong { color:#0c3b93; font:bold 12px Arial, Helvetica, sans-serif }
 a.email { color:#000001; text-decoration:underline }
@@ -739,9 +739,9 @@ color:#0c3b93;
  padding-top:1px;
 }
 #lr-box> .middle-bg .form-box .form input{
-  width:250px;
+  width:246px;
   height:25px;
-  background:url(../img/form-bg-1.png) repeat-x;
+  background:url(../img/form-bg-1.jpg) repeat-x;
   border:none;
   padding-left:5px;
   color:#7b7b7b;
@@ -869,9 +869,9 @@ color:#0c3b93;
  padding-top:1px;
 }
 #lr-box-reg> .middle-bg .form-box .form input{
-  width:250px;
+  width:246px;
   height:25px;
-  background:url(../img/form-bg-1.png) repeat-x;
+  background:url(../img/form-bg-1.jpg) repeat-x;
   border:none;
   padding-left:5px;
   color:#7b7b7b;
@@ -981,9 +981,9 @@ color:#0c3b93;
  padding-top:1px;
 }
 #lr-box-pass> .middle-bg .form-box .form input{
-  width:250px;
+  width:246px;
   height:25px;
-  background:url(../img/form-bg-1.png) repeat-x;
+  background:url(../img/form-bg-1.jpg) repeat-x;
   border:none;
   padding-left:5px;
   color:#7b7b7b;
@@ -1132,3 +1132,5 @@ form {
 }
 /*.comment { background:#dcedfa; float:left; width:96%; padding:2%; margin:0 0 15px; border:1px solid #bec5cb; }*/
  .comments { width:99%; float:left; padding:10px 0px 0px 0px; border-bottom:1px dashed #333333; }
+
+ .fb_like_btn {float: left; left: 10px; margin-top: -28px;}

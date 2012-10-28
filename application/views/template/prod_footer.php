@@ -11,16 +11,13 @@
 		<div class="footer">
 			<ul id="utility">
 				<li>
-					<?php echo anchor("#", $this->lang->line("nav_categories")); ?>
+					<?php echo anchor("", $this->lang->line("nav_products")); ?>
 				</li>
 				<li>
-					<?php echo anchor("#", $this->lang->line("nav_samples")); ?>
-				</li>
-				<li>
-					<?php echo anchor("#", $this->lang->line("nav_suggest_a_samples")); ?>
+					<?php echo anchor("", $this->lang->line("nav_documents")); ?>
 				</li>
 				<li class="last">
-					<?php echo anchor("#", $this->lang->line("nav_contact_us")); ?>
+					<?php echo anchor("", $this->lang->line("nav_contact_us")); ?>
 				</li>
 			</ul>
 			<p class="copy">&copy; <?php echo $this->lang->line("footer_copy_year") . " " . $this->lang->line("footer_brand_name"); ?></p>
@@ -356,7 +353,7 @@
 		<div id="lr-box-pass" >
 			<div class="top-bg">
 				<a href="#" class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
-				<div class="txt-1">ForgetPassword</div>
+				<div class="txt-1">Forgot Password?</div>
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
