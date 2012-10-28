@@ -10,7 +10,7 @@
 	<?php //echo img(array("src" => "/img/nav-icon.jpg", "alt" => $this->lang->line("nav"))); ?>
 </p>
 <ul id="main-nav">
-	<li>
+	<li class="last">
 		<?php echo anchor(base_url(), $this->lang->line("nav_products"), array ("class" => "current")); ?>
 		<ul>
 			<?php
@@ -33,9 +33,9 @@
 				} ?>
 		</ul>
 	</li>
-	<li class="last">
+	<!--<li class="last">
 		<?php echo anchor("#", $this->lang->line("nav_documents")); ?>
-	</li>
+	</li>-->
 </ul>
 <p class="login-here">
 	<span style="display: block;">
