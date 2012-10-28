@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<title><?php echo (isset($page_title)) ? $page_title . ' | ' : ''; echo $this->lang->line("title"); ?></title>
+		<title><?php echo (isset($page_title)) ? $page_title . ' :: ' : ''; echo $this->lang->line("title"); ?></title>
 
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>favicon.ico" />
 
@@ -16,7 +16,8 @@
 
 		<!-- <script src="<?php echo base_url("js"); ?>/jquery-1.7.1.min.js"></script> -->
 		<script type="text/javascript">
-		var base_url = "<?php echo base_url();?>";/* global variable for the root path */
+		/* global variable for the root path */
+		var base_url = "<?php echo base_url();?>";
 		var image_url ="<?php echo base_url().'img/';?>";
 
 		</script>
@@ -114,9 +115,6 @@
 				});
 
 			});
-
-
-
 
 		$(document).ready(function() {
 

@@ -37,73 +37,13 @@ if(!$render) { ?>
 				<div id="replace">
 					<!-- for the refreshing issue start-->
 					<?php } ?>
-					<?php
 
-						if(isset($product) && $product != '') {
-							foreach ($product as $product_key => $product_values) { ?>
-								<!-- Begin Samples here -->
-								<div class="samples">
-									<?php if($product_values['only_today'] == 1 ){ ?>
-									<img src="<?php echo base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
-									<?php } ?>
-									<a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>">
-										<img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$product_values['image'];?>" width='54' height='63' class='small' />
-									</a>
-									<p class="pdg_10px">
-										<a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><strong><?php echo $product_values['name'];?></strong></a>
-										<br />
-										<?php
-											$short_desc = substr($product_values['description'], 0, 50);
-											if(strlen($product_values['description']) > 50)
-												echo $short_desc."...";
-											else
-												echo $product_values['description'];
-										?>
-									</p>
-									<br />
-									<div class="star" id="ratings">
-										<?php
-										if($product_values['product_rating'] != 0 ) {
-										for($i=1,$j=1;$i<=$product_values['product_rating']; $i++,$j++) { ?>
-										<img id ="half_on<?php echo  $product_values['id'].$j;?>" onmouseover="mouseOverImage(<?php echo  $product_values['id'].$j;?>)"
-        onmouseout="mouseOutImage(<?php echo $j;?>);" src="<?php echo base_url(); ?>img/star-full.png" alt="full" />
-										<?php }
-										} else {
-										for($i=1; $i<=5; $i++) { ?>
-										<img  onmouseover="mouseOverImage(<?php echo  $product_values['id'].$i;?>);"
-        onmouseout="mouseOutImage(<?php echo  $product_values['id'].$i;?>);" id="full_off<?php echo  $product_values['id'].$i;?>" src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>, <?php echo $i;?>);" />
-										<input type="hidden" name="rating_vote" value="<?php echo $i;?>" />
-										<?php }
-										}
+					<?php include_once 'products_thumbs_view.php'; ?>
 
-										if($product_values['product_rating'] != 0 && $product_values['product_rating'] < 5) {
-										for($i=1,$k=1;$i<=(5-$product_values['product_rating']);$i++,$k++){ ?>
-										<img id="half_off<?php echo  $product_values['id'].$k;?>" onmouseover="mouseOverImage(<?php echo  $product_values['id'].$k;?>)"
-        onmouseout="mouseOutImage(<?php echo  $product_values['id'].$k;?>)" src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>, <?php echo $product_values['product_rating'] +$i; ?>);" />
-										<input type="hidden" name="rating_vote" value="<?php echo $product_values['product_rating'] +$i; ?>" />
-										<?php }
-										}
-										?>
-									</div>
-									<!--<div class="star" value="<?php //echo $product_values['id'];?>" datarating="<?php //echo $product_values['product_rating'];?>"></div> -->
-									
-									<div class="clear"></div>
-									<a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_values['id'];?> ','<?php echo $product_values['grab_url'];?>')">grab it now!</a>
-										<div class="social clear">
-											<span class='st_facebook'></span>
-											<span class='st_twitter'></span>
-											<span class='st_googleplus'></span>
-											<span class='st_sharethis'></span>
-										</div>
-								</div>
-								<!-- End Samples here -->
-					<?php }
-					} else {
-						echo "No Products are avaiable";
-                	} ?>
 					<div class="pages">
 						<?php echo $this->pagination->create_links();?>
 					</div>
+
 					<?php if(!$render) { ?>
 				</div>
 				<!-- for the refreshing issue  end-->

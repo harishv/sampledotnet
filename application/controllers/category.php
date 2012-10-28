@@ -13,7 +13,7 @@ class Category extends CI_Controller {
 
 	}
 
-	
+
 
 	public function get_category_product($cat_id, $id='0'){
 
@@ -27,17 +27,17 @@ class Category extends CI_Controller {
 		$config1['cur_tag_close'] ='</a>';
 
 		$config1['uri_segment'] = 4;
-		
-		$this->pagination->initialize($config1);
-		
 
-		$data['product'] = $this->category_model->get_products($cat_id,$id,$config1['per_page']);
+		$this->pagination->initialize($config1);
+
+
+		$data['products'] = $this->category_model->get_products($cat_id, $id, $config1['per_page']);
 		$data['bread_crum'] = $this->category_model->get_bread_crums($cat_id);
-		
+
 
 		//$data['slider'] = $this->load->view('slider', $data, TRUE);
-		
-		
+
+
 		$data['render'] = false;
 		$data['category'] = $this->category_model->get_category();
 		$this->load->view("template/prod_header",$data);
@@ -57,20 +57,20 @@ class Category extends CI_Controller {
 		$config1['cur_tag_close'] ='</a>';
 
 		$config1['uri_segment'] = 4;
-		
-		
+
+
 		$this->pagination->initialize($config1);
-		
+
 
 		//$data['product'] = $this->category_model->get_products($cat_id,$id,$config1['per_page']);
 		$data['product'] = $this->category_model->get_country_products($cat_id,$country_id,$id,$config1['per_page']);
-		
+
 		$data['bread_crum'] = $this->category_model->get_bread_crums($cat_id);
-		
+
 
 		//$data['slider'] = $this->load->view('slider', $data, TRUE);
 		//print_r($data['product']);exit;
-		
+
 		$data['render'] = true;
 		$data['category'] = $this->category_model->get_category();
 		if(is_array($data['product'])){
@@ -78,8 +78,8 @@ class Category extends CI_Controller {
 			$return['status'] = 'succuss';
 			echo json_encode($return);exit;
 		}
-		
-		
+
+
 
 	}
 

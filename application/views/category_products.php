@@ -28,69 +28,19 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
           <p class="links">
           Home <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>"><?php if(isset($bread_crum) && $bread_crum !='')echo $bread_crum['cat_name'];?> <?php if($bread_crum['cat_name'] !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') echo $bread_crum['sub_cat_name'];?>
           </p>
-           <div class="sample mgn-15b">
+          <div class="sample mgn-15b">
               <p class="head mgn-0">
                  <?php $image_properties = array('src' => 'img/time-icon.png','alt' => 'time','class'=>'flt-l mgn-10l mgn-r');
                 echo img($image_properties);?>
                 Today's Free Samples <em>We have 127 Free Coupons for you today</em></p>
-           <?php if(isset($product) && $product!=''){
-            foreach ($product as $product_key=>$product_values){ ?>
-        <!-- Begin Samples here -->
-        <div class="samples">
 
-		<?php if($product_values['only_today'] == 1){ ?>
-          <img src="<?php echo base_url(); ?>img/only-today.png" alt="only today" class="only-today" />
-		<?php } ?>
+              <?php include_once 'products_thumbs_view.php'; ?>
 
-          <a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$product_values['image'];?>"  width ='54' height ='63' class='small'/></a>
-          <p class="pdg_10px"> <a href="<?php echo base_url().'product/product_detail/'.$product_values['id'];?>"><strong><?php echo $product_values['name'];?></strong></a>
-            <br/><?php echo $product_values['description'];?>
-          </p>
-          <br />
-         <div class="star" id="ratings">
-            <?php
-            if($product_values['product_rating'] != 0 ){
-              for($i=1 ;$i<=$product_values['product_rating'];$i++){
-                $image_properties = array('src' => 'img/star-full.png','alt' => 'full'); echo img($image_properties);
-               }
-            }else{
-              for($i=1 ;$i<=5;$i++){ ?>
-              <img src="<?php echo base_url(); ?>img/star-off.png" alt="full"  onclick="prod_rating(<?php echo $product_values['id'];?>,<?php echo $i;?>);"/>
-              <input type="hidden" name="rating_vote" value="<?php echo $i;?>" />
-              <?php }
-            }
-
-            if($product_values['product_rating'] != 0 && $product_values['product_rating'] < 5){
-              for($i=1;$i<=(5-$product_values['product_rating']);$i++){ ?>
-              <img src="<?php echo base_url(); ?>img/star-off.png" alt="full" onclick="prod_rating(<?php echo $product_values['id'];?>,<?php echo $product_values['product_rating'] +$i; ?>);"/>
-              <input type="hidden" name="rating_vote" value="<?php echo $product_values['product_rating'] +$i; ?>" />
-              <?php }
-            }
-            ?>
+              <div class="pages">
+                <?php echo $this->pagination->create_links();?>
+              </div>
 
           </div>
-          <div class="clear"></div>
-
-          <a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_values['id'];?> ','<?php echo $product_values['grab_url'];?>')">grab it now!</a>
-          <div class="social clear">
-            <span class='st_facebook'></span>
-            <span class='st_twitter'></span>
-            <span class='st_googleplus'></span>
-            <span class='st_sharethis'></span>
-          </div>
-          <!-- End Samples here -->
-        </div>
-
-        <?php } } else{
-
-                  echo "No Products are avaiable";
-                }?>
-
-                <div class="pages">
-                  <?php echo $this->pagination->create_links();?>
-                </div>
-        <!-- End sample here -->
-      </div>
 
 
       	<!-- Begin tabs here -->

@@ -41,7 +41,7 @@ class Index extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['category'] = $this->category_model->get_category();
 
-		$data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
+		$data['products'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
 
 		$data["countries"] = $this->common_model->get_countries();
 		$data['featured_products'] = $this->category_model->get_featured_products();
@@ -50,7 +50,7 @@ class Index extends CI_Controller {
 			$data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);
 		}
 
-		$data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
+		$data['product_updated'] = $this->common_model->date_diff($data['products'][0]['modified_at'],"NOW");
 
 		$data['render'] = false;
 		$this->load->view("template/prod_header", $data);
@@ -58,62 +58,71 @@ class Index extends CI_Controller {
 		$this->load->view("template/prod_footer",$data);
 	}
 
-	public function get_category_product($cat_id, $id='0'){
+	// public function get_category_product($cat_id, $id='0'){
 
-		$config1['base_url'] = base_url().'category/get_category_product/'.$cat_id;
-		$config1['total_rows'] = $this->category_model->getCount($cat_id);
-		$config1['per_page'] = 10;
-		$config1['cur_tag_open']  ='<a class="current">';
-		$config1['cur_tag_close'] ='</a>';
+	// 	$config1['base_url'] = base_url().'category/get_category_product/'.$cat_id;
+	// 	$config1['total_rows'] = $this->category_model->getCount($cat_id);
+	// 	$config1['per_page'] = 10;
+	// 	$config1['cur_tag_open']  ='<a class="current">';
+	// 	$config1['cur_tag_close'] ='</a>';
 
-		$config1['uri_segment'] = 4;
+	// 	$config1['uri_segment'] = 4;
 
-		$this->pagination->initialize($config1);
+	// 	$this->pagination->initialize($config1);
 
-		$data["countries"] = $this->common_model->get_countries();
-		$data['product'] = $this->category_model->get_products($cat_id,$id,$config1['per_page']);
+	// 	$data["countries"] = $this->common_model->get_countries();
+	// 	$data['product'] = $this->category_model->get_products($cat_id,$id,$config1['per_page']);
 
-		$data['category'] = $this->category_model->get_category();
-		$this->load->view("template/prod_header", $data);
-		$this->load->view("category_products",$data);
-		$this->load->view("template/prod_footer");
-	}
+	// 	$data['category'] = $this->category_model->get_category();
+	// 	$this->load->view("template/prod_header", $data);
+	// 	$this->load->view("category_products",$data);
+	// 	$this->load->view("template/prod_footer");
+	// }
 
 	public function product_rating($var=''){
 
-		$login_data = $this->session->userdata('newdata');
+		$login_data = $this->session->userdata('user');
+
+		if( !isset($login_data) || $login_data == ''){
+			$return['status'] = 'login_please';
+			echo json_encode($return); exit;
+		}
 
 		$product_id = $this->input->post('prod_id');
 		$rating_vote = $this->input->post('vote_value');
 		$rating = $this->category_model->insert_rating($product_id, $rating_vote);
-		$data = array();
 
-		$id = $var;
+		// $data = array();
 
-		if($id == "")
-			$id = 0;
+		// $id = $var;
 
-		$config['base_url'] = base_url().'index/index';
-		$config['total_rows'] = $this->category_model->getAllCount();
-		$config['per_page'] = 10;
+		// if($id == "")
+		// 	$id = 0;
 
-		$config['cur_tag_open']  ='<b class="currentpage">';
-		$config['cur_tag_close'] ='</b>';
+		// $config['base_url'] = base_url().'index/index';
+		// $config['total_rows'] = $this->category_model->getAllCount();
+		// $config['per_page'] = 10;
 
-		$this->pagination->initialize($config);
-		$data['category'] = $this->category_model->get_category();
-		$data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
-		$data['featured_products'] = $this->category_model->get_featured_products();
-		$data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
-		//$data['slider'] = $this->load->view('slider', $data, TRUE);
+		// $config['cur_tag_open']  ='<b class="currentpage">';
+		// $config['cur_tag_close'] ='</b>';
 
-		$data['render'] = true;
+		// $this->pagination->initialize($config);
+		// $data['category'] = $this->category_model->get_category();
+		// $data['product'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
+		// $data['featured_products'] = $this->category_model->get_featured_products();
+		// $data['product_updated'] = $this->common_model->date_diff($data['product'][0]['modified_at'],"NOW");
+		// //$data['slider'] = $this->load->view('slider', $data, TRUE);
+
+		// $data['render'] = true;
 
 		if(is_bool($rating)){
-			$return['page'] = $this->load->view('prod_index_view',$data,TRUE);
+			// $return['page'] = $this->load->view('prod_index_view',$data,TRUE);
 			$return['status'] = 'succuss';
-			echo json_encode($return);exit;
+		} else {
+			$return['status'] = 'failed';
 		}
+
+		echo json_encode($return); exit;
 	}
 
 

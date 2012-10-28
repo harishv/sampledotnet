@@ -93,7 +93,7 @@ class Login extends CI_Controller {
 
 		}
 
-		echo json_encode($return_json);
+		echo json_encode($return_json); exit;
 
 	}
 

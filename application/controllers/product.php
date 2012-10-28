@@ -63,6 +63,10 @@ class Product extends CI_Controller {
 
 		$data['category'] = $this->category_model->get_category();
 
+		$cat_name = $data['bread_crum']['sub_cat_name'];
+
+		$data['page_title'] = $data['product_details'][0]['name'] . ' | ' . $cat_name;
+
 		$this->load->view("template/prod_header", $data);
 		$this->load->view("product", $data);
 		$this->load->view("template/prod_footer");

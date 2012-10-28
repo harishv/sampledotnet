@@ -1,8 +1,13 @@
 <div id="sidebar" class="flt-r">
 	<!-- Begin search -->
 	<div class="search">
-		<input class="sch" type="text" value="search" onFocus="this.value=''" />
-		<br /> <a class="grab flt-r">search</a>
+		<form method="get" action="http://www.google.com/search">
+			<input class="sch" type="text" name="q" size="31" maxlength="255" placeholder="Search" value="" />
+			<br>
+			<input class="btn btn-success pull-right" type="submit" value="Search" />
+			<!-- <input type="radio" name="sitesearch" value="" /> The Web
+			<input type="radio" name="sitesearch" value="<?php echo $_SERVER["SERVER_NAME"]; ?>" checked /> Only Sample.net -->
+		</form>
 		<!-- End search -->
 	</div>
 	<ul class="btn">
