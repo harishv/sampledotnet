@@ -92,7 +92,7 @@ select option { width:100%; float:left }
 .pdg_10px { padding-top:10px }
 /* borders */
 .bdr-btm { border-bottom:1px solid #cccccc; padding:0 0 14px; margin:0 0 14px; width:100%; float:left }
-.bdr-btm1 { background:url(../img/bdr-3.png) no-repeat left bottom; padding:0 0 14px; margin:0 0 14px; width:100%; float:left }
+.bdr-btm1 { background:url(../img/bdr-3.png) no-repeat left bottom; padding:0 0 14px; margin:0 0 14px; width:100%; float:left; text-align: justify; }
 .bdr-1 { border:1px solid #bdbcbd; border-width:1px 1px 0 0 }
 /* ================================================================================ */
 

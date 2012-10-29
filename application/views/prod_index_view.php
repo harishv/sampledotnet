@@ -54,29 +54,19 @@ if(!$render) { ?>
 				<?php // include_once 'template/prod_footer_carousel.php';?>
 			<!-- End tabs here -->
 			<h2>What is Sample.net</h2>
-			<p class="bdr-btm1">Lorem ipsum dolor sit amet, consectetuer
-				adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-				dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-				quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-				aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in
-				hendrerit in vulputate velit esse molestie consequat, vel illum
-				dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
-				odio dignissim qui blandit praesent luptatum zzril delenit augue
-				duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta
-				nobis eleifend option congue nihil imperdiet domin g id quod mazim
-				placerat facer possim assum. Typi non habent claritatem insitam.</p>
+			<p class="bdr-btm1">At samples.net, you find a wide variety of products and services absolutely free. There are huge set of
+categories to choose from. We update product samples very frequently to let you reach the offer provider
+within the deadline.<br><br>
+The sources of samples are mostly genuine and reliable as we verify them prior to publishing. We
+address every single query that we receive on the site to let you grab the right deals on time.</p>
 			<h2>How to use Sample.net</h2>
-			<p class="bdr-btm1">Lorem ipsum dolor sit amet, consectetuer
-				adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-				dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-				quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-				aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in
-				hendrerit in vulputate velit esse molestie consequat, vel illum
-				dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
-				odio dignissim qui blandit praesent luptatum zzril delenit augue
-				duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta
-				nobis eleifend option congue nihil imperdiet domin g id quod mazim
-				placerat facer possim assum. Typi non habent claritatem insitam.</p>
+			<p class="bdr-btm1">The free samples are listed into various categories to find out what you exactly need. Select a particular
+category and then a sub category to browse the list of products in the section.<br><br>
+Hit the <b><i>Grab It Now!</i></b> link on something that interests you and fill a form on the page that you are redirected
+to. That’s it! You will receive the product very soon. Before that, be sure that the sample is available in
+your country at that point in time.<br><br>
+You can contact us on our Face book page or email us to post a query. Don’t forget to register with us to
+get the latest updates to your email. Also do share the samples on your favorite social networking sites.</p>
 			<!-- End column 2 -->
 		</div>
 		<!-- End content div -->
