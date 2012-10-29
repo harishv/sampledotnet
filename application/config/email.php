@@ -12,9 +12,10 @@ $config['priority'] = 1;
 
 $config['protocol'] = 'smtp';
 // $config['protocol'] = 'sendgrid';
-$config['smtp_host'] = 'mail.avitprofessionals.com';
-$config['smtp_user'] = 'support@avitprofessionals.com';
-$config['smtp_pass'] = 'a^!tsuppo&t';
+$config['smtp_host'] = 'mail.sample.net';
+$config['smtp_user'] = 'sample@sample.net';
+$config['smtp_pass'] = 'X)(gK$=SvT+v';
+$config['smtp_port'] = '26';
 $config['mailtype'] = 'html';
 $config['charset']  = 'utf-8';
 
