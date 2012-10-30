@@ -113,13 +113,13 @@ class Product extends CI_Controller {
 		$id = $this->input->post('prod_id');
 
 		if ($id == '') {
-			// $result['status'] = "failed";
-			$return['data'] = 'No proper data';
+			$result['data'] = 'No proper data';
 
 		} else {
 			$data['product_details'] = $this->product_model->get_product_details($id);
 
 			$this->email->to('admin@sample.net');
+			$this->email->cc('harish.varada@gmail.com');
 			$this->email->from('admin@sample.net', 'admin');
 			$this->email->subject('Product Reported Invalid');
 
@@ -133,12 +133,10 @@ class Product extends CI_Controller {
 			$mail_result = $this->email->send();
 
 			if(is_string($mail_result) ){
-				// $result['status'] = "failed";
-				$return['data'] = $mail_result;
+				$result['data'] = $mail_result;
 			}
 			else{
-				// $return['status'] = "success";
-				$return['data'] = "Thank you for reporting the product as Invalid.";
+				$result['data'] = "Thank you for reporting the product as Invalid.";
 			}
 		}
 

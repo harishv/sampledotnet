@@ -50,7 +50,6 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 					</p>
 					<script type="text/javascript">
 					function report_invalid (prod_id) {
-						alert(prod_id);
 						var data = {'prod_id': prod_id};
 
 						$.ajax({
