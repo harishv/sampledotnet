@@ -67,16 +67,23 @@ class Index extends CI_Controller {
 	public function redirect_to_blog_pagenum($page_num)
 	{
 		redirect('http://blog.sample.net/page/' . $page_num . '/');
+		exit();
 	}
 
 	public function redirect_to_blog_catname_pagenum($cat_name, $page_num)
 	{
 		redirect('http://blog.sample.net/US' . $cat_name . '/page/' . $page_num . '/');
+		exit();
 	}
 
-	public function redirect_to_blog_page($cat_name, $prod_name)
+	public function redirect_to_blog_page($param_1, $param_2, $param_3='')
 	{
-		redirect('http://blog.sample.net/' . $cat_name . '/' . $prod_name . '.html/');
+		if(isset($param_3) && $param_3 !='' && $param_3 != ' '){
+			redirect('http://blog.sample.net/' . $param_1 . '/' . $param_2 . '/' . $param_3 . '.html/');
+			exit();
+		}
+		redirect('http://blog.sample.net/' . $param_1 . '/' . $param_2 . '.html/');
+		exit();
 	}
 
 	public function product_rating($var=''){

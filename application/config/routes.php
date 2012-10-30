@@ -47,12 +47,16 @@ $route['detail/(:num)'] = "product/test/$1";
 $route['detail/(:num)/(:any)'] = "product/test/$1/$2";
 $route['prod'] = "product/product_detail";
 
+$route['category/get_category_product/(:num)']	= "category/get_category_product/$1";
+$route['product/product_detail/(:num)']	= "product/product_detail/$1";
+
 $route['prod/(:any)/(:any)/(:any)'] = "product/seo_child_url/$1/$2/$3";
 $route['prod/(:any)/(:any)'] = "product/seo_parent_url/$1/$2";
 $route['US/(:any)']	= "index/redirect_to_blog_catname/$1";
 $route['page/(:num)']	= "index/redirect_to_blog_pagenum/$1";
 $route['US/(:any)/page/(:num)']	= "index/redirect_to_blog_catname_pagenum/$1";
 $route['(:any)/(:any)'] = "index/redirect_to_blog_page/$1/$2";
+$route['(:any)/(:any)/(:any)'] = "index/redirect_to_blog_page/$1/$2/$3";
 
 
 /* End of file routes.php */
