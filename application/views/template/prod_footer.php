@@ -181,7 +181,7 @@
 
 				<input type="hidden" name="user_id" value="<?php if(isset($user_profile[0]['user_id']) && $user_profile[0]['user_id'] !='') echo $user_profile[0]['user_id']; else echo "";?>" >
 
-				<div class="form-box" id="user_dob">
+				<div class="form-box" id="user_dob" style="height:50px;">
 					<div class="text">DOB: </div>
 					<div class="form">
 						<input type="text"  name="dob"  id="datepicker1" value="<?php if(isset($user_profile[0]['dob'])) if($user_profile[0]['dob'] !='0000-00-00') { $timestamp = strtotime($user_profile[0]['dob']); echo date('m-d-Y',$timestamp);} else echo "";?>">
