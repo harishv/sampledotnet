@@ -49,7 +49,10 @@ $route['prod'] = "product/product_detail";
 
 $route['prod/(:any)/(:any)/(:any)'] = "product/seo_child_url/$1/$2/$3";
 $route['prod/(:any)/(:any)'] = "product/seo_parent_url/$1/$2";
-// $route['prod/(:any)/(:any)/(:num)'] = "product/seo_url/$1/$2/$3";
+$route['US/(:any)']	= "index/redirect_to_blog_catname/$1";
+$route['page/(:num)']	= "index/redirect_to_blog_pagenum/$1";
+$route['US/(:any)/page/(:num)']	= "index/redirect_to_blog_catname_pagenum/$1";
+$route['(:any)/(:any)'] = "index/redirect_to_blog_page/$1/$2";
 
 
 /* End of file routes.php */

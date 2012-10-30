@@ -59,6 +59,26 @@ class Index extends CI_Controller {
 		$this->load->view("template/prod_footer",$data);
 	}
 
+	public function redirect_to_blog_catname($cat_name)
+	{
+		redirect('http://blog.sample.net/US/' . $cat_name . '/');
+	}
+
+	public function redirect_to_blog_pagenum($page_num)
+	{
+		redirect('http://blog.sample.net/page/' . $page_num . '/');
+	}
+
+	public function redirect_to_blog_catname_pagenum($cat_name, $page_num)
+	{
+		redirect('http://blog.sample.net/US' . $cat_name . '/page/' . $page_num . '/');
+	}
+
+	public function redirect_to_blog_page($cat_name, $prod_name)
+	{
+		redirect('http://blog.sample.net/' . $cat_name . '/' . $prod_name . '.html/');
+	}
+
 	public function product_rating($var=''){
 
 		$login_data = $this->session->userdata('user');
@@ -164,9 +184,9 @@ class Index extends CI_Controller {
 
 	function email()
 	{
-		$this->email->from('admin@sample.net', 'Sample.net Admin');
-		$this->email->to('sudhakar1214@gmail.com');
-		$this->email->cc('harishv@koderoom.com');
+		$this->email->from('support@sample.net', 'Sample.net Support Team');
+		// $this->email->to('sudhakar1214@gmail.com');
+		$this->email->to('harish.varada@gmail.com');
 		// $this->email->bcc('them@their-example.com');
 
 		$this->email->subject('Email Test');
