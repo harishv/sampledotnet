@@ -47,12 +47,59 @@ $route['detail/(:num)'] = "product/test/$1";
 $route['detail/(:num)/(:any)'] = "product/test/$1/$2";
 $route['prod'] = "product/product_detail";
 
-$route['category/get_category_product/(:num)']	= "category/get_category_product/$1";
-$route['product/product_detail/(:num)']	= "product/product_detail/$1";
-$route['product/grab_it_now/(:num)']	= "product/grab_it_now/$1";
+/**
+ * Admin Routs
+ */
+$route['backoffice'] = "backoffice";
+// Admin index
+$route['backoffice/index'] = "backoffice/index";
+$route['backoffice/index/(:any)'] = "backoffice/index/$1";
+// Admin Login
+$route['backoffice/login'] = "backoffice/login";
+$route['backoffice/login/(:any)'] = "backoffice/login/$1";
+// Admin Logout
+$route['backoffice/logout'] = "backoffice/logout";
+$route['backoffice/logout/(:any)'] = "backoffice/logout/$1";
+// Admin Products
+$route['backoffice/products'] = "backoffice/products";
+$route['backoffice/products/(:any)'] = "backoffice/products/$1";
+$route['backoffice/products/(:any)/(:any)'] = "backoffice/products/$1/$2";
 
+/**
+ * Front-end Routs
+ */
+// Index Controller
+$route['index'] = "index";
+$route['index/(:any)'] = "index/$1";
+$route['index/(:any)/(:any)'] = "index/$1/$2";
+// Login Controller
+$route['login'] = "login";
+$route['login/(:any)'] = "login/$1";
+$route['login/(:any)/(:any)'] = "login/$1/$2";
+$route['login/(:any)/(:any)/(:any)'] = "login/$1/$2/$3";
+// Register Controller
+$route['register'] = "register";
+$route['register/(:any)'] = "register/$1";
+$route['register/(:any)/(:any)'] = "register/$1/$2";
+// Category Controller
+$route['category'] = "category";
+$route['category/(:any)'] = "category/$1";
+$route['category/(:any)/(:any)'] = "category/$1/$2";
+$route['category/(:any)/(:any)/(:any)'] = "category/$1/$2/$3";
+// Product Controller
+$route['product'] = 'product';
+$route['product/(:any)'] = "product/$1";
+$route['product/(:any)/(:any)'] = "product/$1/$2";
+$route['product/(:any)/(:any)/(:any)'] = "product/$1/$2/$3";
+
+// SEO friendly url's for Product detail page
 $route['prod/(:any)/(:any)/(:any)'] = "product/seo_child_url/$1/$2/$3";
 $route['prod/(:any)/(:any)'] = "product/seo_parent_url/$1/$2";
+
+
+/**
+ * Redirection of links to blog.sample.net site.
+ */
 $route['US/(:any)']	= "index/redirect_to_blog_catname/$1";
 $route['page/(:num)']	= "index/redirect_to_blog_pagenum/$1";
 $route['US/(:any)/page/(:num)']	= "index/redirect_to_blog_catname_pagenum/$1";

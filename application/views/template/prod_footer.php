@@ -168,6 +168,7 @@
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
+			<?php $user_profile[0] = $this->session->userdata('user'); print_r($user_profile);?>
 			<div class="middle-bg">
 
 				<div id="errors_data_user_profile" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
