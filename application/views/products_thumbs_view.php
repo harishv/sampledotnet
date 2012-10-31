@@ -9,7 +9,15 @@ if(isset($products) && $products != '' && count($products) > 0) { ?>
 			<?php } ?>
 			<a href="<?php echo base_url().'product/product_detail/'.$product_value['id'];?>"><img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$product_value['image'];?>" width='54' height='63' class='small' /></a>
 			<p class="pdg_10px">
-				<a title="<?php echo $product_value['name']; ?>" href="<?php echo base_url().'product/product_detail/'.$product_value['id'];?>"><strong><?php echo (strlen($product_value['name']) > 15) ? substr($product_value['name'], 0, 13) . '..' : $product_value['name'] ;?></strong></a>
+				<a title="<?php echo $product_value['name']; ?>" href="<?php echo base_url().'product/product_detail/'.$product_value['id'];?>"><strong>
+					<?php
+					if($product_value['only_today'] == 1 ) {
+						$strip = 20;
+					} else {
+						$strip =25;
+					}
+					echo (strlen($product_value['name']) > $strip) ? substr($product_value['name'], 0, ($strip-2) ) . '..' : $product_value['name'] ;?>
+				</strong></a>
 				<br>
 				<?php echo (strlen($product_value['description']) > 90) ? substr($product_value['description'], 0, 88) . '..' : $product_value['description']; ?>
 			</p>

@@ -82,7 +82,7 @@
 	<div id="register" class="window">
 		<div id="lr-box-reg">
 			<div class="top-bg">
-				<a href="#"class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
+				<a href="#" class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
 				<div class="txt-1">New User? Sign Up</div>
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->

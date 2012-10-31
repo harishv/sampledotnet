@@ -11,14 +11,6 @@ if (isset($product_value)) {
 			$image_src = base_url('img') . '/star-off.png';
 		}
 		?>
-		<img
-		id ="<?php echo $image_id; ?>"
-		class="start_img"
-		onmouseover="mouseOverImage(<?php echo $product_value['id']. $i;?>)"
-		onmouseout="mouseOutImage(<?php echo $product_value['id']. $i;?>);"
-		src="<?php echo $image_src; ?>"
-		title="<?php echo $star_alt[$i]; ?>"
-		alt="<?php echo $star_alt[$i]; ?>"
-		onclick="return prod_rating(<?php echo $product_value['id'];?>, <?php echo $i;?>);"; />
+		<img id ="<?php echo $image_id; ?>" class="start_img" onmouseover="mouseOverImage(<?php echo $product_value['id']. $i;?>)" onmouseout="mouseOutImage(<?php echo $product_value['id']. $i;?>);" src="<?php echo $image_src; ?>" title="<?php echo $star_alt[$i]; ?>" alt="<?php echo $star_alt[$i]; ?>" onclick="return prod_rating(<?php echo $product_value['id'];?>, <?php echo $i;?>);" />
 <?php }
 } ?>

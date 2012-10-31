@@ -131,6 +131,12 @@ class Common_Model extends CI_Model {
 		$url_arr = explode("/", $url);
 
 		foreach ($url_arr as $index => $segment) {
+			// Striping special characters.
+			$segment = preg_replace("/[&#?$:;]+/i", "", $segment);
+
+			// Replacing multiple spaces with single space.
+			$segment = preg_replace('/\s+/i', ' ', $segment);
+
 			$segment = strtolower(str_replace(' ', '-', trim($segment)));
 			// $segment = underscore($segment);
 			// quotes_to_entities()
