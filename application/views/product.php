@@ -129,6 +129,13 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 			</div>
 
 			<!-- Begin Facebook Comments here -->
+			<?php
+			// Fetching the current url.
+			$request_type = substr(base_url(),0, 5);
+			if ($request_type != 'https')
+				$request_type = 'http';
+			$product_url = $request_type . '://' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+			?>
 			<fb:comments href="<?php echo base_url()."/product/product_detail/".$product_details[0]['id'];?>" publish_feed="true" num_posts="3" width="540"></fb:comments>
 			<!-- End comments here -->
 

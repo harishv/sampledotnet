@@ -132,7 +132,7 @@ class Common_Model extends CI_Model {
 
 		foreach ($url_arr as $index => $segment) {
 			// Striping special characters.
-			$segment = preg_replace("/[&#?$:;]+/i", "", $segment);
+			$segment = preg_replace("/[&#?)($:;]+/i", "", $segment);
 
 			// Replacing multiple spaces with single space.
 			$segment = preg_replace('/\s+/i', ' ', $segment);

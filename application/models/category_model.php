@@ -68,7 +68,7 @@ class Category_Model extends CI_Model {
 	}
 
 	// get inital product based on the modified date
-	function get_products($cat_id,$num,$offset){
+	function get_products($cat_id = 0, $num = 0, $offset = 10){
 
 		$this->db->select('*');
 		$this->db->from('products');
@@ -211,10 +211,17 @@ class Category_Model extends CI_Model {
 
 	function getAllCount(){
 
-		$query=$this->db->query("select * from products  where status_id = 1 order by modified_at desc");
-		$count = $query->num_rows();
-		return $count;
+		$prod_arr = $this->get_products();
 
+		if($prod_arr){
+			return count($prod_arr);
+		} else {
+			return 0;
+		}
+
+		// $query=$this->db->query("select * from products  where status_id = 1 order by modified_at desc");
+		// $count = $query->num_rows();
+		// return $count;
 
 	}
 
