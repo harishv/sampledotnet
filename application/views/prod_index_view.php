@@ -13,8 +13,9 @@ if(!$render) { ?>
 	<!-- Begin content div -->
 	<div id="content" class="flt-l">
 		<div class="hgt-15px wid_100"></div>
-		<span class="small flt-r pdg_15px"><?php echo "Updated ".$product_updated." ago";?>
-		</span>
+		<?php if(isset($product_updated)) { ?>
+			<span class="small flt-r pdg_15px"><?php echo "Updated ".$product_updated." ago";?></span>
+		<?php } ?>
 		<h1>Featured Samples</h1>
 		<span class="bdr-btm"></span>
 		<div class="hgt-15px"></div>

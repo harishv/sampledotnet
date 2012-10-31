@@ -51,7 +51,8 @@ class Index extends CI_Controller {
 			$data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);
 		}
 
-		$data['product_updated'] = $this->common_model->date_diff($data['products'][0]['modified_at'],"NOW");
+		if(isset($data['products'][0]['modified_at']))
+			$data['product_updated'] = $this->common_model->date_diff($data['products'][0]['modified_at'],"NOW");
 
 		$data['render'] = false;
 		$this->load->view("template/prod_header", $data);
