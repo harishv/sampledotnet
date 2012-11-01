@@ -64,6 +64,11 @@ $route['backoffice/logout/(:any)'] = "backoffice/logout/$1";
 $route['backoffice/products'] = "backoffice/products";
 $route['backoffice/products/(:any)'] = "backoffice/products/$1";
 $route['backoffice/products/(:any)/(:any)'] = "backoffice/products/$1/$2";
+// Admin Users
+$route['backoffice/users'] = "backoffice/users";
+$route['backoffice/users/(:any)'] = "backoffice/users/$1";
+$route['backoffice/users/(:any)/(:any)'] = "backoffice/users/$1/$2";
+
 
 /**
  * Front-end Routs

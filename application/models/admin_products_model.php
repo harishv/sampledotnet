@@ -455,7 +455,9 @@ class Admin_Products_Model extends CI_Model {
 			// Insertion / Updation of Product record into the database.
 
 			// Prepare valid countries record
+
 			$valid_countries = implode(",", $valid_country_ids);
+			
 
 			$product_information = array (	'name' => $prod_name,
 											'category_id' => intval($prod_category_id),

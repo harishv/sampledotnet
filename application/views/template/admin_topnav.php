@@ -7,13 +7,19 @@
 	</a>
 
 	<a class="brand" href="<?php echo base_url().ADMINFOLDER; ?>"><?php echo $this->lang->line('brand_name_admin'); ?></a>
-
+	<?php //print_r($user_info);?>
 	<div class="nav-collapse">
 	<?php //We add the Top Navigation links here?>
 		<ul class="nav">
 			<li <?php echo (strstr($_SERVER['REQUEST_URI'], "/index") || "http://".$_SERVER["HTTP_HOST"].$_SERVER['REQUEST_URI'] == base_url(ADMINFOLDER)) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER, $this->lang->line('nav_home_admin')); ?></li>
 			<li id="products_nav"><?php echo anchor(ADMINFOLDER . "/products", $this->lang->line('nav_products_admin')); ?></li>
-			<!-- <li <?php echo (strstr($_SERVER['REQUEST_URI'], "/documents")) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER . "/documents", $this->lang->line('nav_documents_admin')); ?></li> -->
+			<!-- <li <?php //echo (strstr($_SERVER['REQUEST_URI'], "/documents")) ? 'class="active"' : ''; ?>><?php echo anchor(ADMINFOLDER . "/documents", $this->lang->line('nav_documents_admin')); ?></li> -->
+	<?php    $user_info = $this->session->userdata('admin_user'); 
+			if(isset($user_info) && $user_info !=''){ 
+				if($user_info['admin_type_ref_id'] == '1'){ ?>
+				<li id="products_nav"><?php echo anchor(ADMINFOLDER . "/users", $this->lang->line('admin_users')); ?></li>
+		<?php   }
+			} ?>
 		</ul>
 
 		<?php
@@ -33,6 +39,7 @@
 		<?php
 		if ( $this->user_status->admin_is_signed_in() ) {
 			$user_info = $this->session->userdata('admin_user');
+			
 			$user_name = $user_info['admin_name'];
 
 			$profile_string = '<div class="user_profile_nav"><b><i class="icon-user"></i> '.$user_info['admin_email'].'</b><br />'.$this->lang->line('nav_my_profile').'</div>';
