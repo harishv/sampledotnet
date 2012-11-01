@@ -128,6 +128,10 @@ class Products extends CI_Controller {
 		echo $this->Admin_Products_Model->change_status();
 	}
 
+	public function sample_change_status(){
+		echo $this->Admin_Products_Model->sample_change_status();
+	}
+
 	public function product_change_comment_status()
 	{
 		echo $this->Admin_Products_Model->change_comment_status();

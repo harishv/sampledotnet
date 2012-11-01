@@ -17,30 +17,30 @@
 		} );
 	} );
 
-	function change_status (prod_id, del_status) {
+	function change_status (sample_id, del_status) {
 		var status, data;
 
 		if (del_status) {
-			$('.status_text_' + prod_id).html('<span class="label label-important"><i class="icon-remove icon-white"></i> <?php echo $this->lang->line("admin_prod_deleted"); ?></span>');
-			$('.del_btn_' + prod_id).html('');
+			$('.status_text_' + sample_id).html('<span class="label label-important"><i class="icon-remove icon-white"></i> <?php echo $this->lang->line("admin_prod_deleted"); ?></span>');
+			$('.del_btn_' + sample_id).html('');
 			status = 2;
 		} else {
-			$('#onandoff_' + prod_id).toggleClass('active_on');
+			$('#onandoff_' + sample_id).toggleClass('active_on');
 
-			if ($('#onandoff_' + prod_id).hasClass('active_on')) {
+			if ($('#onandoff_' + sample_id).hasClass('active_on')) {
 				status = 1;
 			} else{
 				status = 0;
 			}
 		}
 
-		data = {'prod_id' : prod_id, 'status' : status};
+		data = {'sample_id' : sample_id, 'status' : status};
 
 		$.ajax({
 			// dataType: 'json',
 			data: data,
 			type: 'POST',
-			url: '<?php echo base_url() . ADMINFOLDER. "/products/product_change_status"; ?>',
+			url: '<?php echo base_url() . ADMINFOLDER. "/products/sample_change_status"; ?>',
 			success: function(responseTxt){
 							console.log(responseTxt);
 							if (responseTxt != 1) {
@@ -112,8 +112,8 @@
 								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_email"); ?></th>
 								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_company"); ?></th>
 								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_title"); ?></th>
-								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_url"); ?></th>
-								<th width="30%"><?php echo $this->lang->line("admin_sample_list_tbl_sample_desc"); ?></th>
+								<th><?php echo $this->lang->line("admin_prod_list_tbl_status"); ?></th>
+								<th width="30%"><?php echo $this->lang->line("admin_sample_list_tbl_actions"); ?></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -124,8 +124,28 @@
 									<td><?php echo $sample_list['sample_email'];?></td>
 									<td><?php echo $sample_list['sample_company'];?></td>
 									<td><?php echo $sample_list['sample_title'];?></td>
-									<td><?php echo $sample_list['sample_url'];?></td>
-									<td><?php echo $sample_list['sample_desc'];?></td>
+									<td>
+										<div class="status_text_<?php echo $sample_list["id"]; ?>">
+											<?php if ($sample_list["status_id"] != 2){ ?>
+												<div class="status-switch" id="onandoff_<?php echo $sample_list["id"]; ?>" onclick="return change_status(<?php echo $sample_list["id"]; ?>)"></div>
+												<?php if ($sample_list["status_id"] == 1){ ?>
+													<script type="text/javascript">
+														$('#onandoff_<?php echo $sample_list["id"]; ?>').addClass('active_on');
+													</script>
+												<?php } ?>
+											<?php } else { ?>
+												<span class="label label-important"><i class="icon-remove icon-white"></i> <?php echo $this->lang->line('admin_prod_deleted'); ?></span>
+											<?php } ?>
+										</div>
+									</td>
+									<td>
+										<?php echo anchor(ADMINFOLDER . "/products/sample_view/" . $sample_list["id"], '<i class="icon-edit icon-white"></i> <b>'.$this->lang->line('admin_sample_list_view').'</b>', array ("class" => "btn btn-mini btn-success")); ?>
+										<span class="del_btn_<?php echo $sample_list["id"]; ?>">
+											<?php if ($sample_list["status_id"] != 2) {
+												echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_product(".$sample_list['id'].")"));
+											} ?>
+										</span>
+									</td>
 
 								</tr>
 							<?php
@@ -140,8 +160,8 @@
 								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_email"); ?></th>
 								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_company"); ?></th>
 								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_title"); ?></th>
-								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_url"); ?></th>
-								<th><?php echo $this->lang->line("admin_sample_list_tbl_sample_desc"); ?></th>
+								<th><?php echo $this->lang->line("admin_prod_list_tbl_status"); ?></th>
+								<th width="30%"><?php echo $this->lang->line("admin_sample_list_tbl_actions"); ?></th>
 							</tr>
 						</tfoot>
 					</table>

@@ -206,7 +206,8 @@ $lang["admin_sample_list_tbl_sample_title"] =	"Title";
 $lang["admin_sample_list_tbl_sample_url"]	=	"Url";
 $lang["admin_sample_list_tbl_sample_desc"]	=	"Description";
 $lang["admin_sample_list_tbl_actions"]	=	"Actions";
-$lang["admin_sample_view"]					=	"View";
+$lang["admin_sample_view"]					=	"Sample View";
+$lang['admin_sample_list_view']             = "View";
 
 
 

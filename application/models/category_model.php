@@ -319,7 +319,9 @@ class Category_Model extends CI_Model {
 					 'sample_desc'=>$desc,
 					  'sample_url'=>$url,
 					  'created_at' => $created_at,
-					  'created_from' =>$created_from);
+					  'created_from' =>$created_from,
+					  'status_id' => '1',
+					  'created_by' => '0');
 		$this->db->insert('share_sample',$data);
 		$this->email->to($email);
 		$this->email->from('admin@sample.net', 'admin');

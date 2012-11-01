@@ -242,6 +242,28 @@ class Admin_Products_Model extends CI_Model {
 		return false;
 	}
 
+	function sample_change_status()
+	{
+		$product_id = trim($this->input->post("sample_id"));
+		$status_id = trim($this->input->post("status"));
+
+		$user = $this->session->userdata("admin_user");
+		$current_date = date('Y-m-d H:i:s');
+		$ip = $_SERVER['REMOTE_ADDR'];
+
+		$update_data = array ('status_id' => $status_id,
+							  'modified_at' => $current_date,
+							  'modified_from' => $ip,
+							  'modified_by' => $user['id']);
+
+		if ($this->db->update('share_sample', $update_data, array('id' => $product_id))) {
+			return true;
+		}
+
+		return false;
+	}
+
+
 	function change_comment_status()
 	{
 		$comment_id = trim($this->input->post("comment_id"));
