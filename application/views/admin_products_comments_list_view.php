@@ -123,8 +123,8 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th><?php echo $this->lang->line("admin_prod_list_tbl_prod_name"); ?></th>
-								<th><?php echo $this->lang->line("admin_prod_list_tbl_category"); ?></th>
+								<th><?php echo $this->lang->line("admin_prod_cmnt_name"); ?></th>
+								<th><?php echo $this->lang->line("admin_prod_cmnt_user_name"); ?></th>
 								<th><?php echo $this->lang->line("admin_prod_list_tbl_status"); ?></th>
 								<th width="200px;"><?php echo $this->lang->line("admin_prod_list_tbl_actions"); ?></th>
 							</tr>
@@ -150,12 +150,8 @@
 										</div>
 									</td>
 									<td>
-										<?php // echo anchor(ADMINFOLDER . "/products/products_manage/" . $comment["id"], '<i class="icon-edit icon-white"></i> <b>'.$this->lang->line('admin_prod_edit').'</b>', array ("class" => "btn btn-mini btn-success")); ?>
-										<span class="del_btn_<?php echo $comment["id"]; ?>">
-											<?php if ($comment["status_id"] != 2) {
-												echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_cmnt_list_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_comment(".$comment['id'].")"));
-											} ?>
-										</span>
+										<?php echo anchor(ADMINFOLDER . "/products/comment_manage/" . $comment["id"], '<i class="icon-edit icon-white"></i> <b>'.$this->lang->line('admin_prod_edit').'</b>', array ("class" => "btn btn-mini btn-success")); ?>
+										
 									</td>
 								</tr>
 							<?php

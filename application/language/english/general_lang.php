@@ -16,6 +16,11 @@ $lang["header_colocation_america"]	=	"colocation america";
 
 $lang["nav"]						=	"nav";
 $lang["nav_products"]				=	"Product Samples";
+$lang["admin_users"]				=	"Admin Users";
+
+$lang['admin_user_list_tbl_user_name'] = "Admin Name";
+$lang['admin_user_list_tbl_user_type'] = "Admin Type";
+$lang['admin_user_list_tbl_user_email'] = "Admin Email";
 $lang["nav_documents"]				=	"Document Samples";
 $lang["nav_suggest_a_samples"]		=	"Suggest a Sample";
 $lang["nav_contact_us"]				=	"Contact Us";
@@ -147,6 +152,19 @@ $lang["admin_prod_list_tbl_desc"]			=	"Description";
 $lang["admin_prod_list_tbl_valid_countries"]=	"Valid Countries";
 $lang["admin_prod_list_status_change_success"] = "Status Changed Successfully.";
 
+
+
+/**
+* Admin List Page
+*/
+
+$lang["admin_user_list_title"]				=	"Users List";
+$lang["admin_user_add_new"]					=	"Add New User";
+$lang["admin_user_add_title"]				=	"Add Admin User Form";
+$lang["admin_user_update_title"]			=	"Update Admin User Form";
+
+
+
 /**
  * Categories List Page
  */
@@ -171,6 +189,9 @@ $lang["admin_prod_cmnt_list_actions"]		=	"Actions";
 $lang["admin_prod_cmnt_list_cmnt_deleted"]	=	"Deleted";
 $lang["admin_prod_cmnt_list_delete"]		=	"Delete";
 $lang["admin_prod_cmnt_list_back_to_prod_list"] =	"Back to Products List";
+$lang["admin_prod_comment_edit_title"] = "Update Comment";
+$lang["admin_prod_cmnt_name"] = "User Comments";
+$lang["admin_prod_cmnt_user_name"] = "Commented User Name";
 
 
 /**
@@ -184,7 +205,7 @@ $lang["admin_sample_list_tbl_sample_company"]= "Company";
 $lang["admin_sample_list_tbl_sample_title"] =	"Title";
 $lang["admin_sample_list_tbl_sample_url"]	=	"Url";
 $lang["admin_sample_list_tbl_sample_desc"]	=	"Description";
-$lang["admin_prod_cat_list_tbl_actions"]	=	"Actions";
+$lang["admin_sample_list_tbl_actions"]	=	"Actions";
 $lang["admin_sample_view"]					=	"View";
 
 

@@ -41,10 +41,17 @@ class Product_Model extends CI_Model {
 
 
 		$comment = $this->input->post('comment_area');
-		$data = array('user_id'=>$user_id,'prod_id'=>$id,'comments'=>$comment,'status_id'=>1);
+		$current_date = date('Y-m-d H:i:s');
+		$ip = $_SERVER['REMOTE_ADDR'];
+
+		$data = array('user_id'=>$user_id,'prod_id'=>$id,'comments'=>$comment,'status_id'=>1,'created_at' => $current_date,
+					'created_from' => $ip, 'created_by'=>$user_id,'modified_at'=>$current_date,'modified_from'=>$ip,
+					'modified_by' => '0');
 		$this->db->insert('comments',$data);
 		return true;
 
 
 	}
+
+	
 }

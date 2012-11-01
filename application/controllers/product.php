@@ -53,8 +53,25 @@ class Product extends CI_Controller {
 
 	public function product_views($product_id)
 	{
+		$data['update_data'] = array();
+		//$data = array();
 		$data['product_details'] = $this->product_model->get_product_details($product_id);
 		$data['comments'] = $this->product_model->get_comments($product_id);
+		//echo "<pre>";print_r($data['comments']);
+		if(isset($data['comments']) && $data['comments'] !=''){
+			foreach($data['comments'] as $comment_key => $comment_values){
+				$comment_updated = $this->common_model->date_diff($comment_values['modified_at'],"NOW");
+				array_push($data['update_data'], $comment_updated);
+
+			}
+
+		}
+
+		//print_r($data['update_data']);exit;
+	//	$data['updated_data'] = $updated_data;
+	//print_r($data['updated_data']);
+		
+			
 
 		$data['bread_crum'] = $this->category_model->get_bread_crums($data['product_details'][0]['category_id']);
 

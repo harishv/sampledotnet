@@ -71,6 +71,57 @@ class Products extends CI_Controller {
 		$this->load->view("template/admin_footer");
 	}
 
+	public function sample_view($id= 'false'){
+
+		if ($id) {
+			$data["sample_view"] = $this->Admin_Products_Model->get_sample_view_details($id);
+		}
+
+		$this->load->view("template/admin_header");
+		$this->load->view("admin_sample_view", $data);
+		$this->load->view("template/admin_footer");
+
+	}
+
+	public function comment_manage($id='false'){
+
+
+		if($id){
+			$data['comment_data'] = $this->Admin_Products_Model->get_comment_details($id);
+			$data['comment_status'] = $this->Admin_Products_Model->get_status();
+		}
+		
+		$this->load->view("template/admin_header");
+		$this->load->view("admin_products_comments_view", $data);
+		$this->load->view("template/admin_footer");
+
+	}
+
+	public function comment_user_action(){
+
+		$comment_details = $this->Admin_Products_Model->manage_comment();
+		
+		if (is_array($comment_details)) {
+			$success = "Comment updated succesfully";
+
+			$newdata = array( 'products_upload_success'  => $success );
+
+			$this->session->set_userdata($newdata);
+
+			redirect(ADMINFOLDER.'/products/products_list', 'refresh');
+		}
+		if( is_string($comment_details) ) {
+			$errors = "Comment Add / Edit Failed for the following reasons:<br />" . $comment_details;
+
+			$newdata = array( 'products_upload_errors'  => $errors );
+
+			$this->session->set_userdata($newdata);
+
+				redirect(ADMINFOLDER.'/products/comment_manage/' . $prod_id);
+			}
+
+	}
+
 
 	public function product_change_status()
 	{

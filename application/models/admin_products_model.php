@@ -49,6 +49,25 @@ class Admin_Products_Model extends CI_Model {
 
 	}
 
+	function get_sample_view_details($id){
+		$this->db->select('*');
+		$this->db->from('share_sample');
+		//$this->db->order_by("created_at", "desc");
+		 $this->db->where('id', $id); // status_id = 1 resembles Active
+
+		$result = $this->db->get();
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			return $result->result_array();
+		}
+
+		return false;
+
+
+	}
+
 	function get_comments($prod_id)
 	{
 		$result = $this->db->query("SELECT comments.*,  users.first_name FROM comments, users WHERE comments.user_id = users.user_id AND comments.prod_id = " . $prod_id);
@@ -61,6 +80,66 @@ class Admin_Products_Model extends CI_Model {
 
 		return false;
 	}
+
+	function get_comment_details($id){
+		
+		$query = $this->db->query("select * from comments where id = ".$id);
+		if ($query->num_rows() > 0)
+			return $query->result_array();
+		else
+			return false;
+
+	}
+
+	function get_status(){
+
+		$query = $this->db->query("select * from status");
+		if ($query->num_rows() > 0)
+			return $query->result_array();
+		else
+			return false;
+
+
+	}
+
+	function manage_comment(){
+
+		$errors = '';
+		$user = $this->session->userdata("admin_user");
+		$current_date = date('Y-m-d H:i:s');
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$comment_name = $this->input->post('comment_name');
+		$status_id = $this->input->post('type_id');
+		$comment_id = $this->input->post('comment_id');
+
+		if(trim($comment_name) == ''){
+			$errors .= "Product Name shouldn't be empty<br />";
+		}
+
+		if($errors == ''){
+
+			$data = array('comments' => $comment_name,
+							'status_id' => $status_id,
+							'modified_at' =>$current_date,
+							'modified_from' =>$ip,
+							'modified_by'=>$user['id']);
+
+			$this->db->where('id', intval($comment_id));
+			$this->db->update('comments', $data);
+
+
+			
+
+			$affected_rows = $this->db->affected_rows();
+
+			if($affected_rows > 0)
+				return $data;
+		}
+
+		return $errors;
+
+	}
+
 
 	function get_product_details($id){
 
