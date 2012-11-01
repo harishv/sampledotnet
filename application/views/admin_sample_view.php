@@ -38,7 +38,7 @@
 					:</label>
 					<div class="controls">
 					<input type="text" class="input-xlarge" id="prod_name" name="prod_name"
-					 value="<?php echo $sample_view[0]['sample_name']; ?>"  readonly="readonly"/>
+					 value="<?php echo $sample_view[0]['sample_name']; ?>"  disabled="disabled"/>
 					<!-- <p class="help-block">example: admin@admin.com</p> -->
 					</div>
 				</div>
