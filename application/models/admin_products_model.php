@@ -33,6 +33,7 @@ class Admin_Products_Model extends CI_Model {
 
 		$this->db->select('*');
 		$this->db->from('share_sample');
+		$this->db->where('status_id', 1);
 		$this->db->order_by("created_at", "desc");
 		// $this->db->where('status_id', 1); // status_id = 1 resembles Active
 
