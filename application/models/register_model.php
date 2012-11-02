@@ -83,9 +83,15 @@ class Register_Model extends CI_Model {
 		$encode_last_id=rtrim($encode_last_id,"/(([=]) || ([+]))/");
 		$this->email->to($email);
 		$this->email->from('admin@sample.net', 'admin');
-		$this->email->subject('Welcome to Sample.net');
+		$this->email->subject('Account registration successful on Sample.net');
+		$content = REGISTER_MAIL_CONTENT;
 		$message_url = '<a href="'. base_url().'login/active_account/' . $encode_last_id . '">Click here to activate your account</a>';
-		$this->email->message($message_url);
+		$message = str_replace('!!activation_link!!', $message_url, $content);
+		//$message = str_replace('!!email!!',$email,$message);
+		$message = str_replace('!!email_address!!', $email, $message);
+		$message = str_replace('!!password!!', $password, $message);
+		
+		$this->email->message($message);
 		$mail_result = $this->email->send();
 
 		if(!$mail_result){

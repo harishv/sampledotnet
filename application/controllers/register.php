@@ -19,8 +19,8 @@ class Register extends CI_Controller {
 		$return_json= array('status' => "error");
 		$data = array();
 		$data['errors'] = "";
-		/*$email = $this->input->post('email_add');
-		$password = $this->input->post('pass');
+		$email = $this->input->post('email_add');
+		/*$password = $this->input->post('pass');
 		$re_password = $this->input->post('re_pass');*/
 
 
@@ -50,7 +50,10 @@ class Register extends CI_Controller {
 				{
 					//echo '1';
 					$return_json['status'] = "success";
-					$return_json['data'] = "Thank you for your registration with Sampel.net.<br />Kindly check your email to complete the registration process.";
+					//$return_json['data'] = "Thank you for your registration with Sampel.net.<br />Kindly check your email to complete the registration process.";
+					$return_json['data'] = "Thank you for your registration with Sampel.net.<br /><br/>Message has been sent to ".$email.". Please check your inbox and follow the instructions in that message to activate your account.<br/><br/>
+
+					If you DONT receive the activation email in 10 minutes, please check your JUNK/SPAM folder since GMAIL, YAHOO and HOTMAIL sometimes mark it as a junk mail.";
 				}
 			}
 			else

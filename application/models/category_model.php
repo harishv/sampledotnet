@@ -325,15 +325,18 @@ class Category_Model extends CI_Model {
 		$this->db->insert('share_sample',$data);
 		$this->email->to($email);
 		$this->email->from('admin@sample.net', 'admin');
-		$this->email->subject('Sample Details');
-		$message = "<b>Sample Details</b>"."<br><br><br>";
+		$this->email->subject('Sample.net: Thanks for your sample suggestion');
+		$message = "<b>Sample Details</b>"."<br><br>";
 		$message .= "Name : ".$name."<br>";
 		$message .= "Email : ".$email ."<br>";
 		$message .= "Title : ".$title ."<br>";
 		$message .= "Company : ".$company ."<br>";
 		$message .= "Description : ".$desc ."<br>";
 		$message .= "URL : ".$url ."<br>";
-		$this->email->message($message);
+		$content = SHARE_SAMPLE_MAIL_CONTENT;
+		$mail_content = str_replace('!!sample_details!!', $message, $content);
+
+		$this->email->message($mail_content);
 		$mail_result = $this->email->send();
 
 

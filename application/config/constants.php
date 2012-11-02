@@ -69,6 +69,34 @@ define ('PRODUCT_IMAGE_WIDTH', '90');
 define ('PRODUCT_IMAGE_HEIGHT', '100');
 
 
+// mail content for the share sample
+
+define ('SHARE_SAMPLE_MAIL_CONTENT','Hello,<br/><br/>We received a sample from you.  Whole hearted thanks from our team for your suggestion. We shall publish it upon a review. We look forward for your contributions to help us grow better.<br/><br/>!!sample_details!!<br/><br/>Regards,<br/>Sample.net Team');
+
+// mail content for the Registration 
+
+define('REGISTER_MAIL_CONTENT',"Hello,<br/><br/>Someone, hopefully you, signed up for a new account at sample.net using this email address. If it was you, and you'd like to activate and use your account, click the link below or copy and paste it into your web browser's address bar:<br/><br/>!!activation_link!!<br/><br/>
+	Here are the login details as entered by you:<br/><br/>Email:!!email_address!!<br/>Password:!!password!!<br/><br/>Regards,<br/>Sample.net Team");
+
+//mail content for the Activation
+
+define('ACTIVATION_MAIL_CONTENT' , "Hello,<br/><br/>
+
+Your account has been activated successfully.  You can login to your account to enjoy the customized view of the site.<br/><br>
+
+Regards,<br/>
+Sample.net Team");
+
+
+define('FORGET_PASSWORD',"Hello,<br/><br/>
+
+We processed your request for a new password.<br/><br/>
+!!new_password!!<br/><br/>
+
+
+
+Regards,<br/>
+Sample.net Team");
 
 
 /* End of file constants.php */

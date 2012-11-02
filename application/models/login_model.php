@@ -27,29 +27,26 @@ class Login_Model extends CI_Model {
 	public function active_status($user_id){
 
 		//$error = '';
-		/*$query = $this->db->query("select status from KP_User where user_id=".$user_id);
+		$query = $this->db->query("select email from users where user_id=".$user_id);
 	
 		if($query->num_rows > 0){
 			$result = $query->result_array();
 
 		}
 		
-		if($result[0]['status'] == 1 ){
-				$error .= $this->config->item('e_1045');
-			return $error;
-
-		}else{*/
+		
 			$data['status_id'] = 1;
 			$this->db->where('user_id',$user_id);
 			$this->db->update('users',$data);
-			
-			$result=$this->db->affected_rows();
+			$this->db->affected_rows();
 
-			/*$this->db->where('parent_id',$user_id);
-			$this->db->update('KP_User',$data);
-			
-			$result_kids = $this->db->affected_rows();*/
-			if($result)
+			$this->email->to($result[0]['email']);
+			$this->email->from('admin@sample.net', 'admin');
+			$this->email->subject('Account activation complete on samples.net');
+			$content = ACTIVATION_MAIL_CONTENT;
+			$this->email->message($content);
+			$mail_result = $this->email->send();
+			if($mail_result)
 				return true;
 			return false;
 		//}
@@ -105,11 +102,14 @@ class Login_Model extends CI_Model {
 
 			$this->email->to($user_data['email']);
 			$this->email->from('admin@sample.net', 'admin');
-			$this->email->subject('Forgot Password');
+			$this->email->subject('New password request - Sample.net');
 
 			$reset_password_link = "<a href='".$change_password_url."'>Reset your password</a>";
+			$mail_content = FORGET_PASSWORD;
+			$message = str_replace("!!new_password!!", $reset_password_link,$mail_content);
 
-			$this->email->message($reset_password_link);
+
+			$this->email->message($message);
 
 			if ( ! $this->email->send()) {
 				$result = "Email send error<br />Please click on the below link to change your password: <br />";
