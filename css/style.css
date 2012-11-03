@@ -31,7 +31,7 @@ ul#main-nav li { float:left; padding:0 10px; position:relative; z-index:-0; back
 ul#main-nav li.last { padding-right:0; background:none }
 ul#main-nav li a { color:#fffffe; font:bold 12px Arial, Helvetica, sans-serif; text-transform:capitalize; padding:0 0 13px; float:left }
 ul#main-nav li a:hover, ul#main-nav li a.current { color:#000001 }
-ul#main-nav li ul { list-style:none; background:url(../img/bg-submenu.jpg) repeat-x left top #e8f5fe; border:1px solid #50b4f3; width:120px; display:none; padding:5px 0 15px 0; position:relative; z-index:0; }
+ul#main-nav li ul { list-style:none; background:url(../img/bg-submenu.jpg) repeat-x left top #e8f5fe; border:1px solid #50b4f3; width:auto; display:none; padding:5px 0 15px 0; position:relative; z-index:0; }
 ul#main-nav li:hover ul { left:0; top:28px; display:block; position:absolute; z-index:1; }
 ul#main-nav li ul li {    padding:0 10px 0 20px; position:relative; clear:both; border:none;}
 ul#main-nav li ul li.last { border:none }
