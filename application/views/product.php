@@ -123,7 +123,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 								<strong class="mgn-r"><?php echo $values['first_name'] . " " . $values['last_name'];?></strong>
 								<strong class="mgn-r">|</strong>
 								<?php if(isset($update_data) && $update_data !=''){ ?>
-								<span><?php echo $update_data[$key];?></span>
+								<span><?php echo $update_data[$key].'ago';?></span>
 								<?php } ?>
 								<br />
 								<?php echo $values['comments'];  ?>
