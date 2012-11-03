@@ -482,10 +482,10 @@ class Admin_Products_Model extends CI_Model {
 			$valid_countries = implode(",", $valid_country_ids);
 			
 
-			$product_information = array (	'name' => $prod_name,
+			$product_information = array (	'name' => htmlspecialchars(htmlentities($prod_name,ENT_QUOTES)),
 											'category_id' => intval($prod_category_id),
 											'image' => $product_image_name,
-											'description' => $prod_desc,
+											'description' => htmlspecialchars(htmlentities($prod_desc,ENT_QUOTES)),
 											'grab_url' => $prod_grab_url,
 											'featured' => $prod_featured,
 											'only_today' => $prod_only_today,

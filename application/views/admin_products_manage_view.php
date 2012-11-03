@@ -138,7 +138,7 @@ $(document).ready(function() {
 					:</label>
 				<div class="controls">
 					<input type="text" class="input-xlarge" id="prod_name" name="prod_name"
-						placeholder="<?php echo $this->lang->line('admin_prod_mng_prod_name_ph'); ?>" value="<?php echo ($set)? $this->Common_Model->clear_string($product["name"]) : ""; ?>" />
+						placeholder="<?php echo $this->lang->line('admin_prod_mng_prod_name_ph'); ?>" value="<?php echo ($set)? html_entity_decode($product["name"]) : ""; ?>" />
 					<!-- <p class="help-block">example: admin@admin.com</p> -->
 				</div>
 			</div>
@@ -177,7 +177,7 @@ $(document).ready(function() {
 					:</label>
 				<div class="controls">
 					<textarea class="input-xlarge" rows="3" id="prod_desc"
-						name="prod_desc" placeholder="<?php echo $this->lang->line('admin_prod_mng_desc_ph'); ?>"><?php echo ($set) ? $this->Common_Model->clear_string($product['description']) : ""; ?></textarea>
+						name="prod_desc" placeholder="<?php echo $this->lang->line('admin_prod_mng_desc_ph'); ?>"><?php echo ($set) ? html_entity_decode($product['description']) : ""; ?></textarea>
 					<!-- <p class="help-block">example: admin@admin.com</p> -->
 				</div>
 			</div>

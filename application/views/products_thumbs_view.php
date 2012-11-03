@@ -16,10 +16,10 @@ if(isset($products) && $products != '' && count($products) > 0) { ?>
 					} else {
 						$strip =25;
 					}
-					echo (strlen($product_value['name']) > $strip) ? substr($product_value['name'], 0, ($strip-2) ) . '..' : $product_value['name'] ;?>
+					echo (strlen($product_value['name']) > $strip) ? substr($product_value['name'], 0, ($strip-2) ) . '..' : html_entity_decode($product_value['name']) ;?>
 				</strong></a>
 				<br>
-				<?php echo (strlen($product_value['description']) > 90) ? substr($product_value['description'], 0, 88) . '..' : $product_value['description']; ?>
+				<?php echo (strlen($product_value['description']) > 90) ? substr($product_value['description'], 0, 88) . '..' : html_entity_decode($product_value['description']); ?>
 			</p>
 			<br>
 			<div class="star" id="ratings">
