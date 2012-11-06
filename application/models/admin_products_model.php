@@ -71,7 +71,7 @@ class Admin_Products_Model extends CI_Model {
 
 	function get_comments($prod_id)
 	{
-		$result = $this->db->query("SELECT comments.*,  users.first_name FROM comments, users WHERE comments.user_id = users.user_id AND comments.prod_id = " . $prod_id);
+		$result = $this->db->query("SELECT comments.*,  users.first_name FROM comments, users WHERE comments.user_id = users.user_id AND comments.prod_id = " . $prod_id ." and comments.status_id = 1");
 
 		if ($result->num_rows() == 0) {
 			return false;

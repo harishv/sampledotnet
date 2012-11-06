@@ -125,7 +125,7 @@
 								<th>#</th>
 								<th><?php echo $this->lang->line("admin_prod_cmnt_name"); ?></th>
 								<th><?php echo $this->lang->line("admin_prod_cmnt_user_name"); ?></th>
-								<th><?php echo $this->lang->line("admin_prod_list_tbl_status"); ?></th>
+								
 								<th width="200px;"><?php echo $this->lang->line("admin_prod_list_tbl_actions"); ?></th>
 							</tr>
 						</thead>
@@ -135,23 +135,14 @@
 									<td><?php echo $tableCount; ?></td>
 									<td><?php echo $comment['comments']; ?></td>
 									<td><?php echo $comment['first_name']; ?></td>
-									<td>
-										<div class="status_text_<?php echo $comment["id"]; ?>">
-											<?php if ($comment["status_id"] != 2){ ?>
-												<div class="status-switch" id="onandoff_<?php echo $comment["id"]; ?>" onclick="return change_status(<?php echo $comment["id"]; ?>)"></div>
-												<?php if ($comment["status_id"] == 1){ ?>
-													<script type="text/javascript">
-														$('#onandoff_<?php echo $comment["id"]; ?>').addClass('active_on');
-													</script>
-												<?php } ?>
-											<?php } else { ?>
-												<span class="label label-important"><i class="icon-remove icon-white"></i> <?php echo $this->lang->line('admin_prod_cmnt_list_cmnt_deleted'); ?></span>
-											<?php } ?>
-										</div>
-									</td>
+									
 									<td>
 										<?php echo anchor(ADMINFOLDER . "/products/comment_manage/" . $comment["id"], '<i class="icon-edit icon-white"></i> <b>'.$this->lang->line('admin_prod_edit').'</b>', array ("class" => "btn btn-mini btn-success")); ?>
-										
+										<span class="del_btn_<?php echo $comment["id"]; ?>">
+											<?php if ($comment["status_id"] != 2) {
+												echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_cat_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_comment(".$comment['id'].")"));
+											} ?>
+										</span>
 									</td>
 								</tr>
 							<?php
@@ -164,7 +155,7 @@
 								<th>#</th>
 								<th><?php echo $this->lang->line("admin_prod_list_tbl_prod_name"); ?></th>
 								<th><?php echo $this->lang->line("admin_prod_list_tbl_category"); ?></th>
-								<th><?php echo $this->lang->line("admin_prod_list_tbl_status"); ?></th>
+								
 								<th><?php echo $this->lang->line("admin_prod_list_tbl_actions"); ?></th>
 							</tr>
 						</tfoot>

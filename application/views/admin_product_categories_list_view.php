@@ -13,7 +13,9 @@
 			"sPaginationType": "bootstrap",
 			"oLanguage": {
 				"sLengthMenu": "_MENU_ <?php echo $this->lang->line('records_per_page'); ?>"
-			}
+			},
+			"aLengthMenu": [ 25, 50, 100, 200 ],
+			"iDisplayLength": 25
 		} );
 	} );
 

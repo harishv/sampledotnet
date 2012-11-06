@@ -33,7 +33,7 @@ if(!$render) { ?>
 			<div class="sample mgn-15b">
 				<p class="head mgn-0">
 					<img src="<?php echo base_url(); ?>img/time-icon.png" alt="time" class="flt-l mgn-10l mgn-r" />
-					Today's Free Samples <em>We have 127 Free Coupons for you today</em>
+					Today's Free Samples <em>We have <?php if(isset($products) && $products !='') echo count($products);?> Free Coupons for you today</em>
 				</p>
 				<div id="replace">
 					<!-- for the refreshing issue start-->
