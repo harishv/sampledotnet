@@ -232,12 +232,19 @@ $(document).ready(function() {
 				</div>
 			</div>
 
+			<?php $country_id = explode(',', $product['valid_countries']); ?>
 			<div class="control-group">
 				<label class="control-label" for="valid_country_ids"><?php echo $this->lang->line('admin_prod_mng_valid_cont'); ?>
 					:</label>
 				<div class="controls">
-					<div id="valid_countries" class="span5"></div>
-					<script type="text/javascript">
+					
+					<?php foreach ($countries as $country) { ?>
+					<label class="checkbox">
+				<input type="checkbox" name="valid_country_ids[]" id="valid_country_ids" value = "<?php echo $country['id'];?>" <?php foreach($country_id as $key=>$values) {  if($set && $values == $country['id']) echo 'checked="checked"'; }?> ><?php echo $country['name'];?>
+					</label>
+					<?php } ?>
+					
+					 <!-- <script type="text/javascript">
 						$(function() {
 							var t = $('#valid_countries').bootstrapTransfer(
 								{'target_id': 'multi-select-input',
@@ -258,7 +265,7 @@ $(document).ready(function() {
 							// t.set_values(["2", "4"]);
 							console.log(t.get_values());
 						});
-					</script>
+					</script> -->
 				</div>
 			</div>
 
