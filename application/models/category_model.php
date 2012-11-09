@@ -351,6 +351,31 @@ class Category_Model extends CI_Model {
 
 	}
 
+	function get_sub_categories($id){
+
+		//$query = $this->db->query("select c.id,c.prod_cat_name,c.parent_cat_id,p.name,p.category_id from prod_categories c , products p where c.parent_cat_id = ".$id." and  p.category_id = c.id");
+		$query = $this->db->query("select id,prod_cat_name from prod_categories where parent_cat_id = " .$id);
+		if($query->num_rows() > 0){
+			$result = $query->result_array();
+
+			return $result;
+		}else
+			return 0;
+
+	}
+
+	function get_sub_cat_prod($id){
+
+		$query = $this->db->query("select * from products where category_id = " .$id);
+		if($query->num_rows() > 0){
+			$result = $query->result_array();
+
+			return $result;
+		}else
+			return 0;
+
+	}
+
 
 
 };

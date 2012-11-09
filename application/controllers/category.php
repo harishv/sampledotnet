@@ -83,4 +83,13 @@ class Category extends CI_Controller {
 
 	}
 
+	public function parent_category($id= 'false'){
+		$parent_id =$id;
+		
+		$data['sub_categories'] = $this->category_model->get_sub_categories($parent_id);
+		$this->load->view("template/prod_header",$data);
+		$this->load->view("parent_category_view",$data);
+		$this->load->view("template/prod_footer");
+	}
+
 }
