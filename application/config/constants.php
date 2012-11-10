@@ -54,11 +54,11 @@ define('PROD_THUMB_IMG_PATH', UPLOAD_DIR . "/" . PRODUCTS_DIR . "/" . THUMBS_DIR
 
 
 // Social Share Details
-define ('FB_PAGE', '');
+define ('FB_PAGE', 'https://www.facebook.com/sampledotnet');
 define ('FB_APP_ID', '316879215000121');
-define ('TWITTER_PAGE', '');
-define ('GOOGLEPLUS_PAGE', '');
-define ('PINTEREST_PAGE', '');
+define ('TWITTER_PAGE', 'https://twitter.com/sampledotnet');
+define ('GOOGLEPLUS_PAGE', 'https://plus.google.com/u/0/b/108751386433486638009/108751386433486638009');
+define ('PINTEREST_PAGE', 'http://pinterest.com/sampledotnet/');
 
 
 // Common Image Settings

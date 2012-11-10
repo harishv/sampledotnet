@@ -26,7 +26,7 @@
 		Get free samples <br /> 0n <strong>Facebook</strong>
 		<br />
 		<?php // Please replace below base_url() with FB_PAGE ?>
-		<div class="fb_like_btn fb-like" data-href="<?php echo base_url(); ?>" data-send="false" data-width="100" data-show-faces="false"></div>
+		<div class="fb_like_btn fb-like" data-href="<?php echo FB_PAGE; ?>" data-send="false" data-width="100" data-show-faces="false"></div>
 	</p>
 	<ul class="btn">
 		<li>
