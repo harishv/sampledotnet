@@ -253,9 +253,9 @@ class Login_Model extends CI_Model {
 			$errors .= $email_valid."<br/>";
 
 		$data = array('name' => $name,
-					'phone' => $phone,
+					'subject' => $phone,
 					'email' => $email,
-					'enquiry' => $enquiry,
+					'message' => $enquiry,
 					'created_at' => $current_date,
 					'created_from' => $ip);
 		if($errors == ''){
@@ -265,6 +265,7 @@ class Login_Model extends CI_Model {
 			if($affected_rows > 0){
 				$message_admin ='';
 				$this->email->to('admin@sample.net');
+				//$this->email->to('sudhakarg@koderoom.com');
 				$this->email->from('admin@sample.net', 'admin');
 				$this->email->subject('Contact Us - Sample.net');
 				
