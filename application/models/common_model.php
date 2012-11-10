@@ -122,8 +122,8 @@ class Common_Model extends CI_Model {
 
                 $timeshift = $preday[0].' days '.$prehour[0].' hours '.$min[0].' minutes '.round($sec,0).' seconds ';
 
-        }else
-		$timeshift = $end;
+        } else
+			$timeshift = false;
         return $timeshift;
 	}
 

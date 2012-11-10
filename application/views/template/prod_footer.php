@@ -18,7 +18,6 @@
 				</li>
 				<li class="last">
 					<a href="#contact_us" name="modal" class='iframe'><?php echo $this->lang->line("nav_contact_us"); ?></a>
-					
 				</li>
 			</ul>
 			<p class="copy">&copy; <?php echo $this->lang->line("footer_copy_year") . " " . $this->lang->line("footer_brand_name"); ?></p>

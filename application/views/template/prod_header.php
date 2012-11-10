@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<title><?php echo (isset($page_title)) ? $page_title . ' :: ' : ''; echo $this->lang->line("title"); ?></title>
+		<title><?php echo (isset($page_title)) ? $page_title . ' - ' : ''; echo $this->lang->line("title"); ?></title>
 
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>favicon.ico" />
 
@@ -189,7 +189,7 @@
 				<div id="header">
 					<?php echo anchor(base_url(), img(array("src" => "/img/logo.jpg", "alt" => $this->lang->line("brand_name"), "class" => "mgn-15b")), array("class" => "flt-l mgn-15px")); ?>
 					<span class="flt-l slogan">Grab it Now!</span>
-					<?php echo img(array("src" => "/img/colocation-america.jpg", "alt" => $this->lang->line("header_colocation_america"), "class" => "flt-r")); ?>
+					<?php // echo img(array("src" => "/img/colocation-america.jpg", "alt" => $this->lang->line("header_colocation_america"), "class" => "flt-r")); ?>
 					<!-- Navigation starts here -->
 					<div class="wid_100 flt-l" >
 						<?php include_once 'prod_topnav.php';?>
