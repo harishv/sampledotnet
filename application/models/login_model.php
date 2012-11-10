@@ -269,9 +269,9 @@ class Login_Model extends CI_Model {
 				$this->email->subject('Contact Us - Sample.net');
 				
 				$message_admin .= "Name : ".$name."<br>";
-				$message_admin .= "Phone Number: ".$phone ."<br>";
-				$message_admin .= "Email : ".$email ."<br>";
-				$message_admin .= "Enquiry : ".$enquiry ."<br>";
+				$message_admin .= "E-Mail Address : ".$email ."<br>";
+				$message_admin .= "Subject: ".$phone ."<br>";
+				$message_admin .= "Message : ".$enquiry ."<br>";
 				
 				$mail_content_admin = CONTACT_US_ADMIN;
 				$message = str_replace("!!contact_us!!", $message_admin,$mail_content_admin);

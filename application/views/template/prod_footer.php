@@ -458,16 +458,9 @@
 				
 				</div>
 				<br />
-				<div class="form-box">
-					<div class="text">Phone: </div>
-					<div class="form">
-						<input type="text" name="contact_phone" id="contact_phone">
-					</div>
 				
-				</div>
-				<br />
 				<div class="form-box">
-					<div class="text">Email: </div>
+					<div class="text">E-Mail Address: </div>
 					<div class="form">
 						<input type="text" name="contact_email" id="contact_email">
 					</div>
@@ -475,7 +468,15 @@
 				</div>
 				<br />
 				<div class="form-box">
-					<div class="text">Enquiry: </div>
+					<div class="text">Subject: </div>
+					<div class="form">
+						<input type="text" name="contact_phone" id="contact_phone">
+					</div>
+				
+				</div>
+				<br />
+				<div class="form-box">
+					<div class="text">Message: </div>
 					<div class="form">
 						<textarea name="contact_enquiry" id="contact_enquiry"></textarea>
 					</div>
