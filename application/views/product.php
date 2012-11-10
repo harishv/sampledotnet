@@ -147,7 +147,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 			<!-- End comments here -->
 
 			<!-- Begin tabs here -->
-			<?php // include_once 'template/prod_footer_carousel.php';?>
+			<?php include_once 'template/prod_footer_carousel.php';?>
 			<!-- End tabs here -->
 
 		<!-- End column 2 -->

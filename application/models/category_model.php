@@ -136,9 +136,17 @@ class Category_Model extends CI_Model {
 		return false;
 	}
 
-	function get_footer_category(){
+	function get_footer_category($prod_id = 0){
 
-		$query= $this->db->query("select DISTINCT p.category_id,pc.prod_cat_name from products p , prod_categories pc  where p.featured = 1 and p.category_id = pc.id  and p.status_id = 1 limit 0,5");
+		if($prod_id != 0) {
+			// Get the category id's of product till the category parent id is 0.
+			// We will get parent category id.
+			// Now get all the child category id's
+
+			// select category_id from table where where id in (1, 2, 3);
+		}
+
+		$query= $this->db->query("select DISTINCT p.category_id, pc.prod_cat_name from products p , prod_categories pc  where p.featured = 1 and p.category_id = pc.id  and p.status_id = 1 limit 0,5");
 		if($query->num_rows() > 0){
 			$result = $query->result_array();
 

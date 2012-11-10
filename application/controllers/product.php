@@ -54,10 +54,10 @@ class Product extends CI_Controller {
 	public function product_views($product_id)
 	{
 		$data['update_data'] = array();
-		//$data = array();
+
 		$data['product_details'] = $this->product_model->get_product_details($product_id);
 		$data['comments'] = $this->product_model->get_comments($product_id);
-		//echo "<pre>";print_r($data['comments']);
+
 		if(isset($data['comments']) && $data['comments'] !=''){
 			foreach($data['comments'] as $comment_key => $comment_values){
 				$comment_updated = $this->common_model->date_diff($comment_values['modified_at'],"NOW");
@@ -67,11 +67,6 @@ class Product extends CI_Controller {
 
 		}
 
-		//print_r($data['update_data']);exit;
-	//	$data['updated_data'] = $updated_data;
-	//print_r($data['updated_data']);
-		
-			
 
 		$data['bread_crum'] = $this->category_model->get_bread_crums($data['product_details'][0]['category_id']);
 
@@ -83,6 +78,12 @@ class Product extends CI_Controller {
 		$cat_name = $data['bread_crum']['sub_cat_name'];
 
 		$data['page_title'] = $data['product_details'][0]['name'] . ' | ' . $cat_name;
+
+		$data['footer_category'] = $this->category_model->get_footer_category($product_id);
+
+		foreach($data['footer_category'] as $key=>$values){
+			$data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);
+		}
 
 		$this->load->view("template/prod_header", $data);
 		$this->load->view("product", $data);
