@@ -151,7 +151,7 @@ class Login extends CI_Controller {
 		$contact_details = $this->login_model->contact_us_details();
 		if(is_bool($contact_details)){
 			$return_json['status'] = "succuss";
-			$return_json['data'] = "Thanks for contacting sample.net. We will get back to you shortly.";
+			$return_json['data'] = "Thanks for contacting sample.net.";
 		}
 		if(is_string($contact_details)){
 			$return_json['failure'] = "failure";
