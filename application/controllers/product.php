@@ -79,7 +79,7 @@ class Product extends CI_Controller {
 
 		$data['page_title'] = $data['product_details'][0]['name'] . ' | ' . $cat_name;
 
-		$data['footer_category'] = $this->category_model->get_footer_category($product_id);
+		$data['footer_category'] = $this->category_model->get_footer_category($data['product_details'][0]['category_id']);
 
 		foreach($data['footer_category'] as $key=>$values){
 			$data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);

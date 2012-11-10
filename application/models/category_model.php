@@ -136,23 +136,48 @@ class Category_Model extends CI_Model {
 		return false;
 	}
 
-	function get_footer_category($prod_id = 0){
+	function get_footer_category($prod_cat_id = 0){
 
-		if($prod_id != 0) {
-			// Get the category id's of product till the category parent id is 0.
-			// We will get parent category id.
-			// Now get all the child category id's
+		if($prod_cat_id != 0) {
 
-			// select category_id from table where where id in (1, 2, 3);
+			$this->db->where('id', $prod_cat_id);
+			$query = $this->db->get('prod_categories');
+			$row = $query->row_array();
+
+			if ($row['parent_cat_id'] == 0) {
+				$cat_ids[] = $prod_cat_id;
+			} else {
+				$parent_cat_id = $row['parent_cat_id'];
+
+				$sub_cats = $this->get_sub_cat($parent_cat_id);
+
+				foreach ($sub_cats as $sub_cat) {
+					$cat_ids[] = $sub_cat['id'];
+				}
+			}
 		}
 
-		$query= $this->db->query("select DISTINCT p.category_id, pc.prod_cat_name from products p , prod_categories pc  where p.featured = 1 and p.category_id = pc.id  and p.status_id = 1 limit 0,5");
-		if($query->num_rows() > 0){
-			$result = $query->result_array();
+		// $query= $this->db->query("SELECT DISTINCT p.category_id, pc.prod_cat_name FROM products p , prod_categories pc where p.featured = 1 and p.category_id = pc.id and p.status_id = 1 limit 0,5");
+
+		$this->db->distinct();
+		$this->db->select('p.category_id, pc.prod_cat_name');
+		$this->db->from('products p , prod_categories pc');
+		$this->db->where('p.category_id = pc.id');
+		if (isset($cat_ids)) {
+			$this->db->where_in('pc.id', $cat_ids);
+		}
+		$this->db->where('p.status_id', 1);
+		$this->db->limit(5, 0);
+
+		$result = $this->db->get();
+
+		if($result->num_rows() > 0){
+			$result = $result->result_array();
 
 			return $result;
-		}else
+		} else {
 			return 0;
+		}
 	}
 
 	function get_footer_products($id){
