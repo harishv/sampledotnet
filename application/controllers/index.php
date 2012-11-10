@@ -47,7 +47,7 @@ class Index extends CI_Controller {
 		$data['featured_products'] = $this->category_model->get_featured_products();
 		$data['footer_category'] = $this->category_model->get_footer_category();
 
-		print_r($data['footer_category']); exit;
+		// print_r($data['footer_category']); exit;
 
 		foreach($data['footer_category'] as $key=>$values){
 			$data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);
