@@ -149,7 +149,7 @@ function validate_registerform() {
 		document.getElementById('errors_data_signup').innerHTML = $.trim(errors);
 		return false;
 	} else if (!validateEmail(email_address_obj)) {
-		errors += "Please enter valid email<br />";
+		errors += "Please enter valid Email<br />";
 		document.getElementById('errors_data_signup').innerHTML = "";
 		document.getElementById('errors_data_signup').innerHTML = $.trim(errors);
 		return false;
@@ -409,7 +409,7 @@ function validate_forgetpassword() {
 		document.getElementById('forget_errors_data').innerHTML = $.trim(errors);
 		return false;
 	} else if (!validateEmail(username_obj)) {
-		errors += "Please enter valid email<br />";
+		errors += "Please enter valid Email<br />";
 		document.getElementById('forget_errors_data').innerHTML = "";
 		document.getElementById('forget_errors_data').innerHTML = $.trim(errors);
 		return false;
@@ -486,7 +486,7 @@ function validate_sample() {
 		document.getElementById('sample_errors_data').innerHTML = $.trim(errors);
 		return false;
 	} else if (!validateEmail(email_obj)) {
-		errors += "Please enter valid email<br />";
+		errors += "Please enter valid Email<br />";
 		document.getElementById('sample_errors_data').innerHTML = "";
 		document.getElementById('sample_errors_data').innerHTML = $.trim(errors);
 		return false;
@@ -725,7 +725,7 @@ function validate_contactus(){
 		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
 		return false;
 	} else if (!validateEmail(contact_email_obj)) {
-		errors += "Please enter valid email<br />";
+		errors += "Please enter valid Email<br />";
 		document.getElementById('contact_errors_data').innerHTML = "";
 		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
 		return false;

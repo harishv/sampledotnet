@@ -99,5 +99,28 @@ Regards,<br/>
 Sample.net Team");
 
 
+define('CONTACT_US_ADMIN',"Hello,<br/><br/>
+
+Contact Details.<br/><br/>
+!!contact_us!!<br/><br/>
+
+
+
+Regards,<br/>
+Sample.net Team");
+
+define('CONTACT_US_USER',"Hello,<br/><br/>
+
+Thanks for contacting sample.net. We will get back to you shortly.
+<br/><br/>
+
+
+
+Regards,<br/>
+Sample.net Team");
+
+
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

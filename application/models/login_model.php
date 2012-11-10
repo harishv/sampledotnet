@@ -262,8 +262,36 @@ class Login_Model extends CI_Model {
 
 			$this->db->insert('contact_us' ,$data);
 			$affected_rows = $this->db->affected_rows();
+			if($affected_rows > 0){
+				$message_admin ='';
+				$this->email->to('admin@sample.net');
+				$this->email->from('admin@sample.net', 'admin');
+				$this->email->subject('Contact Us - Sample.net');
+				
+				$message_admin .= "Name : ".$name."<br>";
+				$message_admin .= "E-Mail Address : ".$email ."<br>";
+				$message_admin .= "Subject: ".$phone ."<br>";
+				$message_admin .= "Message : ".$enquiry ."<br>";
+				
+				$mail_content_admin = CONTACT_US_ADMIN;
+				$message = str_replace("!!contact_us!!", $message_admin,$mail_content_admin);
+				$this->email->message($message);
+				$this->email->send();
+
+
+				$this->email->to($email);
+				$this->email->from('admin@sample.net', 'admin');
+				$this->email->subject('Contact Us - Sample.net');
+				$content = CONTACT_US_USER;
+				$this->email->message($content);
+				$result = $this->email->send();
+				if($result)
+					return true;
+				return false;
+
+			}
 			
-			return true;
+			//return true;
 		}else
 			return $errors;
 
