@@ -439,7 +439,7 @@
 		<div id="lr-box-pass" >
 			<div class="top-bg">
 				<a href="#" class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
-				<div class="txt-1">Forgot Password?</div>
+				<div class="txt-1">Contact Us</div>
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
