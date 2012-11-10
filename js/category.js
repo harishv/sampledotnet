@@ -695,3 +695,88 @@ function validate_chanagepassword() {
 	}
 	return false;
 }
+
+
+
+function validate_contactus(){
+
+	var errors ='';
+	var contact_name_obj = document.getElementById('contact_name');
+	var contact_email_obj = document.getElementById('contact_email');
+	var contact_phone_obj = document.getElementById('contact_phone');
+	var contact_enquire_obj = document.getElementById('contact_enquiry');
+
+	if (!validate_isnull(contact_name_obj)) {
+
+		errors += "Name should not be null or empty<br >";
+		document.getElementById('contact_errors_data').innerHTML = "";
+		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
+		return false;
+	}
+
+	if (!validate_isnull(contact_email_obj)) {
+		errors += "Email should not be null or empty<br />";
+		document.getElementById('contact_errors_data').innerHTML = "";
+		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
+		return false;
+	} else if (contact_email_obj.value.length > 60) {
+		errors += "Email should not be more than 60 characters<br />";
+		document.getElementById('contact_errors_data').innerHTML = "";
+		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
+		return false;
+	} else if (!validateEmail(contact_email_obj)) {
+		errors += "Please enter valid email<br />";
+		document.getElementById('contact_errors_data').innerHTML = "";
+		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
+		return false;
+	}
+
+	if (!validate_isnull(contact_phone_obj)) {
+
+		errors += "Phone Number should not be null or empty<br >";
+		document.getElementById('contact_errors_data').innerHTML = "";
+		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
+		return false;
+	}
+
+	if (!validate_isnull(contact_enquire_obj)) {
+
+		errors += "Enquiry should not be null or empty<br >";
+		document.getElementById('contact_errors_data').innerHTML = "";
+		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
+		return false;
+	}
+
+		if ($.trim(errors) == '') {
+		$('#contact_errors_data').html("");
+		// Call check Login Ajax call
+		var customURL = base_url + "login/contactus";
+		var data = $('#contactus_form').serialize(true);
+
+		$.ajax({
+			url: customURL,
+			type: 'POST',
+			data: data,
+			dataType: 'json',
+			success: function(result) {
+
+
+				if (result.status == "succuss") {
+
+					$("#contact_errors_data").html(result.data);
+					$('#contactus_form').each(function() {
+						this.reset();
+					});
+
+					document.getElementById('contact_data').style.display = 'block';
+
+
+				}
+
+			}
+		});
+
+	}
+	return false;
+
+}

@@ -224,8 +224,49 @@ class Login_Model extends CI_Model {
 			
 			
 		}
+	
+	}
+
+	function contact_us_details(){
+
+		$current_date = date('Y-m-d H:i:s');
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$name = $this->input->post('contact_name');
+		$phone = $this->input->post('contact_phone');
+		$enquiry =$this->input->post('contact_enquiry');
+		$email = $this->input->post('contact_email');
+
+		$errors = "";
+
+		if(isset($name) && $name == ""){
+			$errors .= "Name Should dnot be empty<br />";
+		}
+		if(isset($phone) && $phone == ""){
+			$errors .= "phone Should not be empty<br />";
+		}
+		if(isset($enquiry) && $enquiry == ""){
+			$errors .= "Enquire Should not be empty<br />";
+		}
+
+		$email_valid = $this->user_validations->is_email($email);
+		if(is_string($email_valid))
+			$errors .= $email_valid."<br/>";
+
+		$data = array('name' => $name,
+					'phone' => $phone,
+					'email' => $email,
+					'enquiry' => $enquiry,
+					'created_at' => $current_date,
+					'created_from' => $ip);
+		if($errors == ''){
+
+			$this->db->insert('contact_us' ,$data);
+			$affected_rows = $this->db->affected_rows();
 			
-		
+			return true;
+		}else
+			return $errors;
+
 	}
 
 

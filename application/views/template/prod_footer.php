@@ -17,7 +17,8 @@
 					<?php echo anchor("", $this->lang->line("nav_documents")); ?>
 				</li>
 				<li class="last">
-					<?php echo anchor("", $this->lang->line("nav_contact_us")); ?>
+					<a href="#contact_us" name="modal" class='iframe'><?php echo $this->lang->line("nav_contact_us"); ?></a>
+					
 				</li>
 			</ul>
 			<p class="copy">&copy; <?php echo $this->lang->line("footer_copy_year") . " " . $this->lang->line("footer_brand_name"); ?></p>
@@ -434,6 +435,71 @@
 
 		</div>
 	</div>
+
+	<div id="contact_us" class="window">
+		<div id="lr-box-pass" >
+			<div class="top-bg">
+				<a href="#" class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
+				<div class="txt-1">Forgot Password?</div>
+				<!-- <div class="txt-2">or Sign in with </div> -->
+			<!-- top-bg -->
+			</div>
+			<div class="middle-bg">
+				<div id="contact_errors_data" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
+				<div id="contact_data"  class ="success_data" style="display:none;"><?php echo (isset($success)) ? $success : '';?></div>
+				<?php
+					$attributes = array('id' => 'contactus_form', 'name'=>'contactus_form', 'onsubmit'=>'return validate_contactus()');
+				?>
+				<?php echo form_open('login/contactus/',$attributes); ?>
+				<div class="form-box">
+					<div class="text">Name: </div>
+					<div class="form">
+						<input type="text" name="contact_name" id="contact_name">
+					</div>
+				
+				</div>
+				<br />
+				<div class="form-box">
+					<div class="text">Phone: </div>
+					<div class="form">
+						<input type="text" name="contact_phone" id="contact_phone">
+					</div>
+				
+				</div>
+				<br />
+				<div class="form-box">
+					<div class="text">Email: </div>
+					<div class="form">
+						<input type="text" name="contact_email" id="contact_email">
+					</div>
+				
+				</div>
+				<br />
+				<div class="form-box">
+					<div class="text">Enquiry: </div>
+					<div class="form">
+						<textarea name="contact_enquiry" id="contact_enquiry"></textarea>
+					</div>
+				
+				</div>
+
+				<br />
+
+				<div class="login-box">
+					<input type="submit" value="Submit" />
+
+				</div>
+				<?php echo form_close();?>
+				<br />
+
+
+			</div>
+			<!-- top-bg -->
+			<div class="bottom-bg"></div>
+
+		</div>
+	</div>
+
 
 	<div id="mask"></div>
 </div>

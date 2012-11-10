@@ -144,6 +144,23 @@ class Login extends CI_Controller {
 
 	}
 
+	function contactus(){
+		$data['errors'] = '';
+		$return_json= array('status' => "error");
+		$data['errors'] = "";
+		$contact_details = $this->login_model->contact_us_details();
+		if(is_bool($contact_details)){
+			$return_json['status'] = "succuss";
+			$return_json['data'] = "Thanks for contacting sample.net. We will get back to you shortly.";
+		}
+		if(is_string($contact_details)){
+			$return_json['failure'] = "failure";
+			$return_json['data'] = $contact_details;
+		}
+
+		echo json_encode($return_json);
+	}
+
 	function logout(){
 
 		$this->session->unset_userdata('user');
