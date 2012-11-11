@@ -10,6 +10,7 @@ $lang["brand_name"]					=	"Sample.net";
 $lang["brand_name_admin"]			=	"Sample.net Admin";
 $lang["xpedient_digital"]			=	"Xpedient Digital Media";
 $lang["title"]						=	$lang["brand_name"];
+$lang["index_title"]				=	"Free Product Samples, Documents";
 $lang["title_admin"]				=	$lang["brand_name"] . " | Administration";
 
 $lang["header_colocation_america"]	=	"colocation america";

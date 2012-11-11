@@ -4,8 +4,22 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<?php
+			if (isset($page_meta_data) && $page_meta_data != '') {
+				echo $page_meta_data;
+			}
+		?>
 
-		<title><?php echo (isset($page_title)) ? $page_title . ' - ' : ''; echo $this->lang->line("title"); ?></title>
+		<title>
+			<?php
+				if (isset($page_title) && $page_title == $this->lang->line('index_title')) {
+					echo $page_title;
+				} else {
+					echo (isset($page_title)) ? $page_title . ' - ' : '';
+					echo $this->lang->line("title");
+				}
+			?>
+		</title>
 
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>favicon.ico" />
 
@@ -14,15 +28,13 @@
 		<link href="<?php echo base_url("css"); ?>/style.css" type="text/css" rel="stylesheet" />
 		<link href="<?php echo base_url("css"); ?>/skin.css" type="text/css" rel="stylesheet" />
 
-		<!-- <script src="<?php echo base_url("js"); ?>/jquery-1.7.1.min.js"></script> -->
-		<script type="text/javascript">
-		/* global variable for the root path */
-		var base_url = "<?php echo base_url();?>";
-		var image_url ="<?php echo base_url().'img/';?>";
+		<script src="<?php echo base_url("js"); ?>/jquery-1.4.2.min.js"></script>
 
+		<script type="text/javascript">
+			/* global variable for the root path */
+			var base_url = "<?php echo base_url();?>", image_url = "<?php echo base_url().'img/';?>";
 		</script>
 
-		<script src="<?php echo base_url("js"); ?>/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery-latest.pack.js"></script>
 		<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.datePicker.js"></script>
 		<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery.raty.min.js"></script>

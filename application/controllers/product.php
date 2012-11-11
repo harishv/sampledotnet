@@ -77,13 +77,16 @@ class Product extends CI_Controller {
 
 		$cat_name = $data['bread_crum']['sub_cat_name'];
 
-		$data['page_title'] = $data['product_details'][0]['name'] . ' | ' . $cat_name;
 
 		$data['footer_category'] = $this->category_model->get_footer_category($data['product_details'][0]['category_id']);
 
 		foreach($data['footer_category'] as $key=>$values){
 			$data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);
 		}
+
+		$data['page_title'] = $data['product_details'][0]['name'] . ' | ' . $cat_name;
+
+		$data['page_meta_data'] = '<meta property="og:image" content="' . base_url(). PROD_IMG_PATH . $data['product_details'][0]['image'] . '" />';
 
 		$this->load->view("template/prod_header", $data);
 		$this->load->view("product", $data);

@@ -33,7 +33,7 @@ if(isset($products) && $products != '' && count($products) > 0) { ?>
 			<!-- <a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_value['id'];?> ','<?php echo $product_value['grab_url'];?>')">grab it now!</a> -->
 				<div class="social clear">
 					<span class='st_facebook'></span>
-					<span class='st_twitter'></span>
+					<span class='st_twitter' st_via='sampledotnet'></span>
 					<span class='st_googleplus'></span>
 					<span class='st_sharethis'></span>
 				</div>
