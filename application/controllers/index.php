@@ -57,6 +57,8 @@ class Index extends CI_Controller {
 			$data['product_updated'] = $this->common_model->date_diff($data['products'][0]['modified_at'],"NOW");
 
 		$data['render'] = false;
+		$data['page_title'] = $this->lang->line('index_title');
+
 		$this->load->view("template/prod_header", $data);
 		$this->load->view("prod_index_view",$data);
 		$this->load->view("template/prod_footer",$data);

@@ -80,7 +80,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 					<div class="hgt-15px wid_100"></div>
 						<div class="social-networks-div hgt-15px wid_100">
 							<span class='st_facebook_button' displayText='Facebook'></span>
-							<span class='st_twitter_button' displayText='Tweet'></span>
+							<span class='st_twitter_button' st_via='sampledotnet' displayText='Tweet'></span>
 							<span class='st_linkedin_button' displayText='LinkedIn'></span>
 							<span class='st_googleplus_button' displayText='Share'></span>
 							<span class='st_sharethis_button' displayText='ShareThis'></span>
