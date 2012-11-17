@@ -70,22 +70,28 @@ class Category_Model extends CI_Model {
 	// get inital product based on the modified date
 	function get_products($cat_id = 0, $num = 0, $offset = 10){
 
-
-		$this->db->select('*');
+		$selected_country = $this->session->userdata('selected_country');
+		/*$this->db->select('*');
 		$this->db->from('products');
 		$this->db->where('status_id', 1);
+		$this->db->where_in('valid_countries',$selected_country);
 
 		if($cat_id !=0)
 			$this->db->where('category_id',$cat_id);
 
 		$this->db->order_by("modified_at", "desc");
 		$this->db->limit($offset,$num);
-		$result = $this->db->get();
+		$result = $this->db->get();*/
+		if($cat_id !=0){
+			$query = $this->db->query("select * from products where status_id = 1 and category_id = ".$cat_id ." and valid_countries IN (".$selected_country.") order by modified_at desc limit ".$num .", ".$offset);
+		}else{
+			$query = $this->db->query("select * from products where status_id = 1 and valid_countries IN (".$selected_country.") order by modified_at desc limit ".$num .", ".$offset);
+		}
 		//echo $this->db->last_query();
-		if ($result->num_rows() == 0) {
+		if ($query->num_rows() == 0) {
 			return false;
 		} else {
-			$products = $result->result_array();
+			$products = $query->result_array();
 			
 
 			if($this->session->userdata('selected_country')){
@@ -248,17 +254,36 @@ class Category_Model extends CI_Model {
 
 	function getAllCount(){
 
-		$prod_arr = $this->get_products();
+		/*$prod_arr = $this->get_products();
 
 		if($prod_arr){
 			return count($prod_arr);
 		} else {
 			return 0;
-		}
+		}*/
 
-		// $query=$this->db->query("select * from products  where status_id = 1 order by modified_at desc");
-		// $count = $query->num_rows();
-		// return $count;
+		$selected_country = $this->session->userdata('selected_country');
+
+		$query=$this->db->query("select * from products  where status_id = 1 and valid_countries IN (".$selected_country.") order by modified_at desc");
+		//echo $this->db->last_query();
+		if ($query->num_rows() == 0) {
+			return false;
+		} else 
+			$products = $query->result_array();
+
+		
+		if($this->session->userdata('selected_country')){
+  				$selected_country = $this->session->userdata('selected_country');
+  				$result = array();
+				foreach ($products as $prod_key => $prod_data) {
+					$valid_countries = explode(',', $prod_data['valid_countries']);
+					if (in_array($selected_country, $valid_countries)) {
+						array_push($result, $prod_data);
+					}
+				}
+				
+				return count($result);
+  			}
 
 	}
 
@@ -272,7 +297,10 @@ class Category_Model extends CI_Model {
 		} else {
 			return 0;
 		}*/
-		$query=$this->db->query("select * from products  where category_id = ". $id ." and status_id = 1 order by modified_at desc");
+		$selected_country = $this->session->userdata('selected_country');
+
+		$query=$this->db->query("select * from products  where category_id = ". $id ." and status_id = 1 and valid_countries IN (".$selected_country.") order by modified_at desc");
+		//echo $this->db->last_query();
 		if ($query->num_rows() == 0) {
 			return false;
 		} else 
@@ -296,29 +324,7 @@ class Category_Model extends CI_Model {
 
 	}
 
-	function get_product_count($cat_id){
-		$query=$this->db->query("select * from products  where category_id = ". $cat_id ." and status_id = 1 order by modified_at desc");
-		if ($query->num_rows() == 0) {
-			return false;
-		} else 
-			$products = $query->result_array();
-
-		
-		if($this->session->userdata('selected_country')){
-  				$selected_country = $this->session->userdata('selected_country');
-  				$result = array();
-				foreach ($products as $prod_key => $prod_data) {
-					$valid_countries = explode(',', $prod_data['valid_countries']);
-					if (in_array($selected_country, $valid_countries)) {
-						array_push($result, $prod_data);
-					}
-				}
-				
-
-				return count($result);
-  			}
-
-	}
+	
 
 	function get_country_prod_count($cat_id, $country_id){
 

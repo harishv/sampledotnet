@@ -37,7 +37,7 @@ class Index extends CI_Controller {
 
 		$config['cur_tag_open']  ='<a class="current">';
 		$config['cur_tag_close'] ='</a>';
-
+		//print_r($config);
 		$this->pagination->initialize($config);
 		$data['category'] = $this->category_model->get_category();
 
@@ -46,6 +46,7 @@ class Index extends CI_Controller {
 		$data["countries"] = $this->common_model->get_countries();
 		$data['featured_products'] = $this->category_model->get_featured_products();
 		$data['footer_category'] = $this->category_model->get_footer_category();
+		$data['product_count'] = $config['total_rows'];
 
 		// print_r($data['footer_category']); exit;
 

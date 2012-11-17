@@ -29,14 +29,13 @@ class Category extends CI_Controller {
 		$config1['uri_segment'] = 4;
 
 		$this->pagination->initialize($config1);
-
-		
 		$data['products'] = $this->category_model->get_products($cat_id, $id, $config1['per_page']);
 		$data['bread_crum'] = $this->category_model->get_bread_crums($cat_id);
-		$data['product_count'] = $this->category_model->get_product_count($cat_id);
+		$data['product_count'] = $config1['total_rows'];
 
-		
-		//print_r($data['product_count']);
+
+
+		//echo "<pre>";print_r($data['products']);
 
 		//$data['slider'] = $this->load->view('slider', $data, TRUE);
 
