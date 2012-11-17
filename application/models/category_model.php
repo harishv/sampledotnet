@@ -70,7 +70,8 @@ class Category_Model extends CI_Model {
 	// get inital product based on the modified date
 	function get_products($cat_id = 0, $num = 0, $offset = 10){
 
-		$selected_country = $this->session->userdata('selected_country');
+		// $selected_country = $this->session->userdata('selected_country');
+		$selected_country = ($this->session->userdata('selected_country')) ? $this->session->userdata('selected_country'): 226;
 		/*$this->db->select('*');
 		$this->db->from('products');
 		$this->db->where('status_id', 1);
@@ -262,7 +263,7 @@ class Category_Model extends CI_Model {
 			return 0;
 		}*/
 
-		$selected_country = $this->session->userdata('selected_country');
+		$selected_country = ($this->session->userdata('selected_country')) ? $this->session->userdata('selected_country'): 226;
 
 		$query=$this->db->query("select * from products  where status_id = 1 and valid_countries IN (".$selected_country.") order by modified_at desc");
 		//echo $this->db->last_query();
@@ -297,8 +298,10 @@ class Category_Model extends CI_Model {
 		} else {
 			return 0;
 		}*/
-		$selected_country = $this->session->userdata('selected_country');
+		// $selected_country = $this->session->userdata('selected_country');
 
+		$selected_country = ($this->session->userdata('selected_country')) ? $this->session->userdata('selected_country'): 226;
+		
 		$query=$this->db->query("select * from products  where category_id = ". $id ." and status_id = 1 and valid_countries IN (".$selected_country.") order by modified_at desc");
 		//echo $this->db->last_query();
 		if ($query->num_rows() == 0) {
