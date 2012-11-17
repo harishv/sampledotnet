@@ -30,10 +30,13 @@ class Category extends CI_Controller {
 
 		$this->pagination->initialize($config1);
 
-
+		
 		$data['products'] = $this->category_model->get_products($cat_id, $id, $config1['per_page']);
 		$data['bread_crum'] = $this->category_model->get_bread_crums($cat_id);
+		$data['product_count'] = $this->category_model->get_product_count($cat_id);
 
+		
+		//print_r($data['product_count']);
 
 		//$data['slider'] = $this->load->view('slider', $data, TRUE);
 

@@ -32,15 +32,16 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
               <p class="head mgn-0">
                  <?php $image_properties = array('src' => 'img/time-icon.png','alt' => 'time','class'=>'flt-l mgn-10l mgn-r');
                 echo img($image_properties);?>
-                Today's Free Samples <em>We have 127 Free Coupons for you today</em></p>
+                Today's Free Samples <em>We have <?php if(isset($product_count) && $product_count !='') echo $product_count;?> Free Coupons for you today</em></p>
 
               <?php include_once 'products_thumbs_view.php'; ?>
 
-              <div class="pages">
-                <?php echo $this->pagination->create_links();?>
-              </div>
+              
 
           </div>
+          <div class="pages">
+                <?php echo $this->pagination->create_links();?>
+              </div>
 
 
       	<!-- Begin tabs here -->
