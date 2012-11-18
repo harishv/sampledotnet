@@ -264,7 +264,7 @@ class Login_Model extends CI_Model {
 			$affected_rows = $this->db->affected_rows();
 			if($affected_rows > 0){
 				$message_admin ='';
-				$this->email->to('admin@sample.net');
+				$this->email->to('sudhakarg@koderoom.com');
 				//$this->email->to('sudhakarg@koderoom.com');
 				$this->email->from('admin@sample.net', 'admin');
 				$this->email->subject('Contact Us - Sample.net');

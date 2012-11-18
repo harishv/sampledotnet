@@ -145,20 +145,22 @@ class Login extends CI_Controller {
 	}
 
 	function contactus(){
-		$data['errors'] = '';
-		$return_json= array('status' => "error");
-		$data['errors'] = "";
+		
+		
 		$contact_details = $this->login_model->contact_us_details();
 		if(is_bool($contact_details)){
-			$return_json['status'] = "succuss";
-			$return_json['data'] = "Thanks for contacting sample.net.";
+			
+			$newdata = array(  	'succuss_msg'  =>'Thanks for contacting sample.net.');
+	 		$this->session->set_userdata($newdata);
+			redirect(base_url().'contactus', 'refresh');
 		}
 		if(is_string($contact_details)){
-			$return_json['failure'] = "failure";
-			$return_json['data'] = $contact_details;
+			$newdata = array(  	'error_msg'  => $contact_details);
+			$this->session->set_userdata($newdata);
+			redirect(base_url().'contactus', 'refresh');
 		}
 
-		echo json_encode($return_json);
+		//echo json_encode($return_json);
 	}
 
 	function logout(){

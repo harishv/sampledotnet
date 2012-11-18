@@ -81,7 +81,9 @@
 						$('#dialog').css("display", "none");
 					}
 					if ($('#register').css("display") == "block") {
+
 						$('#register').css("display", "none");
+						
 					}
 					if ($('#forgotpassword').css("display") == "block") {
 						$('#forgotpassword').css("display", "none");

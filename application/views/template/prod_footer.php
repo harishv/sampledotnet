@@ -17,7 +17,7 @@
 					<?php echo anchor("", $this->lang->line("nav_documents")); ?>
 				</li>
 				<li class="last">
-					<a href="#contact_us" name="modal" class='iframe'><?php echo $this->lang->line("nav_contact_us"); ?></a>
+					<a href="<?php echo base_url().'contactus';?>" class='iframe'><?php echo $this->lang->line("nav_contact_us"); ?></a>
 				</li>
 			</ul>
 			<p class="copy">&copy; <?php echo $this->lang->line("footer_copy_year") . " " . $this->lang->line("footer_brand_name"); ?></p>
@@ -80,6 +80,7 @@
 	</div>
 
 	<div id="register" class="window">
+		
 		<div id="lr-box-reg">
 			<div class="top-bg">
 				<a href="#" class="close"><img src="<?php echo base_url().'img/close.png';?>" alt="close_window" border="0" class="close_button" /></a>
@@ -100,10 +101,11 @@
 					$attributes = array('id' => 'userlogin', 'name'=>'userlogin', 'onsubmit'=>'return validate_registerform()');
 				?>
 				<?php echo form_open('register/register_user/',$attributes); ?>
+
 				<div class="form-box">
 					<div class="text">First Name: </div>
 					<div class="form">
-						<input type="text"  name="first_name" id="first_name" />
+						<input type="text"  name="first_name" id="first_name" value=""/>
 					</div>
 				<!-- form-box -->
 				</div>
@@ -111,7 +113,7 @@
 				<div class="form-box">
 					<div class="text">Last Name: </div>
 					<div class="form">
-						<input type="text"  name="last_name" id="last_name" />
+						<input type="text"  name="last_name" id="last_name" value=""/>
 					</div>
 				<!-- form-box -->
 				</div>
@@ -119,7 +121,7 @@
 				<div class="form-box" id="email_reg">
 					<div class="text">Email: </div>
 					<div class="form">
-						<input type="text" name="email_add"  id="email_add" />
+						<input type="text" name="email_add"  id="email_add" value=""/>
 					</div>
 				<!-- form-box -->
 				</div>
@@ -127,14 +129,14 @@
 				<div class="form-box" id="pass_reg" >
 					<div class="text">Password: </div>
 					<div class="form">
-						<input type="password" name="pass" id="pass" />
+						<input type="password" name="pass" id="pass" value=""/>
 					</div>
 				<!-- form-box -->
 				</div>
 				<br />
 				<div class="form-box" id="re_pass_reg" >
 					<div class="text">Confirm Password:</div>
-					<div class="form"><input type="password"  name="re_pass" id="re_pass" ></div>
+					<div class="form"><input type="password"  name="re_pass" id="re_pass" value="" ></div>
 				<!-- form-box -->
 				</div>
 				<br />

@@ -700,6 +700,7 @@ function validate_chanagepassword() {
 
 function validate_contactus(){
 
+	
 	var errors ='';
 	var contact_name_obj = document.getElementById('contact_name');
 	var contact_email_obj = document.getElementById('contact_email');
@@ -709,45 +710,42 @@ function validate_contactus(){
 	if (!validate_isnull(contact_name_obj)) {
 
 		errors += "Name should not be null or empty<br >";
-		document.getElementById('contact_errors_data').innerHTML = "";
-		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
-		return false;
+		
 	}
 
 	if (!validate_isnull(contact_email_obj)) {
 		errors += "Email should not be null or empty<br />";
-		document.getElementById('contact_errors_data').innerHTML = "";
-		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
-		return false;
+		
+		
 	} else if (contact_email_obj.value.length > 60) {
 		errors += "Email should not be more than 60 characters<br />";
-		document.getElementById('contact_errors_data').innerHTML = "";
-		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
-		return false;
+		
 	} else if (!validateEmail(contact_email_obj)) {
 		errors += "Please enter valid Email<br />";
-		document.getElementById('contact_errors_data').innerHTML = "";
-		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
-		return false;
+		
 	}
 
 	if (!validate_isnull(contact_phone_obj)) {
 
 		errors += "Phone Number should not be null or empty<br >";
-		document.getElementById('contact_errors_data').innerHTML = "";
-		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
-		return false;
+		
 	}
 
 	if (!validate_isnull(contact_enquire_obj)) {
 
 		errors += "Enquiry should not be null or empty<br >";
+		
+	}
+
+
+	if(errors != ''){
 		document.getElementById('contact_errors_data').innerHTML = "";
 		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
 		return false;
-	}
 
-		if ($.trim(errors) == '') {
+	}
+	return true;
+		/*if ($.trim(errors) == '') {
 		$('#contact_errors_data').html("");
 		// Call check Login Ajax call
 		var customURL = base_url + "login/contactus";
@@ -776,7 +774,7 @@ function validate_contactus(){
 			}
 		});
 
-	}
-	return false;
+	}*/
+	//return false;
 
 }
