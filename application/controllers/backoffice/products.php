@@ -44,13 +44,13 @@ class Products extends CI_Controller {
 		}
 
 		$data["products"] = $this->Admin_Products_Model->get_products();
+		// echo implode(", ", $this->Common_Model->get_country_names(implode(",", $this->Common_Model->get_valid_countries(1)))); exit;
+		// print_r($this->Common_Model->get_valid_countries(1)); exit;
 		//$data["comments"] = $this->Admin_Products_Model->get_comment_status();
 		$this->load->view("template/admin_header");
 		$this->load->view("admin_products_list_view", $data);
 		$this->load->view("template/admin_footer");
 	}
-
-
 
 	public function sample_list(){
 

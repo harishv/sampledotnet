@@ -15,6 +15,29 @@ class Common_Model extends CI_Model {
 		return htmlentities(stripslashes($data));
 	}
 
+	function get_valid_countries($prod_id)
+	{
+		$this->db->select('country_id');
+		$this->db->from('prod_countries');
+		$this->db->where('prod_id', $prod_id);
+
+		$result = $this->db->get();
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			$result_array = $result->result_array();
+
+			foreach ($result_array as $country) {
+				$ids[] = $country['country_id'];
+			}
+
+			return $ids;
+		}
+
+		return false;
+	}
+
 	function get_country_names($country_ids_str)
 	{
 		$country_ids_str = trim($country_ids_str);

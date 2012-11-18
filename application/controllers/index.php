@@ -32,7 +32,7 @@ class Index extends CI_Controller {
 			$id = 0;
 
 		$config['base_url'] = base_url().'index/index';
-		$config['total_rows'] = $this->category_model->getAllCount();
+		$config['total_rows'] = $this->category_model->getCount();
 		$config['per_page'] = 10;
 
 		$config['cur_tag_open']  ='<a class="current">';
@@ -41,7 +41,8 @@ class Index extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['category'] = $this->category_model->get_category();
 
-		$data['products'] = $this->category_model->get_products($cat_id = 0,$id,$config['per_page']);
+		$data['products'] = $this->category_model->get_products($cat_id = 0, $id, $config['per_page']);
+		// echo "<pre>"; print_r($data['products']); exit();
 
 		$data["countries"] = $this->common_model->get_countries();
 		$data['featured_products'] = $this->category_model->get_featured_products();

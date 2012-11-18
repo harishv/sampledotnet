@@ -131,7 +131,7 @@
 													data-original-title="<?php echo htmlentities(strip_slashes($product["name"])); ?>"><?php echo strip_slashes($product["name"]); ?>
 												</span>
 												<script type="text/javascript">
-													$("#product_<?php echo $product['id']; ?>").popover({ offset: 10, content: "<dl style='margin: 0px; padding: 0px;'><dt><?php echo $this->lang->line("admin_prod_list_tbl_category"); ?></dt><dd><?php echo $this->Common_Model->get_prod_cat_name($product["category_id"]);?></dd><dt><?php echo $this->lang->line("admin_prod_list_tbl_desc"); ?></dt><dd><?php echo $product["description"]; ?></dd><dt><?php echo $this->lang->line("admin_prod_list_tbl_valid_countries"); ?></dt><dd><?php echo implode(", ", $this->Common_Model->get_country_names($product["valid_countries"])); ?></dd></dl>" });
+													$("#product_<?php echo $product['id']; ?>").popover({ offset: 10, content: "<dl style='margin: 0px; padding: 0px;'><dt><?php echo $this->lang->line("admin_prod_list_tbl_category"); ?></dt><dd><?php echo $this->Common_Model->get_prod_cat_name($product["category_id"]);?></dd><dt><?php echo $this->lang->line("admin_prod_list_tbl_desc"); ?></dt><dd><?php echo $product["description"]; ?></dd><dt><?php echo $this->lang->line("admin_prod_list_tbl_valid_countries"); ?></dt><dd><?php echo implode(", ", $this->Common_Model->get_country_names(implode(",", $this->Common_Model->get_valid_countries($product["id"])))); ?></dd></dl>" });
 												</script>
 											</h4>
 										</div>

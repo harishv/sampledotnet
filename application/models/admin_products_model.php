@@ -13,12 +13,6 @@ class Admin_Products_Model extends CI_Model {
 
 		$result = $this->db->query("SELECT products.*,COUNT(comments.prod_id) AS comments_count FROM products LEFT JOIN comments ON products.id = comments.prod_id  GROUP BY products.id ORDER BY products.modified_at DESC");
 
-		// $this->db->select('*');
-		// $this->db->from('products');
-		// $this->db->order_by("modified_at", "desc");
-
-		// $result = $this->db->get();
-
 		if ($result->num_rows() == 0) {
 			return false;
 		} else {
@@ -95,7 +89,7 @@ class Admin_Products_Model extends CI_Model {
 	}
 
 	function get_comment_details($id){
-		
+
 		$query = $this->db->query("select * from comments where id = ".$id);
 		if ($query->num_rows() > 0)
 			return $query->result_array();
@@ -141,7 +135,7 @@ class Admin_Products_Model extends CI_Model {
 			$this->db->update('comments', $data);
 
 
-			
+
 
 			$affected_rows = $this->db->affected_rows();
 
@@ -326,62 +320,61 @@ class Admin_Products_Model extends CI_Model {
 
 	function cleanText($str){
 
-$str = str_replace("Ñ" ,"&#209;", $str);
-//$str =  preg_replace('/Ñ/g',"|&#209;|", $str);
+		$str = str_replace("Ñ" ,"&#209;", $str);
+		//$str =  preg_replace('/Ñ/g',"|&#209;|", $str);
 
-//echo "Text BEGIN ".$str."  --- ".bin2hex ("Ñ")."\n<BR>";     // d1
+		//echo "Text BEGIN ".$str."  --- ".bin2hex ("Ñ")."\n<BR>";     // d1
 
-/*
-for($i = 0 ; $i < strlen($str) ; $i++){
-echo "".$str{$i}."  - ". bin2hex ( $str{$i})."<BR>";
-}
-*/
+		/*
+		for($i = 0 ; $i < strlen($str) ; $i++){
+		echo "".$str{$i}."  - ". bin2hex ( $str{$i})."<BR>";
+		}
+		*/
 
-$str = str_replace("ñ" ,"&#241;", $str);
-$str = str_replace("ñ" ,"&#241;", $str);
-$str = str_replace("Á","&#193;", $str);
-$str = str_replace("á","&#225;", $str);
-$str = str_replace("É","&#201;", $str);
-$str = str_replace("é","&#233;", $str);
+		$str = str_replace("ñ" ,"&#241;", $str);
+		$str = str_replace("ñ" ,"&#241;", $str);
+		$str = str_replace("Á","&#193;", $str);
+		$str = str_replace("á","&#225;", $str);
+		$str = str_replace("É","&#201;", $str);
+		$str = str_replace("é","&#233;", $str);
 
-$str = str_replace("ú","&#250;", $str);
+		$str = str_replace("ú","&#250;", $str);
 
-$str = str_replace("ù","&#249;", $str);
-$str = str_replace("Í","&#205;", $str);
-$str = str_replace("í","&#237;", $str);
-$str = str_replace("Ó","&#211;", $str);
-$str = str_replace("ó","&#243;", $str);
-$str = str_replace("“","&#8220;", $str);
+		$str = str_replace("ù","&#249;", $str);
+		$str = str_replace("Í","&#205;", $str);
+		$str = str_replace("í","&#237;", $str);
+		$str = str_replace("Ó","&#211;", $str);
+		$str = str_replace("ó","&#243;", $str);
+		$str = str_replace("“","&#8220;", $str);
 
-$str = str_replace("”","&#8221;", $str);
+		$str = str_replace("”","&#8221;", $str);
 
-$str = str_replace("‘","&#8216;", $str);
-$str = str_replace("’","&#8217;", $str);
-$str = str_replace("—","&#8212;", $str);
+		$str = str_replace("‘","&#8216;", $str);
+		$str = str_replace("’","&#8217;", $str);
+		$str = str_replace("—","&#8212;", $str);
 
-$str = str_replace("–","&#8211;", $str);
-$str = str_replace("™","&trade;", $str);
-$str = str_replace("ü","&#252;", $str);
-$str = str_replace("Ü","&#220;", $str);
-$str = str_replace("Ê","&#202;", $str);
-$str = str_replace("ê","&#238;", $str);
-$str = str_replace("Ç","&#199;", $str);
-$str = str_replace("ç","&#231;", $str);
-$str = str_replace("È","&#200;", $str);
-$str = str_replace("è","&#232;", $str);
-$str = str_replace("Â", "&#194;", $str);
-$str = str_replace("â", "&#226;", $str);
-$str = str_replace("•","&#149;" , $str);
+		$str = str_replace("–","&#8211;", $str);
+		$str = str_replace("™","&trade;", $str);
+		$str = str_replace("ü","&#252;", $str);
+		$str = str_replace("Ü","&#220;", $str);
+		$str = str_replace("Ê","&#202;", $str);
+		$str = str_replace("ê","&#238;", $str);
+		$str = str_replace("Ç","&#199;", $str);
+		$str = str_replace("ç","&#231;", $str);
+		$str = str_replace("È","&#200;", $str);
+		$str = str_replace("è","&#232;", $str);
+		$str = str_replace("Â", "&#194;", $str);
+		$str = str_replace("â", "&#226;", $str);
+		$str = str_replace("•","&#149;" , $str);
 
 
-return $str;
+		return $str;
 
-}
+	}
 
 	function manage_product($type)
 	{
 
-		
 		extract($this->input->post());
 
 		$user = $this->session->userdata("admin_user");
@@ -550,9 +543,9 @@ return $str;
 
 			// Prepare valid countries record
 
-			
+
 			$valid_countries = implode(",", $valid_country_ids);
-			
+
 
 			$product_information = array (	'name' => htmlspecialchars(htmlentities($prod_name,ENT_QUOTES)),
 											'category_id' => intval($prod_category_id),
@@ -561,7 +554,6 @@ return $str;
 											'grab_url' => $prod_grab_url,
 											'featured' => $prod_featured,
 											'only_today' => $prod_only_today,
-											'valid_countries' => $valid_countries,
 											'modified_at' => $current_date,
 											'modified_from' => $ip,
 											'modified_by' => $user["id"] );
@@ -585,7 +577,7 @@ return $str;
 					$this->db->insert('prod_countries', $country_information);
 
 				}
-				
+
 			} else if ($type == "edit"){
 
 				$this->db->where('id', intval($prod_id));
@@ -604,9 +596,9 @@ return $str;
 					$country_information['modified_at'] = $current_date;
 					$country_information['country_id'] = $values;
 					$this->db->insert('prod_countries', $country_information);
-					
+
 				}
-				
+
 			}
 
 			$affected_rows = $this->db->affected_rows();

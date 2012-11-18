@@ -283,6 +283,8 @@ textarea { background:#fff; border:1px solid #e8e8e8; width:95%; padding:2% }
 .comments p { font-size:11px; line-height:16px }
 .comments p strong, .comments p span { color:#032a6b }
 .links{float:left;width:100%;padding:5px 0 10px}
+.links img { margin: 0 3px; }
+
 /* slider */
 .item {
     float: left;

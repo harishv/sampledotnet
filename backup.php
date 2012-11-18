@@ -12,7 +12,7 @@ define('HOST_NAME','localhost');
 define('USER_NAME','root');
 define('PASSWORD','abc123');
 //define('PASSWORD','(kmbh^&thjKy7gs');
-define('DATABASE','sample');
+define('DATABASE','sample.net');
 
 
 // Initialize variables
