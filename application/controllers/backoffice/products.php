@@ -26,6 +26,8 @@ class Products extends CI_Controller {
 
 	public function products_list()
 	{
+		
+
 		// Load the success or error values(if any)
 		if($this->session->userdata('products_upload_errors')){
 			$data['errors'] = $this->session->userdata('products_upload_errors');
@@ -141,6 +143,7 @@ class Products extends CI_Controller {
 	public function category_change_status()
 	{
 		echo $this->Admin_Products_Model->change_category_status();
+		
 	}
 
 	public function products_manage($id = false)

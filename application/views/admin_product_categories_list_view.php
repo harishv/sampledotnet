@@ -59,14 +59,21 @@
 		return false;
 	}
 
-	function delete_category (prod_cat_id) {
-		var choice = confirm('Are you sure.\nYou want to Delete Category.?');
+	function delete_category (prod_cat_id,status) {
+		
+		if(status == 0){
+			alert("Please active your category to Delete the Category ");
+			return false;
+		}else {
 
-		if (choice) {
-			change_status(prod_cat_id, true);
+			var choice = confirm('Are you sure.\nYou want to Delete Category.?');
+
+			if (choice) {
+				change_status(prod_cat_id, true);
+			}
+			return false;	
 		}
 
-		return false;
 	}
 
 </script>
@@ -106,6 +113,7 @@
 			</div>
 
 			<?php
+				$logged_in_user = $this->session->userdata('admin_user');
 				if (isset($categories) && $categories && count($categories) > 0) {
 					$tableCount = 1;
 			?>
@@ -149,11 +157,13 @@
 									</td>
 									<td>
 										<?php echo anchor(ADMINFOLDER . "/products/categories_manage/" . $category["id"], '<i class="icon-edit icon-white"></i> <b>'.$this->lang->line('admin_prod_cat_edit').'</b>', array ("class" => "btn btn-mini btn-success")); ?>
-										<span class="del_btn_<?php echo $category["id"]; ?>">
-											<?php if ($category["status_id"] != 2) {
-												echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_cat_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_category(".$category['id'].")"));
-											} ?>
-										</span>
+										<?php if($logged_in_user['admin_name'] == 'Super Administrator') { ?>
+											<span class="del_btn_<?php echo $category["id"]; ?>">
+												<?php if ($category["status_id"] != 2) {
+													echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_cat_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_category(".$category['id'].",".$category['status_id'].")"));
+												} ?>
+											</span>
+										<?php } ?>
 									</td>
 								</tr>
 								<?php

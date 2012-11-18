@@ -58,7 +58,8 @@
 	}
 
 	function delete_product (prod_id) {
-		var choice = confirm('Are you sure.\nYou want to Delete Product.?');
+
+		var choice = confirm('Are you sure.\nYou want to Delete Sample.?');
 
 		if (choice) {
 			change_status(prod_id, true);
@@ -102,6 +103,7 @@
 			</div>
 
 			<?php
+				$logged_in_user = $this->session->userdata('admin_user');
 				if (isset($sample_list) && $sample_list && count($sample_list) > 0) {
 					$tableCount = 1;
 			?>
@@ -142,11 +144,13 @@
 									</td>
 									<td>
 										<?php echo anchor(ADMINFOLDER . "/products/sample_view/" . $sample_list["id"], '<i class="icon-edit icon-white"></i> <b>'.$this->lang->line('admin_sample_list_view').'</b>', array ("class" => "btn btn-mini btn-success")); ?>
-										<span class="del_btn_<?php echo $sample_list["id"]; ?>">
-											<?php if ($sample_list["status_id"] != 2) {
-												echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_product(".$sample_list['id'].")"));
-											} ?>
-										</span>
+										<?php if($logged_in_user['admin_name'] == 'Super Administrator') { ?>
+											<span class="del_btn_<?php echo $sample_list["id"]; ?>">
+												<?php if ($sample_list["status_id"] != 2) {
+													echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_product(".$sample_list['id'].")"));
+												} ?>
+											</span>
+										<?php } ?>
 									</td>
 
 								</tr>

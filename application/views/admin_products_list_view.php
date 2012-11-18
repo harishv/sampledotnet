@@ -57,14 +57,22 @@
 		return false;
 	}
 
-	function delete_product (prod_id) {
-		var choice = confirm('Are you sure.\nYou want to Delete Product.?');
+	function delete_product (prod_id,status) {
+		
+		if(status == 0){
+			alert("Please active your product to Delete the Product ");
+			return false;
+		}else {
 
-		if (choice) {
-			change_status(prod_id, true);
-		}
+			var choice = confirm('Are you sure.\nYou want to Delete Product.?');
 
-		return false;
+			if (choice) {
+				change_status(prod_id, true);
+			}
+			return false;
+		}	
+
+		
 	}
 
 </script>
@@ -105,6 +113,7 @@
 
 			<?php //echo "<pre>";print_r($products);?>
 			<?php
+				$logged_in_user = $this->session->userdata('admin_user');
 				if (isset($products) && $products && count($products) > 0) {
 					$tableCount = 1;
 			?>
@@ -153,11 +162,13 @@
 									</td>
 									<td>
 										<?php echo anchor(ADMINFOLDER . "/products/products_manage/" . $product["id"], '<i class="icon-edit icon-white"></i> <b>'.$this->lang->line('admin_prod_edit').'</b>', array ("class" => "btn btn-mini btn-success")); ?>
-										<span class="del_btn_<?php echo $product["id"]; ?>">
-											<?php if ($product["status_id"] != 2) {
-												echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_product(".$product['id'].")"));
-											} ?>
-										</span>
+										<?php if($logged_in_user['admin_name'] == 'Super Administrator') { ?>
+											<span class="del_btn_<?php echo $product["id"]; ?>">
+												<?php if ($product["status_id"] != 2) {
+													echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_product(".$product['id'].",".$product["status_id"].")"));
+												} ?>
+											</span>
+										<?php } ?>
 										<?php //echo $products['comments_status']; ?>
 										<?php if ($product["comments_count"] > 0 ) {
 												//if($products['comments_status'] == '1'){
