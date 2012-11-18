@@ -11,8 +11,8 @@ class Admin_Products_Model extends CI_Model {
 
 	function get_products($category = 0){
 
-		$result = $this->db->query("SELECT products.*,COUNT(comments.prod_id) AS comments_count FROM products LEFT JOIN comments ON products.id = comments.prod_id AND comments.status_id = 1  GROUP BY products.id ORDER BY products.modified_at DESC");
-
+		$result = $this->db->query("SELECT products.*,COUNT(comments.prod_id) AS comments_count FROM products LEFT JOIN comments ON products.id = comments.prod_id AND comments.status_id = 1  AND products.status_id != 2 GROUP BY products.id ORDER BY products.modified_at DESC");
+		//echo $this->db->last_query();
 		if ($result->num_rows() == 0) {
 			return false;
 		} else {
@@ -190,8 +190,8 @@ class Admin_Products_Model extends CI_Model {
 		$this->db->from('prod_categories');
 		($display != 'admin') ? $this->db->where('parent_cat_id', $parent_cat_id) : "";
 		$this->db->order_by($order_column, $order_type);
-
-		($active) ? $this->db->where('status_id', 1) : ""; // status_id = 1 resembles Active
+		$this->db->where('status_id !=2');
+		//($active) ? $this->db->where('status_id', 1) : ""; // status_id = 1 resembles Active
 
 		$result = $this->db->get();
 

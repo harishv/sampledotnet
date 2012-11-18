@@ -50,6 +50,7 @@
 							} else {
 								var success_msg = '<div class="span6 alert alert-success"><a class="close" data-dismiss="alert">&times;</a><h4 class="alert-heading"><?php echo $this->lang->line("success"); ?></h4><?php echo $this->lang->line("admin_prod_list_status_change_success"); ?></div>';
 								$("#success_message").html(success_msg);
+								window.location = '<?php echo base_url()."backoffice/products/products_list";?>';
 							}
 					 }
 		});
@@ -59,20 +60,20 @@
 
 	function delete_product (prod_id,status) {
 		
-		if(status == 0){
-			alert("Please active your product to Delete the Product ");
-			return false;
-		}else {
-
+		if ($('#onandoff_' + prod_id).hasClass('active_on')) {
+			
+				alert("Please Inactive your product to Delete the Product ");
+				return false;
+			
+		}else{
 			var choice = confirm('Are you sure.\nYou want to Delete Product.?');
 
 			if (choice) {
 				change_status(prod_id, true);
 			}
 			return false;
-		}	
-
-		
+		}
+	
 	}
 
 </script>
