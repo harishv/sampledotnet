@@ -11,7 +11,7 @@ class Admin_Products_Model extends CI_Model {
 
 	function get_products($category = 0){
 
-		$result = $this->db->query("SELECT products.*, COUNT(comments.prod_id) AS comments_count FROM products LEFT JOIN comments ON products.id = comments.prod_id GROUP BY products.id ORDER BY products.modified_at DESC");
+		$result = $this->db->query("SELECT products.*,COUNT(comments.prod_id) AS comments_count FROM products LEFT JOIN comments ON products.id = comments.prod_id  GROUP BY products.id ORDER BY products.modified_at DESC");
 
 		// $this->db->select('*');
 		// $this->db->from('products');
@@ -72,6 +72,18 @@ class Admin_Products_Model extends CI_Model {
 	function get_comments($prod_id)
 	{
 		$result = $this->db->query("SELECT comments.*,  users.first_name FROM comments, users WHERE comments.user_id = users.user_id AND comments.prod_id = " . $prod_id ." and comments.status_id = 1");
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			return $result->result_array();
+		}
+
+		return false;
+	}
+
+	function get_comment_status(){
+		$result = $this->db->query("SELECT * FROM comments where status_id = 1");
 
 		if ($result->num_rows() == 0) {
 			return false;
@@ -235,9 +247,12 @@ class Admin_Products_Model extends CI_Model {
 							  'modified_at' => $current_date,
 							  'modified_from' => $ip,
 							  'modified_by' => $user['id']);
+		$update_country_information =  array('status_id' => $status_id,
+											'modified_at' => $current_date);
 
 		if ($this->db->update('products', $update_data, array('id' => $product_id))) {
-			return true;
+			if($this->db->update('prod_countries', $update_country_information, array('prod_id' => $product_id)))
+				return true;
 		}
 
 		return false;
@@ -309,8 +324,64 @@ class Admin_Products_Model extends CI_Model {
 		}
 	}
 
+	function cleanText($str){
+
+$str = str_replace("Ñ" ,"&#209;", $str);
+//$str =  preg_replace('/Ñ/g',"|&#209;|", $str);
+
+//echo "Text BEGIN ".$str."  --- ".bin2hex ("Ñ")."\n<BR>";     // d1
+
+/*
+for($i = 0 ; $i < strlen($str) ; $i++){
+echo "".$str{$i}."  - ". bin2hex ( $str{$i})."<BR>";
+}
+*/
+
+$str = str_replace("ñ" ,"&#241;", $str);
+$str = str_replace("ñ" ,"&#241;", $str);
+$str = str_replace("Á","&#193;", $str);
+$str = str_replace("á","&#225;", $str);
+$str = str_replace("É","&#201;", $str);
+$str = str_replace("é","&#233;", $str);
+
+$str = str_replace("ú","&#250;", $str);
+
+$str = str_replace("ù","&#249;", $str);
+$str = str_replace("Í","&#205;", $str);
+$str = str_replace("í","&#237;", $str);
+$str = str_replace("Ó","&#211;", $str);
+$str = str_replace("ó","&#243;", $str);
+$str = str_replace("“","&#8220;", $str);
+
+$str = str_replace("”","&#8221;", $str);
+
+$str = str_replace("‘","&#8216;", $str);
+$str = str_replace("’","&#8217;", $str);
+$str = str_replace("—","&#8212;", $str);
+
+$str = str_replace("–","&#8211;", $str);
+$str = str_replace("™","&trade;", $str);
+$str = str_replace("ü","&#252;", $str);
+$str = str_replace("Ü","&#220;", $str);
+$str = str_replace("Ê","&#202;", $str);
+$str = str_replace("ê","&#238;", $str);
+$str = str_replace("Ç","&#199;", $str);
+$str = str_replace("ç","&#231;", $str);
+$str = str_replace("È","&#200;", $str);
+$str = str_replace("è","&#232;", $str);
+$str = str_replace("Â", "&#194;", $str);
+$str = str_replace("â", "&#226;", $str);
+$str = str_replace("•","&#149;" , $str);
+
+
+return $str;
+
+}
+
 	function manage_product($type)
 	{
+
+		
 		extract($this->input->post());
 
 		$user = $this->session->userdata("admin_user");
@@ -479,13 +550,14 @@ class Admin_Products_Model extends CI_Model {
 
 			// Prepare valid countries record
 
+			
 			$valid_countries = implode(",", $valid_country_ids);
 			
 
 			$product_information = array (	'name' => htmlspecialchars(htmlentities($prod_name,ENT_QUOTES)),
 											'category_id' => intval($prod_category_id),
 											'image' => $product_image_name,
-											'description' => htmlspecialchars(htmlentities($prod_desc,ENT_QUOTES)),
+											'description' => htmlentities(trim($prod_desc)),
 											'grab_url' => $prod_grab_url,
 											'featured' => $prod_featured,
 											'only_today' => $prod_only_today,
@@ -502,12 +574,39 @@ class Admin_Products_Model extends CI_Model {
 				$product_information['created_by'] = $user["id"];
 
 				$this->db->insert('products', $product_information);
+				$last_id = $this->db->insert_id();
 
+				foreach($valid_country_ids as $key=>$values){
+					$country_information['category_id'] = $prod_category_id;
+					$country_information['prod_id'] = $last_id;
+					$country_information['status_id'] = 0;
+					$country_information['modified_at'] = $current_date;
+					$country_information['country_id'] = $values;
+					$this->db->insert('prod_countries', $country_information);
+
+				}
+				
 			} else if ($type == "edit"){
 
 				$this->db->where('id', intval($prod_id));
 				$this->db->update('products', $product_information);
+				$last_id = $this->db->insert_id();
+				$query_del = $this->db->query("delete from prod_countries where prod_id = ".$prod_id);
+				$query = $this->db->query("select * from products where id = ".$prod_id);
+				if($query->num_rows > 0){
+					$result = $query->result_array();
+				}
 
+				foreach($valid_country_ids as $key=>$values){
+					$country_information['category_id'] = $prod_category_id;
+					$country_information['prod_id'] = $prod_id;
+					$country_information['status_id'] = $result[0]['status_id'];
+					$country_information['modified_at'] = $current_date;
+					$country_information['country_id'] = $values;
+					$this->db->insert('prod_countries', $country_information);
+					
+				}
+				
 			}
 
 			$affected_rows = $this->db->affected_rows();

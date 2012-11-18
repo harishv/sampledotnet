@@ -103,6 +103,7 @@
 				<?php } ?>
 			</div>
 
+			<?php //echo "<pre>";print_r($products);?>
 			<?php
 				if (isset($products) && $products && count($products) > 0) {
 					$tableCount = 1;
@@ -157,9 +158,12 @@
 												echo anchor('', '<i class="icon-trash icon-white"></i> <b>'.$this->lang->line('admin_prod_delete').'</b>', array ("class" => "btn btn-mini btn-danger", "onclick" => "return delete_product(".$product['id'].")"));
 											} ?>
 										</span>
-										<?php if ($product["comments_count"] > 0) {
+										<?php //echo $products['comments_status']; ?>
+										<?php if ($product["comments_count"] > 0 ) {
+												//if($products['comments_status'] == '1'){
 											echo anchor(ADMINFOLDER . "/products/show_comments/" . $product["id"], '<i class="icon-pencil icon-white"></i> <b>'.$this->lang->line('admin_prod_comments').'</b>', array ("class" => "btn btn-mini btn-info"));
-										} ?>
+										//} else {echo "";}
+										}?>
 									</td>
 								</tr>
 							<?php

@@ -232,7 +232,7 @@ $(document).ready(function() {
 				</div>
 			</div>
 
-			<?php $country_id = explode(',', $product['valid_countries']); ?>
+			<?php if(isset($product['valid_countries']) && $product['valid_countries'] !='' ) { $country_id = explode(',', $product['valid_countries']);} ?>
 			<div class="control-group">
 				<label class="control-label" for="valid_country_ids"><?php echo $this->lang->line('admin_prod_mng_valid_cont'); ?>
 					:</label>
@@ -240,7 +240,7 @@ $(document).ready(function() {
 					
 					<?php foreach ($countries as $country) { ?>
 					<label class="checkbox">
-				<input type="checkbox" name="valid_country_ids[]" id="valid_country_ids" value = "<?php echo $country['id'];?>" <?php foreach($country_id as $key=>$values) {  if($set && $values == $country['id']) echo 'checked="checked"'; }?> ><?php echo $country['name'];?>
+				<input type="checkbox" name="valid_country_ids[]" id="valid_country_ids" value = "<?php echo $country['id'];?>" <?php if(isset($country_id)) foreach($country_id as $key=>$values) {  if($set && $values == $country['id']) echo 'checked="checked"'; }?> ><?php echo $country['name'];?>
 					</label>
 					<?php } ?>
 					

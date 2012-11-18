@@ -44,6 +44,7 @@ class Products extends CI_Controller {
 		}
 
 		$data["products"] = $this->Admin_Products_Model->get_products();
+		//$data["comments"] = $this->Admin_Products_Model->get_comment_status();
 		$this->load->view("template/admin_header");
 		$this->load->view("admin_products_list_view", $data);
 		$this->load->view("template/admin_footer");
