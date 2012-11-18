@@ -52,7 +52,7 @@ if(!$render) { ?>
 				<!-- End sample here -->
 			</div>
 			<!-- Begin tabs here -->
-				<?php include_once 'template/prod_footer_carousel.php';?>
+				<?php // include_once 'template/prod_footer_carousel.php';?>
 			<!-- End tabs here -->
 			<h2>What is Sample.net</h2>
 			<p class="bdr-btm1">At samples.net, you find a wide variety of products and services absolutely free. There are huge set of

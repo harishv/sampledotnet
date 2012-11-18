@@ -71,7 +71,7 @@ class Product extends CI_Controller {
 		$data['bread_crum'] = $this->category_model->get_bread_crums($data['product_details'][0]['category_id']);
 
 		$data["countries"] = $this->common_model->get_countries();
-		$data['country_names'] = $this->common_model->get_country_names($data['product_details'][0]['valid_countries']);
+		$data['country_names'] = $this->common_model->get_country_names(implode(',', $this->common_model->get_valid_countries($data['product_details'][0]['id'])));
 
 		$data['category'] = $this->category_model->get_category();
 

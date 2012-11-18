@@ -61,23 +61,20 @@
 	}
 
 	function delete_category (prod_cat_id,status) {
-		
-		
 
 		if ($('#onandoff_' + prod_cat_id).hasClass('active_on')) {
-			
-				alert("Please Inactive your product to Delete the Product ");
-				return false;
-			
+
+			alert("Please Inactive your Category first, to Delete it.");
+			return false;
+
 		}else{
-			var choice = confirm('Are you sure.\nYou want to Delete Product.?');
+			var choice = confirm('Are you sure.\nYou want to Delete Category.?');
 
 			if (choice) {
 				change_status(prod_cat_id, true);
 			}
 			return false;
 		}
-
 
 	}
 

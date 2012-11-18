@@ -59,12 +59,12 @@
 	}
 
 	function delete_product (prod_id,status) {
-		
+
 		if ($('#onandoff_' + prod_id).hasClass('active_on')) {
-			
-				alert("Please Inactive your product to Delete the Product ");
+
+				alert("Please Inactive your product first, to Delete it.");
 				return false;
-			
+
 		}else{
 			var choice = confirm('Are you sure.\nYou want to Delete Product.?');
 
@@ -73,7 +73,7 @@
 			}
 			return false;
 		}
-	
+
 	}
 
 </script>
@@ -130,7 +130,9 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($products as $product) { ?>
+							<?php foreach ($products as $product) {
+								if ($product['status_id'] != 2){
+								?>
 								<tr>
 									<td><?php echo $tableCount; ?></td>
 									<td>
@@ -179,7 +181,8 @@
 									</td>
 								</tr>
 							<?php
-									$tableCount++;
+										$tableCount++;
+									}
 								}
 							?>
 						</tbody>
