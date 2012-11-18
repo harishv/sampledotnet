@@ -11,7 +11,7 @@ class Admin_Products_Model extends CI_Model {
 
 	function get_products($category = 0){
 
-		$result = $this->db->query("SELECT products.*,COUNT(comments.prod_id) AS comments_count FROM products LEFT JOIN comments ON products.id = comments.prod_id  GROUP BY products.id ORDER BY products.modified_at DESC");
+		$result = $this->db->query("SELECT products.*,COUNT(comments.prod_id) AS comments_count FROM products LEFT JOIN comments ON products.id = comments.prod_id AND comments.status_id = 1  GROUP BY products.id ORDER BY products.modified_at DESC");
 
 		if ($result->num_rows() == 0) {
 			return false;
@@ -65,7 +65,7 @@ class Admin_Products_Model extends CI_Model {
 
 	function get_comments($prod_id)
 	{
-		$result = $this->db->query("SELECT comments.*,  users.first_name FROM comments, users WHERE comments.user_id = users.user_id AND comments.prod_id = " . $prod_id ." and comments.status_id = 1");
+		$result = $this->db->query("SELECT comments.*, users.first_name FROM comments, users WHERE comments.user_id = users.user_id AND comments.prod_id = " . $prod_id ." and comments.status_id = 1");
 
 		if ($result->num_rows() == 0) {
 			return false;

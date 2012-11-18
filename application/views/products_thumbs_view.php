@@ -1,5 +1,10 @@
 <?php
 if(isset($products) && $products != '' && count($products) > 0) { ?>
+	<!-- Include Sharethis Plugin scripts -->
+	<script type="text/javascript">var switchTo5x=false;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "18f4acdf-af25-4d39-b663-78b081a6f60e"}); </script>
+
 	<?php include_once 'product_rating_js.php'; ?>
 	<!-- Begin Samples here -->
 	<?php foreach ($products as $product_value) { ?>

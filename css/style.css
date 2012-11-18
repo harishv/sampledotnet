@@ -171,7 +171,7 @@ img.small { float:left; padding:30px 15px 15px; }
 .star { float:left; padding:0 3px 10px 3px; clear:left; width:100% }
 .star img { float:left; margin:0 3px 0 0; }
 .start_img {cursor: pointer;}
-.social { background:url(../img/bg-social.jpg) no-repeat left top; width:101px; padding:6px 3px 0 10px; height:20px; }
+.social { background:url(../img/bg-social.jpg) no-repeat left top; width:101px; padding:4px 3px 3px 10px; height:20px; }
 .social img { float:left; margin:0 5px 0 0 }
 .share { border-left:1px solid #f0f0f0; padding:5px 0 3px; }
 .share img { margin:3px 0 0 }
@@ -1137,3 +1137,17 @@ form {
  .comments { width:99%; float:left; padding:10px 0px 0px 0px; border-bottom:1px dashed #333333; }
 
  .fb_like_btn {float: left; left: 10px; margin-top: -28px;}
+
+
+.sub_category_link {
+  clear: both;
+}
+
+.sub_category_link span:first-child {
+  font-size: 16px;
+}
+
+.sub_category_link p:last-child {
+  float: right;
+  padding: 5px 10px;
+}

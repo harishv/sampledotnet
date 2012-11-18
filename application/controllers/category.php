@@ -85,10 +85,31 @@ class Category extends CI_Controller {
 
 	}
 
-	public function parent_category($id= 'false'){
-		$parent_id =$id;
-		
-		$data['sub_categories'] = $this->category_model->get_sub_categories($parent_id);
+	public function parent_category($cat_id, $id='0'){
+		// $cat_id = $id;
+
+		$data["countries"] = $this->common_model->get_countries();
+		$config1['base_url'] = base_url().'category/get_category_product/'.$cat_id;
+		$config1['total_rows'] = $this->category_model->getCount($cat_id);
+		$config1['per_page'] = 10;
+		$config1['cur_tag_open']  ='<a class="current">';
+		$config1['cur_tag_close'] ='</a>';
+
+		$config1['uri_segment'] = 4;
+
+		$this->pagination->initialize($config1);
+		// $data['products'] = $this->category_model->get_products($cat_id, $id, $config1['per_page']);
+		$data['bread_crum'] = $this->category_model->get_bread_crums($cat_id);
+		$data['product_count'] = $config1['total_rows'];
+
+		//echo "<pre>";print_r($data['products']);
+
+		//$data['slider'] = $this->load->view('slider', $data, TRUE);
+
+		$data['render'] = false;
+		$data['category'] = $this->category_model->get_category();
+
+		$data['sub_categories'] = $this->category_model->get_sub_categories($cat_id);
 		$this->load->view("template/prod_header",$data);
 		$this->load->view("parent_category_view",$data);
 		$this->load->view("template/prod_footer");
