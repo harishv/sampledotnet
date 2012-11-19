@@ -1064,7 +1064,7 @@ color:#0c3b93;
 
 
 #boxes .window {
-	position:absolute;
+	position:fixed;
 	left:0;
 	top:0;
 	width:440px;
