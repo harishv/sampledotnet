@@ -62,7 +62,7 @@
 
 		if ($('#onandoff_' + prod_id).hasClass('active_on')) {
 			
-				alert("Please Inactive your sample to Delete the sample ");
+				alert("Please Inactive your sample first, to Delete it.");
 				return false;
 			
 		}else{

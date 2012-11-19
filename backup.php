@@ -40,6 +40,7 @@ $sQuery = "select * from products";
 $rResult = mysql_query( $sQuery, $conn ) or die(mysql_error());
 
 if(mysql_num_rows($rResult) > 0 ){
+	echo "result success.<br>";
     while ( $aRow = mysql_fetch_assoc($rResult) )
     {
         $array_user_ids[] = $aRow;
@@ -47,6 +48,7 @@ if(mysql_num_rows($rResult) > 0 ){
 
 	
 	if(!empty($array_user_ids)){
+	echo "have rows.<br>";
         foreach($array_user_ids as $key => $value){
 		
 			$product_id = $value['id'];
@@ -56,7 +58,7 @@ if(mysql_num_rows($rResult) > 0 ){
 			$country_ids = explode(',',$value['valid_countries']);
 			foreach($country_ids as $country_key=>$country_values){
 
-				 $query = "INSERT INTO prod_countries (prod_id,country_id,category_id,status_id,modified_at) VALUES (".$product_id.",".			$country_values.", ".$category_id.", ".$status.", '".$modified_at."')";
+				 $query = "INSERT INTO  prod_countries (prod_id,country_id,category_id,status_id,modified_at) VALUES (".$product_id.",".$country_values.", ".$category_id.", ".$status.", '".$modified_at."')";
 				 $result = mysql_query( $query);
 
 			}
