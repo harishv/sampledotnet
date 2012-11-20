@@ -22,7 +22,7 @@ class Category_Model extends CI_Model {
 			}
 		}
 
-		$result = $this->db->query("SELECT * FROM prod_categories WHERE parent_cat_id = 0 AND status_id = 1 AND id IN (".implode(",", $category_id_arr).")");
+		$result = $this->db->query("SELECT * FROM prod_categories WHERE parent_cat_id = 0 AND status_id = 1 AND id IN (".implode(",", $category_id_arr).") ORDER BY prod_cat_name ASC");
 
 		if ($result->num_rows() == 0) {
 			return false;
