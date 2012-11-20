@@ -15,6 +15,7 @@ class Login extends CI_Controller {
 
 	function login_check(){
 
+		$get_user_info ='';
 		$data['errors'] = '';
 
 		$user_access = $this->login_model->check_user_login();
@@ -22,7 +23,7 @@ class Login extends CI_Controller {
 
 
 
-		if( count($user_access) > 0 )
+		if(is_array($user_access))
 		{
 
 			$newdata = array( 'name'  => 'userlogin',
@@ -35,7 +36,7 @@ class Login extends CI_Controller {
 			if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
 
 			$get_user_info =  $this->login_model->get_userprofile_info($login_data['user_id']);
-
+			
 			}
 
 			if(!$get_user_info)
@@ -45,8 +46,8 @@ class Login extends CI_Controller {
 			$return_json['sucuss'] ='sucuss';
 
 		} else {
-
-			$return_json['sucuss'] ='failure';
+			$return_json['errors'] = 'failure';
+			$return_json['data'] =$user_access;
 		}
 
 		echo json_encode($return_json);
@@ -74,7 +75,10 @@ class Login extends CI_Controller {
 
 		$email = $this->login_model->forgot_password_email();
 
-		if (count($email) > 0) {
+		if(is_string($email)) {
+			$return_json['status'] = "failure";
+			$return_json['data'] = $email;
+		}else{
 
 			$email_result = $this->login_model->forgot_password_send_email($email);
 
@@ -86,10 +90,7 @@ class Login extends CI_Controller {
 				$return_json['status'] = "sucuss";
 				$return_json['data'] = "<h3>Email sent successfully!</h3>Follow the link in the email to reset your password.";
 			}
-		}else{
-
-			$return_json['status'] = "failure";
-			$return_json['data'] = "Email entered doesn't exists.";
+			
 
 		}
 

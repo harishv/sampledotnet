@@ -183,6 +183,16 @@
 
 			});
 
+		$(document).keyup(function(f) {
+//==============Closes the Modal windows by presing Escape key
+//========================================
+  if (f.keyCode == 27) { 
+  	$('#mask').hide();
+	$('.window').hide();
+  }   // esc
+});
+
+
 		</script>
 	</head>
 	<body>

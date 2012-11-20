@@ -46,7 +46,7 @@
 				<div class="form-box">
 					<div class="text">Email: </div>
 					<div class="form">
-						<input type="text" name="email_address" id="email_address">
+						<input type="text" name="email_address" id="email_address" value="">
 					</div>
 				<!-- form-box -->
 				</div>
@@ -54,7 +54,7 @@
 				<div class="form-box">
 					<div class="text">Password: </div>
 					<div class="form">
-						<input type="password" name="password"  id="password">
+						<input type="password" name="password"  id="password" value="">
 					</div>
 				<!-- form-box -->
 				</div>

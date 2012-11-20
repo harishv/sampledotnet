@@ -48,9 +48,9 @@
 		<?php } ?>
 	</span>
 	<?php
-		if($user_info !='') { ?>
+		if(isset($user_info) && $user_info !='') { ?>
 		<?php echo "Welcome, "; ?>
-			<a href="#user_profile" name="modal" class='iframe'><?php echo ucfirst($user_info['first_name']);  ?></a>
+			<a href="#user_profile" name="modal" class='iframe'><?php if(isset($user_info['first_name']) && $user_info['first_name'] != '') echo ucfirst($user_info['first_name']);  ?></a>
 		 <!-- <a href="#user_profile" name="modal" class='iframe'><?php //echo "user Profile";?> </a> -->
 	<?php }else{ ?>
 		<a href="#register" name="modal" class='iframe'><?php echo $this->lang->line("nav_become_a_member"); ?></a>

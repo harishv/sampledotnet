@@ -11,18 +11,30 @@ class Login_Model extends CI_Model {
 
 	function check_user_login(){
 
-
+		$errors ='';
 		$username = $this->input->post('email_address'); 
 		$password = $this->input->post('password');
 		
-		$query = "select * from users WHERE email = ? AND password = ? AND status_id = ?";
-		$variables = array ($username, md5($password), 1);
+		$query = "select * from users WHERE email = ? AND password = ?";
+		$variables = array ($username, md5($password));
 
-		$result = $this->db->query($query, $variables);
+		$query = $this->db->query($query, $variables);
+		if($query->num_rows > 0){
+			$result =$query->result_array();
+			if($result[0]['status_id'] != 0){
+			return $result;
+
+			}else{
+				$errors .= "Please Active Your Account";
+				return $errors;
+			}
+
+		}else{
+			$errors .="Please Login with Valid credentials";
+			return $errors;
+		}
 		
-		$row = $result->row_array();
-
-		return $row;
+		
 	}
 	public function active_status($user_id){
 
@@ -54,22 +66,27 @@ class Login_Model extends CI_Model {
 
 		function forgot_password_email() {
 
-		//$result =arrar();
+		$errors ='';
 		$email = $this->input->post('forgot_address');
 
-		$query=$this->db->query('select * from users  where email="'.$email.'" and status_id = 1');
+		$query=$this->db->query('select * from users  where email="'.$email.'"');
 
 		if($query->num_rows > 0){
-				$result_row = $query->row_array();
-		}else
-				$result_row = array();
-		
-			return $result_row;
-		
-		
-		
+			$result_row = $query->row_array();
 
-		
+			if($result_row['status_id']!=0){
+				
+				return $result_row;
+			}else{
+				
+				$errors .="Please Active your Account to change Password";
+				return $errors;
+				}
+		}else{
+			$errors .="Email entered doesn't exists.";
+			return $errors;
+		}
+	
 	}
 
 		function forgot_password_send_email($user_data) {

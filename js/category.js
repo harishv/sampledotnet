@@ -257,8 +257,8 @@ function validate_login() {
 
 					window.location.href = window.location.href;
 
-				} else if (result.sucuss == 'failure') {
-					$('#errors_data').html("Login Failed");
+				} else if (result.errors == 'failure') {
+					$('#errors_data').html(result.data);
 
 				}
 			}
