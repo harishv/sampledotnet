@@ -19,6 +19,7 @@ class Login extends CI_Controller {
 		$data['errors'] = '';
 
 		$user_access = $this->login_model->check_user_login();
+		//print_r($user_access);
 
 
 
@@ -27,11 +28,12 @@ class Login extends CI_Controller {
 		{
 
 			$newdata = array( 'name'  => 'userlogin',
-							  'user'  => $user_access,
+							  'user'  => $user_access[0],
 			);
 			$this->session->set_userdata($newdata);
 
 			$login_data = $this->session->userdata('user');
+			
 			//$active_user_id = $this->session->userdata('active_user_id');
 			if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
 

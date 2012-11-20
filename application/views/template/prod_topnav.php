@@ -40,6 +40,7 @@
 <p class="login-here">
 	<span style="display: block;">
 		<?php $user_info = $this->session->userdata('user');
+			//print_r($user_info);
 			if(isset($user_info) && $user_info !=''){
 				$attributes = array('id' => 'signout', 'class' => 'iframe');
 				echo anchor( 'login/logout', "(" . $this->lang->line('nav_signout') .")", $attributes );
