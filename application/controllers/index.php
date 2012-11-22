@@ -151,7 +151,7 @@ class Index extends CI_Controller {
 	}
 
 
-	public function get_products($id){
+	/*public function get_products($id){
 
 		$data['footer_products'] = $this->category_model->get_footer_products($id);
 		$products ='';
@@ -181,7 +181,7 @@ class Index extends CI_Controller {
 	echo $products; exit;
 
 	}
-
+*/
 	function set_country()
 	{
 		$country_id = $this->input->post('country_id');
