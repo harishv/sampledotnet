@@ -58,18 +58,20 @@
 				//select all the a tag with name equal to modal
 				$('a[name=modal]').click(function(e) {
 
-					/*$(function() {
+					//document.getElementById('userlogin').reset(); 
+					//$("#userlogin").reset();
+					//$("#user_login").reset();
+					$('#userlogin').each(function() {
+						this.reset();
+					});
 
-						var date = new Date();
-						date.setYear('2007');
-						$("#datepicker").datepicker({
+					$('#user_login').each(function() {
+						this.reset();
+					});
 
-							changeMonth: true,
-							changeYear: true,
-							maxDate: '+0d',
-							defaultDate: date
-						});
-					});*/
+					$('#forgot_password').each(function() {
+						this.reset();
+					});
 
 					//Cancel the link behavior
 					e.preventDefault();
