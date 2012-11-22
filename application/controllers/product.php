@@ -16,6 +16,8 @@ class Product extends CI_Controller {
 
 		$data['bread_crum'] = $this->category_model->get_bread_crums($data['product_details'][0]['category_id']);
 		$bread_crum = $data['bread_crum'];
+		//$data['prod_name'] = $data['product_details']['0']['name'];
+
 
 		if ($bread_crum['parent_cat_id'] == 0) {
 			$parent_cat_name = $bread_crum['sub_cat_name'];
@@ -56,6 +58,7 @@ class Product extends CI_Controller {
 		$data['update_data'] = array();
 
 		$data['product_details'] = $this->product_model->get_product_details($product_id);
+		$data['prod_name'] = $data['product_details']['0']['name'];
 		$data['comments'] = $this->product_model->get_comments($product_id);
 
 		if(isset($data['comments']) && $data['comments'] !=''){
