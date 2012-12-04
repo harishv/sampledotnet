@@ -34,7 +34,7 @@ if(isset($products) && $products != '' && count($products) > 0) { ?>
 
 			<div class="clear"></div>
 			<?php // Temporarly allowing any user to Grab the Sample. ?>
-			<a class="grab flt-r" href="<?php echo base_url() . "product/grab_it_now/" . $product_value['id']; ?>">genuine freebies!</a>
+			<a class="grab flt-r" href="<?php echo base_url() . "product/grab_it_now/" . $product_value['id']; ?>">grab it now!</a>
 			<!-- <a class="grab flt-r" href="#" onclick="grab_now('<?php echo $product_value['id'];?> ','<?php echo $product_value['grab_url'];?>')">grab it now!</a> -->
 				<div class="social clear">
 					<span class='st_facebook'></span>

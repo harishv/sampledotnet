@@ -75,7 +75,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 							<!-- <em><a id = "display_comments" href="">(<?php if(isset($comments) && $comments !=''){ echo count($comments); } else echo "0";?>) comments</a></em> -->
 					</p>
 					<p>
-						<a class="grab flt-r" href="<?php echo base_url() . "product/grab_it_now/" . $product_details[0]['id']; ?>">genuine freebies!</a>
+						<a class="grab flt-r" href="<?php echo base_url() . "product/grab_it_now/" . $product_details[0]['id']; ?>">grab it now!</a>
 						<!-- <a class="grab flt-r" onclick="grab_now('<?php echo $product_details[0]['id'];?> ','<?php echo $product_details[0]['grab_url'];?>')"  >grab it now!</a> -->
 					</p>
 					<div class="hgt-15px wid_100"></div>
