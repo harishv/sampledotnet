@@ -20,7 +20,7 @@ class Documents extends CI_Controller {
 		$data['category'] = $this->category_model->get_category();
 
 		$this->load->view("template/doc_header");
-		$this->load->view("docs_list");
+		$this->load->view("documents_index_view");
 		$this->load->view("template/prod_footer");
 	}
 
