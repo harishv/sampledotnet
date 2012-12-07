@@ -4,11 +4,25 @@ $errors=$this->session->userdata('comment_errors');
 	$this->session->unset_userdata($error_child);
 
 	}
+
+
+
 ?>
 
 <script type="text/javascript">var switchTo5x=false;</script>
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "18f4acdf-af25-4d39-b663-78b081a6f60e"}); </script>
+<script>
+function comments_validate(){
+var comment_obj = document.getElementById("comment_area");
+if(comment_obj == 'null' || comment_obj.value ==''){
+	alert("Comments Should not be null or Empty ");
+	return false;
+}
+return true;
+}
+
+</script>
 
 <script>
 var base_url = "<?php echo base_url();?>";/* global variable for the root path */
@@ -104,7 +118,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 									<?php echo (isset($errors)) ? $errors : '';?>
 								</div>
 								<?php
-									$attributes = array('id' => 'comments_data', 'name'=>'comments_data', 'method'=>'post');
+									$attributes = array('id' => 'comments_data', 'name'=>'comments_data', 'method'=>'post','onSubmit' => 'return comments_validate();');
 									echo form_open('product/user_comments/', $attributes);
 								?>
 									<input type="hidden" name="prod_id" value="<?php echo $product_details[0]['id'];?>" />

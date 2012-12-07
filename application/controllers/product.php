@@ -98,21 +98,28 @@ class Product extends CI_Controller {
 
 	public function user_comments(){
 
-		$url = explode('/',$_SERVER['HTTP_REFERER']);
-		//$formated_url = $url[4].'/'.$url['5'].'/'.$url['6'];
-
 		$login_data = $this->session->userdata('user');
+		//$url = explode('/',$_SERVER['HTTP_REFERER']);
 		if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
-			$product_id = $this->input->post('prod_id');
-			$user_id = $login_data['user_id'];
-			$insert_comments = $this->product_model->insert_comments($product_id,$user_id);
-			redirect('product/product_detail/'.$product_id,'refresh');
+			$url = explode('/',$_SERVER['HTTP_REFERER']);
+			//$formated_url = $url[4].'/'.$url['5'].'/'.$url['6'];
 
+			$login_data = $this->session->userdata('user');
+			if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
+				$product_id = $this->input->post('prod_id');
+				$user_id = $login_data['user_id'];
+				$insert_comments = $this->product_model->insert_comments($product_id,$user_id);
+				redirect('product/product_detail/'.$product_id,'refresh');
+
+			}else{
+
+				$newdata = array('comment_errors'  => "Please Log With Your Creditials");
+				$this->session->set_userdata($newdata);
+				redirect($url,'refresh');
+			}
 		}else{
-
-			$newdata = array('comment_errors'  => "Please Log With Your Creditials");
-			$this->session->set_userdata($newdata);
-			redirect($url,'refresh');
+			
+			redirect(base_url(), 'refresh');
 		}
 
 	}
