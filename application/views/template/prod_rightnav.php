@@ -1,7 +1,7 @@
 <div id="sidebar" class="flt-r">
 	<!-- Begin search -->
 	<div class="search">
-		<form method="get" action="http://www.google.com/search">
+		<form method="get" action="http://www.google.com/search"  target="_blank">
 			<input class="sch" type="text" name="q" size="31" maxlength="255" placeholder="Search" value="" />
 			<br>
 			<input class="btn btn-success pull-right" type="submit" value="Search" />

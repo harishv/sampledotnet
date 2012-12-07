@@ -115,7 +115,7 @@ select option { width:100%; float:left }
 
 .categories ul li ol{
  width:135px;
- min-height:100px;
+ min-height:auto;
  background-color:#FFF;
  position:absolute;
  left:178px;
