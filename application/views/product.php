@@ -15,7 +15,7 @@ $errors=$this->session->userdata('comment_errors');
 <script>
 function comments_validate(){
 var comment_obj = document.getElementById("comment_area");
-if(comment_obj == 'null' || comment_obj.value ==''){
+if(comment_obj == null || comment_obj.value.trim() ==''){
 	alert("Comments Should not be null or Empty ");
 	return false;
 }

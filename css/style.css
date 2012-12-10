@@ -20,7 +20,8 @@ div#main-content { background:url(../img/bg-main-content.jpg) repeat-y left top;
 div#content { width:74%; }
 div#sidebar { width:25% }
 .col-1 { width:24%; min-height:1201px }
-.min-h { min-height:700px }
+/*.min-h { min-height:700px }*/
+.min-h { min-height:1355px }
 .col-2 { width:73% }
 .head { background:#dbdad5; width:100%; color:#0c3b93; font:bold 18px Arial, Helvetica, sans-serif; padding:5px 0 5px 0; line-height:20px }
 .head em { font-style:normal; font-size:14px }
@@ -230,7 +231,7 @@ input.free { background:url(../img/bg-input1.jpg) repeat-x left top; border:1px 
 /* ================================================================================ */
 
 /* free sample */
-.free-sample { width:92%; background:#3b5998; float:left; padding:2% 4% 3% 4%; color:#fffffe; font-size:17px; line-height:22px }
+.free-sample { width:92%; background:#3b5998; float:left; padding:2% 4% 3% 4%; color:#fffffe; font-size:15px; line-height:22px }
 /* ================================================================================ */
 div.footer { width:1000px; padding:0 54px }
 ul#utility { float:right; list-style:none; width:37% }
@@ -1065,6 +1066,7 @@ color:#0c3b93;
 
 #boxes .window {
 	position:fixed;
+	/*position:relative;*/
 	left:0;
 	top:0;
 	width:440px;
