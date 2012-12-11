@@ -1,10 +1,21 @@
+<script>
+function validate_search(){
+	
+ var search_val = document.getElementById('search_value');
+ if(search_val == 'null' || search_val.value.trim() == ''){
+ 	alert("search should not be null or Empty");
+ 	return false;
+ }
+ return true;
+}
+</script>
 <div id="sidebar" class="flt-r">
 	<!-- Begin search -->
 	<div class="search">
-		<form method="get" action="http://www.google.com/search"  target="_blank">
+		<form method="get" action="http://www.google.com/search" , target='_blank' ,onSubmit = 'return validate_search();'>
 			<input class="sch" type="text" name="q" size="31" maxlength="255" placeholder="Search" value="" />
 			<br>
-			<input class="btn btn-success pull-right" type="submit" value="Search" />
+			<input class="btn btn-success pull-right" id="search_value" type="submit" value="Search" />
 			<!-- <input type="radio" name="sitesearch" value="" /> The Web
 			<input type="radio" name="sitesearch" value="<?php echo $_SERVER["SERVER_NAME"]; ?>" checked /> Only Sample.net -->
 		</form>

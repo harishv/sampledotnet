@@ -51,10 +51,12 @@ class Category_Model extends CI_Model {
 
 		$result = array();
 
-		$query = $this->db->query("select prod_cat_name as sub_cat_name, parent_cat_id from prod_categories where id = ". intval($id));
+		$query = $this->db->query("select prod_cat_name as sub_cat_name, id as sub_cat_id ,parent_cat_id from prod_categories where id = ". intval($id));
 		if ($query->num_rows() > 0){
 		   $row = (array)$query->row();
 		}
+
+		//print_r($row);
 
 			$query_cat_name = $this->db->query("select prod_cat_name as cat_name from prod_categories where id = ". $row['parent_cat_id']);
 			if ($query_cat_name->num_rows() > 0){
@@ -380,6 +382,7 @@ class Category_Model extends CI_Model {
 
 		$this->email->message($mail_content);
 		$mail_result = $this->email->send();
+		//$mail_result = true;
 
 
 		if(!$mail_result){

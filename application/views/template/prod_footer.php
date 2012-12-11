@@ -170,7 +170,8 @@
 				<!-- <div class="txt-2">or Sign in with </div> -->
 			<!-- top-bg -->
 			</div>
-			<?php $user_profile[0] = $this->session->userdata('user');?>
+			<?php $user_profile[0] = $this->session->userdata('user');
+				  print_r($user_profile[0]);?>
 			<div class="middle-bg">
 
 				<div id="errors_data_user_profile" class="errors_data"><?php echo (isset($errors)) ? $errors : '';?></div>
@@ -249,8 +250,9 @@
 					<div class="text">Categories: </div>
 					<div class="form">
 						<?php
+								if(isset($user_profile[0]['category_id']) && $user_profile[0]['category_id'] !='') $category_id = $user_profile[0]['category_id']; $category_ids = explode(',',$category_id); 
 							foreach ($category as $cat_id=>$cat_values) { ?>
-						<input type='checkbox' name="cat_name[]" value="<?php echo $cat_values['id']; ?>" />
+						<input type='checkbox' name="cat_name[]" value="<?php echo $cat_values['id']; ?>"<?php if(isset($category_ids) && $category_ids !='') foreach($category_ids as $key=>$values) { echo ($values == $cat_values['id']) ? "checked='checked'" : ''; }?> />
 						<?php echo $cat_values['prod_cat_name']; ?>
 						<br/>
 						<?php } ?>
@@ -502,7 +504,7 @@
 		</div>
 	</div>
 
-
+	
 	<div id="mask"></div>
 </div>
 

@@ -43,6 +43,15 @@
 		<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
 
 		<script src="<?php echo base_url("js"); ?>/jquery.jcarousel.js"></script>
+		<script>
+		$(document).ready(function() {
+		<?php $login_errors = $this->session->userdata('comment_login_errors');	
+
+			 if(isset($login_errors) && $login_errors != ''){ ?>
+			 	alert("<?php echo $login_errors;?>");
+			 <?php } $this->session->set_userdata(array('comment_login_errors' => '')); ?>
+		});
+		</script>
 
 		<script type="text/javascript">
 			jQuery(document).ready(function() {
@@ -61,6 +70,14 @@
 					//document.getElementById('userlogin').reset(); 
 					//$("#userlogin").reset();
 					//$("#user_login").reset();
+					$('#share_sample_div').show();
+					$('#sample_succuss_data').hide();
+					$('#reg_success_data_signup').hide();
+					$('#user_regd_div').show();
+					$('#user_profile_div').show();
+					$('#success_data_user_profile').hide();
+
+				
 					$('#userlogin').each(function() {
 						this.reset();
 					});
@@ -226,3 +243,5 @@
 				<!-- Begin inner wrapper div -->
 				<div id="inner-wrapper" class="flt-l wid_100">
 					<input type="hidden" id="baseURL" value="<?php echo base_url(); ?>" />
+
+

@@ -41,7 +41,20 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 		<div class="col-2 flt-l">
 			<?php //echo "<pre>";print_r($bread_crum);?>
 			<p class="links">
-				 <a href="<?php echo base_url();?>">Home</a><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>"><?php if(isset($bread_crum) && $bread_crum !='') ?> <a href="<?php echo base_url().'category/get_category_product/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a> <?php if($bread_crum['cat_name'] !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') echo $prod_name;?>
+				 <a href="<?php echo base_url();?>">Home</a>
+				  <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !=''){ ?>
+				 <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">
+				 <?php } ?>
+
+				 <?php if(isset($bread_crum) && $bread_crum['sub_cat_id'] !=''){ ?>
+
+				 <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !='') ?> <a href="<?php echo base_url().'category/parent_category/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a>
+
+				 <?php } else { ?>  <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !='') ?><a href="<?php echo base_url().'category/get_category_product/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a><?php }?>
+
+				<?php if($bread_crum['sub_cat_name'] !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') ?> <a href="<?php echo base_url().'category/get_category_product/'.$bread_crum['sub_cat_id']?>"><?php echo $bread_crum['sub_cat_name'];?></a>
+
+				<?php if($bread_crum !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') echo $prod_name;?>
 			</p>
 
 			
@@ -123,6 +136,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 								?>
 									<input type="hidden" name="prod_id" value="<?php echo $product_details[0]['id'];?>" />
 									<textarea rows="3" class="clear mgn-15b" id="comment_area" name="comment_area"></textarea>
+									
 									<input class="btn btn-small btn-primary pull-right" type="submit" name="submit" value="Comment" />
 								<?php echo form_close(); ?>
 						</div>

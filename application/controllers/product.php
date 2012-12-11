@@ -13,11 +13,13 @@ class Product extends CI_Controller {
 
 	public function product_detail($id){
 		$data['product_details'] = $this->product_model->get_product_details($id);
+		//$data['sub_categories'] = $this->category_model->get_sub_categories($id);
+		//print_r($data['product_details']);exit;
 
 		$data['bread_crum'] = $this->category_model->get_bread_crums($data['product_details'][0]['category_id']);
 		$bread_crum = $data['bread_crum'];
-		//$data['prod_name'] = $data['product_details']['0']['name'];
-
+		//$data['sub_categories'] = $this->category_model->get_sub_categories_breadcrums($data['bread_crum']['parent_cat_id']);
+		
 
 		if ($bread_crum['parent_cat_id'] == 0) {
 			$parent_cat_name = $bread_crum['sub_cat_name'];
@@ -119,7 +121,10 @@ class Product extends CI_Controller {
 			}
 		}else{
 			
-			redirect(base_url(), 'refresh');
+			$newdata = array('comment_login_errors'  => "Please Log With Your Creditials");
+			$this->session->set_userdata($newdata);
+			redirect($_SERVER['HTTP_REFERER'],'refresh');
+			
 		}
 
 	}

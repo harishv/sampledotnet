@@ -167,12 +167,12 @@ function validate_registerform() {
 		return false;
 	} else {
 		if (!validate_isnull(ts_re_password_obj)) {
-			errors += "Verify Password should not be null or empty<br />";
+			errors += "Confirm Password should not be null or empty<br />";
 			document.getElementById('errors_data_signup').innerHTML = "";
 			document.getElementById('errors_data_signup').innerHTML = $.trim(errors);
 			return false;
 		} else if (ts_password_obj.value != ts_re_password_obj.value) {
-			errors += "Password and Verify password should be same<br />";
+			errors += "Password & Confirm Password must be same<br />";
 			document.getElementById('errors_data_signup').innerHTML = "";
 			document.getElementById('errors_data_signup').innerHTML = $.trim(errors);
 			return false;
@@ -192,7 +192,8 @@ function validate_registerform() {
 			dataType: 'json',
 			success: function(result) {
 
-
+				$('#reg_success_data_signup').hide();
+				$("#errors_data_signup").html('');
 				if (result.status == "success") {
 
 

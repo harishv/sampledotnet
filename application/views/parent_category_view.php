@@ -76,7 +76,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 						foreach ($sub_categories as $sub_cat) {
 							$products = array();
 							$products = $this->category_model->get_products($sub_cat['id'], 0, 5);
-
+							//print_r($products);
 							$more = false;
 
 							if(count($products) > 4){
@@ -85,15 +85,17 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 									unset($products[4]);
 							}
 							?>
-						<div class="sub_category_link">
-							<span><?php echo $sub_cat['prod_cat_name'];?></span>
-							<br>
-							<?php include 'products_thumbs_view.php'; ?>
-							<br>
-							<?php if ($more) { ?>
-								<p><a href="<?php echo base_url().'category/get_category_product/' . $sub_cat['id']; ?>">more >></a></p>
-							<?php } ?>
-						</div>
+						<?php if(!empty($products)){ ?>
+							<div class="sub_category_link">
+								<span><?php echo $sub_cat['prod_cat_name'];?></span>
+								<br>
+								<?php include 'products_thumbs_view.php'; ?>
+								<br>
+								<?php if ($more) { ?>
+									<p><a href="<?php echo base_url().'category/get_category_product/' . $sub_cat['id']; ?>">more >></a></p>
+								<?php } ?>
+							</div>
+						<?php } ?>
 					<?php }	?>
 
 					<?php // include_once 'products_thumbs_view.php'; ?>

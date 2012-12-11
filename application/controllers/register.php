@@ -51,7 +51,7 @@ class Register extends CI_Controller {
 					//echo '1';
 					$return_json['status'] = "success";
 					//$return_json['data'] = "Thank you for your registration with Sampel.net.<br />Kindly check your email to complete the registration process.";
-					$return_json['data'] = "Thank you for your registration with Sampel.net.<br /><br/>Message has been sent to ".$email.". Please check your inbox and follow the instructions in that message to activate your account.<br/><br/>
+					$return_json['data'] = "Thank you for your registration with Sample.net.<br /><br/>Message has been sent to ".$email.". Please check your inbox and follow the instructions in that message to activate your account.<br/><br/>
 
 					If you DONT receive the activation email in 10 minutes, please check your JUNK/SPAM folder since GMAIL, YAHOO and HOTMAIL sometimes mark it as a junk mail.";
 				}
@@ -91,9 +91,12 @@ class Register extends CI_Controller {
 
 
 		if(is_string($user_profile) ){
+			
 			$return_json['data'] =$user_profile;
 		}
 		else{
+		
+
 		$return_json['status'] = "success";
 		$return_json['data'] = "Thank you for updating your profile.";
 		}
