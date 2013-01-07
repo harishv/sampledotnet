@@ -19,11 +19,11 @@ class Uploaddocs extends CI_Controller {
 	{
         $data['message'] = null;
         if($this->input->post()) {
-             include_once(APPPATH.'libraries/scribd.php');
+            include_once(APPPATH.'libraries/scribd.php');
             $file_name = $_FILES['upload-file']['name'];
             if( $file_name != "" ) {
             //$path = APPPATH."./uploads/documents/" . basename($file_name);
-           $path = '/var/www/personal/uploads/scribddocs/'. basename($file_name);
+           $path = '/var/www/sampledotnet/uploads/scribddocs/'. basename($file_name);
             //$file_type = explode('.',$file_name);
             if (! move_uploaded_file($_FILES['upload-file']['tmp_name'], $path)) {
                 $data['message'] = 'Move failed. Possible duplicate?';
@@ -43,37 +43,37 @@ class Uploaddocs extends CI_Controller {
                                 'secret_password' => $docsettings['secret_password'],
                                 'pdfdoc_category' => $pdfdoc_category ,
                                 'access'          => $docsettings['access'],
-                                'thumbnail_url'   => $docsettings['thumbnail_url'],
+                                'thumb_url'   => $docsettings['thumbnail_url'],
                                 'uploaded_date'   => $uploaded_date);
            // echo "<pre>";
             //print_r($UpdloadData);
             $this->load->model('Scribd_Documents_Model');
             $last_insert_id =  $this->Scribd_Documents_Model->add_document_details($UpdloadData);
-            try  
-            {  
+            try
+            {
                    if($last_insert_id == 0) {
-                       throw new Exception( 'Something really gone wrong', 0, $e);  
-            
-                       } 
-            }  
-            catch (Exception $e)  
-            {  
+                       throw new Exception( 'Something really gone wrong', 0, $e);
+
+                       }
+            }
+            catch (Exception $e)
+            {
             echo $e->getMessage().'<pre>'.$e->getTraceAsString().'</pre>';
             }
-               
+
             }
         }
             if($last_insert_id > 0) {
                     echo "Uploaded success fully";
-                } 
+                }
 		//$this->load->view("template/admin_header");
 		$this->load->view("uploaddocs", $data);
 		//$this->load->view("template/admin_footer");
 	}
-     
+
     private function _createIPaper($File, $FileType, $Access="private")
     {
-        
+
 
         if (empty($FileType))
         throw new Exception("Filetype cannot be empty");
@@ -82,12 +82,12 @@ class Uploaddocs extends CI_Controller {
         $UploadData = $Scribd->upload($File,$FileType,$Access,1);
         return $UploadData;
     }
-    
+
     public function getThumbUrl($doc_id)
     {
         $Scribd = new Scribd($this->scribd_api_key,$this->scribd_secret);
         return $Scribd->getSettings($doc_id);
-        
+
     }
-    
+
 }

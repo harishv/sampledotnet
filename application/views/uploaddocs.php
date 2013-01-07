@@ -1,6 +1,11 @@
 
 <form action="uploaddocs/index" method="post"
 enctype="multipart/form-data" name="uploadform" id="uploadform">
+<!-- <label for="file">Title:</label>
+<input type="text" id="doc_title" name="doc_title" />
+<br />
+<br />
+<br /> -->
 <label for="file">Filename:</label>
 <input type="file" name="upload-file" id="upload-file" />
 <br />

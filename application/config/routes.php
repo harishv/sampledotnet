@@ -68,6 +68,12 @@ $route['backoffice/products/(:any)/(:any)'] = "backoffice/products/$1/$2";
 $route['backoffice/users'] = "backoffice/users";
 $route['backoffice/users/(:any)'] = "backoffice/users/$1";
 $route['backoffice/users/(:any)/(:any)'] = "backoffice/users/$1/$2";
+// Admin Uploaddocs
+$route['backoffice/uploaddocs'] = "backoffice/uploaddocs";
+$route['backoffice/uploaddocs/(:any)'] = "backoffice/uploaddocs/$1";
+$route['backoffice/uploaddocs/(:any)/(:any)'] = "backoffice/uploaddocs/$1/$2";
+$route['backoffice/uploaddocs/(:any)/(:any)/(:any)'] = "backoffice/uploaddocs/$1/$2/$3";
+$route['backoffice/uploaddocs/(:any)/(:any)/(:any)/(:any)'] = "backoffice/uploaddocs/$1/$2/$3/$4";
 
 
 /**
