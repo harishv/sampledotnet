@@ -123,19 +123,38 @@ class Category_Model extends CI_Model {
 
 	function get_featured_products(){
 
+		$selected_country = ($this->session->userdata('selected_country')) ? $this->session->userdata('selected_country'): 226;
+
+		$this->db->select('prod_id');
+		$this->db->from('prod_countries');
+		$this->db->where('country_id', $selected_country);
+		$this->db->where('status_id', 1);
+
+		$result_prod_ids = $this->db->get();
+
+		if ($result_prod_ids->num_rows() == 0) {
+			return false;
+		} else {
+			// Get valid Product Id's
+			$prod_ids = $result_prod_ids->result_array();
+			foreach ($prod_ids as $id) {
+				$result_ids[] = $id['prod_id'];
+			}
+		}
+
 		$this->db->select('*');
 		$this->db->from('products');
 		$this->db->where('status_id', 1);
 		$this->db->where('featured',1);
+		$this->db->where_in('id', $result_ids);
 		$this->db->order_by("modified_at", "desc");
 
 		$result = $this->db->get();
 
 		if ($result->num_rows() == 0) {
 			return false;
-		} else {
+		} else
 			return $result->result_array();
-		}
 
 		return false;
 	}
@@ -169,7 +188,7 @@ class Category_Model extends CI_Model {
 			$this->db->where_in('pc.id', $cat_ids);
 		}
 		$this->db->where('p.status_id', 1);
-		$this->db->limit(5, 0);
+		$this->db->limit(4, 0);
 
 		$result = $this->db->get();
 
@@ -183,14 +202,14 @@ class Category_Model extends CI_Model {
 	}
 
 	function get_footer_products($id){
-		$query_prod = $this->db->query("select category_id,id,name,description,image from products where category_id = ".$id."  and featured = 1 and status_id = 1");
+		$query_prod = $this->db->query("select category_id,id,name,description,image from products where category_id = ".$id."  and featured = 1 and status_id = 1 limit 10");
 
 		if($query_prod->num_rows() > 0){
 
 			$result_prod = $query_prod->result_array();
 			return $result_prod;
 
-		}else
+		} else
 			return 0;
 	}
 

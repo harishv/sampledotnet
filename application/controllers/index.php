@@ -35,6 +35,9 @@ class Index extends CI_Controller {
 		$config['total_rows'] = $this->category_model->getCount();
 		$config['per_page'] = 10;
 
+		$config['first_link'] = '|<<';
+		$config['last_link'] = '>>|';
+
 		$config['cur_tag_open']  ='<a class="current">';
 		$config['cur_tag_close'] ='</a>';
 		//print_r($config);
@@ -49,11 +52,17 @@ class Index extends CI_Controller {
 		$data['footer_category'] = $this->category_model->get_footer_category();
 		$data['product_count'] = $config['total_rows'];
 
-		// print_r($data['footer_category']); exit;
+		// echo "<pre>"; print_r($data['footer_category']); exit;
 
-		foreach($data['footer_category'] as $key=>$values){
-			$data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);
+		if(count($data['footer_category']) > 0){
+			$data['footer_products'] = array();
+			foreach($data['footer_category'] as $values){
+				array_push($data['footer_products'], $this->category_model->get_footer_products($values['category_id']));
+				// $data['footer_products'] = $this->category_model->get_footer_products($values['category_id']);
+			}
 		}
+
+		// echo "<pre>"; print_r($data['footer_products']); exit;
 
 		if(isset($data['products'][0]['modified_at']))
 			$data['product_updated'] = $this->common_model->date_diff($data['products'][0]['modified_at'],"NOW");

@@ -37,12 +37,11 @@
 		<?php echo anchor("#", $this->lang->line("nav_documents")); ?>
 	</li>-->
 </ul>
-<?php $user_info = $this->session->userdata('user');
-			//print_r($user_info); ?>
 <p class="login-here">
 	<span style="display: block;">
-		
-			<?php if(isset($user_info) && $user_info !=''){
+		<?php $user_info = $this->session->userdata('user');
+			//print_r($user_info);
+			if(isset($user_info) && $user_info !=''){
 				$attributes = array('id' => 'signout', 'class' => 'iframe');
 				echo anchor( 'login/logout', "(" . $this->lang->line('nav_signout') .")", $attributes );
 			} else { ?>
@@ -54,7 +53,9 @@
 		<?php echo "Welcome, "; ?>
 			<a href="#user_profile" name="modal" class='iframe'><?php if(isset($user_info['first_name']) && $user_info['first_name'] != '') echo ucfirst($user_info['first_name']);  ?></a>
 		 <!-- <a href="#user_profile" name="modal" class='iframe'><?php //echo "user Profile";?> </a> -->
-	<?php }else{ ?>
+	<?php
+		unset($user_info);
+		}else{ ?>
 		<a href="#register" name="modal" class='iframe'><?php echo $this->lang->line("nav_become_a_member"); ?></a>
 	<?php }	 ?>
 </p>

@@ -1,21 +1,10 @@
-<script>
-function validate_search(){
-	
- var search_val = document.getElementById('search_value');
- if(search_val == 'null' || search_val.value.trim() == ''){
- 	alert("search should not be null or Empty");
- 	return false;
- }
- return true;
-}
-</script>
 <div id="sidebar" class="flt-r">
 	<!-- Begin search -->
 	<div class="search">
-		<form method="get" action="http://www.google.com/search" , target='_blank' ,onSubmit = 'return validate_search();'>
+		<form method="get" action="http://www.google.com/search"  target="_blank">
 			<input class="sch" type="text" name="q" size="31" maxlength="255" placeholder="Search" value="" />
 			<br>
-			<input class="btn btn-success pull-right" id="search_value" type="submit" value="Search" />
+			<input class="btn btn-success pull-right" type="submit" value="Search" />
 			<!-- <input type="radio" name="sitesearch" value="" /> The Web
 			<input type="radio" name="sitesearch" value="<?php echo $_SERVER["SERVER_NAME"]; ?>" checked /> Only Sample.net -->
 		</form>
@@ -29,7 +18,7 @@ function validate_search(){
 			?></a>
 		</li>
 	</ul>
-	<p class="free-sample">
+	<div class="free-sample">
 		<?php
 			$image_properties = array('src' => 'img/gift.png','alt' => 'gift','class'=>'flt-r');
 			echo img($image_properties);
@@ -37,8 +26,9 @@ function validate_search(){
 		Get free samples <br /> 0n <strong>Facebook</strong>
 		<br />
 		<?php // Please replace below base_url() with FB_PAGE ?>
-		<div class="fb_like_btn fb-like" data-href="<?php echo FB_PAGE; ?>" data-send="false" data-width="100" data-show-faces="false"></div>
-	</p>
+		<div class="fb-like" data-href="<?php echo FB_PAGE; ?>" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+		<!-- <div class="fb_like_btn fb-like" data-href="<?php echo FB_PAGE; ?>" data-send="false" data-width="100" data-show-faces="false"></div> -->
+	</div>
 	<ul class="btn">
 		<li>
 			<a href="<?php echo TWITTER_PAGE; ?>"><?php

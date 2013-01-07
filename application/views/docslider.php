@@ -12,7 +12,7 @@
         <div class="content-conveyor ui-helper-clearfix tabs1">
           
           <?php foreach ($docs_list as $row) { ?>
-         <a href="<?php echo base_url();?>documents/showDoc?doc_id=<?php echo $row->doc_id;?>" target="_parent">
+         <a href="<?php echo base_url();?>document/showDoc?doc_id=<?php echo $row->doc_id;?>" target="_parent">
           <div class="item">
             <p class="first"> <span class="hgt-15px wid_100"></span> <img src="<?php echo $row->thumbnail_url;?>" alt="huggies" class="one" /><br />
                 <span class="hgt-8px wid_100"></span><br />

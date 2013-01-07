@@ -17,14 +17,14 @@ if(isset($products) && $products != '' && count($products) > 0) { ?>
 				<a title="<?php echo $product_value['name']; ?>" href="<?php echo base_url().'product/product_detail/'.$product_value['id'];?>"><strong>
 					<?php
 					if($product_value['only_today'] == 1 ) {
-						$strip = 20;
+						$strip = 15; // 20
 					} else {
-						$strip =25;
+						$strip =20; // 25
 					}
 					echo (strlen($product_value['name']) > $strip) ? substr($product_value['name'], 0, ($strip-2) ) . '..' : html_entity_decode($product_value['name']) ;?>
 				</strong></a>
 				<br>
-				<?php echo (strlen(html_entity_decode($product_value['description'])) > 90) ? substr(html_entity_decode($product_value['description']), 0, 88) . '..' : html_entity_decode($product_value['description']); ?>
+				<?php echo (strlen(html_entity_decode($product_value['description'])) > 85) ? substr(html_entity_decode($product_value['description']), 0, 83) . '..' : html_entity_decode($product_value['description']); ?>
 			</p>
 			<br>
 			<div class="star" id="ratings">

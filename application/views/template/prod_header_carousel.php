@@ -10,7 +10,7 @@
 				foreach ($featured_products as $featured_products_key => $featured_products_values) { ?>
 					<li>
 						<a href="<?php echo base_url().'product/product_detail/'.$featured_products_values['id'];?>">
-							<img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$featured_products_values['image'];?>" alt="Huggies" width='86' height='98' />
+							<img src="<?php echo base_url().PROD_THUMB_IMG_PATH.'thumb_'.$featured_products_values['image'];?>" alt="<?php echo $featured_products_values['name']; ?>" width='86' height='98' />
 							<br />
 							<?php
 								$featured_short_desc = substr($featured_products_values['name'], 0, 8);

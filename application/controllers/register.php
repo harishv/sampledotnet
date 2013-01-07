@@ -91,12 +91,9 @@ class Register extends CI_Controller {
 
 
 		if(is_string($user_profile) ){
-			
 			$return_json['data'] =$user_profile;
 		}
 		else{
-		
-
 		$return_json['status'] = "success";
 		$return_json['data'] = "Thank you for updating your profile.";
 		}

@@ -101,6 +101,11 @@ $route['product/(:any)/(:any)/(:any)'] = "product/$1/$2/$3";
 $route['prod/(:any)/(:any)/(:any)'] = "product/seo_child_url/$1/$2/$3";
 $route['prod/(:any)/(:any)'] = "product/seo_parent_url/$1/$2";
 
+// Documents Controller
+$route['document'] = 'document';
+$route['document/(:any)'] = 'document/$1';
+$route['document/(:any)/(:any)'] = 'document/$1/$2';
+$route['document/(:any)/(:any)/(:any)'] = 'document/$1/$2/$3';
 
 /**
  * Redirection of links to blog.sample.net site.

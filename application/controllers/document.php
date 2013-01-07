@@ -2,7 +2,7 @@
 
 error_reporting(0);
 
-class Documents extends CI_Controller {
+class Document extends CI_Controller {
 
 	function __construct () {
 		parent::__construct();

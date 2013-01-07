@@ -45,7 +45,7 @@
 		<script src="<?php echo base_url("js"); ?>/jquery.jcarousel.js"></script>
 		<script>
 		$(document).ready(function() {
-		<?php $login_errors = $this->session->userdata('comment_login_errors');
+		<?php $login_errors = $this->session->userdata('comment_login_errors');	
 
 			 if(isset($login_errors) && $login_errors != ''){ ?>
 			 	alert("<?php echo $login_errors;?>");
@@ -67,7 +67,7 @@
 				//select all the a tag with name equal to modal
 				$('a[name=modal]').click(function(e) {
 
-					//document.getElementById('userlogin').reset();
+					//document.getElementById('userlogin').reset(); 
 					//$("#userlogin").reset();
 					//$("#user_login").reset();
 					$('#share_sample_div').show();
@@ -77,7 +77,7 @@
 					$('#user_profile_div').show();
 					$('#success_data_user_profile').hide();
 
-
+				
 					$('#userlogin').each(function() {
 						this.reset();
 					});
@@ -102,7 +102,7 @@
 					if ($('#register').css("display") == "block") {
 
 						$('#register').css("display", "none");
-
+						
 					}
 					if ($('#forgotpassword').css("display") == "block") {
 						$('#forgotpassword').css("display", "none");
@@ -205,7 +205,7 @@
 		$(document).keyup(function(f) {
 //==============Closes the Modal windows by presing Escape key
 //========================================
-  if (f.keyCode == 27) {
+  if (f.keyCode == 27) { 
   	$('#mask').hide();
 	$('.window').hide();
   }   // esc
@@ -230,7 +230,7 @@
 			<div class="container">
 				<!-- Begin Header div -->
 				<div id="header">
-					<?php echo anchor(base_url(), img(array("src" => "/img/logo.png", "alt" => $this->lang->line("brand_name"), "class" => "mgn-15b")), array("class" => "flt-l mgn-20rn")); ?>
+					<?php echo anchor(base_url(), img(array("src" => "/img/logo.jpg", "alt" => $this->lang->line("brand_name"), "class" => "mgn-15b")), array("class" => "flt-l mgn-15px")); ?>
 					<span class="flt-l slogan">genuine freebies!</span>
 					<?php // echo img(array("src" => "/img/colocation-america.jpg", "alt" => $this->lang->line("header_colocation_america"), "class" => "flt-r")); ?>
 					<!-- Navigation starts here -->

@@ -33,12 +33,12 @@ class Login extends CI_Controller {
 			$this->session->set_userdata($newdata);
 
 			$login_data = $this->session->userdata('user');
-			
+
 			//$active_user_id = $this->session->userdata('active_user_id');
 			if(isset($login_data['user_id']) && $login_data['user_id'] !=''){
 
 			$get_user_info =  $this->login_model->get_userprofile_info($login_data['user_id']);
-			
+
 			}
 
 			if(!$get_user_info)
@@ -92,7 +92,7 @@ class Login extends CI_Controller {
 				$return_json['status'] = "sucuss";
 				$return_json['data'] = "<h3>Email sent successfully!</h3>Follow the link in the email to reset your password.";
 			}
-			
+
 
 		}
 
@@ -148,11 +148,11 @@ class Login extends CI_Controller {
 	}
 
 	function contactus(){
-		
-		
+
+
 		$contact_details = $this->login_model->contact_us_details();
 		if(is_bool($contact_details)){
-			
+
 			$newdata = array(  	'succuss_msg'  =>'Thanks for contacting sample.net.');
 	 		$this->session->set_userdata($newdata);
 			redirect(base_url().'contactus', 'refresh');
@@ -171,6 +171,8 @@ class Login extends CI_Controller {
 		$this->session->unset_userdata('user');
 		$this->session->unset_userdata('header_action');
 		$this->session->unset_userdata('selected_country');
+
+		$this->session->sess_destroy();
 		redirect(base_url(),'refresh');
 
 	}

@@ -14,12 +14,12 @@ $errors=$this->session->userdata('comment_errors');
 <script type="text/javascript">stLight.options({publisher: "18f4acdf-af25-4d39-b663-78b081a6f60e"}); </script>
 <script>
 function comments_validate(){
-var comment_obj = document.getElementById("comment_area");
-if(comment_obj == null || comment_obj.value.trim() ==''){
-	alert("Comments Should not be null or Empty ");
-	return false;
-}
-return true;
+	if($.trim($('#comment_area').val()) <= 0){
+		alert("Comments should not be null or Empty ");
+		$('#comment_area').val('').focus();
+		return false;
+	}
+	return true;
 }
 
 </script>
@@ -176,7 +176,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 			<!-- End comments here -->
 
 			<!-- Begin tabs here -->
-			<?php // include_once 'template/prod_footer_carousel.php';?>
+			<?php include_once 'template/prod_footer_carousel.php';?>
 			<!-- End tabs here -->
 
 		<!-- End column 2 -->

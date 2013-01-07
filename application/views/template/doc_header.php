@@ -24,8 +24,6 @@
 		<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery-1.4.2.min.js"></script>
     	<script type="text/javascript" src="<?php echo base_url("js"); ?>/jquery-ui-1.7.2.custom.min.js"></script>
 		<script src="<?php echo base_url("js"); ?>/jquery.jcarousel.js"></script>
-		<script src="<?php echo base_url("js"); ?>/jquery.jquery.uniform.js"></script>
-		<script src="<?php echo base_url("js"); ?>/jquery.jquery.uniform.min.js"></script>
 		<script type="text/javascript">
 		var base_url = "<?php echo base_url();?>";/* global variable for the root path */
 		</script>

@@ -24,7 +24,7 @@
           </div>
           <div id="featured-document"> 
             <div class="sub">Featured Documents</div>
-       	    <iframe src="<?php echo base_url(); ?>documents/slider" class="tabs1" style="height:330px;overflow:hidden;" scrolling="no"></iframe>
+       	    <iframe src="<?php echo base_url(); ?>/document/slider" class="tabs1" style="height:330px;overflow:hidden;" scrolling="no"></iframe>
           </div>
           <!-- featured-document -->
           <div id="search-box">
