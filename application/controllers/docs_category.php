@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Category extends CI_Controller {
+class Docs_Category extends CI_Controller {
 
 	function __construct () {
 		parent::__construct();
@@ -8,7 +8,6 @@ class Category extends CI_Controller {
 		// Load the necessary stuff...
 		$this->load->model('common_model');
 		$this->load->model('category_model');
-		$this->load->model('docs_category_model');
 		$this->load->library('pagination');
 		$this->load->helper('url');
 
@@ -16,7 +15,7 @@ class Category extends CI_Controller {
 
 
 
-	public function get_category_product($cat_id, $id='0'){
+	public function get_category_documents($cat_id, $id='0'){
 
 
 
@@ -45,7 +44,6 @@ class Category extends CI_Controller {
 
 		$data['render'] = false;
 		$data['category'] = $this->category_model->get_category();
-		$data['doc_category'] = $this->docs_category_model->get_category();
 		$this->load->view("template/prod_header",$data);
 		$this->load->view("category_products",$data);
 		$this->load->view("template/prod_footer");
@@ -81,7 +79,6 @@ class Category extends CI_Controller {
 
 		$data['render'] = true;
 		$data['category'] = $this->category_model->get_category();
-		$data['doc_category'] = $this->docs_category_model->get_category();
 		if(is_array($data['product'])){
 			$return['page'] = $this->load->view('category_products',$data,TRUE);
 			$return['status'] = 'succuss';
@@ -117,7 +114,6 @@ class Category extends CI_Controller {
 
 		$data['render'] = false;
 		$data['category'] = $this->category_model->get_category();
-		$data['doc_category'] = $this->docs_category_model->get_category();
 
 		$data['sub_categories'] = $this->category_model->get_sub_categories($cat_id);
 		$this->load->view("template/prod_header",$data);

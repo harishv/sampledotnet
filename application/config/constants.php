@@ -69,6 +69,12 @@ define ('PRODUCT_IMAGE_WIDTH', '90');
 define ('PRODUCT_IMAGE_HEIGHT', '100');
 
 
+// Scribd Settings
+define('SCRIBD_API_KEY', '2dh26hgkx0ba8tda9b1q9');
+define('SCRIBD_API_SECERT', 'sec-4qqeg3ty5kx77hge6qu6646tq9');
+define('SCRIBD_PUB_ID', 'pub-77707344303370648422');
+
+
 // mail content for the share sample
 
 define ('SHARE_SAMPLE_MAIL_CONTENT','Hello,<br/><br/>We received a sample from you.  Whole hearted thanks from our team for your suggestion. We shall publish it upon a review. We look forward for your contributions to help us grow better.<br/><br/>!!sample_details!!<br/><br/>Regards,<br/>Sample.net Team');

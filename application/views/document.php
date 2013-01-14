@@ -12,7 +12,7 @@
         var pageCount = scribd_doc.api.getPage();
         if(pageCount > 3)
            scribd_doc.api.setPage(4);
-        
+
       }
 
   scribd_doc.addEventListener('docReady', onDocReady);
@@ -30,22 +30,22 @@
   scribd_doc.addParam('width', 600);
   scribd_doc.addParam('public', true);
   scribd_doc.write('embedded_doc');
- 
+
 </script>
  <script type="text/javascript">
       $(function() {
-        
+
     //vars
     var conveyor = $(".content-conveyor", $("#sliderContent")),
     item = $(".item", $("#sliderContent"));
-    
+
     //set length of conveyor
     conveyor.css("width", item.length * parseInt(item.css("width")));
-        
+
         //config
         var sliderOpts = {
       max: (item.length * parseInt(item.css("width"))) - parseInt($(".viewer", $("#sliderContent")).css("width")),
-          slide: function(e, ui) { 
+          slide: function(e, ui) {
             conveyor.css("left", "-" + ui.value + "px");
           }
         };
@@ -61,10 +61,10 @@
         <!-- Begin content div -->
         <div id="content" class="flt-l" >
           <div class="hgt-15px wid_100" style="min-height:880px;">
-           
-           <span>Title: <span style="color:#0c3b93;"><?php //echo $doc_title;?></span> </span>
+
+           <span>Title: <span style="color:#0c3b93;"><?php // echo $name;?></span> </span>
            <div class="download-box"><a href="#">Download This for</a><span>$ 8.99</span></div>
-           
+
            <div class="pdf-book"><div id='embedded_doc'></div>
 <map name="Map2" id="Map2"><area shape="rect" coords="172,770,228,782" href="#" /><area shape="rect" coords="322,773,381,794" href="#" /></map></div>
           </div>
@@ -81,7 +81,7 @@
 <area shape="rect" coords="341,0,401,30" href="#" />
 </map><div class="download-box1"><a href="#">Download This for</a><span>$ 8.99</span></div>
             </div>
-            	
+
               <div id="container" >
                <div class="left">
                 <div class="top-bar"></div>
@@ -134,7 +134,7 @@ Onsectetuer</p>
                  </div><!-- data -->
               	</div><!-- right -->
               </div><!-- container -->
-            
+
            </div><!-- left -->
            <div class="right"><img src="../img/link-img.jpg" style="margin-left:10px;" /></div><!-- right -->
           </div><!-- bottom-information-container -->

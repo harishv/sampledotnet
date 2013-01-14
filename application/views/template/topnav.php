@@ -10,8 +10,14 @@
 	<?php //echo img(array("src" => "/img/nav-icon.jpg", "alt" => $this->lang->line("nav"))); ?>
 </p>
 <ul id="main-nav">
-	<li class="last">
-		<?php echo anchor(base_url(), $this->lang->line("nav_products"), array ("class" => "current")); ?>
+	<li>
+		<?php
+			if (!isset($site_type) || $site_type == '') {
+				$current_class = 'current';
+			} else {
+				$current_class = '';
+			}
+			echo anchor(base_url(), $this->lang->line("nav_products"), array ("class" => $current_class)); ?>
 		<ul>
 			<?php
 				if(isset($category) && $category !='') {
@@ -33,9 +39,35 @@
 				} ?>
 		</ul>
 	</li>
-	<!--<li class="last">
-		<?php echo anchor("#", $this->lang->line("nav_documents")); ?>
-	</li>-->
+	<li class="last">
+		<?php
+			if (isset($site_type) && $site_type == 'docs') {
+				$current_class = 'current';
+			} else {
+				$current_class = '';
+			}
+			echo anchor(base_url() . 'documents', $this->lang->line("nav_documents"), array ("class" => $current_class)); ?>
+		<?php if(isset($doc_category) && $doc_category !='') { ?>
+		<ul>
+			<?php
+				foreach($doc_category as $cat_id => $cat_values) {
+						$sub_cat = $this->docs_category_model->get_sub_cat($cat_values['id']); ?>
+						<li class="last">
+							<a href="<?php if($sub_cat =='')echo base_url().'docs_category/get_category_documents/'.$cat_values['id']; else echo "#";?>"><?php echo $cat_values['doc_cat_name'];?></a>
+							<?php if(isset($sub_cat) && $sub_cat !='') { ?>
+							<ol>
+								<?php foreach($sub_cat as $sub_cat_values) { ?>
+								<li>
+									<a href="<?php echo base_url().'docs_category/get_category_documents/'.$sub_cat_values['id'];?>"><?php echo $sub_cat_values['doc_cat_name'];?></a>
+								</li>
+								<?php } ?>
+							</ol>
+							<?php } ?>
+						</li>
+			<?php } ?>
+		</ul>
+		<?php } ?>
+	</li>
 </ul>
 <p class="login-here">
 	<span style="display: block;">

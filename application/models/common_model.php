@@ -15,6 +15,14 @@ class Common_Model extends CI_Model {
 		return htmlentities(stripslashes($data));
 	}
 
+	function get_user_profile($id){
+
+		$query = $this->db->query("select * from users where user_id = ". $id);
+		if($query->num_rows() > 0){
+			return $query->result_array();
+		}
+	}
+
 	function get_valid_countries($prod_id)
 	{
 		$this->db->select('country_id');

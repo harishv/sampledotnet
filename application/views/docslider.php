@@ -16,7 +16,7 @@
           <div class="item">
             <p class="first"> <span class="hgt-15px wid_100"></span> <img src="<?php echo $row->thumb_url;?>" alt="huggies" class="one" /><br />
                 <span class="hgt-8px wid_100"></span><br />
-                <?php echo $row->doc_title; ?></p>
+                <?php echo $row->name; ?></p>
           </div>
         </a>
           <?php } ?>

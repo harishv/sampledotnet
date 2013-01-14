@@ -7,6 +7,7 @@ class Index extends CI_Controller {
 
 		// Load the necessary stuff...
 		$this->load->model('category_model');
+		$this->load->model('docs_category_model');
 		$this->load->model('common_model');
 		$this->load->library('pagination');
 		$this->load->helper('url');
@@ -43,6 +44,7 @@ class Index extends CI_Controller {
 		//print_r($config);
 		$this->pagination->initialize($config);
 		$data['category'] = $this->category_model->get_category();
+		$data['doc_category'] = $this->docs_category_model->get_category();
 
 		$data['products'] = $this->category_model->get_products($cat_id = 0, $id, $config['per_page']);
 		// echo "<pre>"; print_r($data['products']); exit();

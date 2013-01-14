@@ -2,8 +2,11 @@
 
 class Documents extends CI_Controller {
 
-   public function __construct()
-   {
+	public $scribd_api_key = "3awse6c8wfkgc2ssueqjf";
+    public $scribd_secret = "sec-9q4z6vzohxq6rdyn2we2zuqht8";
+
+	public function __construct()
+	{
 		parent::__construct();
 
 		// Load necessary stuff..

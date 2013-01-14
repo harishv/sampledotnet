@@ -46,6 +46,27 @@ class Admin_Documents_Model extends CI_Model {
 
 	}
 
+	function add_document_details($doc_details_array) {
+		$this->db->insert('documents', $doc_details_array);
+		return  $this->db->insert_id();
+	}
+
+	function get_docs_list()
+	{
+		$query_result = $this->db->get('scribd_documents');
+		/*foreach ($query_result->result() as $row) {
+			$docs_list['doc_id ']  = $row->doc_id;
+			$docs_list['name '] = $row->name;
+			$docs_list['access_key'] = $row->access_key;
+			$docs_list['secret_password'] = $row->secret_password;
+			$docs_list['pdfdoc_category'] = $row->pdfdoc_category;
+			$docs_list['access '] = $row->access;
+			$docs_list['thumbnail_url '] = $row->thumbnail_url;
+			$docs_list['uploaded_date '] = $row->uploaded_date;
+		} */
+
+		return $query_result;
+	}
 
 };
 
