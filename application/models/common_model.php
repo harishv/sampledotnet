@@ -23,11 +23,19 @@ class Common_Model extends CI_Model {
 		}
 	}
 
-	function get_valid_countries($prod_id)
+	function get_valid_countries($id, $table = "prod")
 	{
+		if ($table == 'doc') {
+			$table_name = 'doc_countries';
+			$column_id = 'doc_id';
+		} else {
+			$table_name = 'prod_countries';
+			$column_id = 'prod_id';
+		}
+
 		$this->db->select('country_id');
-		$this->db->from('prod_countries');
-		$this->db->where('prod_id', $prod_id);
+		$this->db->from($table_name);
+		$this->db->where($column_id, $id);
 
 		$result = $this->db->get();
 
@@ -99,6 +107,25 @@ class Common_Model extends CI_Model {
 		} else {
 			$name_arr = $result->result_array();
 			return $name_arr[0]['prod_cat_name'];
+		}
+
+		return false;
+	}
+
+	function get_doc_cat_name($cat_id)
+	{
+		$this->db->select('doc_cat_name');
+		$this->db->from('doc_categories');
+		$this->db->where('id', $cat_id);
+		// $this->db->where('status_id', 1); // status_id = 2 resembles Active
+
+		$result = $this->db->get();
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			$name_arr = $result->result_array();
+			return $name_arr[0]['doc_cat_name'];
 		}
 
 		return false;

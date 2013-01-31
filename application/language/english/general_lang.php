@@ -134,7 +134,7 @@ $lang["admin_doc_index_title"]				=	"Documents Management System";
 $lang["admin_doc_index_desc"]				=	"This is the primary section, where we are going to manage all documents related information.";
 $lang["admin_doc_manager_categories"]		=	"Manage Categories";
 $lang["admin_doc_manager_documents"]		=	"Manage Documents";
-
+$lang["admin_doc_manager_samples"]			=	"Shared Samples";
 
 /**
  * Products List Page
@@ -153,6 +153,22 @@ $lang["admin_prod_list_tbl_desc"]			=	"Description";
 $lang["admin_prod_list_tbl_valid_countries"]=	"Valid Countries";
 $lang["admin_prod_list_status_change_success"] = "Status Changed Successfully.";
 
+/**
+ * Documents List Page
+ */
+$lang["admin_doc_list_title"]				=	"Documents List";
+$lang["admin_doc_add_new"]					=	"Add New Document";
+$lang["admin_doc_edit"]						=	"Edit";
+$lang["admin_doc_delete"]					=	"Delete";
+$lang["admin_doc_comments"]					=	"Comments";
+$lang["admin_doc_deleted"]					=	"Deleted";
+$lang["admin_doc_list_tbl_doc_name"]		=	"Documents Name";
+$lang["admin_doc_list_tbl_category"]		=	"Category";
+$lang["admin_doc_list_tbl_status"]			=	"Status";
+$lang["admin_doc_list_tbl_actions"]			=	"Actions";
+$lang["admin_doc_list_tbl_desc"]			=	"Description";
+$lang["admin_doc_list_tbl_valid_countries"]	=	"Valid Countries";
+$lang["admin_doc_list_status_change_success"] = "Status Changed Successfully.";
 
 
 /**
@@ -167,7 +183,7 @@ $lang["admin_user_update_title"]			=	"Update Admin User Form";
 
 
 /**
- * Categories List Page
+ * Product Categories List Page
  */
 $lang["admin_prod_cat_list_title"]			=	"Categories List";
 $lang["admin_prod_cat_add_new"]				=	"Add New Category";
@@ -178,6 +194,19 @@ $lang["admin_prod_cat_list_tbl_cat_name"]	=	"Category Name";
 $lang["admin_prod_cat_list_tbl_parent_cat_name"] =	"Parent Category Name";
 $lang["admin_prod_cat_list_tbl_status"]		=	"Status";
 $lang["admin_prod_cat_list_tbl_actions"]	=	"Actions";
+
+/**
+ * Document Categories List Page
+ */
+$lang["admin_doc_cat_list_title"]			=	"Categories List";
+$lang["admin_doc_cat_add_new"]				=	"Add New Category";
+$lang["admin_doc_cat_edit"]					=	"Edit";
+$lang["admin_doc_cat_delete"]				=	"Delete";
+$lang["admin_doc_cat_deleted"]				=	"Deleted";
+$lang["admin_doc_cat_list_tbl_cat_name"]	=	"Category Name";
+$lang["admin_doc_cat_list_tbl_parent_cat_name"] =	"Parent Category Name";
+$lang["admin_doc_cat_list_tbl_status"]		=	"Status";
+$lang["admin_doc_cat_list_tbl_actions"]		=	"Actions";
 
 /**
  * Comments List Page
@@ -242,7 +271,34 @@ $lang["admin_prod_update_btn"]				=	"Update Product";
 
 
 /**
- * Products Manage Page
+ * Documents Manage Page
+ */
+$lang["admin_doc_add_title"]				=	"Add Document Form";
+$lang["admin_doc_update_title"]				=	"Update Document Form";
+$lang["admin_doc_mng_doc_name"]				=	"Document Name";
+$lang["admin_doc_mng_doc_name_ph"]			=	"Document Name";
+$lang["admin_doc_mng_cat"]					=	"Document Category";
+$lang["admin_doc_mng_sel_a_cat"]			=	"Select a Category";
+$lang["admin_doc_mng_desc"]					=	"Document Description";
+$lang["admin_doc_mng_desc_ph"]				=	"Document Description";
+$lang["admin_doc_mng_doc_path"]				=	"Document";
+$lang["admin_doc_mng_doc_path_ph"]			=	"Document";
+$lang["admin_doc_mng_image"]				=	"Document Image";
+$lang["admin_doc_mng_featured"]				=	"Featured Document";
+$lang["admin_doc_mng_featured_note"]		=	"Check this option if you want to list this document in the Featured list";
+$lang["admin_doc_mng_only_today"]			=	"Only Today";
+$lang["admin_doc_mng_only_today_note"]		=	"Check this option if you want to mark this document in Only Today list";
+$lang["admin_doc_mng_valid_cont"]			=	"Valid Countries";
+$lang["admin_doc_mng_status"]				=	"Status";
+$lang["admin_doc_mng_scheduled"]			=	"Scheduled";
+$lang["admin_doc_mng_status_inactive"]		=	"Inactive";
+$lang["admin_doc_mng_status_active"]		=	"Active";
+$lang["admin_doc_mng_status_deleted"]		=	"Deleted";
+$lang["admin_doc_add_btn"]					=	"Add Document";
+$lang["admin_doc_update_btn"]				=	"Update Document";
+
+/**
+ * Products Category Manage Page
  */
 $lang["back_to_categories_list"]			=	"Back to Categories List";
 $lang["admin_prod_cat_add_title"]			=	"Add Product's Category Form";
@@ -255,6 +311,19 @@ $lang["admin_prod_cat_mng_cat_choice"]		=	"Category Choice";
 $lang["admin_prod_cat_mng_parent_cat"]		=	"Parent Category";
 $lang["admin_prod_cat_mng_sel_a_cat"]		=	"Select a Parent Category";
 
+
+/**
+ * Documents Category Manage Page
+ */
+$lang["admin_doc_cat_add_title"]			=	"Add Document's Category Form";
+$lang["admin_doc_cat_update_title"]			=	"Update Document's Category Form";
+$lang["admin_doc_cat_add_btn"]				=	"Add Category";
+$lang["admin_doc_cat_update_btn"]			=	"Update Category";
+$lang["admin_doc_cat_mng_doc_name"]			=	"Category Name";
+$lang["admin_doc_cat_mng_doc_name_ph"]		=	"Category Name";
+$lang["admin_doc_cat_mng_cat_choice"]		=	"Category Choice";
+$lang["admin_doc_cat_mng_parent_cat"]		=	"Parent Category";
+$lang["admin_doc_cat_mng_sel_a_cat"]		=	"Select a Parent Category";
 
 /* End of file general_lang.php */
 /* Location: ./application/language/english/general_lang.php */

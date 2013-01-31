@@ -42,11 +42,6 @@ $route['default_controller'] = "index";
 $route['backoffice'] = ADMINFOLDER;
 $route['404_override'] = '';
 
-// $route['detail'] = "product/test";
-$route['detail/(:num)'] = "product/test/$1";
-$route['detail/(:num)/(:any)'] = "product/test/$1/$2";
-$route['prod'] = "product/product_detail";
-
 /**
  * Admin Routs
  */
@@ -57,13 +52,17 @@ $route['backoffice/index/(:any)'] = "backoffice/index/$1";
 // Admin Login
 $route['backoffice/login'] = "backoffice/login";
 $route['backoffice/login/(:any)'] = "backoffice/login/$1";
+$route['backoffice/login/(:any)/(:any)'] = "backoffice/login/$1/$2";
 // Admin Logout
 $route['backoffice/logout'] = "backoffice/logout";
-$route['backoffice/logout/(:any)'] = "backoffice/logout/$1";
 // Admin Products
 $route['backoffice/products'] = "backoffice/products";
 $route['backoffice/products/(:any)'] = "backoffice/products/$1";
 $route['backoffice/products/(:any)/(:any)'] = "backoffice/products/$1/$2";
+// Admin Documents
+$route['backoffice/documents'] = "backoffice/documents";
+$route['backoffice/documents/(:any)'] = "backoffice/documents/$1";
+$route['backoffice/documents/(:any)/(:any)'] = "backoffice/documents/$1/$2";
 // Admin Users
 $route['backoffice/users'] = "backoffice/users";
 $route['backoffice/users/(:any)'] = "backoffice/users/$1";

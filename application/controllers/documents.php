@@ -74,6 +74,7 @@ class Documents extends CI_Controller {
 		$this->load->view("document", $data);
 		$this->load->view("template/prod_footer");
 	}
+	
 
 	private function _changeStatus($status){
 		$scribd_api_key = "3awse6c8wfkgc2ssueqjf";

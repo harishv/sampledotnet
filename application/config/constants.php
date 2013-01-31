@@ -51,6 +51,8 @@ define ('THUMBS_DIR', 'thumbs');
 //URL'S
 define('PROD_IMG_PATH', UPLOAD_DIR . "/" . PRODUCTS_DIR . "/");
 define('PROD_THUMB_IMG_PATH', UPLOAD_DIR . "/" . PRODUCTS_DIR . "/" . THUMBS_DIR . "/");
+define('DOC_IMG_PATH', UPLOAD_DIR . "/" . DOCUMENTS_DIR . "/");
+define('DOC_THUMB_IMG_PATH', UPLOAD_DIR . "/" . DOCUMENTS_DIR . "/" . THUMBS_DIR . "/");
 
 
 // Social Share Details
@@ -61,13 +63,15 @@ define ('GOOGLEPLUS_PAGE', 'https://plus.google.com/u/0/b/108751386433486638009/
 define ('PINTEREST_PAGE', 'http://pinterest.com/sampledotnet/');
 
 
-// Common Image Settings
+// Common Settings
 define ('THUMB_EXT', 'thumb_');
 define ('ALLOWED_IMG_TYPES', 'jpg|png|gif|jpeg');
+define ('ALLOWED_DOC_TYPES', 'pdf|doc|docx|txt');
 define ('IMAGE_QUALITY', '100%');
 define ('PRODUCT_IMAGE_WIDTH', '90');
 define ('PRODUCT_IMAGE_HEIGHT', '100');
-
+define ('DOCUMENT_IMAGE_WIDTH', '90');
+define ('DOCUMENT_IMAGE_HEIGHT', '100');
 
 // Scribd Settings
 define('SCRIBD_API_KEY', '2dh26hgkx0ba8tda9b1q9');

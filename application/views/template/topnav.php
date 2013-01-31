@@ -7,10 +7,9 @@
 
 <p class="bg-icon">
 	<span class='st_sharethis_large'></span>
-	<?php //echo img(array("src" => "/img/nav-icon.jpg", "alt" => $this->lang->line("nav"))); ?>
 </p>
 <ul id="main-nav">
-	<li>
+	<li class="last">
 		<?php
 			if (!isset($site_type) || $site_type == '') {
 				$current_class = 'current';
@@ -39,6 +38,7 @@
 				} ?>
 		</ul>
 	</li>
+	<!--
 	<li class="last">
 		<?php
 			if (isset($site_type) && $site_type == 'docs') {
@@ -68,6 +68,7 @@
 		</ul>
 		<?php } ?>
 	</li>
+	-->
 </ul>
 <p class="login-here">
 	<span style="display: block;">
