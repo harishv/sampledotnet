@@ -39,7 +39,7 @@ if(!$render) { ?>
 					<!-- for the refreshing issue start-->
 					<?php } ?>
 
-					<?php include_once 'products_thumbs_view.php'; ?>
+					<?php include_once 'documents_thumbs_view.php'; ?>
 
 					<div class="pages">
 						<?php echo $this->pagination->create_links();?>

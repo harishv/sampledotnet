@@ -91,7 +91,7 @@ $route['login/(:any)/(:any)/(:any)'] = "login/$1/$2/$3";
 $route['register'] = "register";
 $route['register/(:any)'] = "register/$1";
 $route['register/(:any)/(:any)'] = "register/$1/$2";
-// Category Controller
+// Product Category Controller
 $route['category'] = "category";
 $route['category/(:any)'] = "category/$1";
 $route['category/(:any)/(:any)'] = "category/$1/$2";
@@ -106,11 +106,20 @@ $route['product/(:any)/(:any)/(:any)'] = "product/$1/$2/$3";
 $route['prod/(:any)/(:any)/(:any)'] = "product/seo_child_url/$1/$2/$3";
 $route['prod/(:any)/(:any)'] = "product/seo_parent_url/$1/$2";
 
+// Product Category Controller
+$route['docs_category'] = "docs_category";
+$route['docs_category/(:any)'] = "docs_category/$1";
+$route['docs_category/(:any)/(:any)'] = "docs_category/$1/$2";
+$route['docs_category/(:any)/(:any)/(:any)'] = "docs_category/$1/$2/$3";
 // Documents Controller
-$route['document'] = 'document';
-$route['document/(:any)'] = 'document/$1';
-$route['document/(:any)/(:any)'] = 'document/$1/$2';
-$route['document/(:any)/(:any)/(:any)'] = 'document/$1/$2/$3';
+$route['documents'] = 'documents';
+$route['documents/(:any)'] = 'documents/$1';
+$route['documents/(:any)/(:any)'] = 'documents/$1/$2';
+$route['documents/(:any)/(:any)/(:any)'] = 'documents/$1/$2/$3';
+
+// SEO friendly url's for Document detail page
+$route['doc/(:any)/(:any)/(:any)'] = "documents/seo_child_url/$1/$2/$3";
+$route['doc/(:any)/(:any)'] = "documents/seo_parent_url/$1/$2";
 
 /**
  * Redirection of links to blog.sample.net site.

@@ -10,12 +10,12 @@
 					foreach($doc_category as $cat_id => $cat_values) {
 						$sub_cat = $this->docs_category_model->get_sub_cat($cat_values['id']); ?>
 						<li>
-							<a href="<?php if($sub_cat =='')echo base_url().'docs_category/get_category_documents/'.$cat_values['id']; else echo base_url().'docs_category/parent_category/'.$cat_values['id'];?>"><?php echo $cat_values['doc_cat_name'];?></a>
+							<a href="<?php if($sub_cat =='')echo base_url().'docs_category/get_category_document/'.$cat_values['id']; else echo base_url().'docs_category/parent_category/'.$cat_values['id'];?>"><?php echo $cat_values['doc_cat_name'];?></a>
 							<?php if(isset($sub_cat) && $sub_cat !='') { ?>
 							<ol>
 								<?php foreach($sub_cat as $sub_cat_id=>$sub_cat_values) { ?>
 								<li>
-									<a href="<?php echo base_url().'docs_category/get_category_documents/'.$sub_cat_values['id'];?>"><?php echo $sub_cat_values['doc_cat_name'];?></a>
+									<a href="<?php echo base_url().'docs_category/get_category_document/'.$sub_cat_values['id'];?>"><?php echo $sub_cat_values['doc_cat_name'];?></a>
 								</li>
 								<?php } ?>
 							</ol>
