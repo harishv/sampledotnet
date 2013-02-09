@@ -30,3 +30,5 @@ Existing Git Repo?
 	git push -u origin master
 
 Please contact me for further clarifications.
+
+[Harish Varada](http://harishvarada.blogspot.in)
