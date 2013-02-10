@@ -331,7 +331,7 @@ ul, ol {
  color:white;
  padding:0;
  margin:0;
- background:url(images/out.png) no-repeat;
+ background:url(../img/out.png) no-repeat;
  padding-left:27px;
  padding-top:20px;
 }
@@ -351,7 +351,7 @@ p {
 
 .sidebar ul li a:hover{
  width:213px;
- background:url(images/over.png) no-repeat;
+ background:url(../img/over.png) no-repeat;
  color:#014284;
  border:none;
  margin:1px;
@@ -431,21 +431,21 @@ p {
 #search-box .search-bar{
  width:629px;
  height:49px;
- background:url(images/search-bar.jpg) no-repeat;
+ background:url(../img/search-bar.jpg) no-repeat;
  margin:auto;
  padding:0;
 }
-#search-box .search-bar>input{
+#search-box .search-bar>input, #search-box .search-bar>form>input{
  margin:0;
  padding:0;
  border:none;
  height:35px;
  position:relative;
  left:7px;
- top:-14px;
+ top:7px;
  width:460px;
  padding-left:40px;
- background:url(images/sear-img.png) no-repeat 10px center;
+ background:url(../img/sear-img.png) no-repeat 10px center;
  float:left;
 }
 #search-box .search-bar .search-now{
@@ -453,7 +453,7 @@ p {
  width:119px;
  float:left;
  position:relative;
- top:-13px;
+ top:7px;
 }
 .sortby-pagination{
  display:block;
@@ -492,7 +492,7 @@ p {
 .so{
  width:150px;
  height:25px;
- background:url(images/bg-social.jpg) no-repeat;
+ background:url(../img/bg-social.jpg) no-repeat;
  padding-left:5px;
  padding-top:5px;
  float:left;
@@ -609,14 +609,14 @@ color:#0c3b93;
 .bottom-information-container .left #container .left .top-bar{
  width:195px;
  height:15px;
- background:url(images/top-img.png) no-repeat;
+ background:url(../img/top-img.png) no-repeat;
  margin:0;
  padding:0;
 }
 .bottom-information-container .left #container .left .middle-bar{
  width:180px;
  min-height:200px;
- background:url(images/middle-img.png) repeat-y;
+ background:url(../img/middle-img.png) repeat-y;
  padding-left:15px;
 }
 .bottom-information-container .left #container .left .middle-bar>span{
@@ -635,7 +635,7 @@ color:#0c3b93;
 .bottom-information-container .left #container .left .bottom-bar{
  width:195px;
  height:11px;
- background:url(images/bottom-img.png) no-repeat;
+ background:url(../img/bottom-img.png) no-repeat;
  margin:0;
  padding:0;
 }
@@ -671,7 +671,7 @@ color:#0c3b93;
 	width:176px;
 	height:21px;
 	position:absolute;
-	background:url(images/download.png) no-repeat;
+	background:url(../img/download.png) no-repeat;
 	left: 536px;
 	top: 96px;
 	z-index:1000;
@@ -682,7 +682,7 @@ color:#0c3b93;
 	width:176px;
 	height:21px;
 	position:absolute;
-	background:url(images/download.png) no-repeat;
+	background:url(../img/download.png) no-repeat;
 	left: 548px;
 	top: 866px;
 	z-index:1000;

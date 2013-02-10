@@ -110,7 +110,7 @@ class Login extends CI_Controller {
 
 		$data['errors'] = '';
 
-		//$this->load->view('template/prod_header');
+		//$this->load->view('template/header');
 		if( count($result) > 0 ){
 
 			//$this->load->view('change_password', $data);
@@ -129,7 +129,7 @@ class Login extends CI_Controller {
 		$user_details = $this->login_model->change_password();
 
 
-		//$this->load->view('template/prod_header');
+		//$this->load->view('template/header');
 
 
 		if(is_string($user_details) )

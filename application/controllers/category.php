@@ -46,7 +46,7 @@ class Category extends CI_Controller {
 		$data['render'] = false;
 		$data['category'] = $this->category_model->get_category();
 		$data['doc_category'] = $this->docs_category_model->get_category();
-		$this->load->view("template/prod_header",$data);
+		$this->load->view("template/header",$data);
 		$this->load->view("category_products",$data);
 		$this->load->view("template/prod_footer");
 	}
@@ -120,7 +120,7 @@ class Category extends CI_Controller {
 		$data['doc_category'] = $this->docs_category_model->get_category();
 
 		$data['sub_categories'] = $this->category_model->get_sub_categories($cat_id);
-		$this->load->view("template/prod_header",$data);
+		$this->load->view("template/header",$data);
 		$this->load->view("parent_category_view",$data);
 		$this->load->view("template/prod_footer");
 	}

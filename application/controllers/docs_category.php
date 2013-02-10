@@ -43,7 +43,7 @@ class Docs_Category extends CI_Controller {
 		$data['render'] = false;
 		$data['category'] = $this->category_model->get_category();
 		$data['doc_category'] = $this->docs_category_model->get_category();
-		$this->load->view("template/prod_header",$data);
+		$this->load->view("template/header",$data);
 		$this->load->view("category_documents",$data);
 		$this->load->view("template/prod_footer");
 	}
@@ -112,10 +112,11 @@ class Docs_Category extends CI_Controller {
 		//$data['slider'] = $this->load->view('slider', $data, TRUE);
 
 		$data['render'] = false;
-		$data['category'] = $this->docs_category_model->get_category();
+		$data['category'] = $this->category_model->get_category();
+		$data['docs_category'] = $this->docs_category_model->get_category();
 
 		$data['sub_categories'] = $this->docs_category_model->get_sub_categories($cat_id);
-		$this->load->view("template/prod_header",$data);
+		$this->load->view("template/header",$data);
 		$this->load->view("parent_category_view",$data);
 		$this->load->view("template/prod_footer");
 	}

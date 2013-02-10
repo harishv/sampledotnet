@@ -13,15 +13,53 @@ if(!$render) { ?>
 	<!-- Begin content div -->
 	<div id="content" class="flt-l">
 		<div class="hgt-15px wid_100"></div>
-		<?php if(isset($product_updated)) { ?>
-			<span class="small flt-r pdg_15px"><?php echo "Updated ".$product_updated." ago";?></span>
-		<?php } ?>
-		<h1>Featured Documents</h1>
-		<span class="bdr-btm"></span>
+
 		<div class="hgt-15px"></div>
+		
 		<!-- Begin slideshow -->
+		<div class="slide flt-l mgn-15b">
+			<div class="top-container" style="margin:0px; height:30px; padding-left:5px;">
+				Home&nbsp;
+				<img src="<?php echo base_url(); ?>img/blue-bullet.jpg" />
+				<span style="font-weight:bold;">&nbsp; Documents</span>
+			</div>
+		
+			<div class="sidebar">
+				<ul>
+					<li><a href="#">Rental Agreement<br />Template</a></li>
+					<li><a href="#">Rental Agreement<br />Template</a></li>
+					<li><a href="#">Rental Agreement<br />Template</a></li>
+					<li><a href="#">Rental Agreement<br />Template</a></li>
+					<li><a href="#">Rental Agreement<br />Template</a></li>
+				</ul>
+			</div>
+
+			<!-- sidebar -->
+			<div class="right-bar">
+				<img src="<?php echo base_url(); ?>img/banner-01.jpg" />
+			</div>
+			<!-- right-bar -->
+		</div>
+
+		<!-- featured-document -->
+		<div id="featured-document"> 
+			<div class="sub">Featured Documents</div>
+			<!-- <iframe src="slider2.html" class="tabs1" style="height:330px;overflow:hidden;" scrolling="no"></iframe> -->
 			<?php include_once 'template/doc_header_carousel.php';?>
-		<!-- End slideshow -->
+		</div>
+
+		<!-- search-box -->
+		<div id="search-box">
+			<div class="search-bar">
+				<form name="doc_serach_form" method="get" action="http://www.google.com/search"  target="_blank">
+					<input type="text" placeholder="Search for your document here..." value="" />
+					<div class="search-now">
+						<img src="<?php echo base_url(); ?>img/search-now.jpg" onClick="document.doc_serach_form.submit();" />
+					</div>
+					<!-- <input class="btn btn-success pull-right" type="submit" value="Search" /> -->
+				</form>				
+			</div>
+		</div>
 
 		<!-- Begin column 1 -->
 			<?php include_once 'template/doc_leftnav.php';?>
@@ -31,10 +69,11 @@ if(!$render) { ?>
 		<div class="col-2 flt-l">
 			<!-- Begin sample here -->
 			<div class="sample mgn-15b">
-				<p class="head mgn-0">
+				<!-- <p class="head mgn-0">
 					<img src="<?php echo base_url(); ?>img/time-icon.png" alt="time" class="flt-l mgn-10l mgn-r" />
 					Today's Free Samples <em>We have <?php if(isset($product_count) && $product_count !='') echo $product_count;?> Free Coupons for you today</em>
-				</p>
+				</p> -->
+				<p class="head mgn-0">&nbsp;&nbsp;&nbsp; Most Popular &amp; Downloded Documents</p>
 				<div id="replace">
 					<!-- for the refreshing issue start-->
 					<?php } ?>

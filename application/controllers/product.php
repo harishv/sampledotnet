@@ -97,7 +97,7 @@ class Product extends CI_Controller {
 
 		$data['page_meta_data'] = '<meta property="og:image" content="' . base_url(). PROD_IMG_PATH . $data['product_details'][0]['image'] . '" />';
 
-		$this->load->view("template/prod_header", $data);
+		$this->load->view("template/header", $data);
 		$this->load->view("product", $data);
 		$this->load->view("template/prod_footer");
 	}
@@ -143,7 +143,7 @@ class Product extends CI_Controller {
 		$data["countries"] = $this->common_model->get_countries();
 		$data['product_details'] = $this->product_model->get_product_details($id);
 
-		$this->load->view("template/prod_header", $data);
+		$this->load->view("template/header", $data);
 		$this->load->view("product_grab_view", $data);
 		$this->load->view("template/prod_footer");
 	}

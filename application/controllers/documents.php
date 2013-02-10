@@ -45,23 +45,25 @@ class Documents extends CI_Controller {
 		$config['cur_tag_close'] ='</a>';
 
 		$this->pagination->initialize($config);
-		$data['category'] = $this->docs_category_model->get_category();
+		$data['category'] = $this->category_model->get_category();
 		$data['doc_category'] = $this->docs_category_model->get_category();
 
 		$data['documents'] = $this->docs_category_model->get_documents($cat_id = 0, $id, $config['per_page']);
-		// echo "<pre>"; print_r($data['doc_category']); echo "</pre>"; exit();
 
 		$data["countries"] = $this->common_model->get_countries();
 		$data['featured_documents'] = $this->docs_category_model->get_featured_documents();
 		// $data['footer_category'] = $this->docs_category_model->get_footer_category();
 		$data['docs_count'] = $config['total_rows'];
 
+		if(isset($data['documents'][0]['modified_at']))
+			$data['document_updated'] = $this->common_model->date_diff($data['documents'][0]['modified_at'],"NOW");
+
 		$data['render'] = false;
 
 		$data['page_title'] = $this->lang->line('index_title');
 		$data['site_type'] = 'docs';
 
-		$this->load->view("template/prod_header", $data);
+		$this->load->view("template/header", $data);
 		$this->load->view("docs_index_view", $data);
 		$this->load->view("template/prod_footer");
 	}
@@ -131,6 +133,7 @@ class Documents extends CI_Controller {
 		$data["countries"] = $this->common_model->get_countries();
 		$data['country_names'] = $this->common_model->get_country_names(implode(',', $this->common_model->get_valid_countries($data['document_details'][0]['id'])));
 
+		$data['category'] = $this->category_model->get_category();
 		$data['doc_category'] = $this->docs_category_model->get_category();
 
 		$cat_name = $data['bread_crum']['sub_cat_name'];
@@ -151,7 +154,7 @@ class Documents extends CI_Controller {
 
 		// echo "<pre>"; print_r($data['footer_category']); echo "</pre>"; exit;
 
-		$this->load->view("template/prod_header", $data);
+		$this->load->view("template/header", $data);
 		$this->load->view("document", $data);
 		$this->load->view("template/prod_footer");
 	}
@@ -189,7 +192,7 @@ class Documents extends CI_Controller {
 		include_once(APPPATH.'libraries/scribd.php');
 		$this->_changeStatus('public');
 		$data['doc_id'] = $doc_id; //$this->uri->segment(4);
-		$this->load->view("template/prod_header");
+		$this->load->view("template/header");
 		$this->load->view("document", $data);
 		$this->load->view("template/prod_footer");
 	}

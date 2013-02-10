@@ -72,7 +72,7 @@ class Index extends CI_Controller {
 		$data['render'] = false;
 		$data['page_title'] = $this->lang->line('index_title');
 
-		$this->load->view("template/prod_header", $data);
+		$this->load->view("template/header", $data);
 		$this->load->view("prod_index_view",$data);
 		$this->load->view("template/prod_footer",$data);
 	}

@@ -36,20 +36,21 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 		<!-- End column 1 -->
 
 		<div class="col-2 flt-l">
-			<?php //echo "<pre>";print_r($bread_crum);?>
 			<p class="links">
-				 <a href="<?php echo base_url();?>">Home</a>
+				 <a href="<?php echo base_url() . '/documents';?>">Home</a>
 				  <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !=''){ ?>
 				 <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">
 				 <?php } ?>
 
 				 <?php if(isset($bread_crum) && $bread_crum['sub_cat_id'] !=''){ ?>
 
-				 <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !='') ?> <a href="<?php echo base_url().'category/parent_category/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a>
+				 <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !='') ?>
+				 <a href="<?php echo base_url().'docs_category/parent_category/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a>
 
-				 <?php } else { ?>  <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !='') ?><a href="<?php echo base_url().'category/get_category_document/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a><?php }?>
+				 <?php } else { ?>  <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !='') ?>
+				 <a href="<?php echo base_url().'docs_category/get_category_document/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a><?php }?>
 
-				<?php if($bread_crum['sub_cat_name'] !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') ?> <a href="<?php echo base_url().'category/get_category_document/'.$bread_crum['sub_cat_id']?>"><?php echo $bread_crum['sub_cat_name'];?></a>
+				<?php if($bread_crum['sub_cat_name'] !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') ?> <a href="<?php echo base_url().'docs_category/get_category_document/'.$bread_crum['sub_cat_id']?>"><?php echo $bread_crum['sub_cat_name'];?></a>
 
 				<?php if($bread_crum !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') echo $doc_name;?>
 			</p>

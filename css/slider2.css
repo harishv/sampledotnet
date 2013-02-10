@@ -2,7 +2,7 @@ h2 { text-align:center; font:normal 150% Georgia; }
 #sliderContent { width:800px; margin:auto; padding:0 0 50px 0px; }
 .viewer { width:725px; margin:0; padding:1px; overflow:hidden; position:relative;}
 .content-conveyor { width:725px;position:relative; }
-.item { width:180px; float:left; font-family:Tahoma; text-align:center; margin-bottom:20px;}
+.item { width:180px; float:left; font-family:Tahoma; text-align:center; margin-bottom:20px; margin-top: 15px;}
 .item h2 { font-size:100%; margin:10px 0; }
 .item dl { margin:10px 0; }
 .item dt, .item dd { float:left; width:200px; text-align:right; margin:0; font-size:70%; }
