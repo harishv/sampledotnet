@@ -48,7 +48,7 @@ class Category extends CI_Controller {
 		$data['doc_category'] = $this->docs_category_model->get_category();
 		$this->load->view("template/header",$data);
 		$this->load->view("category_products",$data);
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/footer");
 	}
 
 	public function get_products($id='0'){
@@ -122,7 +122,7 @@ class Category extends CI_Controller {
 		$data['sub_categories'] = $this->category_model->get_sub_categories($cat_id);
 		$this->load->view("template/header",$data);
 		$this->load->view("parent_category_view",$data);
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/footer");
 	}
 
 }

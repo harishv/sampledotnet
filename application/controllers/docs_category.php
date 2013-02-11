@@ -43,9 +43,10 @@ class Docs_Category extends CI_Controller {
 		$data['render'] = false;
 		$data['category'] = $this->category_model->get_category();
 		$data['doc_category'] = $this->docs_category_model->get_category();
+		$data['right_popular_documents'] = $this->docs_category_model->get_right_popular_documents();
 		$this->load->view("template/header",$data);
 		$this->load->view("category_documents",$data);
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/footer");
 	}
 
 	public function get_products($id='0'){
@@ -116,9 +117,10 @@ class Docs_Category extends CI_Controller {
 		$data['docs_category'] = $this->docs_category_model->get_category();
 
 		$data['sub_categories'] = $this->docs_category_model->get_sub_categories($cat_id);
+		$data['right_popular_documents'] = $this->docs_category_model->get_right_popular_documents();
 		$this->load->view("template/header",$data);
-		$this->load->view("parent_category_view",$data);
-		$this->load->view("template/prod_footer");
+		$this->load->view("doc_parent_category_view",$data);
+		$this->load->view("template/footer");
 	}
 
 }

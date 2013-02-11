@@ -120,7 +120,7 @@ class Login extends CI_Controller {
 			//$data['link_errors'] = "Email Link has been Expired";
 			//$this->load->view('forgot_password', $data);
 		}
-		//$this->load->view('template/prod_footer');
+		//$this->load->view('template/footer');
 	}
 
 	function change_password_action() {

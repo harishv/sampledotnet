@@ -74,7 +74,7 @@ class Index extends CI_Controller {
 
 		$this->load->view("template/header", $data);
 		$this->load->view("prod_index_view",$data);
-		$this->load->view("template/prod_footer",$data);
+		$this->load->view("template/footer",$data);
 	}
 
 	public function redirect_to_blog_catname($cat_name)

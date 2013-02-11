@@ -49,7 +49,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
         </div>
 
        <!-- Begin sidebar div -->
-		<?php include_once 'template/prod_rightnav.php';?>
+		<?php include_once 'template/doc_rightnav.php';?>
 	   <!-- End sidebar div -->
         <!-- End main-content div -->
       </div>

@@ -172,6 +172,42 @@ class Docs_Category_Model extends CI_Model {
 		return false;
 	}
 
+	function get_right_popular_documents(){
+
+		// $selected_country = ($this->session->userdata('selected_country')) ? $this->session->userdata('selected_country'): 226;
+
+		// $this->db->select('doc_id');
+		// $this->db->from('doc_countries');
+		// $this->db->where('country_id', $selected_country);
+		// $this->db->where('status_id', 1);
+
+		// $result_doc_ids = $this->db->get();
+
+		// if ($result_doc_ids->num_rows() == 0) {
+		// 	return false;
+		// } else {
+		// 	// Get valid Document Id's
+		// 	$doc_ids = $result_doc_ids->result_array();
+		// 	foreach ($doc_ids as $id) {
+		// 		$result_ids[] = $id['doc_id'];
+		// 	}
+		// }
+
+		$this->db->select('*');
+		$this->db->from('documents');
+		$this->db->where('status_id', 1);
+		// $this->db->where_in('id', $result_ids);
+		$this->db->order_by("modified_at", "desc");
+
+		$result = $this->db->get();
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else
+			return $result->result_array();
+
+		return false;
+	}
 
 
 

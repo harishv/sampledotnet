@@ -52,6 +52,8 @@ class Documents extends CI_Controller {
 
 		$data["countries"] = $this->common_model->get_countries();
 		$data['featured_documents'] = $this->docs_category_model->get_featured_documents();
+		$data['right_popular_documents'] = $this->docs_category_model->get_right_popular_documents();
+
 		// $data['footer_category'] = $this->docs_category_model->get_footer_category();
 		$data['docs_count'] = $config['total_rows'];
 
@@ -65,7 +67,7 @@ class Documents extends CI_Controller {
 
 		$this->load->view("template/header", $data);
 		$this->load->view("docs_index_view", $data);
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/footer");
 	}
 
 	public function document_detail($id){
@@ -138,7 +140,7 @@ class Documents extends CI_Controller {
 
 		$cat_name = $data['bread_crum']['sub_cat_name'];
 
-
+		$data['right_popular_documents'] = $this->docs_category_model->get_right_popular_documents();
 		$data['footer_category'] = $this->docs_category_model->get_footer_category($data['document_details'][0]['category_id']);
 
 		if(count($data['footer_category']) > 0){
@@ -156,7 +158,7 @@ class Documents extends CI_Controller {
 
 		$this->load->view("template/header", $data);
 		$this->load->view("document", $data);
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/footer");
 	}
 
 	public function document_rating($var=''){
@@ -186,6 +188,10 @@ class Documents extends CI_Controller {
 
 
 
+
+
+
+
 	public function showdoc($doc_id = ''){
 		$data['category'] = $this->docs_category_model->get_category();
 
@@ -194,7 +200,7 @@ class Documents extends CI_Controller {
 		$data['doc_id'] = $doc_id; //$this->uri->segment(4);
 		$this->load->view("template/header");
 		$this->load->view("document", $data);
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/footer");
 	}
 
 
@@ -212,7 +218,7 @@ class Documents extends CI_Controller {
 
 		$this->load->view("template/doc_header");
 		$this->load->view("documents");
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/footer");
 	}
 
 	public function slider()

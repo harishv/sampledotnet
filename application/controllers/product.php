@@ -99,7 +99,7 @@ class Product extends CI_Controller {
 
 		$this->load->view("template/header", $data);
 		$this->load->view("product", $data);
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/footer");
 	}
 
 	public function user_comments(){
@@ -145,7 +145,7 @@ class Product extends CI_Controller {
 
 		$this->load->view("template/header", $data);
 		$this->load->view("product_grab_view", $data);
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/footer");
 	}
 
 	public function report_invalid()

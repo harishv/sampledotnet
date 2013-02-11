@@ -26,11 +26,12 @@ if(isset($documents) && $documents != '' && count($documents) > 0) { ?>
 				<br>
 				<?php echo (strlen(html_entity_decode($document_value['description'])) > 85) ? substr(html_entity_decode($document_value['description']), 0, 83) . '..' : html_entity_decode($document_value['description']); ?>
 			</p>
+			<!--
 			<br>
 			<div class="star" id="ratings">
 				<?php include '5_star_rating_view.php'; ?>
 			</div>
-
+			-->
 			<div class="clear"></div>
 
 			<?php // Temporarly allowing any user to Grab the Sample. ?>

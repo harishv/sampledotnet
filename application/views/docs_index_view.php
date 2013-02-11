@@ -15,7 +15,7 @@ if(!$render) { ?>
 		<div class="hgt-15px wid_100"></div>
 
 		<div class="hgt-15px"></div>
-		
+
 		<!-- Begin slideshow -->
 		<div class="slide flt-l mgn-15b">
 			<div class="top-container" style="margin:0px; height:30px; padding-left:5px;">
@@ -23,7 +23,7 @@ if(!$render) { ?>
 				<img src="<?php echo base_url(); ?>img/blue-bullet.jpg" />
 				<span style="font-weight:bold;">&nbsp; Documents</span>
 			</div>
-		
+
 			<div class="sidebar">
 				<ul>
 					<li><a href="#">Rental Agreement<br />Template</a></li>
@@ -42,7 +42,7 @@ if(!$render) { ?>
 		</div>
 
 		<!-- featured-document -->
-		<div id="featured-document"> 
+		<div id="featured-document">
 			<div class="sub">Featured Documents</div>
 			<!-- <iframe src="slider2.html" class="tabs1" style="height:330px;overflow:hidden;" scrolling="no"></iframe> -->
 			<?php include_once 'template/doc_header_carousel.php';?>
@@ -57,7 +57,7 @@ if(!$render) { ?>
 						<img src="<?php echo base_url(); ?>img/search-now.jpg" onClick="document.doc_serach_form.submit();" />
 					</div>
 					<!-- <input class="btn btn-success pull-right" type="submit" value="Search" /> -->
-				</form>				
+				</form>
 			</div>
 		</div>
 
@@ -112,7 +112,7 @@ get the latest updates to your email. Also do share the samples on your favorite
 		<!-- End content div -->
 	</div>
 	<!-- Begin sidebar div -->
-		<?php include_once 'template/prod_rightnav.php';?>
+		<?php include_once 'template/doc_rightnav.php';?>
 	<!-- End sidebar div -->
 </div>
 <!-- End main-content div -->

@@ -20,6 +20,6 @@ class Contactus extends CI_Controller {
 		$data["countries"] = $this->common_model->get_countries();
 		$this->load->view("template/header",$data);
 		$this->load->view("contactus");
-		$this->load->view("template/prod_footer");
+		$this->load->view("template/footer");
 	}
 }
