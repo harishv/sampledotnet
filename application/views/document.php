@@ -31,7 +31,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 <div class="flt-l wid_100" id="main-content">
 	<!-- Begin content div -->
 	
-	<div class="top-container">
+	<div class="top-container" style="width: 100%">
 		<a href="<?php echo base_url() . '/documents';?>">Home</a>
 
 		<?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !=''){ ?>
