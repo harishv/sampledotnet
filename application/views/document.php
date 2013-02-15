@@ -30,155 +30,183 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 <!-- Begin main-content div -->
 <div class="flt-l wid_100" id="main-content">
 	<!-- Begin content div -->
+	
+	<div class="top-container">
+		<a href="<?php echo base_url() . '/documents';?>">Home</a>
+
+		<?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !=''){ ?>
+			<img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">
+		<?php } ?>
+
+		<?php if(isset($bread_crum) && $bread_crum['sub_cat_id'] !=''){ ?>
+
+		<?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !='') ?>
+			<a href="<?php echo base_url().'docs_category/parent_category/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a>
+		<?php } else { ?>  <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !='') ?>
+			<a href="<?php echo base_url().'docs_category/get_category_document/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a><?php }?>
+		<?php if($bread_crum['sub_cat_name'] !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') ?> <a href="<?php echo base_url().'docs_category/get_category_document/'.$bread_crum['sub_cat_id']?>"><?php echo $bread_crum['sub_cat_name'];?></a>
+
+		<?php if($bread_crum !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') echo $doc_name;?>
+	</div>
+
 	<div class="flt-l" id="content">
 		<!-- Begin column 1 -->
-		<?php include_once 'template/doc_leftnav.php';?>
+		<?php // include_once 'template/doc_leftnav.php';?>
 		<!-- End column 1 -->
 
-		<div class="col-2 flt-l">
-			<p class="links">
-				 <a href="<?php echo base_url() . '/documents';?>">Home</a>
-				  <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !=''){ ?>
-				 <img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">
-				 <?php } ?>
+		<div class="hgt-15px wid_100" style="min-height:750px;">
 
-				 <?php if(isset($bread_crum) && $bread_crum['sub_cat_id'] !=''){ ?>
+			<span>
+				Title:
+				<span style="color:#0c3b93;"><?php echo html_entity_decode($document_details[0]['name']);?></span>
+			</span>
+			<!-- <div class="download-box">
+				<a href="#">Download This for</a>
+				<span>$ 8.99</span>
+			</div> -->
+			<div class="pdf-book">
+				<img src="<?php echo base_url().DOC_IMG_PATH.$document_details[0]['image'];?>" border="0" width="673px;" height="575px;" />
+				<!-- usemap="#Map2" -->
+				<!-- <map name="Map2" id="Map2">
+					<area shape="rect" coords="172,770,228,782" href="#" />
+					<area shape="rect" coords="322,773,381,794" href="#" />
+				</map> -->
+			</div>
+		</div>
 
-				 <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !='') ?>
-				 <a href="<?php echo base_url().'docs_category/parent_category/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a>
-
-				 <?php } else { ?>  <?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !='') ?>
-				 <a href="<?php echo base_url().'docs_category/get_category_document/'.$bread_crum['parent_cat_id']?>"> <?php echo $bread_crum['cat_name'];?></a><?php }?>
-
-				<?php if($bread_crum['sub_cat_name'] !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') ?> <a href="<?php echo base_url().'docs_category/get_category_document/'.$bread_crum['sub_cat_id']?>"><?php echo $bread_crum['sub_cat_name'];?></a>
-
-				<?php if($bread_crum !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') echo $doc_name;?>
-			</p>
-
-			<!-- Begin sample here -->
-			<div class="sample mgn-15b">
-				<p class="head mgn-15b"> <span class="mgn-10l"><?php echo html_entity_decode($document_details[0]['name']);?></span></p>
-				 <div class="computers">
-					<?php //$image_properties = array('src' => DOC_IMG_PATH.$document_details[0]['image']);echo img($image_properties);?>
-					<a href="<?php echo base_url().DOC_IMG_PATH.$document_details[0]['image'];?>"><img src="<?php echo base_url().DOC_IMG_PATH.$document_details[0]['image'];?>" width='215' height='215' /></a>
-					<p>
-						<!-- <strong><?php echo $document_details[0]['name'];?></strong><br> -->
-						<?php echo html_entity_decode($document_details[0]['description']);?><br><br>
-					</p>
-					<p class="grey">
-						<span><strong>Valid in:</strong><?php if(isset($country_names) && $country_names!= ''){  echo implode(', ',$country_names);}?></span>
-						<em><strong class="flt-l">User Rating:</strong>
-							<?php include_once 'document_rating_js.php'; ?>
-
-							<?php
-							$document_value = $document_details[0];
-							include '5_star_rating_view.php'; ?>
-						</em>
-					</p>
-					<script type="text/javascript">
-					function report_invalid (doc_id) {
-						var data = {'doc_id': doc_id};
-
-						$.ajax({
-							url: base_url + 'document/report_invalid',
-							type: 'POST',
-							data: data,
-							dataType: 'json',
-							success: function(res) {
-								alert(res.data);
-								return false;
-							}
-						});
-					}
-					</script>
-					<p class="grey">
-						<span onclick="return report_invalid(<?php echo $document_details[0]['id'];?>);" style="color: #000000; cursor: pointer; text-decoration: underline;">Report Invalid</span>
-						<em title="Click to view comments" id="display_comments" style="color: #000000; cursor: pointer; text-decoration: underline;">(<?php if(isset($comments) && $comments !=''){ echo count($comments); } else echo "0";?>) comments</em>
-							<!-- <em><a id = "display_comments" href="">(<?php if(isset($comments) && $comments !=''){ echo count($comments); } else echo "0";?>) comments</a></em> -->
-					</p>
-					<p>
-						<a class="btn btn-small btn-info flt-r" href="<?php echo base_url().DOC_IMG_PATH.$document_details[0]['doc_path']; ?>"><i class="icon icon-white icon-download-alt"></i> <b>Download Now!</b></a>
-						<!-- <a class="grab flt-r" href="<?php echo base_url() . "document/grab_it_now/" . $document_details[0]['id']; ?>">grab it now!</a> -->
-						<!-- <a class="grab flt-r" onclick="grab_now('<?php echo $document_details[0]['id'];?> ','<?php echo $document_details[0]['grab_url'];?>')"  >grab it now!</a> -->
-					</p>
-					<div class="hgt-15px wid_100"></div>
-						<div class="social-networks-div hgt-15px wid_100">
-							<span class='st_facebook_button' displayText='Facebook'></span>
-							<span class='st_twitter_button' st_via='sampledotnet' displayText='Tweet'></span>
-							<span class='st_linkedin_button' displayText='LinkedIn'></span>
-							<span class='st_googleplus_button' displayText='Share'></span>
-							<span class='st_sharethis_button' displayText='ShareThis'></span>
-							<span class='st_email_button' displayText='Email'></span>
-						</div>
-						<div class="hgt-15px wid_100"></div>
+		<div class="bottom-information-container">
+			<div class="left">
+				<div class="social-bar">
+					<!-- <img src="images/social3.jpg" border="0" usemap="#Map" style="float:left;" /> -->
+					<div class="social-networks-div hgt-15px wid_100">
+						<span class='st_facebook_button' displayText='Facebook'></span>
+						<span class='st_twitter_button' st_via='sampledotnet' displayText='Tweet'></span>
+						<span class='st_linkedin_button' displayText='LinkedIn'></span>
+						<span class='st_googleplus_button' displayText='Share'></span>
+						<span class='st_sharethis_button' displayText='ShareThis'></span>
+						<span class='st_email_button' displayText='Email'></span>
 					</div>
+					<!-- <map name="Map" id="Map">
+						<area shape="rect" coords="2,3,59,32" href="http://www.facebook.com" target="_blank" />
+						<area shape="rect" coords="64,1,125,20" href="http://twitter.com/" target="_blank" />
+						<area shape="rect" coords="128,2,185,21" href="#" />
+						<area shape="rect" coords="190,2,249,22" href="#" />
+						<area shape="rect" coords="254,2,339,24" href="#" />
+						<area shape="rect" coords="341,0,401,30" href="#" />
+					</map> -->
+					<!-- <div class="download-box1">
+						<a href="#">Download This for</a>
+						<span>$ 8.99</span>
+					</div> -->
 				</div>
 
-			<!-- comments section start-->
-			<div id="normal_comments" style="display: none;">
-			<div class="comment-box">
-				<?php
-					$user_data = $this->session->userdata('user');
-					if ($user_data['user_id'] != '') { ?>
-						<div class="comment" id="login_comments">
-							<p class="flt-r"></p>
-								<h5>Enter your comments</h5>
-								<div id="errors_comments" class="errors_data">
-									<?php echo (isset($errors)) ? $errors : '';?>
-								</div>
-								<?php
-									$attributes = array('id' => 'comments_data', 'name'=>'comments_data', 'method'=>'post','onSubmit' => 'return comments_validate();');
-									echo form_open('document/user_comments/', $attributes);
-								?>
-									<input type="hidden" name="doc_id" value="<?php echo $document_details[0]['id'];?>" />
-									<textarea rows="3" class="clear mgn-15b" id="comment_area" name="comment_area"></textarea>
-
-									<input class="btn btn-small btn-primary pull-right" type="submit" name="submit" value="Comment" />
-								<?php echo form_close(); ?>
+				<div id="container" >
+					<div class="left">
+						<div class="top-bar"></div>
+						<div class="middle-bar">
+							<span>Shared By :</span>
+							<p>William J.Will</p>
+							<span>Categories</span>
+							<p><?php echo $this->common_model->get_doc_cat_name($document_details[0]['category_id']); ?></p>
+							<span>Tags / Keyword</span>
+							<p>Lorem ipsum,Dolor sit amet, Conseconsectetuer,  Adipiscing, Onsectetuer</p>
+							<span>Views</span>
+							<p>345</p>
+							<span>Downloads</span>
+							<p>345</p>
+							<span>Available Formats</span>
+							<p>pdf, excel, editable pdf</p>
+							<div class="social clear">
+								<span class='st_facebook'></span>
+								<span class='st_twitter' st_via='sampledotnet'></span>
+								<span class='st_googleplus'></span>
+								<span class='st_sharethis'></span>
+							</div>
 						</div>
-				<?php } ?>
+						<div class="bottom-bar"></div>
+					</div>
+					<!-- left-->
+					<div class="right">
+						<h2><?php echo html_entity_decode($document_details[0]['name']);?></h2>
+						<p>
+							<?php echo html_entity_decode($document_details[0]['description']);?>
+						</p>
+						<?php
+							// Fetching the current url.
+							$request_type = substr(base_url(),0, 5);
+							if ($request_type != 'https')
+								$request_type = 'http';
+							$document_url = $request_type . '://' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+						?>
+						<fb:like href="<?php echo $document_url;?>" send="true" width="450" show_faces="true"></fb:like>
 
-			<!-- comments -->
+						<div class="hgt-15px"></div>
 
-			 <?php if(isset($comments) && $comments !=''){ ?>
-			 	<h4>Comments</h4>
-				<?php foreach($comments as $key=>$values){ ?>
-						<div class="comments">
-							<p>
-								<strong class="mgn-r"><?php echo $values['first_name'] . " " . $values['last_name'];?></strong>
-								<strong class="mgn-r">|</strong>
-								<?php if(isset($update_data) && $update_data !=''){ ?>
-								<span><?php echo $update_data[$key].'ago';?></span>
-								<?php } ?>
-								<br />
-								<?php echo $values['comments'];  ?>
-							</p>
+						<!-- comments section start-->
+						<div id="normal_comments" style="display: none;">
+						<div class="comment-box">
+							<?php
+								$user_data = $this->session->userdata('user');
+								if ($user_data['user_id'] != '') { ?>
+									<div class="comment" id="login_comments">
+										<p class="flt-r"></p>
+											<h5>Enter your comments</h5>
+											<div id="errors_comments" class="errors_data">
+												<?php echo (isset($errors)) ? $errors : '';?>
+											</div>
+											<?php
+												$attributes = array('id' => 'comments_data', 'name'=>'comments_data', 'method'=>'post','onSubmit' => 'return comments_validate();');
+												echo form_open('document/user_comments/', $attributes);
+											?>
+												<input type="hidden" name="doc_id" value="<?php echo $document_details[0]['id'];?>" />
+												<textarea rows="3" class="clear mgn-15b" id="comment_area" name="comment_area"></textarea>
+
+												<input class="btn btn-small btn-primary pull-right" type="submit" name="submit" value="Comment" />
+											<?php echo form_close(); ?>
+									</div>
+							<?php } ?>
+
+						<!-- comments -->
+
+						 <?php if(isset($comments) && $comments !=''){ ?>
+						 	<h4>Comments</h4>
+							<?php foreach($comments as $key=>$values){ ?>
+									<div class="comments">
+										<p>
+											<strong class="mgn-r"><?php echo $values['first_name'] . " " . $values['last_name'];?></strong>
+											<strong class="mgn-r">|</strong>
+											<?php if(isset($update_data) && $update_data !=''){ ?>
+											<span><?php echo $update_data[$key].'ago';?></span>
+											<?php } ?>
+											<br />
+											<?php echo $values['comments'];  ?>
+										</p>
+									</div>
+									<?php }
+								} ?>
+							<div style='clear:both;'></div>
 						</div>
-						<?php }
-					} ?>
-				<div style='clear:both;'></div>
-			</div>
-			</div>
+						</div>
 
-			<!-- Begin Facebook Comments here -->
-			<?php
-			// Fetching the current url.
-			$request_type = substr(base_url(),0, 5);
-			if ($request_type != 'https')
-				$request_type = 'http';
-			$document_url = $request_type . '://' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
-			?>
-			<fb:comments href="<?php echo $document_url;?>" publish_feed="true" num_posts="3" width="540"></fb:comments>
-			<!-- End comments here -->
-
-			<!-- Begin tabs here -->
-			<?php include_once 'template/doc_footer_carousel.php';?>
-			<!-- End tabs here -->
-
-		<!-- End column 2 -->
+						<div class="hgt-15px"></div>
+						
+						<fb:comments href="<?php echo $document_url;?>" publish_feed="true" num_posts="3" width="525"></fb:comments>
+						
+						<!-- data --> </div>
+					<!-- right --> </div>
+				<!-- container --> </div>
+			<!-- left -->
 		</div>
-	<!-- End content div -->
-	</div>
+		<!-- bottom-information-container -->
+		<div class="hgt-15px"></div>
+		<!-- Begin slideshow -->
+		<!-- featured-document -->
+		<!-- search-box -->
+		<!-- Begin column 1 -->
+		<!-- Begin column 2 -->
+		<!-- End content div -->
+		</div>
+
 
 	<!-- Begin sidebar div -->
 	<?php include_once 'template/doc_rightnav.php';?>

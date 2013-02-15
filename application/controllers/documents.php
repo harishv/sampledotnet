@@ -11,6 +11,7 @@ class Documents extends CI_Controller {
 		$this->load->library('pagination');
 		$this->load->helper('url');
 		$this->load->model('category_model');
+		$this->load->model('common_model');
 		$this->load->model('docs_category_model');
 		$this->load->model('document_model');
 		$this->load->model('common_model');
