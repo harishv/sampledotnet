@@ -280,7 +280,9 @@ class Admin_Documents_Model extends CI_Model {
 		$errors .= (isset($doc_name) && trim($doc_name) == "") ? "Document Name shouldn't be empty<br />" : "";
 		$errors .= (isset($doc_category_id) && (trim($doc_category_id) == "" || trim($doc_category_id) == 0)) ? "Please select a Document Category<br />" : "";
 		$errors .= (isset($doc_desc) && trim($doc_desc) == "") ? "Document Description shouldn't be empty<br />" : "";
-		// $errors .= (isset($doc_url) && trim($doc_url) == "") ? "Document's path shouldn't be empty<br />" : "";
+		$errors .= (isset($doc_shared_by) && trim($doc_shared_by) == "") ? "Document Shared By Name shouldn't be empty<br />" : "";
+		$errors .= (isset($doc_tags) && trim($doc_tags) == "") ? "Tags shouldn't be empty<br />" : "";
+		$errors .= (isset($doc_available_formats) && trim($doc_available_formats) == "") ? "Available Formats shouldn't be empty<br />" : "";
 		$errors .= ( !isset($valid_country_ids) || (isset($valid_country_ids) && count($valid_country_ids) < 1) )? "Please select atleast one Valid Country<br />" : "";
 
 		if (!isset($doc_featured)) $doc_featured = 0;
@@ -537,6 +539,9 @@ class Admin_Documents_Model extends CI_Model {
 											'category_id' => intval($doc_category_id),
 											'image' => $document_image_name,
 											'description' => htmlentities(trim($doc_desc)),
+											'shared_by' => htmlentities(trim($doc_shared_by)),
+											'tags' => htmlentities(trim($doc_tags)),
+											'available_formats' => htmlentities(trim($doc_available_formats)),
 											'doc_path' => $document_path_name,
 											'featured' => $doc_featured,
 											'only_today' => $doc_only_today,

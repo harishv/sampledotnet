@@ -119,7 +119,7 @@ class Documents extends CI_Controller {
 
 		$data['document_details'] = $this->document_model->get_document_details($document_id);
 
-		
+
 		$data['doc_name'] = $data['document_details']['0']['name'];
 		$data['comments'] = $this->document_model->get_comments($document_id);
 

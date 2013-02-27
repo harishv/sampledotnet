@@ -1156,3 +1156,8 @@ form {
   float: right;
   padding: 5px 10px;
 }
+
+
+.bottom-footer .data > div >ul > li {
+  padding: 3px 0;
+}

@@ -30,7 +30,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 <!-- Begin main-content div -->
 <div class="flt-l wid_100" id="main-content">
 	<!-- Begin content div -->
-	
+
 	<div class="top-container" style="width: 100%">
 		<a href="<?php echo base_url() . '/documents';?>">Home</a>
 
@@ -50,9 +50,6 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 	</div>
 
 	<div class="flt-l" id="content">
-		<!-- Begin column 1 -->
-		<?php // include_once 'template/doc_leftnav.php';?>
-		<!-- End column 1 -->
 
 		<div class="hgt-15px wid_100" style="min-height:750px;">
 
@@ -103,19 +100,33 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 				<div id="container" >
 					<div class="left">
 						<div class="top-bar"></div>
+
 						<div class="middle-bar">
-							<span>Shared By :</span>
-							<p>William J.Will</p>
-							<span>Categories</span>
-							<p><?php echo $this->common_model->get_doc_cat_name($document_details[0]['category_id']); ?></p>
-							<span>Tags / Keyword</span>
-							<p>Lorem ipsum,Dolor sit amet, Conseconsectetuer,  Adipiscing, Onsectetuer</p>
-							<span>Views</span>
+							<?php if (isset($document_details[0]['shared_by']) && trim($document_details[0]['shared_by']) != '') { ?>
+								<span>Shared By :</span>
+								<p><?php echo html_entity_decode($document_details[0]['shared_by']);?></p>
+							<?php } ?>
+
+							<?php if (isset($document_details[0]['category_id']) && $document_details[0]['category_id'] != 0) { ?>
+								<span>Categories</span>
+								<p><?php echo $this->common_model->get_doc_cat_name($document_details[0]['category_id']); ?></p>
+							<?php } ?>
+
+							<?php if (isset($document_details[0]['tags']) && trim($document_details[0]['tags']) != '') { ?>
+								<span>Tags / Keyword</span>
+								<p><?php echo html_entity_decode($document_details[0]['tags']);?></p>
+							<?php } ?>
+
+							<!-- <span>Views</span>
 							<p>345</p>
 							<span>Downloads</span>
-							<p>345</p>
-							<span>Available Formats</span>
-							<p>pdf, excel, editable pdf</p>
+							<p>345</p> -->
+
+							<?php if (isset($document_details[0]['available_formats']) && trim($document_details[0]['available_formats']) != '') { ?>
+								<span>Available Formats</span>
+								<p><?php echo html_entity_decode($document_details[0]['available_formats']);?></p>
+							<?php } ?>
+
 							<div class="social clear">
 								<span class='st_facebook'></span>
 								<span class='st_twitter' st_via='sampledotnet'></span>
@@ -189,9 +200,9 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 						</div>
 
 						<div class="hgt-15px"></div>
-						
+
 						<fb:comments href="<?php echo $document_url;?>" publish_feed="true" num_posts="3" width="525"></fb:comments>
-						
+
 						<!-- data --> </div>
 					<!-- right --> </div>
 				<!-- container --> </div>
@@ -215,3 +226,53 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 	<!-- End main-content div -->
 </div>
 <!-- End inner wrapper div -->
+
+<!-- Links Footer -->
+<div style="border-top:1px #CCCCCC solid;" class="bottom-footer">
+	<div class="data">
+		<h2>Importent Links</h2>
+
+		<div class="span3">
+			<h3>Samples</h3>
+			<?php if(isset($category) && $category !='') { ?>
+				<ul>
+					<?php foreach($category as $cat_id => $cat_values) {
+							$sub_cat = $this->category_model->get_sub_cat($cat_values['id']);
+							?>
+						<li>
+							<a href="<?php if($sub_cat =='')echo base_url().'category/get_category_product/'.$cat_values['id']; else echo base_url().'category/parent_category/'.$cat_values['id'];?>"><?php echo $cat_values['prod_cat_name'];?></a>
+						</li>
+					<?php } ?>
+				</ul>
+			<?php } ?>
+		</div>
+		<div class="span3">
+			<h3>Documents</h3>
+			<?php if(isset($doc_category) && $doc_category !='') { ?>
+				<ul>
+					<?php foreach($doc_category as $cat_id => $cat_values) {
+							$sub_cat = $this->docs_category_model->get_sub_cat($cat_values['id']);
+							?>
+						<li>
+							<a href="<?php if($sub_cat =='')echo base_url().'docs_category/get_category_document/'.$cat_values['id']; else echo base_url().'docs_category/parent_category/'.$cat_values['id'];?>"><?php echo $cat_values['doc_cat_name'];?></a>
+						</li>
+					<?php } ?>
+				</ul>
+			<?php } ?>
+		</div>
+		<div class="span3">
+			<h3>&nbsp;</h3>
+			<ul>
+				<li>
+					<a href="#">Terms of Service</a>
+				</li>
+				<li>
+					<a href="#">Copyright</a>
+				</li>
+				<li>
+					<a href="#">Privacy Policy</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

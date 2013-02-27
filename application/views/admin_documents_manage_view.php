@@ -34,6 +34,15 @@ $(document).ready(function() {
 					required: true,
 					accept: "png|jpeg|jpg|gif",
 					filesize: 2097152
+				},
+			doc_shared_by: {
+					required: true
+				},
+			doc_tags: {
+					required: true
+				},
+			doc_available_formats: {
+					required: true
 				}
 			},
 		messages: {
@@ -55,6 +64,15 @@ $(document).ready(function() {
 					required: "Document Image is a required field.",
 					accept: "Please upload an image of type (jpg, jpeg, gif or png) only.",
 					filesize: "Image of size upto 2MB is only allowed."
+				},
+			doc_shared_by: {
+					required: "Document Shared By Name is a required field."
+				},
+			doc_tags: {
+					required: "Tags is a required field."
+				},
+			doc_available_formats: {
+					required: "Available Formats is a required field."
 				}
 			},
 		errorClass: "error", // control-group error
@@ -218,6 +236,33 @@ $(document).ready(function() {
 								$('#doc_image').attr('name', 'doc_image_edit');
 							</script>
 					<?php } ?>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="doc_shared_by"><?php echo $this->lang->line('admin_doc_mng_doc_shared_by'); ?>
+					:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="doc_shared_by" name="doc_shared_by"
+						placeholder="<?php echo $this->lang->line('admin_doc_mng_doc_shared_by_ph'); ?>" value="<?php echo ($set)? html_entity_decode($document["shared_by"]) : ""; ?>" />
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="doc_tags"><?php echo $this->lang->line('admin_doc_mng_doc_tags'); ?>
+					:</label>
+				<div class="controls">
+					<textarea class="input-xlarge" rows="3" id="doc_tags" name="doc_tags"
+						placeholder="<?php echo $this->lang->line('admin_doc_mng_doc_tags_ph'); ?>"><?php echo ($set)? html_entity_decode($document["tags"]) : ""; ?></textarea>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="doc_available_formats"><?php echo $this->lang->line('admin_doc_mng_doc_avail_formats'); ?>
+					:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="doc_available_formats" name="doc_available_formats"
+						placeholder="<?php echo $this->lang->line('admin_doc_mng_doc_avail_formats_ph'); ?>" value="<?php echo ($set)? html_entity_decode($document["available_formats"]) : ""; ?>" />
 				</div>
 			</div>
 
