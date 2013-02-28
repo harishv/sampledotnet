@@ -228,6 +228,16 @@ class Documents extends CI_Controller {
 		$data['docs_list'] = $docs_list->result();
 		$this->load->view("docslider", $data);
 	}
+
+	public function download_pdf($document_id){
+		$document_details = $this->document_model->get_document_details($document_id);
+		header('Content-disposition: attachment; filename='.$document_details[0]['name']);
+		header('Content-type: application/pdf');
+		readfile(base_url().'uploads/documents/'.$document_details[0]['doc_path']);
+		
+		
+		
+	}
 }
 
 /* End of file documents.php */
