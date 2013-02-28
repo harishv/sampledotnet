@@ -229,14 +229,16 @@ class Documents extends CI_Controller {
 		$this->load->view("docslider", $data);
 	}
 
-	public function download_pdf($document_id){
+	public function download_document($document_id){
 		$document_details = $this->document_model->get_document_details($document_id);
-		header('Content-disposition: attachment; filename='.$document_details[0]['name']);
-		header('Content-type: application/pdf');
+		$doc_path_ext = strrchr($document_details[0]['doc_path'], ".");
+		header('Content-disposition: attachment; filename='.$document_details[0]['name'] . $doc_path_ext);
+
+		if(strtolower(trim($doc_path_ext, '.')) == 'pdf') {
+			header('Content-type: application/pdf');
+		}
+
 		readfile(base_url().'uploads/documents/'.$document_details[0]['doc_path']);
-		
-		
-		
 	}
 }
 
