@@ -51,23 +51,16 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 
 	<div class="flt-l" id="content">
 
-		<div class="hgt-15px wid_100" style="min-height:750px;">
+		<div class="hgt-15px wid_100" style="min-height: 750px; height: inherit;">
 
 			<span>
 				Title:
 				<span style="color:#0c3b93;"><?php echo html_entity_decode($document_details[0]['name']);?></span>
 			</span>
-			<!-- <div class="download-box">
-				<a href="#">Download This for</a>
-				<span>$ 8.99</span>
-			</div> -->
-			<div class="pdf-book">
-				<img src="<?php echo base_url().DOC_IMG_PATH.$document_details[0]['image'];?>" border="0" width="673px;" height="575px;" />
-				<!-- usemap="#Map2" -->
-				<!-- <map name="Map2" id="Map2">
-					<area shape="rect" coords="172,770,228,782" href="#" />
-					<area shape="rect" coords="322,773,381,794" href="#" />
-				</map> -->
+			<div class="pdf-book clearfix">
+				<a class="btn btn-info btn-download pull-right" href="#"><i class="icon-white icon-download-alt"></i> Download</a>
+				<img width="673px;" border="0" src="<?php echo base_url().DOC_IMG_PATH.$document_details[0]['image'];?>" class="book-img">
+				<a class="btn btn-info btn-download pull-right" href="#"><i class="icon-white icon-download-alt"></i> Download</a>
 			</div>
 		</div>
 
