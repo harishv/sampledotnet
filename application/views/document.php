@@ -58,9 +58,9 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 				<span style="color:#0c3b93;"><?php echo html_entity_decode($document_details[0]['name']);?></span>
 			</span>
 			<div class="pdf-book clearfix">
-				<a class="btn btn-info btn-download pull-right" href="<?php echo base_url().'documents/download_document/'.$document_details[0]['id'];?>"><i class="icon-white icon-download-alt"></i> Download</a>
+				<a class="btn btn-info btn-download pull-right" href="<?php echo base_url().'documents/download_document/'.$document_details[0]['id'];?>"><i class="icon-white icon-download-alt"></i> Download<?php echo ($document_details[0]['doc_type_id'] == 2) ? " for " . $document_details[0]['doc_price'] : ""; ?></a>
 				<img width="673px;" border="0" src="<?php echo base_url().DOC_IMG_PATH.$document_details[0]['image'];?>" class="book-img">
-				<a class="btn btn-info btn-download pull-right" href="<?php echo base_url().'documents/download_document/'.$document_details[0]['id'];?>"><i class="icon-white icon-download-alt"></i> Download</a>
+				<a class="btn btn-info btn-download pull-right" href="<?php echo base_url().'documents/download_document/'.$document_details[0]['id'];?>"><i class="icon-white icon-download-alt"></i> Download<?php echo ($document_details[0]['doc_type_id'] == 2) ? " for " . $document_details[0]['doc_price'] : ""; ?></a>
 			</div>
 		</div>
 

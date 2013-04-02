@@ -7,7 +7,7 @@ class Contactus extends CI_Controller {
 	function __construct () {
 		parent::__construct();
 
-		
+
 		$this->load->model('category_model');
 		$this->load->model('common_model');
 		$this->load->model('login_model');

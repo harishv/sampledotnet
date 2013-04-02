@@ -184,6 +184,83 @@ class Documents extends CI_Controller {
 		echo json_encode($return); exit;
 	}
 
+	public function download_document($document_id){
+		$document_details = $this->document_model->get_document_details($document_id);
+		if ($document_details[0]['doc_type_id'] == 2) {
+			// Send to paypal
+			$this->payment_details($document_id);
+
+		} else {
+			$this->download_action($document_id);
+		}
+
+	}
+
+	public function payment_details($document_id)
+	{
+		$data['update_data'] = array();
+
+		$data['document_details'] = $this->document_model->get_document_details($document_id);
+
+
+		$data['doc_name'] = $data['document_details']['0']['name'];
+		$data['comments'] = $this->document_model->get_comments($document_id);
+
+		if(isset($data['comments']) && $data['comments'] !=''){
+			foreach($data['comments'] as $comment_key => $comment_values){
+				$comment_updated = $this->common_model->date_diff($comment_values['modified_at'],"NOW");
+				array_push($data['update_data'], $comment_updated);
+			}
+		}
+
+
+		$data['bread_crum'] = $this->docs_category_model->get_bread_crums($data['document_details'][0]['category_id']);
+
+		$data["countries"] = $this->common_model->get_countries();
+		$data['country_names'] = $this->common_model->get_country_names(implode(',', $this->common_model->get_valid_countries($data['document_details'][0]['id'])));
+
+		$data['category'] = $this->category_model->get_category();
+		$data['doc_category'] = $this->docs_category_model->get_category();
+
+		$cat_name = $data['bread_crum']['sub_cat_name'];
+
+		$data['right_popular_documents'] = $this->docs_category_model->get_right_popular_documents();
+		$data['footer_category'] = $this->docs_category_model->get_footer_category($data['document_details'][0]['category_id']);
+
+		if(count($data['footer_category']) > 0){
+			$data['footer_documents'] = array();
+			foreach($data['footer_category'] as $values){
+				array_push($data['footer_documents'], $this->docs_category_model->get_footer_documents($values['category_id']));
+			}
+		}
+
+		$data['page_title'] = $data['document_details'][0]['name'] . ' | ' . $cat_name;
+
+		$data['page_meta_data'] = '<meta property="og:image" content="' . base_url(). PROD_IMG_PATH . $data['document_details'][0]['image'] . '" />';
+
+		$this->load->view("template/header", $data);
+		$this->load->view("doc_payment_details", $data);
+		$this->load->view("template/footer");
+	}
+
+	public function process_payment()
+	{
+		var_dump($this->input->post());
+	}
+
+	public function download_action($document_id)
+	{
+		$document_details = $this->document_model->get_document_details($document_id);
+		$doc_path_ext = strrchr($document_details[0]['doc_path'], ".");
+		header('Content-disposition: attachment; filename='.$document_details[0]['name'] . $doc_path_ext);
+
+		if(strtolower(trim($doc_path_ext, '.')) == 'pdf') {
+			header('Content-type: application/pdf');
+		}
+
+		readfile(base_url().'uploads/documents/'.$document_details[0]['doc_path']);
+	}
+
 
 
 
@@ -229,17 +306,6 @@ class Documents extends CI_Controller {
 		$this->load->view("docslider", $data);
 	}
 
-	public function download_document($document_id){
-		$document_details = $this->document_model->get_document_details($document_id);
-		$doc_path_ext = strrchr($document_details[0]['doc_path'], ".");
-		header('Content-disposition: attachment; filename='.$document_details[0]['name'] . $doc_path_ext);
-
-		if(strtolower(trim($doc_path_ext, '.')) == 'pdf') {
-			header('Content-type: application/pdf');
-		}
-
-		readfile(base_url().'uploads/documents/'.$document_details[0]['doc_path']);
-	}
 }
 
 /* End of file documents.php */
