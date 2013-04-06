@@ -51,5 +51,15 @@ class Document_Model extends CI_Model {
 
 	}
 
+
+	function insert_payment_details(){
+		$details = $this->session->userdata['payment_details'];
+		$data = array('name'=>$details['name'] , 'email'=>$details['email'] , 'phone' => $details['phone'] , 'price' => $details['price'] ,'doc_id' => $details['doc_id']);
+		$this->db->insert('transaction',$data);
+		return true;
+
+
+	}
+
 	
 }

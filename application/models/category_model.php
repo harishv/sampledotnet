@@ -231,11 +231,11 @@ class Category_Model extends CI_Model {
 
 	public function insert_rating($prod_id,$rating){
 
-		$user_id = $_SERVER['REMOTE_ADDR'];;
+		$user_id = $_SERVER['REMOTE_ADDR'];
 
 		//getting the rating
 		$query = $this->db->query("select * from prod_ratings where prod_id = ".$prod_id." and user_id = '".$user_id."'");
-		
+
 		if($query->num_rows() > 0){
 
 			$data = array('rating' => $rating);

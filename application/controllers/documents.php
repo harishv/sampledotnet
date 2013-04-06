@@ -166,11 +166,11 @@ class Documents extends CI_Controller {
 
 		$login_data = $this->session->userdata('user');
 
-		if( !isset($login_data) || $login_data == ''){
+		/*if( !isset($login_data) || $login_data == ''){
 			$return['status'] = 'login_please';
 			echo json_encode($return); exit;
 		}
-
+*/
 		$document_id = $this->input->post('doc_id');
 		$rating_vote = $this->input->post('vote_value');
 		$rating = $this->docs_category_model->insert_rating($document_id, $rating_vote);
@@ -245,7 +245,25 @@ class Documents extends CI_Controller {
 
 	public function process_payment()
 	{
-		var_dump($this->input->post());
+		
+		$payment_details_session = array('name'=>$_POST['name'] , 'email' => $_POST['email'] , 'phone' => $_POST['phone'] , 'price' => $_POST['doc_price'],'doc_id' => $_POST['doc_id']);
+		$this->session->set_userdata('payment_details',$payment_details_session);
+		$this->session->userdata['payment_details'];
+		echo "succuss";exit;
+
+
+	}
+
+	public function payment_success(){
+
+		// insert into transcation table
+		$details = $this->session->userdata['payment_details'];
+		$sucussfully = $this->document_model->insert_payment_details();
+		if(is_bool($sucussfully)){
+
+			redirect(base_url().'documents/download_action/'.$details['doc_id'],'refresh');
+		}
+
 	}
 
 	public function download_action($document_id)

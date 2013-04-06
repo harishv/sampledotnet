@@ -779,3 +779,80 @@ function validate_contactus(){
 	//return false;
 
 }
+
+
+
+function validate_payment_details(){
+
+
+	var errors ='';
+	var contact_name_obj = document.getElementById('contact_name');
+	var contact_email_obj = document.getElementById('contact_email');
+	var contact_phone_obj = document.getElementById('contact_phone');
+	var check;
+	
+	
+
+
+	if (!validate_isnull(contact_name_obj)) {
+
+		errors += "Name should not be null or empty<br >";
+		
+	}
+
+	if (!validate_isnull(contact_email_obj)) {
+		errors += "Email should not be null or empty<br />";
+		
+		
+	} else if (contact_email_obj.value.length > 60) {
+		errors += "Email should not be more than 60 characters<br />";
+		
+	} else if (!validateEmail(contact_email_obj)) {
+		errors += "Please enter valid Email<br />";
+		
+	}
+
+	if (!validate_isnull(contact_phone_obj)) {
+
+		errors += "Phone Number should not be null or empty<br >";
+		
+	}
+
+	
+	alert(errors);
+	if(errors != ''){
+		document.getElementById('contact_errors_data').innerHTML = "";
+		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
+		return false;
+
+	}
+	//return true;
+
+		var payment_data = {'name':contact_name_obj.value,'email':contact_email_obj.value,'phone':contact_phone_obj.value};
+		var customURL = base_url + "documents/process_payment";
+		$.ajax({
+			url: customURL,
+			type: 'POST',
+			async:false,
+			data: payment_data,
+			dataType: 'text',
+			success: function(response) {
+				
+				if(response == "success"){
+					check = true;
+				}else check = false;
+				
+				
+
+			}
+		});
+
+		return check;
+
+}
+	//return false;
+
+
+
+
+
