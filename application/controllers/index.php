@@ -108,11 +108,11 @@ class Index extends CI_Controller {
 
 		$login_data = $this->session->userdata('user');
 
-		if( !isset($login_data) || $login_data == ''){
+		/*if( !isset($login_data) || $login_data == ''){
 			$return['status'] = 'login_please';
 			echo json_encode($return); exit;
 		}
-
+*/
 		$product_id = $this->input->post('prod_id');
 		$rating_vote = $this->input->post('vote_value');
 		$rating = $this->category_model->insert_rating($product_id, $rating_vote);
