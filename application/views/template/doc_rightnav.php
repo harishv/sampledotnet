@@ -3,9 +3,8 @@
 
 	<ul>
 		<li>
-			<a href="#">
-				<img src="<?php echo base_url('img'); ?>/add.jpg" alt="add" width="100%;" style="margin-top:10px;" />
-			</a>
+			<!-- Banner Advertisement -->
+			<?php require_once '/adds/add5.php'; ?>
 		</li>
 	</ul>
 
@@ -27,5 +26,11 @@
 		</div>
 	<?php } ?>
 
-	<img src="<?php echo base_url('img'); ?>/add1.jpg"  style="margin-top:10px; margin-left:15px;"/>
+	<ul>
+		<li>
+			<!-- Banner Advertisement -->
+			<?php require_once '/adds/add6.php'; ?>
+		</li>
+	</ul>
+
 </div>

@@ -32,7 +32,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 	<!-- Begin content div -->
 
 	<div class="top-container" style="width: 100%">
-		<a href="<?php echo base_url() . '/documents';?>">Home</a>
+		<a href="<?php echo base_url() . 'documents';?>">Home</a>
 
 		<?php if(isset($bread_crum['cat_name']) && $bread_crum['cat_name'] !=''){ ?>
 			<img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">

@@ -1,0 +1,1 @@
+<img src="<?php echo base_url('img'); ?>/link-img.jpg" alt="add" width="97%;" style="margin-top: 10px; margin-left: 3px; margin-right: 3px;" />

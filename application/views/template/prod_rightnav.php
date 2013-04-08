@@ -55,13 +55,11 @@
 		<span>Subscribe Now to get free Samples by E-mail </span></a>
 	<!-- End Subscribe div -->
 	</div>
-	<?php
-		/*
-		$image_properties = array('src' => 'img/fap-turbo.jpg','alt' => 'fab turbo','class'=>'mgn-15b');
-		echo img($image_properties);
 
-		$image_properties = array('src' => 'img/kaboom.jpg','alt' => 'kaboom');
-		echo img($image_properties);
-		*/
-	?>
+	<!-- Banner Advertisement -->
+	<?php require_once '/adds/add3.php'; ?>
+
+	<!-- Banner Advertisement -->
+	<?php require_once '/adds/add4.php'; ?>
+
 </div>

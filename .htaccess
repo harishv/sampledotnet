@@ -3,6 +3,6 @@
 	#Options +FollowSymLinks
 	RewriteEngine On
 
-	RewriteCond $1 !^(index\.php|system|user_guide|js|img|css|media|uploads|backup\.php|license\.txt|favicon\.ico)
+	RewriteCond $1 !^(index\.php|system|user_guide|adds|js|img|css|media|uploads|backup\.php|license\.txt|favicon\.ico)
 	RewriteRule ^(.*)$ index.php?/$1 [L]
 </IfModule>

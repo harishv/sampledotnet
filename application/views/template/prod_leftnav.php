@@ -26,4 +26,7 @@
 		</ul>
 	</div>
 	<!-- End categories -->
+
+	<!-- Banner Advertisement -->
+	<?php require_once '/adds/add2.php'; ?>
 </div>
