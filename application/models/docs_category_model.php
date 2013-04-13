@@ -16,16 +16,16 @@ class Docs_Category_Model extends CI_Model {
 
 		// TODO::
 		// Need to fecth data from documents.
-		// $category_ids = $this->db->query("(SELECT DISTINCT(documents.category_id) FROM documents WHERE documents.status_id = 1) UNION (SELECT doc_categories.parent_cat_id AS category_id FROM doc_categories WHERE doc_categories.parent_cat_id != 0 AND doc_categories.status_id = 1 AND id IN (SELECT DISTINCT(documents.category_id) FROM documents WHERE documents.status_id = 1))");
-		// if ($category_ids->num_rows > 0) {
-		// 	$cat_id_arr = $category_ids->result_array();
-		// 	foreach ($cat_id_arr as $category_id) {
-		// 		array_push($category_id_arr, $category_id['category_id']);
-		// 	}
-		// }
+		$category_ids = $this->db->query("(SELECT DISTINCT(documents.category_id) FROM documents WHERE documents.status_id = 1) UNION (SELECT doc_categories.parent_cat_id AS category_id FROM doc_categories WHERE doc_categories.parent_cat_id != 0 AND doc_categories.status_id = 1 AND id IN (SELECT DISTINCT(documents.category_id) FROM documents WHERE documents.status_id = 1))");
+		if ($category_ids->num_rows > 0) {
+			$cat_id_arr = $category_ids->result_array();
+			foreach ($cat_id_arr as $category_id) {
+				array_push($category_id_arr, $category_id['category_id']);
+			}
+		}
 
-		// $result = $this->db->query("SELECT * FROM doc_categories WHERE parent_cat_id = 0 AND status_id = 1 AND id IN (".implode(",", $category_id_arr).") ORDER BY doc_cat_name ASC");
-		$result = $this->db->query("SELECT * FROM doc_categories WHERE parent_cat_id = 0 AND status_id = 1");
+		$result = $this->db->query("SELECT * FROM doc_categories WHERE parent_cat_id = 0 AND status_id = 1 AND id IN (".implode(",", $category_id_arr).") ORDER BY doc_cat_name ASC");
+		// $result = $this->db->query("SELECT * FROM doc_categories WHERE parent_cat_id = 0 AND status_id = 1");
 
 		if ($result->num_rows() == 0) {
 			return false;
@@ -40,8 +40,8 @@ class Docs_Category_Model extends CI_Model {
 
 		// TODO::
 		// Fetch sub-cats based on active docs
-		// $result = $this->db->query("SELECT * FROM doc_categories WHERE parent_cat_id = $id AND status_id = 1 AND id IN (SELECT DISTINCT(category_id) FROM documents WHERE status_id = 1)");
-		$result = $this->db->query("SELECT * FROM doc_categories WHERE parent_cat_id = $id AND status_id = 1");
+		$result = $this->db->query("SELECT * FROM doc_categories WHERE parent_cat_id = $id AND status_id = 1 AND id IN (SELECT DISTINCT(category_id) FROM documents WHERE status_id = 1)");
+		// $result = $this->db->query("SELECT * FROM doc_categories WHERE parent_cat_id = $id AND status_id = 1");
 
 		if ($result->num_rows() == 0) {
 			return false;
@@ -174,29 +174,29 @@ class Docs_Category_Model extends CI_Model {
 
 	function get_right_popular_documents(){
 
-		// $selected_country = ($this->session->userdata('selected_country')) ? $this->session->userdata('selected_country'): 226;
+		$selected_country = ($this->session->userdata('selected_country')) ? $this->session->userdata('selected_country'): 226;
 
-		// $this->db->select('doc_id');
-		// $this->db->from('doc_countries');
-		// $this->db->where('country_id', $selected_country);
-		// $this->db->where('status_id', 1);
+		$this->db->select('doc_id');
+		$this->db->from('doc_countries');
+		$this->db->where('country_id', $selected_country);
+		$this->db->where('status_id', 1);
 
-		// $result_doc_ids = $this->db->get();
+		$result_doc_ids = $this->db->get();
 
-		// if ($result_doc_ids->num_rows() == 0) {
-		// 	return false;
-		// } else {
-		// 	// Get valid Document Id's
-		// 	$doc_ids = $result_doc_ids->result_array();
-		// 	foreach ($doc_ids as $id) {
-		// 		$result_ids[] = $id['doc_id'];
-		// 	}
-		// }
+		if ($result_doc_ids->num_rows() == 0) {
+			return false;
+		} else {
+			// Get valid Document Id's
+			$doc_ids = $result_doc_ids->result_array();
+			foreach ($doc_ids as $id) {
+				$result_ids[] = $id['doc_id'];
+			}
+		}
 
 		$this->db->select('*');
 		$this->db->from('documents');
 		$this->db->where('status_id', 1);
-		// $this->db->where_in('id', $result_ids);
+		$this->db->where_in('id', $result_ids);
 		$this->db->order_by("modified_at", "desc");
 
 		$result = $this->db->get();
@@ -457,8 +457,8 @@ class Docs_Category_Model extends CI_Model {
 
 	function get_sub_categories($id){
 
-		//$query = $this->db->query("select c.id,c.doc_cat_name,c.parent_cat_id,p.name,p.category_id from doc_categories c , documents p where c.parent_cat_id = ".$id." and  p.category_id = c.id");
-		$query = $this->db->query("select id,doc_cat_name from doc_categories where parent_cat_id = " .$id);
+		$query = $this->db->query("select c.id,c.doc_cat_name,c.parent_cat_id,p.name,p.category_id from doc_categories c , documents p where c.parent_cat_id = ".$id." and  p.category_id = c.id");
+		// $query = $this->db->query("select id,doc_cat_name from doc_categories where parent_cat_id = " .$id);
 		if($query->num_rows() > 0){
 			$result = $query->result_array();
 

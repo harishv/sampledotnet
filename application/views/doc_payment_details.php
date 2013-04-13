@@ -43,7 +43,7 @@ $return_url = base_url().'documents/'
 	<div class="flt-l" id="content">
 		<?php // var_dump($document_details); ?>
 		<?php
-			$attributes = array('class' => 'form-horizontal', 'id' => 'payment_details', 'name'=>'payment_details','target' =>'_blank','onsubmit' =>'validate_payment_details();');
+			$attributes = array('class' => 'form-horizontal', 'id' => 'payment_details', 'name'=>'payment_details','target' =>'_blank','onsubmit' =>'return validate_payment_details();');
 			echo form_open('https://www.sandbox.paypal.com/cgi-bin/webscr',$attributes);
 		?>
 			<fieldset>
@@ -85,18 +85,15 @@ $return_url = base_url().'documents/'
 					<label for="doc_price" class="control-label">Document Price :</label>
 					<div class="controls">
 						<input type="hidden" id="doc_price" name="doc_price" value="<?php echo $document_details[0]['doc_price']; ?>" />
-						<?php echo $document_details[0]['doc_price']; ?>
 						<input type="hidden" id="doc_id" name="doc_id" value="<?php echo $document_details[0]['id']; ?>" />
-						<?php echo $document_details[0]['id']; ?>
-
+						<span style="display: inline-block; font-size: 13px; height: 18px; line-height: 18px; padding: 4px;"><?php echo $document_details[0]['doc_price']; ?></span>
 					</div>
 				</div>
 
 
 				<input type="hidden" name="cmd" value="_xclick" />
 			    <input type="hidden" name="upload" value="1" />
-			    <!--<input type="hidden" name="business" value="manager181@skintologyny.com" /> -->
-			    <input type="hidden" name="business" value="sailu1214@gmail.com" /> 
+			    <input type="hidden" name="business" value="sailu1214@gmail.com" />
 			    <input type="hidden" name="currency_code" value="USD" />
 			    <input type="hidden" name="rm" value="2">
 			    <input type="hidden" name="return" value="<?php //echo $return_url?>" />
@@ -106,12 +103,12 @@ $return_url = base_url().'documents/'
 			    <input type="hidden" name="amount" value="<?php echo round($document_details[0]['doc_price'],2);?>" />
 			    <!-- <div class="amount">
 			      <label style ="margin-top: 9px;">Total Amount: </label>
-			     
+
 			      <span> $<?php //if(isset($total_with_tax)){ echo round($total_with_tax,2); ?>
 			      <input type="submit" value="Pay" name="submit" /></span>
 			      <?php //}else{?>
-			      
-			       <span><?=$currency?></span> 
+
+			       <span><?=$currency?></span>
 			      <input type="text" onblur="if(validate_null(this.value,'Enter Price','error_prodprice','errorMsg')){ validate_priceinfo(this.value,'Enter Valid Price','error_prodprice')}" size="10" class="textbox" id="amount" name="amount" class="textbox" size="10" <?php echo $readonly?>/>
 			      <input type="submit" value="Pay" name="submit" onclick="return validate_null(document.getElementById('amount').value,'Enter Price','error_prodprice','errorMsg') " />
 			      <?php //}?>

@@ -1,42 +1,3 @@
-/*$(document).ready(function() {
-
-	$('.star').raty({
-
-
-		click: function(score, evt) {
-
-			var id= $(this).attr('value');
-
-
-			var data = { 'prod_id' : id ,'vote_value':score};
-			var baseurl = base_url;
-			$.ajax({
-				url: baseurl+'index/product_rating',
-				type: 'POST',
-				data:data,
-				dataType :'json',
-				success: function(res)
-				{
-					//alert(res.status == 'succuss');return false;
-					if(res.status == 'succuss'){
-
-						 //$('#ratings').html();
-						 $("#replace").html(res.page);
-
-						//window.location =baseurl;
-					}
-				 }
-			});
-
-		}
-
-	});
-
-
-
-
-}); */
-
 function grab_now(id, url) {
 
 	var data = {
@@ -72,10 +33,8 @@ function grab_now(id, url) {
 
 // checking for the null validation
 
-
 function validate_isnull(field_id) {
-
-	if (field_id == null || $.trim(field_id.value) == "") {
+	if (field_id === null || $.trim(field_id.value) === "") {
 		return false;
 	} else return true;
 }
@@ -83,15 +42,17 @@ function validate_isnull(field_id) {
 // checking the email validation
 
 function validateEmail(element, typeSent) {
+	var emailPattern, email, compound_email;
 	if (typeof(typeSent) === 'undefined') typeSent = "object";
-	var emailPattern = /^[a-z0-9]+((\.[a-z0-9]+)*(\_[a-z0-9]+)*)*@[a-zA-Z]+\.(([a-zA-Z]{2,3})|([a-zA-Z]{2}\.[a-zA-Z]{2}))$/;
+
+	emailPattern = /^[a-z0-9]+((\.[a-z0-9]+)*(\_[a-z0-9]+)*)*@[a-zA-Z]+\.(([a-zA-Z]{2,3})|([a-zA-Z]{2}\.[a-zA-Z]{2}))$/;
 	if (typeSent == 'value') {
-		var compound_email = element.split("<");
+		compound_email = element.split("<");
 
 		if (compound_email.length > 1) {
-			var email = (compound_email[1].split(">"))[0];
+			email = (compound_email[1].split(">"))[0];
 		} else {
-			var email = (compound_email[0].split(">"))[0];
+			email = (compound_email[0].split(">"))[0];
 		}
 
 		return emailPattern.test(email);
@@ -699,10 +660,10 @@ function validate_chanagepassword() {
 
 
 
-function validate_contactus(){
+function validate_contactus() {
 
-	
-	var errors ='';
+
+	var errors = '';
 	var contact_name_obj = document.getElementById('contact_name');
 	var contact_email_obj = document.getElementById('contact_email');
 	var contact_phone_obj = document.getElementById('contact_phone');
@@ -711,42 +672,42 @@ function validate_contactus(){
 	if (!validate_isnull(contact_name_obj)) {
 
 		errors += "Name should not be null or empty<br >";
-		
+
 	}
 
 	if (!validate_isnull(contact_email_obj)) {
 		errors += "Email should not be null or empty<br />";
-		
-		
+
+
 	} else if (contact_email_obj.value.length > 60) {
 		errors += "Email should not be more than 60 characters<br />";
-		
+
 	} else if (!validateEmail(contact_email_obj)) {
 		errors += "Please enter valid Email<br />";
-		
+
 	}
 
 	if (!validate_isnull(contact_phone_obj)) {
 
 		errors += "Phone Number should not be null or empty<br >";
-		
+
 	}
 
 	if (!validate_isnull(contact_enquire_obj)) {
 
 		errors += "Enquiry should not be null or empty<br >";
-		
+
 	}
 
 
-	if(errors != ''){
+	if (errors !== '') {
 		document.getElementById('contact_errors_data').innerHTML = "";
 		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
 		return false;
 
 	}
 	return true;
-		/*if ($.trim(errors) == '') {
+	/*if ($.trim(errors) == '') {
 		$('#contact_errors_data').html("");
 		// Call check Login Ajax call
 		var customURL = base_url + "login/contactus";
@@ -782,77 +743,64 @@ function validate_contactus(){
 
 
 
-function validate_payment_details(){
+function validate_payment_details() {
 
-
-	var errors ='';
+	var errors = '';
 	var contact_name_obj = document.getElementById('contact_name');
 	var contact_email_obj = document.getElementById('contact_email');
 	var contact_phone_obj = document.getElementById('contact_phone');
-	var check;
-	
-	
+	var check = false;
 
 
 	if (!validate_isnull(contact_name_obj)) {
-
-		errors += "Name should not be null or empty<br >";
-		
+		errors += "Name should not be null or empty<br />";
 	}
 
 	if (!validate_isnull(contact_email_obj)) {
 		errors += "Email should not be null or empty<br />";
-		
-		
+
+
 	} else if (contact_email_obj.value.length > 60) {
 		errors += "Email should not be more than 60 characters<br />";
-		
+
 	} else if (!validateEmail(contact_email_obj)) {
 		errors += "Please enter valid Email<br />";
-		
+
 	}
 
 	if (!validate_isnull(contact_phone_obj)) {
-
-		errors += "Phone Number should not be null or empty<br >";
-		
+		errors += "Phone Number should not be null or empty<br />";
 	}
 
-	
-	alert(errors);
-	if(errors != ''){
+
+	if ($.trim(errors) !== '') {
 		document.getElementById('contact_errors_data').innerHTML = "";
 		document.getElementById('contact_errors_data').innerHTML = $.trim(errors);
 		return false;
+	} else {
 
-	}
-	//return true;
+		document.getElementById('contact_errors_data').innerHTML = "";
 
-		var payment_data = {'name':contact_name_obj.value,'email':contact_email_obj.value,'phone':contact_phone_obj.value};
+		var payment_data = {
+			'name': contact_name_obj.value,
+			'email': contact_email_obj.value,
+			'phone': contact_phone_obj.value
+		};
 		var customURL = base_url + "documents/process_payment";
 		$.ajax({
 			url: customURL,
 			type: 'POST',
-			async:false,
+			async: false,
 			data: payment_data,
 			dataType: 'text',
 			success: function(response) {
-				
-				if(response == "success"){
+				if (response == "success") {
 					check = true;
-				}else check = false;
-				
-				
+				} else check = false;
 
+				return check;
 			}
 		});
 
-		return check;
-
+	}
 }
-	//return false;
-
-
-
-
-

@@ -68,6 +68,7 @@ class Documents extends CI_Controller {
 		}
 
 		$data["categories"] = $this->Admin_Documents_Model->get_categories();
+		$data["doc_types"] = $this->Admin_Documents_Model->get_document_types();
 		$data["countries"] = $this->Common_Model->get_countries();
 
 		$this->load->view("template/admin_header");

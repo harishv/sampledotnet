@@ -144,6 +144,28 @@ class Admin_Documents_Model extends CI_Model {
 
 	}
 
+	function get_document_types($id = 0){
+
+		$this->db->select('*');
+		$this->db->from('doc_types');
+		if($id != 0)
+			$this->db->where('id', $id);
+
+		$result = $this->db->get();
+
+		if ($result->num_rows() == 0) {
+			return false;
+		} else {
+			if($id != 0)
+				return $result->row_array();
+			else
+				return $result->result_array();
+		}
+
+		return false;
+
+	}
+
 	function change_status()
 	{
 		$document_id = trim($this->input->post("doc_id"));
@@ -280,6 +302,10 @@ class Admin_Documents_Model extends CI_Model {
 		$errors .= (isset($doc_name) && trim($doc_name) == "") ? "Document Name shouldn't be empty<br />" : "";
 		$errors .= (isset($doc_category_id) && (trim($doc_category_id) == "" || trim($doc_category_id) == 0)) ? "Please select a Document Category<br />" : "";
 		$errors .= (isset($doc_desc) && trim($doc_desc) == "") ? "Document Description shouldn't be empty<br />" : "";
+		$errors .= (isset($doc_type) && (trim($doc_type) == "" || trim($doc_type) == 0)) ? "Please select a Document Type<br />" : "";
+		if (isset($doc_type) && $doc_type == 2) {
+			$errors .= (isset($doc_price) && trim($doc_price) == "") ? "Document Price is shouldn't be emptly for Premium document type<br />" : "";
+		}
 		$errors .= (isset($doc_shared_by) && trim($doc_shared_by) == "") ? "Document Shared By Name shouldn't be empty<br />" : "";
 		$errors .= (isset($doc_tags) && trim($doc_tags) == "") ? "Tags shouldn't be empty<br />" : "";
 		$errors .= (isset($doc_available_formats) && trim($doc_available_formats) == "") ? "Available Formats shouldn't be empty<br />" : "";
@@ -537,6 +563,8 @@ class Admin_Documents_Model extends CI_Model {
 
 			$document_information = array (	'name' => htmlspecialchars(htmlentities($doc_name,ENT_QUOTES)),
 											'category_id' => intval($doc_category_id),
+											'doc_type_id' => intval($doc_type),
+											'doc_price' => htmlentities(trim($doc_price)),
 											'image' => $document_image_name,
 											'description' => htmlentities(trim($doc_desc)),
 											'shared_by' => htmlentities(trim($doc_shared_by)),

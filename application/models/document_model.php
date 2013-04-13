@@ -37,7 +37,6 @@ class Document_Model extends CI_Model {
 
 	function insert_comments($id,$user_id){
 
-
 		$comment = $this->input->post('comment_area');
 		$current_date = date('Y-m-d H:i:s');
 		$ip = $_SERVER['REMOTE_ADDR'];
@@ -47,7 +46,6 @@ class Document_Model extends CI_Model {
 					'modified_by' => '0');
 		$this->db->insert('comments',$data);
 		return true;
-
 
 	}
 
@@ -61,5 +59,4 @@ class Document_Model extends CI_Model {
 
 	}
 
-	
 }

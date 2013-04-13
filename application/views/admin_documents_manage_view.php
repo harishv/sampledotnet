@@ -25,6 +25,9 @@ $(document).ready(function() {
 			doc_desc: {
 					required: true
 				},
+			doc_type: {
+					required: true
+			},
 			doc_path: {
 					required: true,
 					accept: "pdf|doc|docx|txt",
@@ -55,6 +58,9 @@ $(document).ready(function() {
 			doc_desc: {
 					required: "Document Description is a required field."
 				},
+			doc_type: {
+					required: "Please select a Document Type."
+			},
 			doc_path: {
 					required: "Document is a required field.",
 					accept: "Please upload a document of type (pdf, doc, docx or txt) only.",
@@ -103,6 +109,12 @@ $(document).ready(function() {
         return element.files[0].size <= param;
      }, jQuery.validator.messages.filesize );
 
+	jQuery.validator.addMethod(
+	'this_is_optional',
+	function(value, element) {
+		return true;
+	}, '');
+
 	$('#doc_image').change(function () {
 		$('#doc_image').removeAttr('name');
 		$('#doc_image').attr('name', 'doc_image');
@@ -112,6 +124,24 @@ $(document).ready(function() {
 		$('#doc_path').removeAttr('name');
 		$('#doc_path').attr('name', 'doc_path');
 	});
+
+	$('#doc_type').change(set_doc_price_data);
+
+	set_doc_price_data();
+
+	function set_doc_price_data () {
+		var doc_type_id = $('#doc_type').val();
+		if (doc_type_id == 1) {
+			$('#doc_price_data').hide();
+			$('#doc_price').removeClass('required').addClass('this_is_optional');
+		} else if (doc_type_id == 2) {
+			$('#doc_price_data').show();
+			$('#doc_price').removeClass('this_is_optional').addClass('required');
+		} else {
+			$('#doc_price_data').hide();
+			$('#doc_price').removeClass('required').addClass('this_is_optional');
+		}
+	}
 
 });
 
@@ -201,6 +231,32 @@ $(document).ready(function() {
 				<div class="controls">
 					<textarea class="input-xlarge" rows="3" id="doc_desc"
 						name="doc_desc" placeholder="<?php echo $this->lang->line('admin_doc_mng_desc_ph'); ?>"><?php echo ($set) ? html_entity_decode($document['description']) : ""; ?></textarea>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="doc_type"><?php echo $this->lang->line('admin_doc_mng_type'); ?>
+					:</label>
+				<div class="controls">
+					<select class="input-xlarge" id="doc_type" name="doc_type">
+						<option value="">-- <?php echo $this->lang->line('admin_doc_mng_sel_a_type'); ?> --</option>
+						<?php foreach ($doc_types as $doc_type) {
+							$selected = "";
+							if ($set && ($document["doc_type_id"] == $doc_type['id'])) {
+								$selected = 'selected="selected"';
+							} ?>
+							<option value="<?php echo $doc_type['id']; ?>" <?php echo $selected; ?>><?php echo $doc_type['name']; ?></option>
+						<?php } ?>
+					</select>
+				</div>
+			</div>
+
+			<div class="control-group" id="doc_price_data" style="display: none;">
+				<label class="control-label" for="doc_price"><?php echo $this->lang->line('admin_doc_mng_doc_price'); ?>
+					:</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge this_is_optional" id="doc_price" name="doc_price"
+						placeholder="<?php echo $this->lang->line('admin_doc_mng_doc_price_ph'); ?>" value="<?php echo ($set)? html_entity_decode($document["doc_price"]) : ""; ?>" />
 				</div>
 			</div>
 
