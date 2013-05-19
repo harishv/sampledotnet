@@ -153,9 +153,17 @@ class Documents extends CI_Controller {
 
 		$data['page_title'] = $data['document_details'][0]['name'] . ' | ' . $cat_name;
 
-		$data['page_meta_data'] = '<meta property="og:image" content="' . base_url(). PROD_IMG_PATH . $data['document_details'][0]['image'] . '" />';
+		$data['page_meta_data'] = '';
 
-		// echo "<pre>"; print_r($data['footer_category']); echo "</pre>"; exit;
+		if (trim($data['document_details'][0]['meta_keywords']) != '') {
+			$data['page_meta_data'] .= '<meta name="keywords" content="' . html_entity_decode($data['document_details'][0]['meta_keywords']) . '" />';
+		}
+
+		if (trim($data['document_details'][0]['meta_desc']) != '') {
+			$data['page_meta_data'] .= '<meta name="description" content="' . html_entity_decode($data['document_details'][0]['meta_desc']) . '" />';
+		}
+
+		$data['page_meta_data'] = '<meta property="og:image" content="' . base_url(). PROD_IMG_PATH . $data['document_details'][0]['image'] . '" />';
 
 		$this->load->view("template/header", $data);
 		$this->load->view("document", $data);
@@ -245,7 +253,7 @@ class Documents extends CI_Controller {
 
 	public function process_payment()
 	{
-		
+
 		$payment_details_session = array('name'=>$_POST['name'] , 'email' => $_POST['email'] , 'phone' => $_POST['phone'] , 'price' => $_POST['doc_price'],'doc_id' => $_POST['doc_id']);
 		$this->session->set_userdata('payment_details',$payment_details_session);
 		$this->session->userdata['payment_details'];
@@ -270,13 +278,28 @@ class Documents extends CI_Controller {
 	{
 		$document_details = $this->document_model->get_document_details($document_id);
 		$doc_path_ext = strrchr($document_details[0]['doc_path'], ".");
-		header('Content-disposition: attachment; filename='.$document_details[0]['name'] . $doc_path_ext);
 
-		if(strtolower(trim($doc_path_ext, '.')) == 'pdf') {
-			header('Content-type: application/pdf');
-		}
+		// Preparing a proper Document Name for the downloadable file.
+		$doc_name = $document_details[0]['name'];
 
-		readfile(base_url().'uploads/documents/'.$document_details[0]['doc_path']);
+		// Decoding the HTML special characters to its respective tags.
+		$doc_name = htmlspecialchars_decode($doc_name, ENT_QUOTES);
+
+		// Striping special characters like \?*><|".
+		$doc_name = preg_replace("/[\\?*:><|\"]+/i", "", $doc_name);
+
+		// Striping special character /.
+		$doc_name = preg_replace("#/#", "", $doc_name);
+
+		// Replacing multiple spaces with single space.
+		$doc_name = preg_replace('/\s+/i', ' ', $doc_name);
+
+		$doc_name = strtolower(str_replace(' ', '_', trim($doc_name))) . "_" . time();
+
+		header('Content-type: ' . get_mime_by_extension($document_details[0]['doc_path']));
+		header('Content-disposition: attachment; filename="'. $doc_name . $doc_path_ext . '"');
+
+		readfile(base_url() . 'uploads/documents/'.$document_details[0]['doc_path']);
 	}
 
 

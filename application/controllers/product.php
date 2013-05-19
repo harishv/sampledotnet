@@ -95,7 +95,17 @@ class Product extends CI_Controller {
 
 		$data['page_title'] = $data['product_details'][0]['name'] . ' | ' . $cat_name;
 
-		$data['page_meta_data'] = '<meta property="og:image" content="' . base_url(). PROD_IMG_PATH . $data['product_details'][0]['image'] . '" />';
+		$data['page_meta_data'] = '';
+
+		if (trim($data['product_details'][0]['meta_keywords']) != '') {
+			$data['page_meta_data'] .= '<meta name="keywords" content="' . html_entity_decode($data['product_details'][0]['meta_keywords']) . '" />';
+		}
+
+		if (trim($data['product_details'][0]['meta_desc']) != '') {
+			$data['page_meta_data'] .= '<meta name="description" content="' . html_entity_decode($data['product_details'][0]['meta_desc']) . '" />';
+		}
+
+		$data['page_meta_data'] .= '<meta property="og:image" content="' . base_url(). PROD_IMG_PATH . $data['product_details'][0]['image'] . '" />';
 
 		$this->load->view("template/header", $data);
 		$this->load->view("product", $data);

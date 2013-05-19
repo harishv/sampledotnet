@@ -21,10 +21,13 @@ if(isset($documents) && $documents != '' && count($documents) > 0) { ?>
 					} else {
 						$strip =20;
 					}
-					echo (strlen($document_value['name']) > $strip) ? substr($document_value['name'], 0, ($strip-2) ) . '..' : html_entity_decode($document_value['name']) ;?>
+					$doc_name = htmlspecialchars_decode($document_value['name'], ENT_QUOTES);
+					echo (strlen($doc_name) > $strip) ? substr($doc_name, 0, ($strip-2) ) . '..' : $doc_name; ?>
 				</strong></a>
 				<br>
-				<?php echo (strlen(html_entity_decode($document_value['description'])) > 85) ? substr(html_entity_decode($document_value['description']), 0, 83) . '..' : html_entity_decode($document_value['description']); ?>
+				<?php
+				$doc_desc = htmlspecialchars_decode($document_value['description'], ENT_QUOTES);
+				echo (strlen($doc_desc) > 85) ? substr($doc_desc, 0, 83 ) . '..' : $doc_desc; ?>
 			</p>
 			<!--
 			<br>

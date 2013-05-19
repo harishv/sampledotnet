@@ -78,6 +78,12 @@ class Documents extends CI_Controller {
 
 	public function documents_manage_action($type = "add")
 	{
+
+		// echo "<pre>";
+		// print_r($_POST);
+		// echo "</pre>";
+		// exit;
+
 		if ($type == "edit") {
 			$doc_id = $this->input->post('doc_id');
 		}

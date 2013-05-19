@@ -266,6 +266,11 @@ $lang["admin_prod_mng_scheduled"]			=	"Scheduled";
 $lang["admin_prod_mng_status_inactive"]		=	"Inactive";
 $lang["admin_prod_mng_status_active"]		=	"Active";
 $lang["admin_prod_mng_status_deleted"]		=	"Deleted";
+$lang["admin_prod_mng_meta_tags_heading"]	=	"Custom META Tags";
+$lang["admin_prod_mng_meta_keywords"]		=	"META Keywords";
+$lang["admin_prod_mng_meta_keywords_ph"]	=	"META Keywords";
+$lang["admin_prod_mng_meta_desc"]			=	"META Description";
+$lang["admin_prod_mng_meta_desc_ph"]		=	"META Description";
 $lang["admin_prod_add_btn"]					=	"Add Product";
 $lang["admin_prod_update_btn"]				=	"Update Product";
 
@@ -304,6 +309,11 @@ $lang["admin_doc_mng_scheduled"]			=	"Scheduled";
 $lang["admin_doc_mng_status_inactive"]		=	"Inactive";
 $lang["admin_doc_mng_status_active"]		=	"Active";
 $lang["admin_doc_mng_status_deleted"]		=	"Deleted";
+$lang["admin_doc_mng_meta_tags_heading"]	=	"Custom META Tags";
+$lang["admin_doc_mng_meta_keywords"]		=	"META Keywords";
+$lang["admin_doc_mng_meta_keywords_ph"]		=	"META Keywords";
+$lang["admin_doc_mng_meta_desc"]			=	"META Description";
+$lang["admin_doc_mng_meta_desc_ph"]			=	"META Description";
 $lang["admin_doc_add_btn"]					=	"Add Document";
 $lang["admin_doc_update_btn"]				=	"Update Document";
 

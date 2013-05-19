@@ -190,6 +190,9 @@ class Common_Model extends CI_Model {
 		$url_arr = explode("/", $url);
 
 		foreach ($url_arr as $index => $segment) {
+			// Decoding the HTML special characters to its respective tags.
+			$segment = htmlspecialchars_decode($segment, ENT_QUOTES);
+
 			// Striping special characters.
 			$segment = preg_replace("/[&#?)($:;]+/i", "", $segment);
 

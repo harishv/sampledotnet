@@ -561,7 +561,7 @@ class Admin_Documents_Model extends CI_Model {
 
 			$valid_countries = implode(",", $valid_country_ids);
 
-			$document_information = array (	'name' => htmlspecialchars(htmlentities($doc_name,ENT_QUOTES)),
+			$document_information = array (	'name' => htmlentities(htmlspecialchars(trim($doc_name)),ENT_QUOTES),
 											'category_id' => intval($doc_category_id),
 											'doc_type_id' => intval($doc_type),
 											'doc_price' => htmlentities(trim($doc_price)),
@@ -570,6 +570,8 @@ class Admin_Documents_Model extends CI_Model {
 											'shared_by' => htmlentities(trim($doc_shared_by)),
 											'tags' => htmlentities(trim($doc_tags)),
 											'available_formats' => htmlentities(trim($doc_available_formats)),
+											'meta_keywords' => htmlentities(trim($meta_keywords)),
+											'meta_desc' => htmlentities(trim($meta_desc)),
 											'doc_path' => $document_path_name,
 											'featured' => $doc_featured,
 											'only_today' => $doc_only_today,

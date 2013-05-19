@@ -57,7 +57,7 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 				<?php if($bread_crum !='') { ?><img alt="blue" src="<?php echo base_url().'img/blue-bullet.jpg';?>">  <?php } ?><?php  if(isset($bread_crum) && $bread_crum !='') echo $prod_name;?>
 			</p>
 
-			
+
 
 
 			<!-- Begin sample here -->
@@ -136,14 +136,14 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 								?>
 									<input type="hidden" name="prod_id" value="<?php echo $product_details[0]['id'];?>" />
 									<textarea rows="3" class="clear mgn-15b" id="comment_area" name="comment_area"></textarea>
-									
+
 									<input class="btn btn-small btn-primary pull-right" type="submit" name="submit" value="Comment" />
 								<?php echo form_close(); ?>
 						</div>
 				<?php } ?>
 
 			<!-- comments -->
-			
+
 			 <?php if(isset($comments) && $comments !=''){ ?>
 			 	<h4>Comments</h4>
 				<?php foreach($comments as $key=>$values){ ?>
