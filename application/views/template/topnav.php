@@ -123,6 +123,7 @@ function setcountry(catid) {
 	};
 
 	$.ajax({
+		// url: request_type + '://<?php echo $_SERVER["SERVER_NAME"]; ?>' + '/index/set_country/',
 		url: base_url + 'index/set_country',
 		type: 'POST',
 		data: data,

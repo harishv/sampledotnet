@@ -57,9 +57,9 @@
 	</div>
 
 	<!-- Banner Advertisement -->
-	<?php require_once '/adds/add3.php'; ?>
+	<?php require_once 'adds/add3.php'; ?>
 
 	<!-- Banner Advertisement -->
-	<?php require_once '/adds/add4.php'; ?>
+	<?php require_once 'adds/add4.php'; ?>
 
 </div>

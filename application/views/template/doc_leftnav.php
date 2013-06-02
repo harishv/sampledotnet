@@ -27,7 +27,7 @@
 	</div>
 
 	<!-- Banner Advertisement -->
-	<?php require_once '/adds/add2.php'; ?>
+	<?php require_once 'adds/add2.php'; ?>
 	<!-- End categories -->
 
 	<!-- Begin premium docs -->

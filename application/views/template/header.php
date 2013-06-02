@@ -234,7 +234,7 @@
 					<?php echo anchor(base_url(), img(array("src" => "/img/logo.png", "alt" => $this->lang->line("brand_name"), "class" => "mgn-15b")), array("class" => "flt-l mgn-20rn")); ?>
 					<span class="flt-l slogan">genuine freebies!</span>
 					<!-- Banner Advertisement -->
-					<?php require_once '/adds/add1.php'; ?>
+					<?php require_once 'adds/add1.php'; ?>
 					<!-- Navigation starts here -->
 					<div class="wid_100 flt-l" >
 						<?php

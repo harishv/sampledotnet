@@ -151,13 +151,17 @@ class Documents extends CI_Controller {
 			}
 		}
 
-		$data['page_title'] = $data['document_details'][0]['name'] . ' | ' . $cat_name;
-
+		if (trim($data['document_details'][0]['meta_keywords']) != '') {
+			$data['page_title'] = $data['document_details'][0]['meta_keywords'] . ' | ' . $cat_name;
+		} else {
+			$data['page_title'] = $data['document_details'][0]['name'] . ' | ' . $cat_name;
+		}
+		
 		$data['page_meta_data'] = '';
 
-		if (trim($data['document_details'][0]['meta_keywords']) != '') {
-			$data['page_meta_data'] .= '<meta name="keywords" content="' . html_entity_decode($data['document_details'][0]['meta_keywords']) . '" />';
-		}
+		// if (trim($data['document_details'][0]['meta_keywords']) != '') {
+		// 	$data['page_meta_data'] .= '<meta name="keywords" content="' . html_entity_decode($data['document_details'][0]['meta_keywords']) . '" />';
+		// }
 
 		if (trim($data['document_details'][0]['meta_desc']) != '') {
 			$data['page_meta_data'] .= '<meta name="description" content="' . html_entity_decode($data['document_details'][0]['meta_desc']) . '" />';

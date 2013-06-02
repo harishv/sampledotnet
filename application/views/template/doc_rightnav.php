@@ -4,7 +4,7 @@
 	<ul>
 		<li>
 			<!-- Banner Advertisement -->
-			<?php require_once '/adds/add5.php'; ?>
+			<?php require_once 'adds/add5.php'; ?>
 		</li>
 	</ul>
 
@@ -29,7 +29,7 @@
 	<ul>
 		<li>
 			<!-- Banner Advertisement -->
-			<?php require_once '/adds/add6.php'; ?>
+			<?php require_once 'adds/add6.php'; ?>
 		</li>
 	</ul>
 

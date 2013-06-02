@@ -54,7 +54,6 @@ var base_url = "<?php echo base_url();?>";/* global variable for the root path *
 		<div class="hgt-15px wid_100" style="min-height: 750px; height: inherit;">
 
 			<span>
-				Title:
 				<span style="color:#0c3b93;"><?php echo html_entity_decode($document_details[0]['name']);?></span>
 			</span>
 			<div class="pdf-book clearfix">
