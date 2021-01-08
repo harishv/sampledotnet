@@ -9,8 +9,8 @@ Local Config Setup
 ------------------
 [Setup git](http://help.github.com/set-up-git-redirect)
 
-	git config user.name "Harish Varada"
-	git config user.email harish.varada@gmail.com
+	git config user.name <<User Name>>
+	git config user.email <<User Email>>
 
 Next steps
 ----------
